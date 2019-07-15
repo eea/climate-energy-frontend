@@ -190,11 +190,11 @@ class Navigation extends Component {
                   <Dropdown.Divider></Dropdown.Divider>
                   { item.items.map(subitem =>  (
                     <Dropdown.Item
-                      className={this.isActive(subitem.url) ? 'item menuActive' : 'item'}
                       key={subitem.url}>
                       <Link
                         to={subitem.url === '' ? '/' : subitem.url}
                         key={subitem.url}
+                        className={this.isActive(subitem.url) ? 'item menuActive' : 'item'}
                       >
                         {subitem.title}
                       </Link>
