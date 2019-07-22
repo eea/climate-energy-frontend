@@ -17,11 +17,23 @@ import {
  * @param {number} start Start of result batch.
  * @returns {Object} Get vocabulary action.
  */
+<<<<<<< HEAD
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary =
     vocabNameOrURL &&
     vocabNameOrURL.replace(`${settings.apiPath}/@vocabularies/`, '');
+=======
+
+export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
+  // In case we have a URL, we have to get the vocabulary name
+  console.log('2', vocabNameOrURL)
+  const vocabulary =
+    vocabNameOrURL &&
+    vocabNameOrURL.replace(`${settings.apiPath}/@vocabularies/`, '');
+    console.log('3', vocabNameOrURL, vocabulary)
+  
+>>>>>>> custom Header,Footer,Views, Navigation + Slider
   let queryString = `b_start=${start}`;
   if (query) {
     queryString = `${queryString}&title=${query}`;
@@ -47,6 +59,10 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
  */
 export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
   // In case we have a URL, we have to get the vocabulary name
+<<<<<<< HEAD
+=======
+  console.log('1', vocabNameOrURL)
+>>>>>>> custom Header,Footer,Views, Navigation + Slider
   const vocabulary = vocabNameOrURL.replace(
     `${settings.apiPath}/@vocabularies/`,
     '',

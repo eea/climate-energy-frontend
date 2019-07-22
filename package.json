@@ -57,7 +57,9 @@
     "node": "^8 || ^10"
   },
   "dependencies": {
-    "@plone/volto": "3.1.0"
+    "@plone/volto": "3.1.0",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.0.1",
