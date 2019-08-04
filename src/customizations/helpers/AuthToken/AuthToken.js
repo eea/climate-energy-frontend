@@ -6,7 +6,7 @@
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
-import { loginRenew } from '../../actions';
+import { loginRenew } from '@plone/volto/actions';
 
 /**
  * Get auth token method.
@@ -40,6 +40,7 @@ export function persistAuthToken(store) {
       if (!currentValue) {
         cookie.remove('auth_token', { path: '/' });
       } else {
+          console.log(jwtDecode(currentValue).exp, jwtDecode(currentValue))
         cookie.save('auth_token', currentValue, {
           path: '/',
           expires: new Date(jwtDecode(currentValue).exp * 1000),
