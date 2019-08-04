@@ -34,3 +34,36 @@
 .ui.container {
     padding: 0 3rem;
 }
+
+.search {
+    .field.searchbox {
+        position: relative;
+        .overSearchIcon {
+            position: absolute;
+            right: 0;
+        }
+    }
+    .searchIcon {
+        position: absolute;
+        right: 0;
+    }
+    .searchInput {
+        &.hidden {
+            width: 0!important;
+        }
+        &.show {
+            width: 100%;
+        }
+        transition: width 200ms;
+        padding-right: 39px;
+    }
+
+    .field.searchbox {
+        min-height: 39px; 
+    }
+}
+
+.no-border.button {
+    box-shadow: none!important;
+    border: none!important;
+}
