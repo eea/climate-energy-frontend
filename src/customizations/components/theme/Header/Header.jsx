@@ -74,10 +74,7 @@ class Header extends Component {
             </div>
           </div>
           <Breadcrumbs pathname={this.props.pathname} />
-          <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
-        </Container>
         { (!this.props.pathname ? 
-           <Container>
                 <Slider {...settings}>
                     <div>
                         <h3>1</h3>
@@ -98,10 +95,10 @@ class Header extends Component {
                         <h3>6</h3>
                     </div>
                 </Slider>
-           </Container>
            :
-           ''
-        )} 
+          <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
+          )} 
+        </Container>
       </Segment>
     );
   }
