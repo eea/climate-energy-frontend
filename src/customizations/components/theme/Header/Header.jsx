@@ -73,7 +73,6 @@ class Header extends Component {
               <SearchWidget pathname={this.props.pathname} />
             </div>
           </div>
-          <Breadcrumbs pathname={this.props.pathname} />
         { (!this.props.pathname ? 
                 <Slider {...settings}>
                     <div>
@@ -96,7 +95,10 @@ class Header extends Component {
                     </div>
                 </Slider>
            :
-          <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
+            <div>
+             <Breadcrumbs pathname={this.props.pathname} />
+             <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
+            </div>
           )} 
         </Container>
       </Segment>
