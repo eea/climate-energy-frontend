@@ -32,8 +32,10 @@
     }
 }
 
-.ui.container {
-    padding: 0 3rem;
+@media only screen and (min-width: 1440px) {
+  body .ui.container {
+        width: 1400px;
+    }
 }
 
 .search {
@@ -87,8 +89,13 @@
 }
 
 .slider-wrapper {
-
+    max-width: calc(100% + 6rem);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     position: relative;
+    margin-left: -3rem;
+    margin-right: -3rem;
+    overflow: hidden;
     .navSlider {
         position: absolute;
         bottom: 35px;

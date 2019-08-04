@@ -57,7 +57,7 @@ class Header extends Component {
     });
     const slidesArr = Array.from({ length: 5 }, () => Math.floor(Math.random() * 5))
     const slidesUrl = await Promise.all(slidesArr.map(async (item, index) => {
-      let response = await fetch('https://loremflickr.com/1600/760');
+      let response = await fetch('https://picsum.photos/1600/600');
       let data = await response.url
       return <div className="slider-slide" key={index}>
               <img src={data} alt=""/>

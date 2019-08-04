@@ -1,0 +1,19 @@
+/*******************************
+            Container
+*******************************/
+
+/*-------------------
+       Element
+--------------------*/
+@largerMonitorBreakpoint: 1440px;
+@largerMonitorWidth: 1400px;
+/* Devices */
+
+/* Coupling (Add Negative Margin to container size) */
+
+/*-------------------
+       Types
+--------------------*/
+
+/* Text */
+@textWidth: 376px;
