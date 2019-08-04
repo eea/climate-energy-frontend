@@ -59,8 +59,9 @@ class Header extends Component {
     const slidesUrl = await Promise.all(slidesArr.map(async (item, index) => {
       let response = await fetch('https://loremflickr.com/1600/760');
       let data = await response.url
-      return <div key={index}>
+      return <div className="slider-slide" key={index}>
               <img src={data} alt=""/>
+              <div className="slide-title">Nunc eget convallis orci, vel feugiant nicosa.</div>
             </div>
       })
     )
@@ -88,19 +89,21 @@ class Header extends Component {
       <Segment basic className="header-wrapper" role="banner">
         <Container>
           <div className="header">
-            <div className="logo-nav-wrapper">
+            <div className="logo-nav-wrapper space-between">
               <div className="logo">
                 <Logo />
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
-            {!this.props.token && (
-              <div className="tools">
-                <Anontools />
+            <div className="nav-actions">
+              <div className="search">
+                <SearchWidget pathname={this.props.pathname} />
               </div>
-            )}
-            <div className="search">
-              <SearchWidget pathname={this.props.pathname} />
+              {!this.props.token && (
+                <div className="tools">
+                  <Anontools />
+                </div>
+              )}
             </div>
           </div>
           {(!this.props.pathname ?

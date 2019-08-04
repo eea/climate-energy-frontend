@@ -1,5 +1,6 @@
 .ui.basic.segment .header .logo-nav-wrapper .navigation {
     overflow: initial!important;
+    margin-top: 2rem;
 }
 
 .navigation .ui.secondary.pointing.menu .menuActive {
@@ -74,6 +75,15 @@
         border-top-right-radius: 1rem;
         overflow: hidden;
     }
+
+    .slide-title {
+        position: absolute;
+        bottom: 200px;
+        font-size: 30px;
+        font-weight: bold;
+        margin-left: 2rem;
+        color:white;
+    }
 }
 
 .slider-wrapper {
@@ -81,13 +91,49 @@
     position: relative;
     .navSlider {
         position: absolute;
-        bottom: 0;
+        bottom: 35px;
         z-index: 100;
         width: 100%;
+        .slider-slide {
+            display: inline-flex!important;
+            color: white;
+        }
         img {
                 width: 33%;
                 height: auto;
         }
     }
 
+}
+
+
+.header {
+    position: relative;
+    .nav-actions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.ui.form .searchbox.field {
+    border-left: none!important;
+}
+
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .navigation .ui.menu .item {
+        padding: .5rem;
+        &:last-of-type {
+            margin-right: 1rem!important;
+        }
+    } 
 }
