@@ -67,3 +67,27 @@
     box-shadow: none!important;
     border: none!important;
 }
+
+.mainSlider {
+    .slick-slide {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        overflow: hidden;
+    }
+}
+
+.slider-wrapper {
+
+    position: relative;
+    .navSlider {
+        position: absolute;
+        bottom: 0;
+        z-index: 100;
+        width: 100%;
+        img {
+                width: 33%;
+                height: auto;
+        }
+    }
+
+}
