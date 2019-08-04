@@ -7,8 +7,10 @@ import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import Slider from "react-slick";
-import { Anontools, Logo, Navigation, SearchWidget } from '@plone/volto/components';
+import { Anontools, Logo, Navigation, SearchWidget, Breadcrumbs, } from '@plone/volto/components';
+import HeaderImage from './HeaderImage';
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -71,6 +73,8 @@ class Header extends Component {
               <SearchWidget pathname={this.props.pathname} />
             </div>
           </div>
+          <Breadcrumbs pathname={this.props.pathname} />
+          <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
         </Container>
         { (!this.props.pathname ? 
            <Container>
@@ -103,6 +107,6 @@ class Header extends Component {
   }
 }
 
-export default connect(state => ({
-  token: state.userSession.token,
+export default connect((state) => ({
+    token: state.userSession.token,
 }))(Header);

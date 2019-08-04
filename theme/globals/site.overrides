@@ -16,10 +16,21 @@
    } 
 }
 
-body {
-    background: red!important;
+
+.header-image {
+    max-width: calc(100% + 6rem);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    position: relative;
+    z-index: -1;
+    margin-left: -3rem;
+    margin-right: -3rem;
+    overflow: hidden;
+    img {
+        width: 100%;
+    }
 }
 
-body {
-    color: red;
+.ui.container {
+    padding: 0 3rem;
 }
