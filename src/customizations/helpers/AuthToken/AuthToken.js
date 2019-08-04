@@ -43,7 +43,7 @@ export function persistAuthToken(store) {
           console.log(jwtDecode(currentValue).exp, jwtDecode(currentValue))
         cookie.save('auth_token', currentValue, {
           path: '/',
-          expires: new Date(jwtDecode(currentValue).exp * 1000),
+        //   expires: new Date(jwtDecode(currentValue).exp * 1000),
         });
         setTimeout(() => {
           if (store.getState().userSession.token) {
