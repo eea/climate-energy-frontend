@@ -57,7 +57,7 @@
     "node": "^8 || ^10"
   },
   "dependencies": {
-    "@plone/volto": "3.1.0",
+    "@plone/volto": "git+https://github.com/plone/volto.git",
     "react-slick": "^0.24.0",
     "react-toastify": "^5.3.2",
     "slick-carousel": "^1.8.1"
