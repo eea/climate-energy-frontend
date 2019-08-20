@@ -1,0 +1,4 @@
+[submodule "volto"]
+	path = volto
+	url = git@github.com:tiberiuichim/volto.git
+

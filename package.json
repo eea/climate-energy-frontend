@@ -1,8 +1,8 @@
 {
-  "name": "volto-starter-kit",
-  "description": "Volto Starter Kit",
+  "name": "fise-frontend-theme",
+  "description": "Fise Frontend Theme",
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
@@ -26,7 +26,7 @@
       "/node_modules/(?!@plone/volto).+\\.js$"
     ],
     "moduleNameMapper": {
-      "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
+      "@plone/volto/(.*)$": "volto/src/$1",
       "@package/(.*)$": "<rootDir>/src/$1",
       "~/(.*)$": "<rootDir>/src/$1"
     },
@@ -57,7 +57,7 @@
     "node": "^8 || ^10"
   },
   "dependencies": {
-    "@plone/volto": "git+https://github.com/plone/volto.git",
+    "@plone/volto": "file://./volto",
     "react-slick": "^0.24.0",
     "react-toastify": "^5.3.2",
     "slick-carousel": "^1.8.1"
