@@ -13,4 +13,6 @@ Object.keys(pathsConfig).forEach(pkg => {
   }
 });
 
+console.log(voltoPath);
+
 module.exports = require(`${voltoPath}/razzle.config`);

@@ -6,14 +6,18 @@ RUN apt-get update -y
 RUN apt-get install -y git
 
 WORKDIR /opt/fise/
-COPY . .
-COPY volto /volto
+
+COPY package.json .
 RUN yarn install
 
-COPY entrypoint-dev.sh entrypoint.sh
+COPY . .
+RUN rm -f package.json.lock
 
-RUN chmod +x entrypoint.sh
 RUN RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn build
 
+COPY entrypoint-prod.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
+
 ENTRYPOINT ["/opt/fise/entrypoint.sh"]
+EXPOSE 3000
 CMD yarn start:prod
