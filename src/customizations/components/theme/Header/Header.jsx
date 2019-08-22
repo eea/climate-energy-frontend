@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 
 import Slider from "react-slick";
 import { Anontools, Logo, Navigation, SearchWidget, Breadcrumbs, } from '@plone/volto/components';
-import HeaderImage from './HeaderImage';
+import HeaderImage from '~/components/Header/HeaderImage';
+import HomepageSlider from '~/components/Header/HomepageSlider';
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -28,7 +29,8 @@ class Header extends Component {
     this.state = {
       nav1: null,
       nav2: null,
-      slides: []
+      slides: [],
+      isHomepage: this.props.actualPathName === '/'
     };
   }
   /**
@@ -39,6 +41,7 @@ class Header extends Component {
   static propTypes = {
     token: PropTypes.string,
     pathname: PropTypes.string.isRequired,
+    actualPathName: PropTypes.string.isRequired
   };
 
   /**
@@ -106,28 +109,9 @@ class Header extends Component {
               )}
             </div>
           </div>
-          {(!this.props.pathname ?
+          {(this.state.isHomepage ?
             this.state.slides.length ? 
-            <div className="slider-wrapper">
-              <Slider
-                className="mainSlider"
-                asNavFor={this.state.nav2}
-                ref={slider => (this.slider1 = slider)}
-                {...settings}
-                >
-                {this.state.slides}
-              </Slider>
-              <Slider
-                className="navSlider"
-                asNavFor={this.state.nav1}
-                ref={slider => (this.slider2 = slider)}
-                slidesToShow={3}
-                swipeToSlide={true}
-                focusOnSelect={true}
-              >
-                {this.state.slides}
-              </Slider>
-            </div>
+            <HomepageSlider></HomepageSlider>
             : 
             ''
             :

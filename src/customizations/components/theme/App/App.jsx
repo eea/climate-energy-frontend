@@ -104,11 +104,10 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
-
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
-        <Header pathname={path} />
+        <Header actualPathName={this.props.pathname} pathname={path} />
         <Segment basic className="content-area">
           <main>
             <Messages />
