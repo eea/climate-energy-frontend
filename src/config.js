@@ -19,12 +19,36 @@ import {
   tiles as defaultTiles,
 } from '@plone/volto/config';
 
+
+import TwoColumnsTileEdit from './components/manage/Tiles/TwoColumnsTIle/Edit'
+import TwoColumnsTileView from './components/manage/Tiles/TwoColumnsTIle/View'
+
+import { CountryView } from './components'
+import React from 'react';
+import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import underlineSVG from '@plone/volto/icons/underline.svg';
+
+
+const Columns = createInlineStyleButton({
+  style: 'UNDERLINE',
+  children: <Icon name={underlineSVG} size="24px" />,
+});
+
 export const settings = {
   ...defaultSettings,
+  richTextEditorInlineToolbarButtons: [
+    Columns,
+    ...defaultSettings.richTextEditorInlineToolbarButtons,
+  ],
 };
 
 export const views = {
   ...defaultViews,
+  layoutViews: {
+    ...defaultViews.layoutViews,
+    full_view: CountryView
+  }
 };
 
 export const widgets = {
@@ -33,4 +57,24 @@ export const widgets = {
 
 export const tiles = {
   ...defaultTiles,
+  customTiles: [
+    ...defaultTiles.customTiles,
+    {
+      title: 'twocolumn',
+      icon: underlineSVG
+    }
+  ],
+  defaultTilesViewMap: {
+    ...defaultTiles.defaultTilesViewMap,
+    twocolumn: TwoColumnsTileView
+  },
+  defaultTilesEditMap: {
+    ...defaultTiles.defaultTilesEditMap,
+    twocolumn: TwoColumnsTileEdit
+  },
+  // messagesTiles: defaultTiles.messagesTiles,
+  // requiredTiles: defaultTiles.requiredTiles,
+  // sidebarComponents: {
+  //   ...defaultTiles.sidebarComponents
+  // }
 };
