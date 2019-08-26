@@ -20,8 +20,8 @@ import {
 } from '@plone/volto/config';
 
 
-import TwoColumnsTileEdit from './components/manage/Tiles/TwoColumnsTIle/Edit'
-import TwoColumnsTileView from './components/manage/Tiles/TwoColumnsTIle/View'
+import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit'
+import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View'
 
 import { CountryView } from './components'
 import React from 'react';
@@ -30,7 +30,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import underlineSVG from '@plone/volto/icons/underline.svg';
 import divideVertical from '@plone/volto/icons/divide-vertical.svg';
 
-const Columns = createInlineStyleButton({
+const Underline = createInlineStyleButton({
   style: 'UNDERLINE',
   children: <Icon name={underlineSVG} size="24px" />,
 });
@@ -38,7 +38,7 @@ const Columns = createInlineStyleButton({
 export const settings = {
   ...defaultSettings,
   richTextEditorInlineToolbarButtons: [
-    Columns,
+    Underline,
     ...defaultSettings.richTextEditorInlineToolbarButtons,
   ],
 };

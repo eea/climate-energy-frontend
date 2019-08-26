@@ -14,10 +14,10 @@ import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
+
 
 import cx from 'classnames';
-
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
@@ -120,22 +120,16 @@ class Edit extends Component {
         rightEditorState = EditorState.createEmpty();
       }
 
-      
-      const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
-      });
-
       this.state = {
         uploading: false,
         leftEditorState,
-        inlineToolbarPlugin,
         rightEditorState,
-        currentFocused: 'title',
+        currentFocused: 'left',
       };
     }
 
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onchangeleft = this.onchangeleft.bind(this);
+    this.onchangeright = this.onchangeright.bind(this);
   }
 
   /**
@@ -145,7 +139,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.titleEditor.focus();
+      this.lefteditor.focus();
     }
   }
 
@@ -197,21 +191,21 @@ class Edit extends Component {
     }
 
     if (nextProps.selected !== this.props.selected) {
-      if (this.state.currentFocused === 'title') {
-        this.titleEditor.focus();
+      if (this.state.currentFocused === 'left') {
+        this.lefteditor.focus();
       } else {
-        this.descriptionEditor.focus();
+        this.righteditor.focus();
       }
     }
   }
 
   /**
    * Change Title handler
-   * @method onChangeTitle
+   * @method onchangeleft
    * @param {object} leftEditorState Editor state.
    * @returns {undefined}
    */
-  onChangeTitle(leftEditorState) {
+  onchangeleft(leftEditorState) {
     this.setState({ leftEditorState }, () => {
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
@@ -222,11 +216,11 @@ class Edit extends Component {
 
   /**
    * Change Description handler
-   * @method onChangeDescription
+   * @method onchangeright
    * @param {object} rightEditorState Editor state.
    * @returns {undefined}
    */
-  onChangeDescription(rightEditorState) {
+  onchangeright(rightEditorState) {
     this.setState({ rightEditorState }, () => {
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
@@ -268,7 +262,6 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
-    // const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
       <div
@@ -310,83 +303,85 @@ class Edit extends Component {
         )}
         <div className="tile-inner-wrapper columnsWrapper">
 
-        <div className="left-column">
-          <Editor
+          <div className="left-column">
+            {/* <EditTextTile
+              {...this.props}
+            /> */}
+            <Editor
+                  ref={node => {
+                    this.lefteditor = node;
+                  }}
+                  onChange={this.onchangeleft}
+                  editorState={this.state.leftEditorState}
+                  blockRenderMap={extendedBlockRenderMap}
+                  handleReturn={() => true}
+                  placeholder={this.props.intl.formatMessage(messages.left)}
+                  blockStyleFn={() => 'right-editor'}
+                  onUpArrow={() => {
+                    const selectionState = this.state.leftEditorState.getSelection();
+                    const { leftEditorState } = this.state;
+                    if (
+                      leftEditorState
+                        .getCurrentContent()
+                        .getBlockMap()
+                        .first()
+                        .getKey() === selectionState.getFocusKey()
+                    ) {
+                      this.props.onFocusPreviousTile(this.props.tile, this.node);
+                    }
+                  }}
+                  onDownArrow={() => {
+                    const selectionState = this.state.leftEditorState.getSelection();
+                    const { leftEditorState } = this.state;
+                    if (
+                      leftEditorState
+                        .getCurrentContent()
+                        .getBlockMap()
+                        .last()
+                        .getKey() === selectionState.getFocusKey()
+                    ) {
+                      this.setState(() => ({ currentFocused: 'right' }));
+                      this.righteditor.focus();
+                    }
+                  }}
+                />
+            </div>
+            <div className="right-column">
+            
+              <Editor
                 ref={node => {
-                  this.titleEditor = node;
+                  this.righteditor = node;
                 }}
-                onChange={this.onChangeTitle}
-                editorState={this.state.leftEditorState}
-                blockRenderMap={extendedBlockRenderMap}
+                onChange={this.onchangeright}
+                editorState={this.state.rightEditorState}
+                blockRenderMap={extendedDescripBlockRenderMap}
                 handleReturn={() => true}
-                placeholder={this.props.intl.formatMessage(messages.left)}
-                blockStyleFn={() => 'description-editor'}
+                placeholder={this.props.intl.formatMessage(messages.right)}
+                blockStyleFn={() => 'left-editor'}
                 onUpArrow={() => {
-                  const selectionState = this.state.leftEditorState.getSelection();
-                  const { leftEditorState } = this.state;
-                  if (
-                    leftEditorState
-                      .getCurrentContent()
-                      .getBlockMap()
-                      .first()
-                      .getKey() === selectionState.getFocusKey()
-                  ) {
-                    this.props.onFocusPreviousTile(this.props.tile, this.node);
+                  const selectionState = this.state.rightEditorState.getSelection();
+                  const currentCursorPosition = selectionState.getStartOffset();
+
+                  if (currentCursorPosition === 0) {
+                    this.setState(() => ({ currentFocused: 'left' }));
+                    this.lefteditor.focus();
                   }
                 }}
                 onDownArrow={() => {
-                  const selectionState = this.state.leftEditorState.getSelection();
-                  const { leftEditorState } = this.state;
-                  if (
-                    leftEditorState
-                      .getCurrentContent()
-                      .getBlockMap()
-                      .last()
-                      .getKey() === selectionState.getFocusKey()
-                  ) {
-                    this.setState(() => ({ currentFocused: 'description' }));
-                    this.descriptionEditor.focus();
+                  const selectionState = this.state.rightEditorState.getSelection();
+                  const { rightEditorState } = this.state;
+                  const currentCursorPosition = selectionState.getStartOffset();
+                  const blockLength = rightEditorState
+                    .getCurrentContent()
+                    .getFirstBlock()
+                    .getLength();
+
+                  if (currentCursorPosition === blockLength) {
+                    this.props.onFocusNextTile(this.props.tile, this.node);
                   }
                 }}
               />
-              {/* <InlineToolbar /> */}
-          </div>
-          <div className="right-column">
-           
-            <Editor
-              ref={node => {
-                this.descriptionEditor = node;
-              }}
-              onChange={this.onChangeDescription}
-              editorState={this.state.rightEditorState}
-              blockRenderMap={extendedDescripBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.right)}
-              blockStyleFn={() => 'description-editor'}
-              onUpArrow={() => {
-                const selectionState = this.state.rightEditorState.getSelection();
-                const currentCursorPosition = selectionState.getStartOffset();
-
-                if (currentCursorPosition === 0) {
-                  this.setState(() => ({ currentFocused: 'title' }));
-                  this.titleEditor.focus();
-                }
-              }}
-              onDownArrow={() => {
-                const selectionState = this.state.rightEditorState.getSelection();
-                const { rightEditorState } = this.state;
-                const currentCursorPosition = selectionState.getStartOffset();
-                const blockLength = rightEditorState
-                  .getCurrentContent()
-                  .getFirstBlock()
-                  .getLength();
-
-                if (currentCursorPosition === blockLength) {
-                  this.props.onFocusNextTile(this.props.tile, this.node);
-                }
-              }}
-            />
-          </div>
+            </div>
         </div>
       </div>
     );
