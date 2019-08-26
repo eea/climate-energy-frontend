@@ -27,9 +27,6 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nav1: null,
-      nav2: null,
-      slides: [],
       isHomepage: this.props.actualPathName === '/'
     };
   }
@@ -52,26 +49,6 @@ class Header extends Component {
   static defaultProps = {
     token: null,
   };
-  
-  async componentDidMount() {
-    this.setState({
-      nav1: this.slider1,
-      nav2: this.slider2
-    });
-    const slidesArr = Array.from({ length: 5 }, () => Math.floor(Math.random() * 5))
-    const slidesUrl = await Promise.all(slidesArr.map(async (item, index) => {
-      let response = await fetch('https://picsum.photos/1600/600');
-      let data = await response.url
-      return <div className="slider-slide" key={index}>
-              <img src={data} alt=""/>
-              <div className="slide-title">Nunc eget convallis orci, vel feugiant nicosa.</div>
-            </div>
-      })
-    )
-    this.setState({
-      slides: slidesUrl
-    })
-  }
 
   /**
    * Render method.
@@ -79,15 +56,7 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const settings = {
-      dots: false,
-      infinite: true,
-      lazyLoad: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
-  
+    
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -109,16 +78,15 @@ class Header extends Component {
               )}
             </div>
           </div>
-          {(this.state.isHomepage ?
-            this.state.slides.length ? 
+          {(
+            this.state.isHomepage ?
             <HomepageSlider></HomepageSlider>
             : 
             ''
-            :
-            <div>
+            (<div>
               <Breadcrumbs pathname={this.props.pathname} />
               <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
-            </div>
+            </div>)
           )}
         </Container>
       </Segment>

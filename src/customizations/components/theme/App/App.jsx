@@ -30,6 +30,10 @@ import {
   purgeMessages,
 } from '@plone/volto/actions';
 
+import {
+  getFrontpageSlides
+} from '~/actions';
+
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 /**
@@ -150,6 +154,11 @@ export default compose(
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
         dispatch(getContent(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'frontpage_slides',
+      promise: ({ store: { dispatch } }) =>
+        dispatch(getFrontpageSlides()),
     },
     {
       key: 'navigation',

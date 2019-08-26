@@ -12,6 +12,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import footerImage from './footer.png';
 
 const messages = defineMessages({
   copyright: {
@@ -31,12 +32,12 @@ const Footer = ({ intl }) => (
     role="contentinfo"
     vertical
     padded
-    inverted
-    color="grey"
     textAlign="center"
+    className="footerWrapper"
   >
+    <img className="footerImage" src={footerImage} alt=""/>
     <Container>
-      <Segment basic inverted color="grey" className="discreet">
+      <Segment basic>
         <FormattedMessage
           id="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
           defaultMessage="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -80,7 +81,7 @@ const Footer = ({ intl }) => (
           }}
         />
       </Segment>
-      <List horizontal inverted>
+      <List horizontal>
         {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
         <div role="listitem" className="item">
           <Link className="item" to="/sitemap">

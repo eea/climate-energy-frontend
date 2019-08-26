@@ -1,14 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { connect } from 'react-redux';
+import { Icon } from '@plone/volto/components';
+
+import {
+  getFrontpageSlides
+} from '~/actions';
 
 import Slider from "react-slick";
+import left from '@plone/volto/icons/left-key.svg';
+import right from '@plone/volto/icons/right-key.svg';
+
 
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-export default class HomepageSlider extends Component {
+function SampleNextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="slideArrow nextArrow"
+      onClick={onClick}
+    >
+      <Icon name={right} size="25px"/>
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="slideArrow prevArrow"
+      onClick={onClick}
+    >
+      <Icon name={left} size="25px"/>
+    </div>
+  );
+}
+
+class HomepageSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,48 +51,78 @@ export default class HomepageSlider extends Component {
       nav2: null,
       slides: []
     };
+    this.getSlides = this.getSlides.bind(this);
+    // this.SampleNextArrow = this.SampleNextArrow.bind(this);
   }
 
-//   static propTypes = {
-//     token: PropTypes.string,
-//     pathname: PropTypes.string.isRequired,
-//   };
+  componentWillMount() {
+    this.props.getFrontpageSlides();
+  }
 
-//   static defaultProps = {
-//     token: null,
-//   };
-  
-  async componentDidMount() {
-    this.setState({
-      nav1: this.slider1,
-      nav2: this.slider2
-    });
-    const slidesArr = Array.from({ length: 5 }, () => Math.floor(Math.random() * 5))
-    const slidesUrl = await Promise.all(slidesArr.map(async (item, index) => {
-      let response = await fetch('https://picsum.photos/1600/600');
-      let data = await response.url
-      return <div className="slider-slide" key={index}>
-              <img src={data} alt=""/>
-              <div className="slide-title">Nunc eget convallis orci, vel feugiant nicosa.</div>
+  // componentWillReceiveProps(nextProps) {
+  //     this.props.getFrontpageSlides();
+  // }
+
+  static propTypes = {
+    getFrontpageSlides: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+        description: PropTypes.string
+      }),
+    ).isRequired,
+  };
+
+  getSlides() {
+     
+      console.log(this.props.items)
+      const slidesUrl = this.props.items.map((item, index) => {
+        return <div className="slider-slide" key={index}>
+                <div className="slider-image" style={{backgroundImage: `url(${item.image})`}}></div>
+                <div className="slide-body">
+                  <div className="slide-title">{item.title}</div>
+                  <div className="slide-description">{item.description}</div>
+                </div>
             </div>
       })
-    )
-    this.setState({
-      slides: slidesUrl
-    })
+      this.setState({
+        slides: slidesUrl
+      })
+      this.setState({
+        nav1: this.slider1,
+        nav2: this.slider2
+      });
   }
 
+  async componentDidMount() {
+    if(this.props.items.length) {
+      this.getSlides()
+    } else {
+      this.setState({
+        slides: []
+      })
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if(JSON.stringify(this.props.items) !== JSON.stringify(prevProps.items)) {
+      this.getSlides();
+    }
+  } 
 
   render() {
+
     const settings = {
       dots: false,
       infinite: true,
       lazyLoad: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />
     };
-  
+    if(!this.state.slides.length) return ''
     return (
             <div className="slider-wrapper">
               <Slider
@@ -83,3 +148,11 @@ export default class HomepageSlider extends Component {
   }
 }
 
+export default compose(
+  connect(
+    state => ({
+      items: state.frontpage_slides.items,
+    }),
+    { getFrontpageSlides },
+  ),
+)(HomepageSlider);
