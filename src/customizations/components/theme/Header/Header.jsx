@@ -50,6 +50,18 @@ class Header extends Component {
     token: null,
   };
 
+
+  componentWillReceiveProps(nextProps) {
+    console.log("here")
+    if(nextProps.actualPathName !== this.props.actualPathName) {
+      this.setState({
+        isHomepage: nextProps.actualPathName === '/'
+      })
+      // this.props.getFrontpageSlides();
+
+    }
+  }
+
   /**
    * Render method.
    * @method render
@@ -82,11 +94,10 @@ class Header extends Component {
             this.state.isHomepage ?
             <HomepageSlider></HomepageSlider>
             : 
-            ''
-            (<div>
+            <div>
               <Breadcrumbs pathname={this.props.pathname} />
               <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
-            </div>)
+            </div>
           )}
         </Container>
       </Segment>
