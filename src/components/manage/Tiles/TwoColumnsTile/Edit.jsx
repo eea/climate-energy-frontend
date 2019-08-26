@@ -119,6 +119,7 @@ class Edit extends Component {
       } else {
         rightEditorState = EditorState.createEmpty();
       }
+  
 
       this.state = {
         uploading: false,
@@ -253,6 +254,7 @@ class Edit extends Component {
     });
   }
 
+
   /**
    * Render method.
    * @method render
@@ -263,6 +265,7 @@ class Edit extends Component {
       return <div />;
     }
 
+    
     return (
       <div
         role="presentation"

@@ -27,7 +27,10 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHomepage: this.props.actualPathName === '/'
+      isHomepage: this.props.actualPathName === '/',
+      url: null,
+      description: null,
+      title: null
     };
   }
   /**
@@ -38,7 +41,8 @@ class Header extends Component {
   static propTypes = {
     token: PropTypes.string,
     pathname: PropTypes.string.isRequired,
-    actualPathName: PropTypes.string.isRequired
+    actualPathName: PropTypes.string.isRequired,
+    folderHeader: PropTypes.object
   };
 
   /**
@@ -52,13 +56,19 @@ class Header extends Component {
 
 
   componentWillReceiveProps(nextProps) {
-    console.log("here")
     if(nextProps.actualPathName !== this.props.actualPathName) {
       this.setState({
         isHomepage: nextProps.actualPathName === '/'
       })
       // this.props.getFrontpageSlides();
-
+    }
+    if(JSON.stringify(nextProps.folderHeader) !== JSON.stringify(this.props.folderHeader)) {
+      this.setState({
+        url: nextProps.folderHeader.url,
+        description: nextProps.folderHeader.description,
+        title: nextProps.folderHeader.title
+      })
+      // this.props.getFrontpageSlides();
     }
   }
 
@@ -96,7 +106,10 @@ class Header extends Component {
             : 
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
-              <HeaderImage url="https://picsum.photos/id/252/1920/600"></HeaderImage>
+              <HeaderImage url={this.state.url}>
+                <h1>{this.state.title}</h1>
+                <p>{this.state.description}</p>
+              </HeaderImage>
             </div>
           )}
         </Container>

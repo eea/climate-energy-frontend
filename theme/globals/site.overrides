@@ -27,8 +27,27 @@
     margin-left: -3rem;
     margin-right: -3rem;
     overflow: hidden;
-    img {
-        width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1, p {
+        color: white;
+        max-width: 900px;
+        width: 75%;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+}
+
+body.has-toolbar {
+    .header-image {
+        max-width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
     }
 }
 
@@ -233,4 +252,9 @@ body.has-toolbar {
         width: 50%;
         display: inline-block;
     }
+}
+
+.header-image {
+    height: 400px;
+    background-size: cover;
 }

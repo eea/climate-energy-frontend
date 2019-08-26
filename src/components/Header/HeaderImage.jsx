@@ -1,9 +1,9 @@
 import React from 'react';
 
-function HeaderImage(props) {  
+function HeaderImage(props) {
     return (
-        <div className="header-image">
-            <img src={props.url} />
+        <div className="header-image" style={{backgroundImage: `url(${props.url})`}}>
+            {props.children}
         </div>
         )
 }

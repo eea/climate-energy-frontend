@@ -50,6 +50,7 @@ class App extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
+    folderHeader: PropTypes.object
   };
 
   state = {
@@ -111,7 +112,7 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
-        <Header actualPathName={this.props.pathname} pathname={path} />
+        <Header folderHeader={this.props.folderHeader} actualPathName={this.props.pathname} pathname={path} />
         <Segment basic className="content-area">
           <main>
             <Messages />
@@ -177,7 +178,10 @@ export default compose(
     },
   ]),
   connect(
-    (state, props) => ({ pathname: props.location.pathname }),
+    (state, props) => ({
+      folderHeader: state.folder_header.items ,
+      pathname: props.location.pathname 
+    }),
     { purgeMessages },
   ),
 )(App);
