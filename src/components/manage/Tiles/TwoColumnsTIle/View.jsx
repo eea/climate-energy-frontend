@@ -13,13 +13,12 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * @extends Component
  */
 const View = ({ data }) => (
-  <div className="tile hero">
-    <div className="tile-inner-wrapper">
-     
-      <div className="hero-body">
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
-      </div>
+  <div className="columnsWrapper">
+    <div className="left-column">
+      {data.left}
+    </div>
+    <div className="right-column">
+      {data.right}
     </div>
   </div>
 );

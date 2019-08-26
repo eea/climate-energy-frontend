@@ -28,7 +28,7 @@ import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import underlineSVG from '@plone/volto/icons/underline.svg';
-
+import divideVertical from '@plone/volto/icons/divide-vertical.svg';
 
 const Columns = createInlineStyleButton({
   style: 'UNDERLINE',
@@ -61,7 +61,7 @@ export const tiles = {
     ...defaultTiles.customTiles,
     {
       title: 'twocolumn',
-      icon: underlineSVG
+      icon: divideVertical
     }
   ],
   defaultTilesViewMap: {

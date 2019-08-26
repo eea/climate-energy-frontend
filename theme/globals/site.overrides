@@ -221,3 +221,16 @@ body.has-toolbar {
     background: #F9F9F7!important;
     margin-top: 6rem!important;
 }
+
+
+.columnsWrapper {
+    .left-column {
+        width: 50%;
+        display:inline-block;
+    }
+
+    .right-column {
+        width: 50%;
+        display: inline-block;
+    }
+}
