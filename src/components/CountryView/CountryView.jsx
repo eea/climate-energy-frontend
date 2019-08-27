@@ -87,27 +87,28 @@ class FullView extends Component {
   };
   constructor(props) {
     super(props);
+    this.getFolderHeader = this.getFolderHeader.bind(this);
+    this.renderTabs = this.renderTabs.bind(this);
+
     this.state = {
       tabs: null
     };
   }
 
-  componentDidMount(){
-    const title = this.props.content.title
-    const description = this.props.content.description
-    const image = this.props.content.items && this.props.content.items.find(c => c['@type'] === 'Image')
+  
+  getFolderHeader(nextContent){
+    const content = nextContent ? nextContent : this.props.content
+    const title = content.title
+    const description = content.description
+    const image = content.items && content.items.find(c => c['@type'] === 'Image')
     const url = image && image.image.download
     const inCountryFolder = true
     this.props.setFolderHeader({title, description, url, inCountryFolder})
-    this.renderTabs()
   }
 
-  componentWillUnmount() {
-    this.props.setFolderHeader({inCountryFolder: false})
-  }
-
-  renderTabs(){
-    const content = this.props.content.items.filter(i => i.title !== 'folder_info')
+  renderTabs(nextContent){
+    const items = nextContent ? nextContent.items : this.props.content.items
+    const content = items.filter(i => i.title !== 'folder_info')
     const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.length]}>
       {content.map(item => (
         <Link key={item.url} className="item" to={item.url} title={item['@type']}>
@@ -120,6 +121,23 @@ class FullView extends Component {
     })
     this.props.setFolderTabs(content)
   }
+
+  componentDidMount(){
+    this.getFolderHeader()
+    this.renderTabs()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(JSON.stringify(nextProps.content) !== JSON.stringify(this.props.content)) {
+      this.getFolderHeader(nextProps.content)
+      this.renderTabs(nextProps.content)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.setFolderHeader({inCountryFolder: false})
+  }
+
 
   render() {
     const content = this.props.content
