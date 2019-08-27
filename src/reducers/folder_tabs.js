@@ -2,7 +2,7 @@ import { SET_FOLDER_TABS } from '~/constants/ActionTypes';
 
 const initialState = {
   error: null,
-  items: {},
+  items: null,
   loaded: false,
   loading: false,
 };

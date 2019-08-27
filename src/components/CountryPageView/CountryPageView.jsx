@@ -7,7 +7,11 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { setFolderHeader } from '~/actions'
+import { 
+  setFolderHeader,
+  setFolderTabs,
+  getParentFolderData
+} from '~/actions'
 
 import { settings, tiles } from '~/config';
 
@@ -34,8 +38,9 @@ const numberToWord = {
 }
 
 const mapDispatchToProps = {
-  setFolderHeader,
+  setFolderHeader, setFolderTabs, getParentFolderData
 };
+
 
 class CountryPageView extends Component {
 
@@ -63,39 +68,44 @@ class CountryPageView extends Component {
 
   
   componentDidMount(){
-    this.props.setFolderHeader({inCountryFolder: true})    
+    this.props.setFolderHeader({inCountryFolder: true})
   }
 
   componentWillUnmount() {
     this.props.setFolderHeader({inCountryFolder: false})
   }
 
-  // renderTabs(){
-  //   const content = this.props.content
-  //   const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.items.length]}>
-  //     {content.items.map(item => (
-  //       <Link key={item.url} className="item" to={item.url} title={item['@type']}>
-  //         {item.title}
-  //       </Link>
-  //     ))}
-  //   </div>
-  //   this.setState({
-  //     tabs: tabs
-  //   })
-  //   this.props.setFolderTabs(content.items)
-  // }
+  componentWillReceiveProps(nextProps) {
+    if(JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)) {
+      const title = nextProps.parent.title
+      const description = nextProps.parent.description
+      const image = nextProps.parent.items && nextProps.parent.items.find(c => c['@type'] === 'Image')
+      const url = image && image.image.download
+      const inCountryFolder = true
+      this.props.setFolderHeader({title, description, url, inCountryFolder})
+      const tabsItems = nextProps.parent.items.map(i => ({
+        // this is ugly
+        url: i['@id'].split('/Plone/')[1],
+        title: i.title,
+        '@type': i['@type']
+      }))
+      this.props.setFolderTabs(tabsItems)
+    }
+  }
 
   render() {
     const content = this.props.content
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-    console.log('--------------', this.props.tabs)
+    if(!this.props.tabs) {
+      this.props.getParentFolderData(this.props.content.parent['@id'].split('/Plone/')[1])
+    }
 
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
 
       {
-        this.props.tabs.length ? 
+        this.props.tabs && this.props.tabs.length ? 
           <div className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
             {this.props.tabs.map(item => (
               <Link key={item.url} className="item" to={item.url} title={item['@type']}>
@@ -162,6 +172,7 @@ class CountryPageView extends Component {
 export default connect(
   state => ({
     tabs: state.folder_tabs.items,
+    parent: state.parent_folder_data.items
   }),
   mapDispatchToProps
 )(CountryPageView);

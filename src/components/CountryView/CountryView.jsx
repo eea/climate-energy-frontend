@@ -123,7 +123,6 @@ class FullView extends Component {
 
   render() {
     const content = this.props.content
-    console.log(content)
     return (
       <Container className="view-wrapper">
         <Helmet title={content.title} />
