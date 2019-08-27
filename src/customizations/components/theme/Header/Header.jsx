@@ -7,16 +7,16 @@ import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import Slider from "react-slick";
+import { compose } from 'redux';
 import { Anontools, Logo, Navigation, SearchWidget, Breadcrumbs, } from '@plone/volto/components';
 import HeaderImage from '~/components/Header/HeaderImage';
 import HomepageSlider from '~/components/Header/HomepageSlider';
 
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { throws } from 'assert';
+import {
+  getFrontpageSlides,
+  getDefaultHeaderImage
+} from '~/actions';
+
 
 /**
  * Header component class.
@@ -27,11 +27,13 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHomepage: this.props.actualPathName === '/',
+      isHomepage: this.props.actualPathName == '/',
       url: null,
       description: null,
       title: null,
-      inCountryFolder: false
+      inCountryFolder: false,
+      defaultHeaderImage: null,
+      frontPageSlides: null
     };
   }
   /**
@@ -43,7 +45,11 @@ class Header extends Component {
     token: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     actualPathName: PropTypes.string.isRequired,
-    folderHeader: PropTypes.object
+    folderHeader: PropTypes.object,
+    defaultHeaderImage: PropTypes.array,
+    frontPageSlides: PropTypes.array,
+    getFrontpageSlides: PropTypes.func.isRequired,
+    getDefaultHeaderImage: PropTypes.func.isRequired
   };
 
   /**
@@ -59,9 +65,8 @@ class Header extends Component {
   componentWillReceiveProps(nextProps) {
     if(nextProps.actualPathName !== this.props.actualPathName) {
       this.setState({
-        isHomepage: nextProps.actualPathName === '/'
+        isHomepage: nextProps.actualPathName == '/'
       })
-      // this.props.getFrontpageSlides();
     }
     if(JSON.stringify(nextProps.folderHeader) !== JSON.stringify(this.props.folderHeader)) {
       this.setState({
@@ -70,9 +75,36 @@ class Header extends Component {
         title: nextProps.folderHeader.title,
         inCountryFolder: nextProps.folderHeader.inCountryFolder
       })
-      // this.props.getFrontpageSlides();
+    }
+    if(JSON.stringify(nextProps.defaultHeaderImage) !== JSON.stringify(this.props.defaultHeaderImage)) {
+      this.setState({
+        defaultHeaderImage: nextProps.defaultHeaderImage[0]
+      })
+    }
+
+    if(JSON.stringify(nextProps.frontPageSlides) !== JSON.stringify(this.props.frontPageSlides)) {
+      this.setState({
+        frontPageSlides: nextProps.frontPageSlides
+      })
     }
   }
+  componentDidUpdate(prevProps) {
+    if(prevProps.actualPathName !== this.props.actualPathName) {
+      this.setState({
+        isHomepage: this.props.actualPathName == '/'
+      })
+    }
+  } 
+
+  componentWillMount() {
+    this.props.getFrontpageSlides();
+    this.props.getDefaultHeaderImage();
+  }
+  // componentWillUnmount() {
+  //   this.setState({
+  //     isHomepage: false
+  //   })
+  // }
 
   /**
    * Render method.
@@ -80,7 +112,7 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    
+
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -104,12 +136,13 @@ class Header extends Component {
           </div>
           {(
             this.state.isHomepage ?
-            <HomepageSlider></HomepageSlider>
-            : 
+            <HomepageSlider items={this.state.frontPageSlides}></HomepageSlider>
+            // <div>test</div>
+            :
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
 
-              <HeaderImage url={this.state.url}>
+              <HeaderImage url={this.state.inCountryFolder ? this.state.url : this.state.defaultHeaderImage && this.state.defaultHeaderImage.image}>
                 {(
                   this.state.inCountryFolder ?
                   <div className="header-image">
@@ -129,6 +162,18 @@ class Header extends Component {
   }
 }
 
-export default connect((state) => ({
-  token: state.userSession.token,
-}))(Header);
+// export default connect((state) => ({
+//   token: state.userSession.token,
+// }))(Header);
+
+
+export default compose(
+  connect(
+    state => ({
+      frontPageSlides: state.frontpage_slides.items,
+      token: state.userSession.token,
+      defaultHeaderImage: state.default_header_image.items
+    }),
+    { getFrontpageSlides, getDefaultHeaderImage },
+  ),
+)(Header);

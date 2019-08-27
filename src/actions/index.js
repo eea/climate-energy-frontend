@@ -14,7 +14,7 @@
 import { 
   GET_FRONTPAGESLIDES,
   SET_FOLDER_HEADER, 
-  GET_FOLDER_HEADER
+  GET_DEFAULT_HEADER_IMAGE
 } from '~/constants/ActionTypes';
 
 export function getFrontpageSlides() {
@@ -25,6 +25,16 @@ export function getFrontpageSlides() {
         path: `/frontpage_slides?fullobjects`,
       },
     };
+}
+
+export function getDefaultHeaderImage() {
+  return {
+    type: GET_DEFAULT_HEADER_IMAGE,
+    request: {
+      op: 'get',
+      path: `/default_header_image?fullobjects`,
+    },
+  };
 }
 
 
@@ -43,18 +53,5 @@ export function setFolderHeader(payload) {
     };
   }
   return
-}
-
-
-
-
-export function getFolderHeader() {
-  return {
-    type: GET_FOLDER_HEADER,
-    request: {
-      op: 'get',
-      path: `/frontpage_slides?fullobjects`,
-    },
-  };
 }
 

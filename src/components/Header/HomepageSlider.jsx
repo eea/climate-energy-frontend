@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { connect } from 'react-redux';
+
 import { Icon } from '@plone/volto/components';
 
-import {
-  getFrontpageSlides
-} from '~/actions';
+
 
 import Slider from "react-slick";
 import left from '@plone/volto/icons/left-key.svg';
@@ -55,29 +51,21 @@ class HomepageSlider extends Component {
     // this.SampleNextArrow = this.SampleNextArrow.bind(this);
   }
 
-  componentWillMount() {
-    this.props.getFrontpageSlides();
-  }
-
-  // componentWillReceiveProps(nextProps) {
-  //     this.props.getFrontpageSlides();
-  // }
 
   static propTypes = {
-    getFrontpageSlides: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string,
         url: PropTypes.string,
         description: PropTypes.string
       }),
-    ).isRequired,
+    ),
   };
 
-  getSlides() {
-     
-      console.log(this.props.items)
-      const slidesUrl = this.props.items.map((item, index) => {
+  getSlides(items) {
+    const slidesArr = items ? items : this.props.items
+    
+    const slidesUrl = slidesArr.map((item, index) => {
         return <div className="slider-slide" key={index}>
                 <div className="slider-image" style={{backgroundImage: `url(${item.image})`}}></div>
                 <div className="slide-body">
@@ -95,8 +83,9 @@ class HomepageSlider extends Component {
       });
   }
 
-  async componentDidMount() {
-    if(this.props.items.length) {
+  componentDidMount() {
+    if(this.props.items && this.props.items.length) {
+      console.log('didmount', this.props.items,this.props.items.length)
       this.getSlides()
     } else {
       this.setState({
@@ -104,14 +93,20 @@ class HomepageSlider extends Component {
       })
     }
   }
-  componentDidUpdate(prevProps) {
-    if(JSON.stringify(this.props.items) !== JSON.stringify(prevProps.items)) {
-      this.getSlides();
-    }
-  } 
+  // componentDidUpdate(prevProps) {
+  //   if((JSON.stringify(this.props.items) !== JSON.stringify(prevProps.items) && this.props.items && this.props.items.length)) {
+  //     this.getSlides();
+  //   }
+  // } 
 
+ 
+  componentWillReceiveProps(nextProps) {
+      if((JSON.stringify(nextProps.items) !== JSON.stringify(this.props.items)) && nextProps.items && nextProps.items.length) {
+        this.getSlides(nextProps.items);
+      }
+  }
   render() {
-
+    console.log('SLIDER RENDERED', this.state.slides.length)
     const settings = {
       dots: false,
       infinite: true,
@@ -122,6 +117,7 @@ class HomepageSlider extends Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
+    
     if(!this.state.slides.length) return ''
     return (
             <div className="slider-wrapper">
@@ -148,11 +144,13 @@ class HomepageSlider extends Component {
   }
 }
 
-export default compose(
-  connect(
-    state => ({
-      items: state.frontpage_slides.items,
-    }),
-    { getFrontpageSlides },
-  ),
-)(HomepageSlider);
+// export default compose(
+//   connect(
+//     state => ({
+//       items: state.frontpage_slides.items,
+//     }),
+//     { getFrontpageSlides },
+//   ),
+// )(HomepageSlider);
+
+export default HomepageSlider

@@ -6,6 +6,8 @@
 import defaultReducers from '@plone/volto/reducers';
 import frontpage_slides from '~/reducers/frontpage_slides'
 import folder_header from '~/reducers/folder_header'
+import default_header_image from '~/reducers/default_header_image'
+
 /**
  * Root reducer.
  * @function
@@ -16,7 +18,8 @@ import folder_header from '~/reducers/folder_header'
 const reducers = {
   ...defaultReducers,
   frontpage_slides,
-  folder_header
+  folder_header,
+  default_header_image
   // Add your reducers here
 };
 
