@@ -95,11 +95,12 @@ class FullView extends Component {
     const description = this.props.content.description
     const image = this.props.content.items && this.props.content.items.find(c => c['@type'] === 'Image')
     const url = image && image.image.download
-    this.props.setFolderHeader({title, description, url})
+    const inCountryFolder = true
+    this.props.setFolderHeader({title, description, url, inCountryFolder})
   }
 
   componentWillUnmount() {
-    this.props.setFolderHeader({title: null, description: null, url: null})
+    this.props.setFolderHeader({inCountryFolder: false})
   }
 
   render() {

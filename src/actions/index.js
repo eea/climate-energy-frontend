@@ -29,13 +29,20 @@ export function getFrontpageSlides() {
 
 
 
-export function setFolderHeader({url, title, description}) {
-  return {
-    type: SET_FOLDER_HEADER,
-    payload: {
-      url, title, description
+export function setFolderHeader(payload) {
+  const actualPayload = {}
+  for(const key in payload) {
+    if(payload[key] !== null && payload[key] !== undefined) {
+      actualPayload[key] = payload[key]
     }
-  };
+  }
+  if(Object.keys(actualPayload)) {
+    return {
+      type: SET_FOLDER_HEADER,
+      payload: actualPayload
+    };
+  }
+  return
 }
 
 

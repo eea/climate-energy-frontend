@@ -23,7 +23,9 @@ import {
 import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit'
 import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View'
 
-import { CountryView } from './components'
+import CountryView from '~/components/CountryView/CountryView'
+import CountryPageView from '~/components/CountryPageView/CountryPageView'
+
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -47,7 +49,8 @@ export const views = {
   ...defaultViews,
   layoutViews: {
     ...defaultViews.layoutViews,
-    full_view: CountryView
+    full_view: CountryView,
+    country_tab_view: CountryPageView
   }
 };
 

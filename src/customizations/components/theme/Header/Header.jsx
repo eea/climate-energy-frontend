@@ -30,7 +30,8 @@ class Header extends Component {
       isHomepage: this.props.actualPathName === '/',
       url: null,
       description: null,
-      title: null
+      title: null,
+      inCountryFolder: false
     };
   }
   /**
@@ -66,7 +67,8 @@ class Header extends Component {
       this.setState({
         url: nextProps.folderHeader.url,
         description: nextProps.folderHeader.description,
-        title: nextProps.folderHeader.title
+        title: nextProps.folderHeader.title,
+        inCountryFolder: nextProps.folderHeader.inCountryFolder
       })
       // this.props.getFrontpageSlides();
     }
@@ -106,10 +108,19 @@ class Header extends Component {
             : 
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
+
               <HeaderImage url={this.state.url}>
-                <h1>{this.state.title}</h1>
-                <p>{this.state.description}</p>
+                {(
+                  this.state.inCountryFolder ?
+                  <div className="header-image">
+                    <h1>{this.state.title}</h1>
+                    <p>{this.state.description}</p>
+                  </div>
+                  : 
+                  ''
+                )}
               </HeaderImage>
+
             </div>
           )}
         </Container>

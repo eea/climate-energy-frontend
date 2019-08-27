@@ -24,10 +24,16 @@ const initialState = {
  */
 export default function folder_header(state = initialState, action = {}) {
     if(action.type === SET_FOLDER_HEADER) {
+        console.log(state)
+        const oldVal = state.items ? state.items : {}
+        console.log(oldVal)
         return {
             ...state,
             error: null,
-            items: action.payload,
+            items: {
+                ...oldVal,
+                ...action.payload
+            },
             loaded: true,
             loading: false,
         };
