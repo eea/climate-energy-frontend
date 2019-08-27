@@ -14,7 +14,8 @@
 import { 
   GET_FRONTPAGESLIDES,
   SET_FOLDER_HEADER, 
-  GET_DEFAULT_HEADER_IMAGE
+  GET_DEFAULT_HEADER_IMAGE,
+  SET_FOLDER_TABS
 } from '~/constants/ActionTypes';
 
 export function getFrontpageSlides() {
@@ -53,5 +54,13 @@ export function setFolderHeader(payload) {
     };
   }
   return
+}
+
+
+export function setFolderTabs(payload) {
+    return {
+      type: SET_FOLDER_TABS,
+      payload: payload
+    };
 }
 

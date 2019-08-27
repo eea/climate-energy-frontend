@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { setFolderHeader } from '~/actions'
+import { setFolderHeader, setFolderTabs } from '~/actions'
 
 /**
   * Full view component class.
@@ -35,7 +35,7 @@ const numberToWord = {
 }
 
 const mapDispatchToProps = {
-  setFolderHeader,
+  setFolderHeader, setFolderTabs
 };
 
 class FullView extends Component {
@@ -87,7 +87,9 @@ class FullView extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      tabs: null
+    };
   }
 
   componentDidMount(){
@@ -97,10 +99,26 @@ class FullView extends Component {
     const url = image && image.image.download
     const inCountryFolder = true
     this.props.setFolderHeader({title, description, url, inCountryFolder})
+    this.renderTabs()
   }
 
   componentWillUnmount() {
     this.props.setFolderHeader({inCountryFolder: false})
+  }
+
+  renderTabs(){
+    const content = this.props.content
+    const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.items.length]}>
+      {content.items.map(item => (
+        <Link key={item.url} className="item" to={item.url} title={item['@type']}>
+          {item.title}
+        </Link>
+      ))}
+    </div>
+    this.setState({
+      tabs: tabs
+    })
+    this.props.setFolderTabs(content.items)
   }
 
   render() {
@@ -111,13 +129,7 @@ class FullView extends Component {
         <Helmet title={content.title} />
         <article id="content">
           <section id="content-core">
-            <div className={'ui item stackable tabs menu ' + numberToWord[content.items.length]}>
-              {content.items.map(item => (
-                <Link key={item.url} className="item" to={item.url} title={item['@type']}>
-                  {item.title}
-                </Link>
-              ))}
-            </div>
+            {this.state.tabs}
           </section>
         </article>
       </Container>

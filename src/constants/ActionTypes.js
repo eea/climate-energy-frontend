@@ -11,3 +11,5 @@
  export const SET_FOLDER_HEADER = 'SET_FOLDER_HEADER';
 
  export const GET_FOLDER_HEADER = 'GET_FOLDER_HEADER';
+
+ export const SET_FOLDER_TABS = "SET_FOLDER_TABS"
