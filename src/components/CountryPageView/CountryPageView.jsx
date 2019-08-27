@@ -88,7 +88,7 @@ class CountryPageView extends Component {
         url: i['@id'].split('/Plone/')[1],
         title: i.title,
         '@type': i['@type']
-      }))
+      })).filter(i =>  i.title !== 'folder_info')
       this.props.setFolderTabs(tabsItems)
     }
   }

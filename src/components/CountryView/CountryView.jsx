@@ -109,7 +109,7 @@ class FullView extends Component {
   renderTabs(){
     const content = this.props.content
     const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.items.length]}>
-      {content.items.map(item => (
+      {content.items.filter(i => i.title !== 'folder_info').map(item => (
         <Link key={item.url} className="item" to={item.url} title={item['@type']}>
           {item.title}
         </Link>
