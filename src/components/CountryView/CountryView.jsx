@@ -107,9 +107,9 @@ class FullView extends Component {
   }
 
   renderTabs(){
-    const content = this.props.content
-    const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.items.length]}>
-      {content.items.filter(i => i.title !== 'folder_info').map(item => (
+    const content = this.props.content.items.filter(i => i.title !== 'folder_info')
+    const tabs = <div className={'ui item stackable tabs menu ' + numberToWord[content.length]}>
+      {content.map(item => (
         <Link key={item.url} className="item" to={item.url} title={item['@type']}>
           {item.title}
         </Link>
@@ -118,7 +118,7 @@ class FullView extends Component {
     this.setState({
       tabs: tabs
     })
-    this.props.setFolderTabs(content.items)
+    this.props.setFolderTabs(content)
   }
 
   render() {
