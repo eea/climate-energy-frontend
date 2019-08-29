@@ -176,44 +176,44 @@ class CountryPageView extends Component {
                 <h2>Other reports and publications</h2>
                 <div className="ui list">
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       State of Europe’s Forests 2018 Report
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       Romania: National Forest Data 2017
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       State of Europe’s Forests 2017 Report
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       Romania: Lorem ipsum documentarium 2014
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       Romania: National Forest Data 2017
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       State of Europe’s Forests 2017 Report
                     </div>
                   </div>
                   <div className="item">
-                    <i class="file outline icon"></i>
-                    <div class="content">
+                    <i className="file outline icon"></i>
+                    <div className="content">
                       Romania: Lorem ipsum documentarium 2014
                     </div>
                   </div>
