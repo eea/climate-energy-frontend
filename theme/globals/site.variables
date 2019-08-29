@@ -24,6 +24,7 @@
 /*-------------------
     Brand Colors
 --------------------*/
+@primaryColor   : @darkGreen;
 
 @secondaryColor      : @brown;
 
@@ -120,6 +121,13 @@
 /*-------------------
       Site Colors
 --------------------*/
+
+/*---  Theme colors  ---*/
+
+@lightGreen       : #769e2e;
+@darkGreen        : #005511;
+@darkerGreen      : #003311;
+@darkBrown        : #554433;
 
 /*---  Colors  ---*/
 @orange           : #FA5C2A; // Palette: reddishOrange

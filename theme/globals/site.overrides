@@ -14,7 +14,7 @@
    }
    &a {
        padding: 1rem!important;
-   } 
+   }
 }
 
 
@@ -82,7 +82,7 @@ body.has-toolbar {
     }
 
     .field.searchbox {
-        min-height: 39px; 
+        min-height: 39px;
     }
 }
 
@@ -174,7 +174,7 @@ body.has-toolbar {
         &:last-child {
             margin-right: 1rem!important;
         }
-    } 
+    }
 }
 .slider-image {
     // width: 100%;
@@ -259,4 +259,30 @@ body.has-toolbar {
 .header-image {
     height: 400px;
     background-size: cover;
+}
+
+/*---  Country page  ---*/
+
+.country-report-section {
+    color: @darkerGreen;
+
+    .ui.list {
+        .item {
+            color: @darkBrown;
+        }
+    }
+
+    .file.icon {
+        color: @darkGreen;
+    }
+
+    @media only screen and (min-width: 1520px) {
+      .ui.list {
+          height: 100px;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-flow: column wrap;
+          flex-flow: column wrap;
+      }
+    }
 }
