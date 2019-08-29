@@ -34,7 +34,8 @@
     h1, p {
         color: white;
         max-width: 900px;
-        width: 75%;
+        // width: 75%;
+        // max-width: 500px;
         text-align: center;
     }
     h1 {
@@ -170,7 +171,7 @@ body.has-toolbar {
 @media only screen and (min-width: 768px) {
     .navigation .ui.menu .item {
         padding: .5rem;
-        &:last-of-type {
+        &:last-child {
             margin-right: 1rem!important;
         }
     } 
@@ -180,6 +181,7 @@ body.has-toolbar {
     height: 600px;
     display: block;
     position: relative;
+    background-size: cover;
 }
 
 

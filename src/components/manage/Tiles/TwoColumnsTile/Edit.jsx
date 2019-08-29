@@ -1,63 +1,36 @@
 /**
- * Edit Hero tile.
- * @module components/manage/Tiles/Image/Edit
+ * Edit text tile.
+ * @module components/manage/Tiles/Title/Edit
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Map } from 'immutable';
-import { settings, tiles } from '~/config';
-import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { stateFromHTML } from 'draft-js-import-html';
-import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { Button } from 'semantic-ui-react';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import Editor from 'draft-js-plugins-editor';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
-
-
+import { includes, isEqual } from 'lodash';
 import cx from 'classnames';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
-import { createContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { settings, tiles } from '~/config';
 
-import clearSVG from '@plone/volto/icons/clear.svg';
+import { Icon } from '@plone/volto/components';
+import addSVG from '@plone/volto/icons/circle-plus.svg';
+import cameraSVG from '@plone/volto/icons/camera.svg';
+import videoSVG from '@plone/volto/icons/videocamera.svg';
+import TemplatedTilesSVG from '@plone/volto/icons/theme.svg';
 
 const messages = defineMessages({
-  left: {
-    id: 'Left',
-    defaultMessage: 'Left',
-  },
-  right: {
-    id: 'Right',
-    defaultMessage: 'right',
+  text: {
+    id: 'Type text…',
+    defaultMessage: 'Type text…',
   },
 });
-
-const blockLeftRenderMap = Map({
-  unstyled: {
-    element: 'div',
-  },
-});
-
-const blockRightRenderMap = Map({
-  unstyled: {
-    element: 'div',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockLeftRenderMap,
-);
-
-const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockRightRenderMap,
-);
 
 /**
- * Edit image tile class.
+ * Edit text tile class.
  * @class Edit
  * @extends Component
  */
@@ -68,24 +41,28 @@ class Edit extends Component {
    * @static
    */
   static propTypes = {
+    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    detached: PropTypes.bool,
+    index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
-    request: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    pathname: PropTypes.string.isRequired,
+    onAddTile: PropTypes.func.isRequired,
     onChangeTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onMutateTile: PropTypes.func.isRequired,
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
-    handleKeyDown: PropTypes.func.isRequired,
-    createContent: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    detached: false,
   };
 
   /**
@@ -97,51 +74,41 @@ class Edit extends Component {
   constructor(props) {
     super(props);
 
-    this.onUploadImage = this.onUploadImage.bind(this);
-    this.state = {
-      uploading: false,
-    };
-
     if (!__SERVER__) {
-      let leftEditorState;
-      let rightEditorState;
-      if (props.data && props.data.left) {
-        leftEditorState = EditorState.createWithContent(
-          stateFromHTML(props.data.left),
+      let editorState;
+      if (props.data && props.data.text) {
+        editorState = EditorState.createWithContent(
+          convertFromRaw(props.data.text),
         );
       } else {
-        leftEditorState = EditorState.createEmpty();
+        editorState = EditorState.createEmpty();
       }
-      if (props.data && props.data.right) {
-        rightEditorState = EditorState.createWithContent(
-          stateFromHTML(props.data.right),
-        );
-      } else {
-        rightEditorState = EditorState.createEmpty();
-      }
-  
+
+      const inlineToolbarPlugin = createInlineToolbarPlugin({
+        structure: settings.richTextEditorInlineToolbarButtons,
+      });
 
       this.state = {
-        uploading: false,
-        leftEditorState,
-        rightEditorState,
-        currentFocused: 'left',
+        editorState,
+        inlineToolbarPlugin,
+        addNewTileOpened: false,
+        customTilesOpened: false,
       };
     }
 
-    this.onchangeleft = this.onchangeleft.bind(this);
-    this.onchangeright = this.onchangeright.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   /**
-   * Component did mount
+   * Component will receive props
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.lefteditor.focus();
+      this.node.focus();
     }
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -151,109 +118,59 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
-      this.state.uploading
-    ) {
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
       this.setState({
-        uploading: false,
+        editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
-    }
-
-    if (
-      nextProps.data.left &&
-      this.props.data.left !== nextProps.data.left &&
-      !this.props.selected
-    ) {
-      const contentState = stateFromHTML(nextProps.data.left);
-      this.setState({
-        leftEditorState: nextProps.data.left
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
-      });
-    }
-
-    if (
-      nextProps.data.right &&
-      this.props.data.right !== nextProps.data.right &&
-      !this.props.selected
-    ) {
-      const contentState = stateFromHTML(nextProps.data.right);
-      this.setState({
-        rightEditorState: nextProps.data.right
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
-      });
-    }
-
-    if (nextProps.selected !== this.props.selected) {
-      if (this.state.currentFocused === 'left') {
-        this.lefteditor.focus();
-      } else {
-        this.righteditor.focus();
-      }
     }
   }
 
   /**
-   * Change Title handler
-   * @method onchangeleft
-   * @param {object} leftEditorState Editor state.
+   * Component will receive props
+   * @method componentWillUnmount
    * @returns {undefined}
    */
-  onchangeleft(leftEditorState) {
-    this.setState({ leftEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        left: leftEditorState.getCurrentContent().getPlainText(),
-      });
-    });
+  componentWillUnmount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
-   * Change Description handler
-   * @method onchangeright
-   * @param {object} rightEditorState Editor state.
+   * Change handler
+   * @method onChange
+   * @param {object} editorState Editor state.
    * @returns {undefined}
    */
-  onchangeright(rightEditorState) {
-    this.setState({ rightEditorState }, () => {
+  onChange(editorState) {
+    if (
+      !isEqual(
+        convertToRaw(editorState.getCurrentContent()),
+        convertToRaw(this.state.editorState.getCurrentContent()),
+      )
+    ) {
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
-        right: rightEditorState.getCurrentContent().getPlainText(),
+        text: convertToRaw(editorState.getCurrentContent()),
       });
-    });
+    }
+    this.setState({ editorState });
   }
 
-  /**
-   * Upload image handler
-   * @method onUploadImage
-   * @returns {undefined}
-   */
-  onUploadImage({ target }) {
-    const file = target.files[0];
-    this.setState({
-      uploading: true,
-    });
-    readAsDataURL(file).then(data => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
-        },
-      });
-    });
-  }
+  toggleAddNewTile = () =>
+    this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
 
+  handleClickOutside = e => {
+    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    this.setState(() => ({
+      addNewTileOpened: false,
+      customTilesOpened: false,
+    }));
+  };
+
+  openCustomTileMenu = () => this.setState(() => ({ customTilesOpened: true }));
 
   /**
    * Render method.
@@ -265,139 +182,226 @@ class Edit extends Component {
       return <div />;
     }
 
-    
+    console.log(this.props)
+
+    const { InlineToolbar } = this.state.inlineToolbarPlugin;
+
     return (
       <div
         role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile two-columns', {
-          selected: this.props.selected,
-        })}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-            { disableArrowUp: true, disableArrowDown: true },
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
+        className={cx('tile columnsWrapper', { selected: this.props.selected })}
+        ref={node => (this.ref = node)}
       >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
+        <div className="left-column">
+
+          <Editor
+            onChange={this.onChange}
+            editorState={this.state.editorState}
+            plugins={[
+              this.state.inlineToolbarPlugin,
+              ...settings.richTextEditorPlugins,
+            ]}
+            blockRenderMap={settings.extendedBlockRenderMap}
+            blockStyleFn={settings.blockStyleFn}
+            placeholder={this.props.intl.formatMessage(messages.text)}
+            handleReturn={() => {
+              if (!this.props.detached) {
+                const selectionState = this.state.editorState.getSelection();
+                const anchorKey = selectionState.getAnchorKey();
+                const currentContent = this.state.editorState.getCurrentContent();
+                const currentContentBlock = currentContent.getBlockForKey(
+                  anchorKey,
+                );
+                const blockType = currentContentBlock.getType();
+                if (!includes(settings.listBlockTypes, blockType)) {
+                  this.props.onSelectTile(
+                    this.props.onAddTile('text', this.props.index + 1),
+                  );
+                  return 'handled';
+                }
+                return 'un-handled';
+              }
+              return {};
+            }}
+            handleKeyCommand={(command, editorState) => {
+              if (
+                command === 'backspace' &&
+                editorState.getCurrentContent().getPlainText().length === 0
+              ) {
+                this.props.onDeleteTile(this.props.tile, true);
+              }
+            }}
+            onUpArrow={() => {
+              const selectionState = this.state.editorState.getSelection();
+              const currentCursorPosition = selectionState.getStartOffset();
+
+              if (currentCursorPosition === 0) {
+                this.props.onFocusPreviousTile(this.props.tile, this.node);
+              }
+            }}
+            onDownArrow={() => {
+              const selectionState = this.state.editorState.getSelection();
+              const { editorState } = this.state;
+              const currentCursorPosition = selectionState.getStartOffset();
+              const blockLength = editorState
+                .getCurrentContent()
+                .getFirstBlock()
+                .getLength();
+
+              if (currentCursorPosition === blockLength) {
+                this.props.onFocusNextTile(this.props.tile, this.node);
+              }
+            }}
+            ref={node => {
+              this.node = node;
+            }}
+          />
+        </div>
+        <div className="right-column">
+
+          <Editor
+            onChange={this.onChange}
+            editorState={this.state.editorState}
+            plugins={[
+              this.state.inlineToolbarPlugin,
+              ...settings.richTextEditorPlugins,
+            ]}
+            blockRenderMap={settings.extendedBlockRenderMap}
+            blockStyleFn={settings.blockStyleFn}
+            placeholder={this.props.intl.formatMessage(messages.text)}
+            handleReturn={() => {
+              if (!this.props.detached) {
+                const selectionState = this.state.editorState.getSelection();
+                const anchorKey = selectionState.getAnchorKey();
+                const currentContent = this.state.editorState.getCurrentContent();
+                const currentContentBlock = currentContent.getBlockForKey(
+                  anchorKey,
+                );
+                const blockType = currentContentBlock.getType();
+                if (!includes(settings.listBlockTypes, blockType)) {
+                  this.props.onSelectTile(
+                    this.props.onAddTile('text', this.props.index + 1),
+                  );
+                  return 'handled';
+                }
+                return 'un-handled';
+              }
+              return {};
+            }}
+            handleKeyCommand={(command, editorState) => {
+              if (
+                command === 'backspace' &&
+                editorState.getCurrentContent().getPlainText().length === 0
+              ) {
+                this.props.onDeleteTile(this.props.tile, true);
+              }
+            }}
+            onUpArrow={() => {
+              const selectionState = this.state.editorState.getSelection();
+              const currentCursorPosition = selectionState.getStartOffset();
+
+              if (currentCursorPosition === 0) {
+                this.props.onFocusPreviousTile(this.props.tile, this.node);
+              }
+            }}
+            onDownArrow={() => {
+              const selectionState = this.state.editorState.getSelection();
+              const { editorState } = this.state;
+              const currentCursorPosition = selectionState.getStartOffset();
+              const blockLength = editorState
+                .getCurrentContent()
+                .getFirstBlock()
+                .getLength();
+
+              if (currentCursorPosition === blockLength) {
+                this.props.onFocusNextTile(this.props.tile, this.node);
+              }
+            }}
+            ref={node => {
+              this.node = node;
+            }}
+          />
+        </div>
+
+        <InlineToolbar />
+        {!this.props.detached &&
+          (!this.props.data.text ||
+            (this.props.data.text &&
+              this.props.data.text.blocks &&
+              this.props.data.text.blocks.length === 1 &&
+              this.props.data.text.blocks[0].text === '')) && (
+            <Button
+              basic
+              icon
+              onClick={this.toggleAddNewTile}
+              className="tile-add-button"
+            >
+              <Icon name={addSVG} className="tile-add-button" size="24px" />
+            </Button>
+          )}
+        {this.state.addNewTileOpened && !this.state.customTilesOpened && (
+          <div className="add-tile toolbar">
             <Button.Group>
               <Button
                 icon
                 basic
                 onClick={() =>
-                  this.props.onChangeTile(this.props.tile, {
-                    ...this.props.data,
-                    url: '',
+                  this.props.onMutateTile(this.props.tile, {
+                    '@type': 'image',
                   })
                 }
               >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
+                <Icon name={cameraSVG} size="24px" />
               </Button>
             </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onMutateTile(this.props.tile, {
+                    '@type': 'video',
+                  })
+                }
+              >
+                <Icon name={videoSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            {tiles.customTiles.length !== 0 && (
+              <React.Fragment>
+                <div className="separator" />
+                <Button.Group>
+                  <Button icon basic onClick={this.openCustomTileMenu}>
+                    <Icon name={TemplatedTilesSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+              </React.Fragment>
+            )}
           </div>
         )}
-        <div className="tile-inner-wrapper columnsWrapper">
-
-          <div className="left-column">
-            {/* <EditTextTile
-              {...this.props}
-            /> */}
-            <Editor
-                  ref={node => {
-                    this.lefteditor = node;
-                  }}
-                  onChange={this.onchangeleft}
-                  editorState={this.state.leftEditorState}
-                  blockRenderMap={extendedBlockRenderMap}
-                  handleReturn={() => true}
-                  placeholder={this.props.intl.formatMessage(messages.left)}
-                  blockStyleFn={() => 'right-editor'}
-                  onUpArrow={() => {
-                    const selectionState = this.state.leftEditorState.getSelection();
-                    const { leftEditorState } = this.state;
-                    if (
-                      leftEditorState
-                        .getCurrentContent()
-                        .getBlockMap()
-                        .first()
-                        .getKey() === selectionState.getFocusKey()
-                    ) {
-                      this.props.onFocusPreviousTile(this.props.tile, this.node);
-                    }
-                  }}
-                  onDownArrow={() => {
-                    const selectionState = this.state.leftEditorState.getSelection();
-                    const { leftEditorState } = this.state;
-                    if (
-                      leftEditorState
-                        .getCurrentContent()
-                        .getBlockMap()
-                        .last()
-                        .getKey() === selectionState.getFocusKey()
-                    ) {
-                      this.setState(() => ({ currentFocused: 'right' }));
-                      this.righteditor.focus();
-                    }
-                  }}
-                />
-            </div>
-            <div className="right-column">
-            
-              <Editor
-                ref={node => {
-                  this.righteditor = node;
-                }}
-                onChange={this.onchangeright}
-                editorState={this.state.rightEditorState}
-                blockRenderMap={extendedDescripBlockRenderMap}
-                handleReturn={() => true}
-                placeholder={this.props.intl.formatMessage(messages.right)}
-                blockStyleFn={() => 'left-editor'}
-                onUpArrow={() => {
-                  const selectionState = this.state.rightEditorState.getSelection();
-                  const currentCursorPosition = selectionState.getStartOffset();
-
-                  if (currentCursorPosition === 0) {
-                    this.setState(() => ({ currentFocused: 'left' }));
-                    this.lefteditor.focus();
+        {this.state.addNewTileOpened && this.state.customTilesOpened && (
+          <div className="add-tile toolbar">
+            {tiles.customTiles.map(tile => (
+              <Button.Group key={tile.title}>
+                <Button
+                  icon
+                  basic
+                  onClick={() =>
+                    this.props.onMutateTile(this.props.tile, {
+                      '@type': tile.title,
+                    })
                   }
-                }}
-                onDownArrow={() => {
-                  const selectionState = this.state.rightEditorState.getSelection();
-                  const { rightEditorState } = this.state;
-                  const currentCursorPosition = selectionState.getStartOffset();
-                  const blockLength = rightEditorState
-                    .getCurrentContent()
-                    .getFirstBlock()
-                    .getLength();
-
-                  if (currentCursorPosition === blockLength) {
-                    this.props.onFocusNextTile(this.props.tile, this.node);
-                  }
-                }}
-              />
-            </div>
-        </div>
+                >
+                  <Icon name={tile.icon} size="24px" />
+                </Button>
+              </Button.Group>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default compose(
-  injectIntl,
-  connect(
-    state => ({
-      request: state.content.create,
-      content: state.content.data,
-    }),
-    { createContent },
-  ),
-)(Edit);
+export default injectIntl(Edit);
