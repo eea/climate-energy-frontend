@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
@@ -51,20 +51,20 @@ const data = [
 class StackedBarChart extends Component {
   render() {
     return (
-      <BarChart
-        width={600}
-        height={300}
-        data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="Decidous" stackId="a" fill="#8884d8" />
-        <Bar dataKey="Conifers" stackId="a" fill="#82ca9d" />
-      </BarChart>
+      <ResponsiveContainer>
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Decidous" stackId="a" fill="#225511" />
+          <Bar dataKey="Conifers" stackId="a" fill="#769e2e" />
+        </BarChart>
+      </ResponsiveContainer>
     );
   }
 }
@@ -124,13 +124,19 @@ class HomepageView extends Component {
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
     this.tabs = [
-      { title: 'First', url: '', type: 'Section' },
-      { title: 'Second', url: '', type: 'Section' },
+      { title: 'Coverage & Growth', url: '', type: 'Section' },
+      { title: 'Economy', url: '', type: 'Section' },
+      { title: 'Other Benefits', url: '', type: 'Section' }
     ];
 
     return (
       <div id="page-document" className="ui wrapper">
-        <StackedBarChart />
+
+        <div>
+          <h1>A bird's-eye view on Europe’s forests</h1>
+          <p>Europe is one of the few regions of the world where forest cover has increased over the last century. The EU currently contains 5 % of the world's forests. Let’s take a look at factors which led to this net growth as well as their economical and ecological implication.</p>
+        </div>
+
 
         {
           this.tabs && this.tabs.length ?
@@ -145,10 +151,40 @@ class HomepageView extends Component {
             ''
         }
 
+        <div className="ui stackable two column grid">
+          <div className="column">
+
+            <div className="ui stackable grid">
+              <div className="eight wide column">
+                Forest coverage
+              </div>
+              <div className="eight wide column">
+                Forest coverage
+              </div>
+            </div>
+
+            <div className="ui stackable grid">
+              <div className="column">
+                Growing stock
+                <div className="chart-container">
+                  <StackedBarChart />
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <div className="column">
+            <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true" width="100%"></iframe>
+          </div>
+        </div>
+
+
         <div className="country-page-content-wrapper">
         </div>
 
-        <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"></iframe>
 
       </div>
     );

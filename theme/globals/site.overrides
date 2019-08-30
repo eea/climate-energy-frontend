@@ -305,6 +305,13 @@ body #page-document .imageAndRichText {
 body #page-document .imageAndRichText + p {
     clear: both;
 }
+
+
+.chart-container {
+    height: 350px;
+}
+
+
 /*---  Country page  ---*/
 
 .country-report-section {
