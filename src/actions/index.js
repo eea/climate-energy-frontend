@@ -11,22 +11,22 @@
  * };
  */
 
-import { 
+import {
   GET_FRONTPAGESLIDES,
-  SET_FOLDER_HEADER, 
+  SET_FOLDER_HEADER,
   GET_DEFAULT_HEADER_IMAGE,
   SET_FOLDER_TABS,
-  GET_PARENT_FOLDER_DATA
+  GET_PARENT_FOLDER_DATA,
 } from '~/constants/ActionTypes';
 
 export function getFrontpageSlides() {
-    return {
-      type: GET_FRONTPAGESLIDES,
-      request: {
-        op: 'get',
-        path: `/frontpage_slides?fullobjects`,
-      },
-    };
+  return {
+    type: GET_FRONTPAGESLIDES,
+    request: {
+      op: 'get',
+      path: `/frontpage_slides?fullobjects`,
+    },
+  };
 }
 
 export function getDefaultHeaderImage() {
@@ -39,30 +39,28 @@ export function getDefaultHeaderImage() {
   };
 }
 
-
-
 export function setFolderHeader(payload) {
-  const actualPayload = {}
-  for(const key in payload) {
-    if(payload[key] !== null && payload[key] !== undefined) {
-      actualPayload[key] = payload[key]
+  const actualPayload = {};
+  for (const key in payload) {
+    if (payload[key] !== null && payload[key] !== undefined) {
+      actualPayload[key] = payload[key];
     }
   }
-  if(Object.keys(actualPayload)) {
+
+  if (Object.keys(actualPayload)) {
     return {
       type: SET_FOLDER_HEADER,
-      payload: actualPayload
+      payload: actualPayload,
     };
   }
-  return
+  return;
 }
 
-
 export function setFolderTabs(payload) {
-    return {
-      type: SET_FOLDER_TABS,
-      payload: payload
-    };
+  return {
+    type: SET_FOLDER_TABS,
+    payload: payload,
+  };
 }
 
 export function getParentFolderData(url) {
@@ -70,7 +68,7 @@ export function getParentFolderData(url) {
     type: GET_PARENT_FOLDER_DATA,
     request: {
       op: 'get',
-      path: `/${url}?fullobjects`
+      path: `/${url}?fullobjects`,
     },
   };
 }

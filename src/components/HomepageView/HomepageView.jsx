@@ -6,11 +6,7 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import {
-  setFolderHeader,
-  setFolderTabs,
-  getParentFolderData
-} from '~/actions'
+import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
 
 import { settings, tiles } from '~/config';
 
@@ -19,7 +15,6 @@ import {
   getTilesLayoutFieldname,
   hasTilesData,
 } from '@plone/volto/helpers';
-
 
 const numberToWord = {
   1: 'one',
@@ -33,16 +28,16 @@ const numberToWord = {
   9: 'nine',
   10: 'ten',
   11: 'eleven',
-  12: 'twelve'
-}
-
-const mapDispatchToProps = {
-  setFolderHeader, setFolderTabs, getParentFolderData
+  12: 'twelve',
 };
 
+const mapDispatchToProps = {
+  setFolderHeader,
+  setFolderTabs,
+  getParentFolderData,
+};
 
-class CountryPageView extends Component {
-
+class HomepageView extends Component {
   static propTypes = {
     tabs: PropTypes.array,
     content: PropTypes.shape({
@@ -65,13 +60,12 @@ class CountryPageView extends Component {
     this.state = {};
   }
 
-
-  componentDidMount(){
-    this.props.setFolderHeader({inCountryFolder: true})
+  componentDidMount() {
+    this.props.setFolderHeader({ inCountryFolder: true });
   }
 
   componentWillUnmount() {
-    this.props.setFolderHeader({inCountryFolder: false})
+    this.props.setFolderHeader({ inCountryFolder: false })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -93,28 +87,29 @@ class CountryPageView extends Component {
   }
 
   render() {
-    const content = this.props.content
+    const content = this.props.content;
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-    if(!this.props.tabs) {
-      this.props.getParentFolderData(this.props.content.parent['@id'].split('/Plone/')[1])
+    if (!this.props.tabs) {
+      this.props.getParentFolderData(
+        this.props.content.parent['@id'].split('/Plone/')[1],
+      );
     }
 
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
-
-      {
-        this.props.tabs && this.props.tabs.length ?
-          <div className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
+        {this.props.tabs && this.props.tabs.length ? (
+          <div
+            className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
             {this.props.tabs.map(item => (
               <Link key={item.url} className="item" to={item.url} title={item['@type']}>
                 {item.title}
               </Link>
             ))}
           </div>
-        :
+        ) : (
           ''
-      }
+        )}
 
         {/* <Helmet title={content.title} /> */}
         <div className="country-page-content-wrapper">
@@ -130,8 +125,8 @@ class CountryPageView extends Component {
                 data={content[tilesFieldname][tile]}
               />
             ) : (
-                <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
-              );
+              <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
+            );
           })}
         </div>
 
@@ -140,7 +135,11 @@ class CountryPageView extends Component {
 
             <div className="column">
               <h2>Country Report No 1/2019</h2>
-              <p>Forests are rich in biodiversity and valuable for recreation, water regulation and soil protection. As well as for providing timber and other non-wood forest products, forests are important for mitigating climate change and for the renewable energy sector.</p>
+              <p>Forests are rich in biodiversity and valuable for recreation,
+                water regulation and soil protection. As well as for providing
+                timber and other non-wood forest products, forests are
+                important for mitigating climate change and for the renewable
+                energy sector.</p>
               <button className="ui primary button">Open report</button>
             </div>
 
@@ -148,7 +147,7 @@ class CountryPageView extends Component {
               <h2>Other reports and publications</h2>
               <div className="ui list">
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     State of Europe’s Forests 2018 Report
                   </div>
@@ -196,37 +195,37 @@ class CountryPageView extends Component {
 
       </div>
     ) : (
-        <Container id="page-document">
-          <Helmet title={content.title} />
-          <h1 className="documentFirstHeading">{content.title}</h1>
-          {content.description && (
-            <p className="documentDescription">{content.description}</p>
-          )}
-          {content.image && (
-            <Image
-              className="document-image"
-              src={content.image.scales.thumb.download}
-              floated="right"
-            />
-          )}
-          {content.remoteUrl && (
-            <span>
-              The link address is:
-          <a href={content.remoteUrl}>{content.remoteUrl}</a>
-            </span>
-          )}
-          {content.text && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: content.text.data.replace(
-                  /a href="([^"]*\.[^"]*)"/g,
-                  `a href="${settings.apiPath}$1/download/file"`,
-                ),
-              }}
-            />
-          )}
-        </Container>
-      )
+      <Container id="page-document">
+        <Helmet title={content.title} />
+        <h1 className="documentFirstHeading">{content.title}</h1>
+        {content.description && (
+          <p className="documentDescription">{content.description}</p>
+        )}
+        {content.image && (
+          <Image
+            className="document-image"
+            src={content.image.scales.thumb.download}
+            floated="right"
+          />
+        )}
+        {content.remoteUrl && (
+          <span>
+            The link address is:
+            <a href={content.remoteUrl}>{content.remoteUrl}</a>
+          </span>
+        )}
+        {content.text && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: content.text.data.replace(
+                /a href="([^"]*\.[^"]*)"/g,
+                `a href="${settings.apiPath}$1/download/file"`,
+              ),
+            }}
+          />
+        )}
+      </Container>
+    );
   }
 
 };
@@ -234,7 +233,7 @@ class CountryPageView extends Component {
 export default connect(
   state => ({
     tabs: state.folder_tabs.items,
-    parent: state.parent_folder_data.items
+    parent: state.parent_folder_data.items,
   }),
-  mapDispatchToProps
-)(CountryPageView);
+  mapDispatchToProps,
+)(HomepageView);
