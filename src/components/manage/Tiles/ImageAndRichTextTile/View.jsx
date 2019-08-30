@@ -13,7 +13,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * @extends Component
  */
 const View = ({ data }) => (
-  <div className={"imageAndRichText " + data.position}>
+  <div className={'imageAndRichText ' + data.position}>
     <div className="tile-inner-wrapper">
       <img
         src={`${flattenToAppURL(data.url)}/@@images/image`}
@@ -22,8 +22,8 @@ const View = ({ data }) => (
       />
       <div className="card-body">
         <h1>{data.title}</h1>
-        <h1></h1>
-        <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
+        <h1 />
+        <div dangerouslySetInnerHTML={{ __html: data.description }} />
       </div>
     </div>
   </div>

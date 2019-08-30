@@ -36,10 +36,10 @@ export default function frontpage_slides(state = initialState, action = {}) {
         ...state,
         error: null,
         items: map(action.result.items, item => ({
-            title: item.title,
-            image: item.image.download,
-            description: item.description
-          })),
+          title: item.title,
+          image: item.image.download,
+          description: item.description,
+        })),
         loaded: true,
         loading: false,
       };

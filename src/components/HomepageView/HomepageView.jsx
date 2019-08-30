@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from 'recharts';
 
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
@@ -41,11 +50,11 @@ const mapDispatchToProps = {
 };
 
 const data = [
-  {name: '00', Decidous: 4000, Conifers: 2400,},
-  {name: '04', Decidous: 3000, Conifers: 1398,},
-  {name: '08', Decidous: 2000, Conifers: 9800,},
-  {name: '12', Decidous: 2780, Conifers: 3908,},
-  {name: '16', Decidous: 1890, Conifers: 4800,},
+  { name: '00', Decidous: 4000, Conifers: 2400 },
+  { name: '04', Decidous: 3000, Conifers: 1398 },
+  { name: '08', Decidous: 2000, Conifers: 9800 },
+  { name: '12', Decidous: 2780, Conifers: 3908 },
+  { name: '16', Decidous: 1890, Conifers: 4800 },
 ];
 
 class StackedBarChart extends Component {
@@ -97,23 +106,29 @@ class HomepageView extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setFolderHeader({ inCountryFolder: false })
+    this.props.setFolderHeader({ inCountryFolder: false });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)) {
+    if (
+      JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)
+    ) {
       const title = nextProps.parent.title;
       const description = nextProps.parent.description;
-      const image = (nextProps.parent.items && nextProps.parent.items.find(c => c['@type'] === 'Image'));
+      const image =
+        nextProps.parent.items &&
+        nextProps.parent.items.find(c => c['@type'] === 'Image');
       const url = image && image.image.download;
       const inCountryFolder = true;
-      this.props.setFolderHeader({title, description, url, inCountryFolder});
-      const tabsItems = nextProps.parent.items.map(i => ({
-        // this is ugly
-        url: i['@id'].split('/Plone/')[1],
-        title: i.title,
-        '@type': i['@type']
-      })).filter(i =>  i.title !== 'folder_info');
+      this.props.setFolderHeader({ title, description, url, inCountryFolder });
+      const tabsItems = nextProps.parent.items
+        .map(i => ({
+          // this is ugly
+          url: i['@id'].split('/Plone/')[1],
+          title: i.title,
+          '@type': i['@type'],
+        }))
+        .filter(i => i.title !== 'folder_info');
       this.props.setFolderTabs(tabsItems);
     }
   }
@@ -126,41 +141,47 @@ class HomepageView extends Component {
     this.tabs = [
       { title: 'Coverage & Growth', url: '', type: 'Section' },
       { title: 'Economy', url: '', type: 'Section' },
-      { title: 'Other Benefits', url: '', type: 'Section' }
+      { title: 'Other Benefits', url: '', type: 'Section' },
     ];
 
     return (
       <div id="page-document" className="ui wrapper">
-
         <div>
           <h1>A bird's-eye view on Europe’s forests</h1>
-          <p>Europe is one of the few regions of the world where forest cover has increased over the last century. The EU currently contains 5 % of the world's forests. Let’s take a look at factors which led to this net growth as well as their economical and ecological implication.</p>
+          <p>
+            Europe is one of the few regions of the world where forest cover has
+            increased over the last century. The EU currently contains 5 % of
+            the world's forests. Let’s take a look at factors which led to this
+            net growth as well as their economical and ecological implication.
+          </p>
         </div>
 
-
-        {
-          this.tabs && this.tabs.length ?
-            <div className={'ui item stackable tabs menu ' + numberToWord[this.tabs.length]}>
-              {this.tabs.map(item => (
-                <Link key={item.url} className="item" to={item.url} title={item['@type']}>
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-            :
-            ''
-        }
+        {this.tabs && this.tabs.length ? (
+          <div
+            className={
+              'ui item stackable tabs menu ' + numberToWord[this.tabs.length]
+            }
+          >
+            {this.tabs.map(item => (
+              <Link
+                key={item.url}
+                className="item"
+                to={item.url}
+                title={item['@type']}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        ) : (
+          ''
+        )}
 
         <div className="ui stackable two column grid">
           <div className="column">
-
             <div className="ui stackable grid">
-              <div className="eight wide column">
-                Forest coverage
-              </div>
-              <div className="eight wide column">
-                Forest coverage
-              </div>
+              <div className="eight wide column">Forest coverage</div>
+              <div className="eight wide column">Forest coverage</div>
             </div>
 
             <div className="ui stackable grid">
@@ -171,21 +192,17 @@ class HomepageView extends Component {
                 </div>
               </div>
             </div>
-
-
           </div>
-
 
           <div className="column">
-            <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true" width="100%"></iframe>
+            <iframe
+              src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"
+              width="100%"
+            />
           </div>
         </div>
 
-
-        <div className="country-page-content-wrapper">
-        </div>
-
-
+        <div className="country-page-content-wrapper" />
       </div>
     );
   }

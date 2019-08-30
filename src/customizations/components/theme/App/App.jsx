@@ -15,12 +15,7 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 
 import Error from '@plone/volto/error';
 
-import {
-  Footer,
-  Header,
-  Icon,
-  Messages,
-} from '@plone/volto/components';
+import { Footer, Header, Icon, Messages } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getContent,
@@ -30,9 +25,7 @@ import {
   purgeMessages,
 } from '@plone/volto/actions';
 
-import {
-  getFrontpageSlides
-} from '~/actions';
+import { getFrontpageSlides } from '~/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -50,7 +43,7 @@ class App extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
-    folderHeader: PropTypes.object
+    folderHeader: PropTypes.object,
   };
 
   state = {
@@ -112,7 +105,11 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
-        <Header folderHeader={this.props.folderHeader} actualPathName={this.props.pathname} pathname={path} />
+        <Header
+          folderHeader={this.props.folderHeader}
+          actualPathName={this.props.pathname}
+          pathname={path}
+        />
         <Segment basic className="content-area">
           <main>
             <Messages />
@@ -158,8 +155,7 @@ export default compose(
     },
     {
       key: 'frontpage_slides',
-      promise: ({ store: { dispatch } }) =>
-        dispatch(getFrontpageSlides()),
+      promise: ({ store: { dispatch } }) => dispatch(getFrontpageSlides()),
     },
     {
       key: 'navigation',
@@ -179,8 +175,8 @@ export default compose(
   ]),
   connect(
     (state, props) => ({
-      folderHeader: state.folder_header.items ,
-      pathname: props.location.pathname 
+      folderHeader: state.folder_header.items,
+      pathname: props.location.pathname,
     }),
     { purgeMessages },
   ),

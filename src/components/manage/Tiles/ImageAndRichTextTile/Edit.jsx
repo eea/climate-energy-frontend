@@ -18,10 +18,9 @@ import cx from 'classnames';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import PositionToolbar from '~/components/manage/PositionToolbar'
+import PositionToolbar from '~/components/manage/PositionToolbar';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-
 
 const messages = defineMessages({
   title: {
@@ -31,7 +30,7 @@ const messages = defineMessages({
   description: {
     id: 'Description',
     defaultMessage: 'Description',
-  }
+  },
 });
 
 const blockTitleRenderMap = Map({
@@ -137,7 +136,7 @@ class Edit extends Component {
   componentDidMount() {
     if (this.props.selected) {
       this.titleEditor.focus();
-      this.props.data.position = 'left'
+      this.props.data.position = 'left';
     }
   }
 
@@ -226,7 +225,6 @@ class Edit extends Component {
       });
     });
   }
-  
 
   /**
    * Upload image handler
@@ -250,9 +248,7 @@ class Edit extends Component {
         },
       });
     });
-
   }
-
 
   /**
    * Render method.
@@ -302,7 +298,7 @@ class Edit extends Component {
           </div>
         )}
         <div className="tile-inner-wrapper">
-        <div className="rich-text-body">
+          <div className="rich-text-body">
             <Editor
               ref={node => {
                 this.titleEditor = node;
@@ -406,7 +402,6 @@ class Edit extends Component {
               </Message>
             </div>
           )}
-       
         </div>
         <PositionToolbar
           data={this.props.data}

@@ -35,7 +35,7 @@ const Footer = ({ intl }) => (
     textAlign="center"
     className="footerWrapper"
   >
-    <img className="footerImage" src={footerImage} alt=""/>
+    <img className="footerImage" src={footerImage} alt="" />
     <Container>
       <Segment basic>
         <FormattedMessage

@@ -6,11 +6,7 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { 
-  setFolderHeader,
-  setFolderTabs,
-  getParentFolderData
-} from '~/actions'
+import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
 
 import { settings, tiles } from '~/config';
 
@@ -20,9 +16,8 @@ import {
   hasTilesData,
 } from '@plone/volto/helpers';
 
-
 const numberToWord = {
-  1: 'one', 
+  1: 'one',
   2: 'two',
   3: 'three',
   4: 'four',
@@ -33,16 +28,16 @@ const numberToWord = {
   9: 'nine',
   10: 'ten',
   11: 'eleven',
-  12: 'twelve'
-}
-
-const mapDispatchToProps = {
-  setFolderHeader, setFolderTabs, getParentFolderData
+  12: 'twelve',
 };
 
+const mapDispatchToProps = {
+  setFolderHeader,
+  setFolderTabs,
+  getParentFolderData,
+};
 
 class CountryPageView extends Component {
-
   static propTypes = {
     tabs: PropTypes.array,
     content: PropTypes.shape({
@@ -65,63 +60,76 @@ class CountryPageView extends Component {
     this.state = {};
   }
 
-  
-  componentDidMount(){
-    this.props.setFolderHeader({inCountryFolder: true})
+  componentDidMount() {
+    this.props.setFolderHeader({ inCountryFolder: true });
   }
 
   componentWillUnmount() {
-    this.props.setFolderHeader({inCountryFolder: false})
+    this.props.setFolderHeader({ inCountryFolder: false });
   }
 
   componentWillReceiveProps(nextProps) {
-    if(JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)) {
-      const title = nextProps.parent.title
-      const description = nextProps.parent.description
-      const image = nextProps.parent.items && nextProps.parent.items.find(c => c['@type'] === 'Image')
-      const url = image && image.image.download
-      const inCountryFolder = true
-      this.props.setFolderHeader({title, description, url, inCountryFolder})
-      const pathArr = nextProps.location.pathname.split('/')
-      pathArr.length = 3
-      const path = pathArr.join('/')
-      const tabsItems = nextProps.parent.items.map(i => {
-        return {
-          url: `${path}/${i.id}`, 
-          title: i.title,
-          '@type': i['@type']
-          }
-      }).filter(i =>  i.title !== 'folder_info')
-      this.props.setFolderTabs(tabsItems)
+    if (
+      JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)
+    ) {
+      const title = nextProps.parent.title;
+      const description = nextProps.parent.description;
+      const image =
+        nextProps.parent.items &&
+        nextProps.parent.items.find(c => c['@type'] === 'Image');
+      const url = image && image.image.download;
+      const inCountryFolder = true;
+      this.props.setFolderHeader({ title, description, url, inCountryFolder });
+      const pathArr = nextProps.location.pathname.split('/');
+      pathArr.length = 3;
+      const path = pathArr.join('/');
+      const tabsItems = nextProps.parent.items
+        .map(i => {
+          return {
+            url: `${path}/${i.id}`,
+            title: i.title,
+            '@type': i['@type'],
+          };
+        })
+        .filter(i => i.title !== 'folder_info');
+      this.props.setFolderTabs(tabsItems);
     }
   }
 
   render() {
-    const content = this.props.content
+    const content = this.props.content;
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-    if(!this.props.tabs) {
-      const pathArr = this.props.location.pathname.split('/')
-      pathArr.length = 3
-      const path = pathArr.join('/')
-      this.props.getParentFolderData(path)
+    if (!this.props.tabs) {
+      const pathArr = this.props.location.pathname.split('/');
+      pathArr.length = 3;
+      const path = pathArr.join('/');
+      this.props.getParentFolderData(path);
     }
 
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
-
-      {
-        this.props.tabs && this.props.tabs.length ? 
-          <div className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
+        {this.props.tabs && this.props.tabs.length ? (
+          <div
+            className={
+              'ui item stackable tabs menu ' +
+              numberToWord[this.props.tabs.length]
+            }
+          >
             {this.props.tabs.map(item => (
-              <Link key={item.url} className="item" to={item.url} title={item['@type']}>
+              <Link
+                key={item.url}
+                className="item"
+                to={item.url}
+                title={item['@type']}
+              >
                 {item.title}
               </Link>
             ))}
           </div>
-        : 
+        ) : (
           ''
-      }
+        )}
 
         <div className="country-page-content-wrapper">
           {map(content[tilesLayoutFieldname].items, tile => {
@@ -135,17 +143,24 @@ class CountryPageView extends Component {
                 data={content[tilesFieldname][tile]}
               />
             ) : (
-                <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
-              );
+              <div>
+                {JSON.stringify(content[tilesFieldname][tile]['@type'])}
+              </div>
+            );
           })}
         </div>
 
         <div className="country-report-section">
           <div className="ui stackable two column grid">
-
             <div className="column">
               <h2>Country Report No 1/2019</h2>
-              <p>Forests are rich in biodiversity and valuable for recreation, water regulation and soil protection. As well as for providing timber and other non-wood forest products, forests are important for mitigating climate change and for the renewable energy sector.</p>
+              <p>
+                Forests are rich in biodiversity and valuable for recreation,
+                water regulation and soil protection. As well as for providing
+                timber and other non-wood forest products, forests are important
+                for mitigating climate change and for the renewable energy
+                sector.
+              </p>
               <button className="ui primary button">Open report</button>
             </div>
 
@@ -153,43 +168,43 @@ class CountryPageView extends Component {
               <h2>Other reports and publications</h2>
               <div className="ui list">
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     State of Europe’s Forests 2018 Report
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     Romania: National Forest Data 2017
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     State of Europe’s Forests 2017 Report
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     Romania: Lorem ipsum documentarium 2014
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     Romania: National Forest Data 2017
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     State of Europe’s Forests 2017 Report
                   </div>
                 </div>
                 <div className="item">
-                  <i className="file outline icon"></i>
+                  <i className="file outline icon" />
                   <div className="content">
                     Romania: Lorem ipsum documentarium 2014
                   </div>
@@ -198,46 +213,44 @@ class CountryPageView extends Component {
             </div>
           </div>
         </div>
-
       </div>
     ) : (
-        <Container id="page-document">
-          {content.description && (
-            <p className="documentDescription">{content.description}</p>
-          )}
-          {content.image && (
-            <Image
-              className="document-image"
-              src={content.image.scales.thumb.download}
-              floated="right"
-            />
-          )}
-          {content.remoteUrl && (
-            <span>
-              The link address is:
-          <a href={content.remoteUrl}>{content.remoteUrl}</a>
-            </span>
-          )}
-          {content.text && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: content.text.data.replace(
-                  /a href="([^"]*\.[^"]*)"/g,
-                  `a href="${settings.apiPath}$1/download/file"`,
-                ),
-              }}
-            />
-          )}
-        </Container>
-      )
+      <Container id="page-document">
+        {content.description && (
+          <p className="documentDescription">{content.description}</p>
+        )}
+        {content.image && (
+          <Image
+            className="document-image"
+            src={content.image.scales.thumb.download}
+            floated="right"
+          />
+        )}
+        {content.remoteUrl && (
+          <span>
+            The link address is:
+            <a href={content.remoteUrl}>{content.remoteUrl}</a>
+          </span>
+        )}
+        {content.text && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: content.text.data.replace(
+                /a href="([^"]*\.[^"]*)"/g,
+                `a href="${settings.apiPath}$1/download/file"`,
+              ),
+            }}
+          />
+        )}
+      </Container>
+    );
   }
-
-};
+}
 
 export default connect(
   state => ({
     tabs: state.folder_tabs.items,
-    parent: state.parent_folder_data.items
+    parent: state.parent_folder_data.items,
   }),
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CountryPageView);

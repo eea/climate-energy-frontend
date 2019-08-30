@@ -3,26 +3,19 @@ import PropTypes from 'prop-types';
 
 import { Icon } from '@plone/volto/components';
 
-
-
-import Slider from "react-slick";
+import Slider from 'react-slick';
 import left from '@plone/volto/icons/left-key.svg';
 import right from '@plone/volto/icons/right-key.svg';
 
-
 // Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <div
-      className="slideArrow nextArrow"
-      onClick={onClick}
-    >
-      <Icon name={right} size="25px"/>
+    <div className="slideArrow nextArrow" onClick={onClick}>
+      <Icon name={right} size="25px" />
     </div>
   );
 }
@@ -30,11 +23,8 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <div
-      className="slideArrow prevArrow"
-      onClick={onClick}
-    >
-      <Icon name={left} size="25px"/>
+    <div className="slideArrow prevArrow" onClick={onClick}>
+      <Icon name={left} size="25px" />
     </div>
   );
 }
@@ -45,68 +35,75 @@ class HomepageSlider extends Component {
     this.state = {
       nav1: null,
       nav2: null,
-      slides: []
+      slides: [],
     };
     this.getSlides = this.getSlides.bind(this);
     // this.SampleNextArrow = this.SampleNextArrow.bind(this);
   }
-
 
   static propTypes = {
     items: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string,
         url: PropTypes.string,
-        description: PropTypes.string
+        description: PropTypes.string,
       }),
     ),
   };
 
   getSlides(items) {
-    const slidesArr = items ? items : this.props.items
-    
+    const slidesArr = items ? items : this.props.items;
+
     const slidesUrl = slidesArr.map((item, index) => {
-        return <div className="slider-slide" key={index}>
-                <div className="slider-image" style={{backgroundImage: `url(${item.image})`}}></div>
-                <div className="slide-body">
-                  <div className="slide-title">{item.title}</div>
-                  <div className="slide-description">{item.description}</div>
-                </div>
-            </div>
-      })
-      this.setState({
-        slides: slidesUrl
-      })
-      this.setState({
-        nav1: this.slider1,
-        nav2: this.slider2
-      });
+      return (
+        <div className="slider-slide" key={index}>
+          <div
+            className="slider-image"
+            style={{ backgroundImage: `url(${item.image})` }}
+          />
+          <div className="slide-body">
+            <div className="slide-title">{item.title}</div>
+            <div className="slide-description">{item.description}</div>
+          </div>
+        </div>
+      );
+    });
+    this.setState({
+      slides: slidesUrl,
+    });
+    this.setState({
+      nav1: this.slider1,
+      nav2: this.slider2,
+    });
   }
 
   componentDidMount() {
-    if(this.props.items && this.props.items.length) {
-      console.log('didmount', this.props.items,this.props.items.length)
-      this.getSlides()
+    if (this.props.items && this.props.items.length) {
+      console.log('didmount', this.props.items, this.props.items.length);
+      this.getSlides();
     } else {
       this.setState({
-        slides: []
-      })
+        slides: [],
+      });
     }
   }
   // componentDidUpdate(prevProps) {
   //   if((JSON.stringify(this.props.items) !== JSON.stringify(prevProps.items) && this.props.items && this.props.items.length)) {
   //     this.getSlides();
   //   }
-  // } 
+  // }
 
- 
   componentWillReceiveProps(nextProps) {
-      if((JSON.stringify(nextProps.items) !== JSON.stringify(this.props.items)) && nextProps.items && nextProps.items.length) {
-        this.getSlides(nextProps.items);
-      }
+    if (
+      JSON.stringify(nextProps.items) !== JSON.stringify(this.props.items) &&
+      nextProps.items &&
+      nextProps.items.length
+    ) {
+      this.getSlides(nextProps.items);
+    }
   }
   render() {
-    console.log('SLIDER RENDERED', this.state.slides.length)
+    console.log('SLIDER RENDERED', this.state.slides.length);
     const settings = {
       dots: false,
       infinite: true,
@@ -115,31 +112,31 @@ class HomepageSlider extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
+      prevArrow: <SamplePrevArrow />,
     };
-    
-    if(!this.state.slides.length) return ''
+
+    if (!this.state.slides.length) return '';
     return (
-            <div className="slider-wrapper">
-              <Slider
-                className="mainSlider"
-                asNavFor={this.state.nav2}
-                ref={slider => (this.slider1 = slider)}
-                {...settings}
-                >
-                {this.state.slides}
-              </Slider>
-              <Slider
-                className="navSlider"
-                asNavFor={this.state.nav1}
-                ref={slider => (this.slider2 = slider)}
-                slidesToShow={3}
-                swipeToSlide={true}
-                focusOnSelect={true}
-              >
-                {this.state.slides}
-              </Slider>
-            </div> 
+      <div className="slider-wrapper">
+        <Slider
+          className="mainSlider"
+          asNavFor={this.state.nav2}
+          ref={slider => (this.slider1 = slider)}
+          {...settings}
+        >
+          {this.state.slides}
+        </Slider>
+        <Slider
+          className="navSlider"
+          asNavFor={this.state.nav1}
+          ref={slider => (this.slider2 = slider)}
+          slidesToShow={3}
+          swipeToSlide={true}
+          focusOnSelect={true}
+        >
+          {this.state.slides}
+        </Slider>
+      </div>
     );
   }
 }
@@ -153,4 +150,4 @@ class HomepageSlider extends Component {
 //   ),
 // )(HomepageSlider);
 
-export default HomepageSlider
+export default HomepageSlider;

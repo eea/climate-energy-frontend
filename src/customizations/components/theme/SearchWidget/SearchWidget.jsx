@@ -56,7 +56,7 @@ class SearchWidget extends Component {
     this.state = {
       text: '',
       section: false,
-      showSearchField: false
+      showSearchField: false,
     };
   }
 
@@ -101,7 +101,7 @@ class SearchWidget extends Component {
   }
 
   showSearch() {
-    this.setState({ showSearchField: true })
+    this.setState({ showSearchField: true });
   }
   componentDidMount() {
     document.body.addEventListener('click', this.handleClickOutsideSearch);
@@ -110,16 +110,26 @@ class SearchWidget extends Component {
     document.body.removeEventListener('click', this.handleClickOutsideSearch);
   }
   handleClickOutsideSearch(e) {
-    if (this.state.showSearchField === false || document.querySelector('input[name="SearchableText"]').value) return
-    const selectors = ['.searchInput', 'input[name="SearchableText"]', '.searchbox', '.searchIcon', '.searchIcon svg.icon']
-    let matchedSelector
+    if (
+      this.state.showSearchField === false ||
+      document.querySelector('input[name="SearchableText"]').value
+    )
+      return;
+    const selectors = [
+      '.searchInput',
+      'input[name="SearchableText"]',
+      '.searchbox',
+      '.searchIcon',
+      '.searchIcon svg.icon',
+    ];
+    let matchedSelector;
     for (let selector of selectors) {
       if (e.target.matches(selector)) {
-        matchedSelector = selector
+        matchedSelector = selector;
       }
     }
     if (!matchedSelector) {
-      this.setState({ showSearchField: false })
+      this.setState({ showSearchField: false });
     }
   }
 
@@ -133,7 +143,9 @@ class SearchWidget extends Component {
       <Form action="/search" onSubmit={this.onSubmit}>
         <Form.Field className="searchbox">
           <Input
-            className={"searchInput" + (this.state.showSearchField ? ' show' : ' hidden')}
+            className={
+              'searchInput' + (this.state.showSearchField ? ' show' : ' hidden')
+            }
             aria-label={this.props.intl.formatMessage(messages.search)}
             onChange={this.onChangeText}
             name="SearchableText"
@@ -142,16 +154,22 @@ class SearchWidget extends Component {
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
             title={this.props.intl.formatMessage(messages.search)}
           />
-          <button className="searchIcon ui small basic no-border icon button" aria-label={this.props.intl.formatMessage(messages.search)}>
+          <button
+            className="searchIcon ui small basic no-border icon button"
+            aria-label={this.props.intl.formatMessage(messages.search)}
+          >
             <Icon name={zoomSVG} size="18px" />
           </button>
-          {(
-            !this.state.showSearchField ?
-              <button onClick={this.showSearch} className="overSearchIcon ui small basic no-border icon button" aria-label={this.props.intl.formatMessage(messages.search)}>
-                <Icon name={zoomSVG} size="18px" />
-              </button>
-              :
-              ''
+          {!this.state.showSearchField ? (
+            <button
+              onClick={this.showSearch}
+              className="overSearchIcon ui small basic no-border icon button"
+              aria-label={this.props.intl.formatMessage(messages.search)}
+            >
+              <Icon name={zoomSVG} size="18px" />
+            </button>
+          ) : (
+            ''
           )}
         </Form.Field>
       </Form>
