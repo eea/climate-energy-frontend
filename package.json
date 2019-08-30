@@ -60,6 +60,7 @@
     "@plone/volto": "git+https://github.com/plone/volto.git",
     "react-slick": "^0.24.0",
     "react-toastify": "^5.3.2",
+    "recharts": "^1.7.1",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

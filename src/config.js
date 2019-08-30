@@ -20,15 +20,16 @@ import {
 } from '@plone/volto/config';
 
 // Tiles
-import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit'
-import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View'
+import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit';
+import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View';
 
-import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit'
-import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View'
+import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
+import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
 // Display types
-import CountryView from '~/components/CountryView/CountryView'
-import CountryPageView from '~/components/CountryPageView/CountryPageView'
+import CountryView from '~/components/CountryView/CountryView';
+import CountryPageView from '~/components/CountryPageView/CountryPageView';
+import HomepageView from '~/components/HomepageView/HomepageView';
 
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
@@ -56,7 +57,8 @@ export const views = {
   layoutViews: {
     ...defaultViews.layoutViews,
     full_view: CountryView,
-    country_tab_view: CountryPageView
+    country_tab_view: CountryPageView,
+    homepage_view: HomepageView,
   }
 };
 

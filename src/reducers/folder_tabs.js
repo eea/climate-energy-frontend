@@ -15,14 +15,14 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function folder_tabs(state = initialState, action = {}) {
-    if(action.type === SET_FOLDER_TABS) {
-        return {
-            ...state,
-            error: null,
-            items: action.payload,
-            loaded: true,
-            loading: false,
-        };
-    }
-    return state
+  if (action.type === SET_FOLDER_TABS) {
+    return {
+      ...state,
+      error: null,
+      items: action.payload,
+      loaded: true,
+      loading: false,
+    };
+  }
+  return state;
 }

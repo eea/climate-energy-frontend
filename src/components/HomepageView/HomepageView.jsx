@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
@@ -37,6 +40,35 @@ const mapDispatchToProps = {
   getParentFolderData,
 };
 
+const data = [
+  {name: '00', Decidous: 4000, Conifers: 2400,},
+  {name: '04', Decidous: 3000, Conifers: 1398,},
+  {name: '08', Decidous: 2000, Conifers: 9800,},
+  {name: '12', Decidous: 2780, Conifers: 3908,},
+  {name: '16', Decidous: 1890, Conifers: 4800,},
+];
+
+class StackedBarChart extends Component {
+  render() {
+    return (
+      <BarChart
+        width={600}
+        height={300}
+        data={data}
+        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="Decidous" stackId="a" fill="#8884d8" />
+        <Bar dataKey="Conifers" stackId="a" fill="#82ca9d" />
+      </BarChart>
+    );
+  }
+}
+
 class HomepageView extends Component {
   static propTypes = {
     tabs: PropTypes.array,
@@ -69,20 +101,20 @@ class HomepageView extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)) {
-      const title = nextProps.parent.title
-      const description = nextProps.parent.description
-      const image = nextProps.parent.items && nextProps.parent.items.find(c => c['@type'] === 'Image')
-      const url = image && image.image.download
-      const inCountryFolder = true
-      this.props.setFolderHeader({title, description, url, inCountryFolder})
+    if (JSON.stringify(nextProps.parent) !== JSON.stringify(this.props.parent)) {
+      const title = nextProps.parent.title;
+      const description = nextProps.parent.description;
+      const image = (nextProps.parent.items && nextProps.parent.items.find(c => c['@type'] === 'Image'));
+      const url = image && image.image.download;
+      const inCountryFolder = true;
+      this.props.setFolderHeader({title, description, url, inCountryFolder});
       const tabsItems = nextProps.parent.items.map(i => ({
         // this is ugly
         url: i['@id'].split('/Plone/')[1],
         title: i.title,
         '@type': i['@type']
-      })).filter(i =>  i.title !== 'folder_info')
-      this.props.setFolderTabs(tabsItems)
+      })).filter(i =>  i.title !== 'folder_info');
+      this.props.setFolderTabs(tabsItems);
     }
   }
 
@@ -90,145 +122,38 @@ class HomepageView extends Component {
     const content = this.props.content;
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-    if (!this.props.tabs) {
-      this.props.getParentFolderData(
-        this.props.content.parent['@id'].split('/Plone/')[1],
-      );
-    }
 
-    return hasTilesData(content) ? (
+    this.tabs = [
+      { title: 'First', url: '', type: 'Section' },
+      { title: 'Second', url: '', type: 'Section' },
+    ];
+
+    return (
       <div id="page-document" className="ui wrapper">
-        {this.props.tabs && this.props.tabs.length ? (
-          <div
-            className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
-            {this.props.tabs.map(item => (
-              <Link key={item.url} className="item" to={item.url} title={item['@type']}>
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        ) : (
-          ''
-        )}
+        <StackedBarChart />
 
-        {/* <Helmet title={content.title} /> */}
+        {
+          this.tabs && this.tabs.length ?
+            <div className={'ui item stackable tabs menu ' + numberToWord[this.tabs.length]}>
+              {this.tabs.map(item => (
+                <Link key={item.url} className="item" to={item.url} title={item['@type']}>
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+            :
+            ''
+        }
+
         <div className="country-page-content-wrapper">
-
-          {map(content[tilesLayoutFieldname].items, tile => {
-            let Tile = null;
-            Tile =
-              tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
-            return Tile !== null ? (
-              <Tile
-                key={tile}
-                properties={content}
-                data={content[tilesFieldname][tile]}
-              />
-            ) : (
-              <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
-            );
-          })}
         </div>
 
-        <div className="country-report-section">
-          <div className="ui stackable two column grid">
-
-            <div className="column">
-              <h2>Country Report No 1/2019</h2>
-              <p>Forests are rich in biodiversity and valuable for recreation,
-                water regulation and soil protection. As well as for providing
-                timber and other non-wood forest products, forests are
-                important for mitigating climate change and for the renewable
-                energy sector.</p>
-              <button className="ui primary button">Open report</button>
-            </div>
-
-            <div className="column">
-              <h2>Other reports and publications</h2>
-              <div className="ui list">
-                <div className="item">
-                  <i className="file outline icon" />
-                  <div className="content">
-                    State of Europe’s Forests 2018 Report
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    Romania: National Forest Data 2017
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    State of Europe’s Forests 2017 Report
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    Romania: Lorem ipsum documentarium 2014
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    Romania: National Forest Data 2017
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    State of Europe’s Forests 2017 Report
-                  </div>
-                </div>
-                <div className="item">
-                  <i className="file outline icon"></i>
-                  <div className="content">
-                    Romania: Lorem ipsum documentarium 2014
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"></iframe>
 
       </div>
-    ) : (
-      <Container id="page-document">
-        <Helmet title={content.title} />
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
-        {content.image && (
-          <Image
-            className="document-image"
-            src={content.image.scales.thumb.download}
-            floated="right"
-          />
-        )}
-        {content.remoteUrl && (
-          <span>
-            The link address is:
-            <a href={content.remoteUrl}>{content.remoteUrl}</a>
-          </span>
-        )}
-        {content.text && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: content.text.data.replace(
-                /a href="([^"]*\.[^"]*)"/g,
-                `a href="${settings.apiPath}$1/download/file"`,
-              ),
-            }}
-          />
-        )}
-      </Container>
     );
   }
-
-};
+}
 
 export default connect(
   state => ({
