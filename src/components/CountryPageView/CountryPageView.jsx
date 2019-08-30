@@ -6,7 +6,7 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import {
+import { 
   setFolderHeader,
   setFolderTabs,
   getParentFolderData
@@ -22,7 +22,7 @@ import {
 
 
 const numberToWord = {
-  1: 'one',
+  1: 'one', 
   2: 'two',
   3: 'three',
   4: 'four',
@@ -65,7 +65,7 @@ class CountryPageView extends Component {
     this.state = {};
   }
 
-
+  
   componentDidMount(){
     this.props.setFolderHeader({inCountryFolder: true})
   }
@@ -82,12 +82,16 @@ class CountryPageView extends Component {
       const url = image && image.image.download
       const inCountryFolder = true
       this.props.setFolderHeader({title, description, url, inCountryFolder})
-      const tabsItems = nextProps.parent.items.map(i => ({
-        // this is ugly
-        url: i['@id'].split('/Plone/')[1],
-        title: i.title,
-        '@type': i['@type']
-      })).filter(i =>  i.title !== 'folder_info')
+      const pathArr = nextProps.location.pathname.split('/')
+      pathArr.length = 3
+      const path = pathArr.join('/')
+      const tabsItems = nextProps.parent.items.map(i => {
+        return {
+          url: `${path}/${i.id}`, 
+          title: i.title,
+          '@type': i['@type']
+          }
+      }).filter(i =>  i.title !== 'folder_info')
       this.props.setFolderTabs(tabsItems)
     }
   }
@@ -97,14 +101,17 @@ class CountryPageView extends Component {
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
     if(!this.props.tabs) {
-      this.props.getParentFolderData(this.props.content.parent['@id'].split('/Plone/')[1])
+      const pathArr = this.props.location.pathname.split('/')
+      pathArr.length = 3
+      const path = pathArr.join('/')
+      this.props.getParentFolderData(path)
     }
 
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
 
       {
-        this.props.tabs && this.props.tabs.length ?
+        this.props.tabs && this.props.tabs.length ? 
           <div className={'ui item stackable tabs menu ' + numberToWord[this.props.tabs.length]}>
             {this.props.tabs.map(item => (
               <Link key={item.url} className="item" to={item.url} title={item['@type']}>
@@ -112,13 +119,11 @@ class CountryPageView extends Component {
               </Link>
             ))}
           </div>
-        :
+        : 
           ''
       }
 
-        {/* <Helmet title={content.title} /> */}
         <div className="country-page-content-wrapper">
-
           {map(content[tilesLayoutFieldname].items, tile => {
             let Tile = null;
             Tile =
@@ -197,8 +202,6 @@ class CountryPageView extends Component {
       </div>
     ) : (
         <Container id="page-document">
-          <Helmet title={content.title} />
-          <h1 className="documentFirstHeading">{content.title}</h1>
           {content.description && (
             <p className="documentDescription">{content.description}</p>
           )}
