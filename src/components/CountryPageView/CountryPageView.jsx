@@ -117,21 +117,25 @@ class CountryPageView extends Component {
           ''
       }
 
-        <Helmet title={content.title} />
-        {map(content[tilesLayoutFieldname].items, tile => {
-          let Tile = null;
-          Tile =
-            tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
-          return Tile !== null ? (
-            <Tile
-              key={tile}
-              properties={content}
-              data={content[tilesFieldname][tile]}
-            />
-          ) : (
-              <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
-            );
-        })}
+        {/* <Helmet title={content.title} /> */}
+        <div className="country-page-content-wrapper">
+
+          {map(content[tilesLayoutFieldname].items, tile => {
+            let Tile = null;
+            Tile =
+              tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
+            return Tile !== null ? (
+              <Tile
+                key={tile}
+                properties={content}
+                data={content[tilesFieldname][tile]}
+              />
+            ) : (
+                <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
+              );
+          })}
+        </div>
+
       </div>
     ) : (
         <Container id="page-document">

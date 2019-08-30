@@ -34,8 +34,7 @@
     h1, p {
         color: white;
         max-width: 900px;
-        // width: 75%;
-        // max-width: 500px;
+        width: 75%;
         text-align: center;
     }
     h1 {
@@ -169,7 +168,7 @@ body.has-toolbar {
 
 
 @media only screen and (min-width: 768px) {
-    .navigation .ui.menu .item {
+    .navigation .ui.menu > .item {
         padding: .5rem;
         &:last-child {
             margin-right: 1rem!important;
@@ -181,7 +180,6 @@ body.has-toolbar {
     height: 600px;
     display: block;
     position: relative;
-    background-size: cover;
 }
 
 
@@ -261,6 +259,52 @@ body.has-toolbar {
     background-size: cover;
 }
 
+.rich-text-body {
+    position: relative;
+    padding: 1rem;
+    flex-grow: 1;
+
+}
+
+.tile .toolbar.toolbar-bottom {
+    top: 101%;
+    left: 50%!important;
+    transform: translateX(-50%);
+}
+
+
+
+body #page-document .imageAndRichText {
+    &.left {
+        width: calc(50% - 2rem)!important;
+        float: left;
+        margin-right: 2rem;
+    }
+
+    &.right {
+        width: calc(50% - 2rem)!important;
+        float: right;
+        margin-left: 2rem;
+    }
+    box-shadow: 1px 1px 3px #aaa;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    .tile-inner-wrapper {
+        display: flex;
+        img.card-image {
+            width: 50%;
+        }
+        .card-body {
+            flex-grow: 1;
+            padding-left: .5rem;
+        }
+    }
+}
+
+body #page-document .imageAndRichText + p {
+    clear: both;
+}
 /*---  Country page  ---*/
 
 .country-report-section {

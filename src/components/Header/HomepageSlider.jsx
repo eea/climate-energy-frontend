@@ -85,6 +85,7 @@ class HomepageSlider extends Component {
 
   componentDidMount() {
     if(this.props.items && this.props.items.length) {
+      console.log('didmount', this.props.items,this.props.items.length)
       this.getSlides()
     } else {
       this.setState({
@@ -105,6 +106,7 @@ class HomepageSlider extends Component {
       }
   }
   render() {
+    console.log('SLIDER RENDERED', this.state.slides.length)
     const settings = {
       dots: false,
       infinite: true,

@@ -19,10 +19,14 @@ import {
   tiles as defaultTiles,
 } from '@plone/volto/config';
 
-
+// Tiles
 import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit'
 import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View'
 
+import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit'
+import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View'
+
+// Display types
 import CountryView from '~/components/CountryView/CountryView'
 import CountryPageView from '~/components/CountryPageView/CountryPageView'
 
@@ -45,6 +49,8 @@ export const settings = {
   ],
 };
 
+console.log(settings)
+
 export const views = {
   ...defaultViews,
   layoutViews: {
@@ -63,17 +69,17 @@ export const tiles = {
   customTiles: [
     ...defaultTiles.customTiles,
     {
-      title: 'twocolumn',
+      title: 'imageandrichtext',
       icon: divideVertical
     }
   ],
   defaultTilesViewMap: {
     ...defaultTiles.defaultTilesViewMap,
-    twocolumn: TwoColumnsTileView
+    imageandrichtext: ImageAndRichTextTileView
   },
   defaultTilesEditMap: {
     ...defaultTiles.defaultTilesEditMap,
-    twocolumn: TwoColumnsTileEdit
+    imageandrichtext: ImageAndRichTextTileEdit
   },
   // messagesTiles: defaultTiles.messagesTiles,
   // requiredTiles: defaultTiles.requiredTiles,
