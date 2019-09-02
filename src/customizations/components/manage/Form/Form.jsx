@@ -10,6 +10,11 @@
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import dropRight from 'lodash/dropRight';
+import Editor from 'draft-js-plugins-editor';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
+
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import { settings } from '~/config';
 
 import {
   Corner,
@@ -195,8 +200,21 @@ class Form extends Component {
         },
       };
     }
+
+    let editorState = EditorState.createEmpty();
+
+
+
+
+    const inlineToolbarPlugin = createInlineToolbarPlugin({
+      structure: settings.richTextEditorInlineToolbarButtons,
+    });
+
+
     this.state = {
+      editorState,
       formData,
+      inlineToolbarPlugin,
       errors: {},
       selected:
         formData[tilesLayoutFieldname].items.length > 0
@@ -540,7 +558,35 @@ class Form extends Component {
     let data = tilesDict[tileid];
 
     let nop = () => {};
+    
+    const onChange = (editorState) => this.setState({editorState});
 
+    // return (
+    //   <Editor
+    //     onChange={this.onChange}
+    //     id={tileid}
+    //     plugins={[
+    //       this.state.inlineToolbarPlugin,
+    //       ...settings.richTextEditorPlugins,
+    //     ]}
+    //     blockRenderMap={settings.extendedBlockRenderMap}
+    //     blockStyleFn={settings.blockStyleFn}
+    //     tile={tileid}
+    //     data={data}
+    //     properties={formData}
+    //     onAddTile={nop}
+    //     onChangeTile={nop}
+    //     onMutateTile={nop}
+    //     onChangeField={nop}
+    //     onDeleteTile={nop}
+    //     onSelectTile={nop}
+    //     onMoveTile={nop}
+    //     onFocusPreviousTile={nop}
+    //     onFocusNextTile={nop}
+    //     selected={true}
+    //     index={0}
+    //   />
+    // );
     return (
       <Tile
         id={tileid}
@@ -612,6 +658,8 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { InlineToolbar } = this.state.inlineToolbarPlugin;
+
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
     const tilesFieldname = getTilesFieldname(formData);
@@ -636,7 +684,7 @@ class Form extends Component {
             >
 
               {this.renderEditTile(tilesDict[tileid]['@type'], tileid)}
-
+              <InlineToolbar />
               {/* <EditTile */}
               {/*   id={tile} */}
               {/*   index={index} */}
