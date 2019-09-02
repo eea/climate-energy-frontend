@@ -30,6 +30,7 @@ import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichText
 import CountryView from '~/components/CountryView/CountryView';
 import CountryPageView from '~/components/CountryPageView/CountryPageView';
 import HomepageView from '~/components/HomepageView/HomepageView';
+import MosaicView from '~/components/MosaicView/MosaicView';
 
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
@@ -59,6 +60,7 @@ export const views = {
     full_view: CountryView,
     country_tab_view: CountryPageView,
     homepage_view: HomepageView,
+    mosaic_tiles_view: MosaicView,
   }
 };
 
