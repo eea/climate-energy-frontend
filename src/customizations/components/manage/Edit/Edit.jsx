@@ -23,13 +23,14 @@ import React, { Component } from 'react';
 
 
 // import { Mosaic } from 'react-mosaic-component';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+// import '@blueprintjs/core/lib/css/blueprint.css';
+// import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import 'react-mosaic-component/react-mosaic-component.css';
 import { Classes, HTMLSelect } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import classNames from 'classnames';
 import dropRight from 'lodash/dropRight';
+import EditText from '@plone/volto/components/manage/Tiles/Tile/Edit'
 
 import {
   Corner,
@@ -113,10 +114,7 @@ export default class ExampleApp extends Component {
                 onDragEnd={(type) => console.log('MosaicWindow.onDragEnd', type)}
                 renderToolbar={count === 2 ? () => <div className="toolbar-example">Custom Toolbar</div> : null}
               >
-                <div className="example-window">
-                  <h1>{`Window ${count}`}</h1>
-                    <button onClick={() => {console.log(this.state.currentNode)}}></button>
-                </div>
+                <EditText/>
               </MosaicWindow>
             )}
             zeroStateView={<MosaicZeroState createNode={this.createNode} />}

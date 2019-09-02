@@ -99,9 +99,7 @@ class MosaicView extends Component {
 
     return true ? (
       <div id="page-document" className="ui wrapper">
-        <Helmet title={content.title} />
-        <div>bla</div>
-
+        {/* <Helmet title={content.title} /> */}
         <Mosaic
           renderTile={(tileid, path) => (
             <MosaicWindow

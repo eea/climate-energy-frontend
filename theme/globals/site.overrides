@@ -310,3 +310,28 @@ body #page-document .imageAndRichText + p {
 .react-mosaic-example-app {
     height: 1000px;
 }
+
+#page-document {
+    .mosaic-root {
+        position: relative;
+    }
+    .mosaic-tile {
+        margin: 0;
+        position: relative;
+    }
+    .mosaic-window-toolbar {
+        display: none;
+    }
+    .mosaic-window-body {
+        background: none;
+        border: none;
+    }
+    .mosaic-preview {
+        display: none;
+    }
+    .mosaic-drop-target {
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
