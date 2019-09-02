@@ -14,7 +14,7 @@
    }
    &a {
        padding: 1rem!important;
-   } 
+   }
 }
 
 
@@ -81,7 +81,7 @@ body.has-toolbar {
     }
 
     .field.searchbox {
-        min-height: 39px; 
+        min-height: 39px;
     }
 }
 
@@ -173,7 +173,7 @@ body.has-toolbar {
         &:last-child {
             margin-right: 1rem!important;
         }
-    } 
+    }
 }
 .slider-image {
     // width: 100%;
@@ -334,4 +334,8 @@ body #page-document .imageAndRichText + p {
         box-shadow: none;
         border-radius: 0;
     }
+}
+
+.mosaic-blueprint-theme {
+  min-height: 300px;
 }

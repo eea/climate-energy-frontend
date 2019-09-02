@@ -62,6 +62,7 @@ class MosaicView extends Component {
   }
 
   createNode = () => {
+    // this.onAddTile('text', 0);
     console.log('Called createNode');
   };
 
