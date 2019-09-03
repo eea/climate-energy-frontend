@@ -83,10 +83,13 @@ class StackedBarChart extends Component {
 
   getChartData() {
     let chartData = this.state.chartData;
-    try {
-      chartData = JSON.parse(chartData);
-    } catch (error) {
-      console.log(error);
+    if (typeof chartData == 'string') {
+      try {
+        chartData = JSON.parse(chartData);
+      } catch (error) {
+        console.log(error);
+        chartData = [];
+      }
     }
     console.log(chartData);
     return chartData;
@@ -101,7 +104,7 @@ class StackedBarChart extends Component {
             <div className="image-add">
               <ResponsiveContainer>
                 <BarChart
-                  data={this.state.chartData}
+                  data={this.getChartData()}
                   margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
@@ -132,7 +135,7 @@ class StackedBarChart extends Component {
           )}
           <div className="hero-body">
             <textarea
-              defaultValue={JSON.stringify(data)}
+              defaultValue={JSON.stringify(this.getChartData())}
               placeholder="Enter data in JSON format"
               onChange={this.handleChange}
             />
