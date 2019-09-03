@@ -1,7 +1,7 @@
 /**
-* View image tile.
-* @module components/manage/Tiles/Hero/View
-*/
+ * View image tile.
+ * @module components/manage/Tiles/Hero/View
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -9,15 +9,15 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 // import PropTypes from 'prop-types';
 
 import {
-    ResponsiveContainer,
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-  } from 'recharts';
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from 'recharts';
 
 /**
  * View image tile class.
