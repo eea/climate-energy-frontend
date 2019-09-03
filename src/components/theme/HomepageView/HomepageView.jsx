@@ -28,10 +28,10 @@ import {
   hasTilesData,
 } from '@plone/volto/helpers';
 
-import BasicForestIMG from '~/components/HomepageView/images/basic-forest.png';
-import ForestCarbonIMG from '~/components/HomepageView/images/forest-carbon.png';
-import ForestIMG from '~/components/HomepageView/images/forest.png';
-import NatureIMG from '~/components/HomepageView/images/nature.png';
+import BasicForestIMG from '~/components/theme/HomepageView/images/basic-forest.png';
+import ForestCarbonIMG from '~/components/theme/HomepageView/images/forest-carbon.png';
+import ForestIMG from '~/components/theme/HomepageView/images/forest.png';
+import NatureIMG from '~/components/theme/HomepageView/images/nature.png';
 
 const numberToWord = {
   1: 'one',
