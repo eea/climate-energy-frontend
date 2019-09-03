@@ -130,6 +130,7 @@
 @darkBrown        : #554433;
 @darkOrange       : #cc4400;
 
+@textColor        : #002200;
 
 /*---  Colors  ---*/
 @orange           : #FA5C2A; // Palette: reddishOrange
