@@ -541,84 +541,6 @@ class Form extends Component {
   }
 
   /**
-   * Move tile handler
-   * @method onMoveTile
-   * @param {number} dragIndex Drag index.
-   * @param {number} hoverIndex Hover index.
-   * @returns {undefined}
-   */
-  // onMoveTile(dragIndex, hoverIndex) {
-  //   const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
-  //
-  //   this.setState({
-  //     formData: {
-  //       ...this.state.formData,
-  //       [tilesLayoutFieldname]: {
-  //         items: move(
-  //           this.state.formData[tilesLayoutFieldname].items,
-  //           dragIndex,
-  //           hoverIndex,
-  //         ),
-  //       },
-  //     },
-  //   });
-  // }
-
-  /**
-   *
-   * @method onFocusPreviousTile
-   * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
-   * @returns {undefined}
-   */
-  // onFocusPreviousTile(currentTile, tileNode) {
-  //   const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
-  //   const currentIndex = this.state.formData[
-  //     tilesLayoutFieldname
-  //   ].items.indexOf(currentTile);
-  //
-  //   if (currentIndex === 0) {
-  //     // We are already at the top tile don't do anything
-  //     return;
-  //   }
-  //   const newindex = currentIndex - 1;
-  //   tileNode.blur();
-  //
-  //   this.onSelectTile(
-  //     this.state.formData[tilesLayoutFieldname].items[newindex],
-  //   );
-  // }
-
-  /**
-   *
-   * @method onFocusNextTile
-   * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
-   * @returns {undefined}
-   */
-  // onFocusNextTile(currentTile, tileNode) {
-  //   const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
-  //   const currentIndex = this.state.formData[
-  //     tilesLayoutFieldname
-  //   ].items.indexOf(currentTile);
-  //
-  //   if (
-  //     currentIndex ===
-  //     this.state.formData[tilesLayoutFieldname].items.length - 1
-  //   ) {
-  //     // We are already at the bottom tile don't do anything
-  //     return;
-  //   }
-  //
-  //   const newindex = currentIndex + 1;
-  //   tileNode.blur();
-  //
-  //   this.onSelectTile(
-  //     this.state.formData[tilesLayoutFieldname].items[newindex],
-  //   );
-  // }
-
-  /**
    * handleKeyDown, sports a way to disable the listeners via an options named
    * parameter
    * @method handleKeyDown
@@ -795,4 +717,3 @@ class Form extends Component {
 }
 
 export default injectIntl(Form, { withRef: true });
-
