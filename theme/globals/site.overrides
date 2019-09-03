@@ -546,3 +546,28 @@ body #page-document .imageAndRichText + p {
       }
     }
 }
+.chartWrapperEdit {
+
+    
+    .image-add {
+        height: 500px;
+        width: 500px;
+        .ui.segment {
+            height: 100%;
+        }
+    }
+    .hero-body {
+        max-height: unset!important;
+        textarea {
+            width: 100%!important;
+            min-height: 200px;
+        }
+    }
+}
+
+.chartWrapperView {
+    .tile-inner-wrapper {
+        height: 500px;
+        width: 500px;
+    }
+}
