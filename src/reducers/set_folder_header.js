@@ -23,16 +23,16 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function folder_header(state = initialState, action = {}) {
-    if(action.type === SET_FOLDER_HEADER) {
-        console.log('in reducer', action)
-        console.log(state)
-        return {
-            ...state,
-            error: null,
-            items: action.payload,
-            loaded: true,
-            loading: false,
-        };
-    }
-    return state
+  if (action.type === SET_FOLDER_HEADER) {
+    console.log('in reducer', action);
+    console.log(state);
+    return {
+      ...state,
+      error: null,
+      items: action.payload,
+      loaded: true,
+      loading: false,
+    };
+  }
+  return state;
 }

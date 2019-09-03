@@ -134,7 +134,7 @@ class Edit extends Component {
       return <div />;
     }
 
-    console.log(this.props)
+    console.log(this.props);
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
@@ -146,7 +146,6 @@ class Edit extends Component {
         ref={node => (this.ref = node)}
       >
         <div className="left-column">
-
           <Editor
             onChange={this.onChange}
             editorState={this.state.editorState}
@@ -211,7 +210,6 @@ class Edit extends Component {
           />
         </div>
         <div className="right-column">
-
           <Editor
             onChange={this.onChange}
             editorState={this.state.editorState}

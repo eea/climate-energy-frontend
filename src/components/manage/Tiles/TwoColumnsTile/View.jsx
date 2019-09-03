@@ -13,12 +13,8 @@ import PropTypes from 'prop-types';
  */
 const View = ({ data }) => (
   <div className="columnsWrapper">
-    <div className="left-column">
-      {data.left}
-    </div>
-    <div className="right-column">
-      {data.right}
-    </div>
+    <div className="left-column">{data.left}</div>
+    <div className="right-column">{data.right}</div>
   </div>
 );
 

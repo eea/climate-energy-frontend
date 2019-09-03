@@ -22,7 +22,10 @@ const initialState = {
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function default_header_image(state = initialState, action = {}) {
+export default function default_header_image(
+  state = initialState,
+  action = {},
+) {
   switch (action.type) {
     case `${GET_DEFAULT_HEADER_IMAGE}_PENDING`:
       return {
@@ -36,10 +39,10 @@ export default function default_header_image(state = initialState, action = {}) 
         ...state,
         error: null,
         items: map(action.result.items, item => ({
-            title: item.title,
-            image: item.image.download,
-            description: item.description
-          })),
+          title: item.title,
+          image: item.image.download,
+          description: item.description,
+        })),
         loaded: true,
         loading: false,
       };

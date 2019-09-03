@@ -78,7 +78,8 @@ class Breadcrumbs extends Component {
         vertical
       >
         <Container>
-          <Breadcrumb><Link
+          <Breadcrumb>
+            <Link
               to="/"
               className="section"
               title={this.props.intl.formatMessage(messages.home)}

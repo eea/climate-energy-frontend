@@ -128,6 +128,8 @@
 @darkGreen        : #005511;
 @darkerGreen      : #003311;
 @darkBrown        : #554433;
+@darkOrange       : #cc4400;
+
 
 /*---  Colors  ---*/
 @orange           : #FA5C2A; // Palette: reddishOrange

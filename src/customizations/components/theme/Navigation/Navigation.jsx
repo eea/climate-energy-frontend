@@ -14,7 +14,6 @@ import { Menu, Dropdown } from 'semantic-ui-react';
 import cx from 'classnames';
 import { getBaseUrl } from '@plone/volto/helpers';
 
-
 import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
@@ -46,7 +45,7 @@ class Navigation extends Component {
       PropTypes.shape({
         title: PropTypes.string,
         url: PropTypes.string,
-        items: PropTypes.array
+        items: PropTypes.array,
       }),
     ).isRequired,
     intl: intlShape.isRequired,
@@ -110,7 +109,6 @@ class Navigation extends Component {
     this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
   }
 
-
   /**
    * Close mobile menu
    * @method closeMobileMenu
@@ -158,7 +156,7 @@ class Navigation extends Component {
             onClick={this.toggleMobileMenu}
           >
             <span className="hamburger-box">
-              <span className="hamburger-inner"></span>
+              <span className="hamburger-inner" />
             </span>
           </button>
         </div>
@@ -173,28 +171,30 @@ class Navigation extends Component {
           }
           onClick={this.closeMobileMenu}
         >
-
-
-          {this.props.items.map(item => (
-            item.items && item.items.length ?
-            <Dropdown className={this.isActive(item.url) ? 'item menuActive' : 'item'} key={item.url} text={item.title}>
+          {this.props.items.map(item =>
+            item.items && item.items.length ? (
+              <Dropdown
+                className={this.isActive(item.url) ? 'item menuActive' : 'item'}
+                key={item.url}
+                text={item.title}
+              >
                 <Dropdown.Menu>
                   <Dropdown.Header>
-                    <Link
-                      to={item.url === '' ? '/' : item.url}
-                      key={item.url}
-                    >
+                    <Link to={item.url === '' ? '/' : item.url} key={item.url}>
                       {item.title}
                     </Link>
                   </Dropdown.Header>
-                  <Dropdown.Divider></Dropdown.Divider>
-                  { item.items.map(subitem =>  (
-                    <Dropdown.Item
-                      key={subitem.url}>
+                  <Dropdown.Divider />
+                  {item.items.map(subitem => (
+                    <Dropdown.Item key={subitem.url}>
                       <Link
                         to={subitem.url === '' ? '/' : subitem.url}
                         key={subitem.url}
-                        className={this.isActive(subitem.url) ? 'item menuActive' : 'item'}
+                        className={
+                          this.isActive(subitem.url)
+                            ? 'item menuActive'
+                            : 'item'
+                        }
                       >
                         {subitem.title}
                       </Link>
@@ -202,17 +202,16 @@ class Navigation extends Component {
                   ))}
                 </Dropdown.Menu>
               </Dropdown>
-            :
-          <Link
-            to={item.url === '' ? '/' : item.url}
-            key={item.url}
-            className={this.isActive(item.url) ? 'item menuActive' : 'item'}
-          >
-            {item.title}
-          </Link>
-          ))}
-
-
+            ) : (
+              <Link
+                to={item.url === '' ? '/' : item.url}
+                key={item.url}
+                className={this.isActive(item.url) ? 'item menuActive' : 'item'}
+              >
+                {item.title}
+              </Link>
+            ),
+          )}
         </Menu>
       </nav>
     );

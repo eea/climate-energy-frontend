@@ -21,7 +21,7 @@ import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
-import PositionToolbar from '~/components/manage/PositionToolbar'
+import PositionToolbar from '~/components/manage/PositionToolbar';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -82,8 +82,7 @@ class Edit extends Component {
   componentDidMount() {
     if (this.props.selected) {
       this.node.focus();
-      this.props.data.position = 'left'
-
+      this.props.data.position = 'left';
     }
   }
 
@@ -205,7 +204,7 @@ class Edit extends Component {
           this.node = node;
         }}
       >
-           <PositionToolbar
+        <PositionToolbar
           data={this.props.data}
           onChangeTile={this.props.onChangeTile}
           tile={this.props.tile}

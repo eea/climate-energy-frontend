@@ -8,15 +8,17 @@ import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Anontools, Logo, Navigation, SearchWidget, Breadcrumbs, } from '@plone/volto/components';
+import {
+  Anontools,
+  Logo,
+  Navigation,
+  SearchWidget,
+  Breadcrumbs,
+} from '@plone/volto/components';
 import HeaderImage from '~/components/Header/HeaderImage';
 import HomepageSlider from '~/components/Header/HomepageSlider';
 
-import {
-  getFrontpageSlides,
-  getDefaultHeaderImage
-} from '~/actions';
-
+import { getFrontpageSlides, getDefaultHeaderImage } from '~/actions';
 
 /**
  * Header component class.
@@ -33,7 +35,7 @@ class Header extends Component {
       title: null,
       inCountryFolder: false,
       defaultHeaderImage: null,
-      frontPageSlides: null
+      frontPageSlides: null,
     };
   }
   /**
@@ -49,7 +51,7 @@ class Header extends Component {
     defaultHeaderImage: PropTypes.array,
     frontPageSlides: PropTypes.array,
     getFrontpageSlides: PropTypes.func.isRequired,
-    getDefaultHeaderImage: PropTypes.func.isRequired
+    getDefaultHeaderImage: PropTypes.func.isRequired,
   };
 
   /**
@@ -61,40 +63,48 @@ class Header extends Component {
     token: null,
   };
 
-
   componentWillReceiveProps(nextProps) {
-    if(nextProps.actualPathName !== this.props.actualPathName) {
+    if (nextProps.actualPathName !== this.props.actualPathName) {
       this.setState({
-        isHomepage: nextProps.actualPathName == '/'
-      })
+        isHomepage: nextProps.actualPathName == '/',
+      });
     }
-    if(JSON.stringify(nextProps.folderHeader) !== JSON.stringify(this.props.folderHeader)) {
+    if (
+      JSON.stringify(nextProps.folderHeader) !==
+      JSON.stringify(this.props.folderHeader)
+    ) {
       this.setState({
         url: nextProps.folderHeader.url,
         description: nextProps.folderHeader.description,
         title: nextProps.folderHeader.title,
-        inCountryFolder: nextProps.folderHeader.inCountryFolder
-      })
+        inCountryFolder: nextProps.folderHeader.inCountryFolder,
+      });
     }
-    if(JSON.stringify(nextProps.defaultHeaderImage) !== JSON.stringify(this.props.defaultHeaderImage)) {
+    if (
+      JSON.stringify(nextProps.defaultHeaderImage) !==
+      JSON.stringify(this.props.defaultHeaderImage)
+    ) {
       this.setState({
-        defaultHeaderImage: nextProps.defaultHeaderImage[0]
-      })
+        defaultHeaderImage: nextProps.defaultHeaderImage[0],
+      });
     }
 
-    if(JSON.stringify(nextProps.frontPageSlides) !== JSON.stringify(this.props.frontPageSlides)) {
+    if (
+      JSON.stringify(nextProps.frontPageSlides) !==
+      JSON.stringify(this.props.frontPageSlides)
+    ) {
       this.setState({
-        frontPageSlides: nextProps.frontPageSlides
-      })
+        frontPageSlides: nextProps.frontPageSlides,
+      });
     }
   }
   componentDidUpdate(prevProps) {
-    if(prevProps.actualPathName !== this.props.actualPathName) {
+    if (prevProps.actualPathName !== this.props.actualPathName) {
       this.setState({
-        isHomepage: this.props.actualPathName == '/'
-      })
+        isHomepage: this.props.actualPathName == '/',
+      });
     }
-  } 
+  }
 
   componentWillMount() {
     this.props.getFrontpageSlides();
@@ -112,7 +122,6 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -134,26 +143,30 @@ class Header extends Component {
               )}
             </div>
           </div>
-          {(
-            this.state.isHomepage ?
-            <HomepageSlider items={this.state.frontPageSlides}></HomepageSlider>
+          {this.state.isHomepage ? (
+            <HomepageSlider items={this.state.frontPageSlides} />
+          ) : (
             // <div>test</div>
-            :
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
 
-              <HeaderImage url={this.state.inCountryFolder ? this.state.url : this.state.defaultHeaderImage && this.state.defaultHeaderImage.image}>
-                {(
-                  this.state.inCountryFolder ?
+              <HeaderImage
+                url={
+                  this.state.inCountryFolder
+                    ? this.state.url
+                    : this.state.defaultHeaderImage &&
+                      this.state.defaultHeaderImage.image
+                }
+              >
+                {this.state.inCountryFolder ? (
                   <div className="header-image">
                     <h1>{this.state.title}</h1>
                     <p>{this.state.description}</p>
                   </div>
-                  : 
+                ) : (
                   ''
                 )}
               </HeaderImage>
-
             </div>
           )}
         </Container>
@@ -166,13 +179,12 @@ class Header extends Component {
 //   token: state.userSession.token,
 // }))(Header);
 
-
 export default compose(
   connect(
     state => ({
       frontPageSlides: state.frontpage_slides.items,
       token: state.userSession.token,
-      defaultHeaderImage: state.default_header_image.items
+      defaultHeaderImage: state.default_header_image.items,
     }),
     { getFrontpageSlides, getDefaultHeaderImage },
   ),
