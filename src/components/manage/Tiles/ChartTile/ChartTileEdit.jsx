@@ -48,8 +48,10 @@ class StackedBarChart extends Component {
     super(props);
 
     const chartData = this.props.data.chartData || data;
+    let show = this.props.data.chartData ? true : false;
+
     this.state = {
-      renderChart: true,
+      show,
       chartData: chartData,
     };
 
@@ -65,7 +67,7 @@ class StackedBarChart extends Component {
       this.setState(
         {
           chartData: data,
-          renderChart: true,
+          show: true,
         },
         this.onSubmit,
       );
@@ -100,7 +102,7 @@ class StackedBarChart extends Component {
     return (
       <div className="tile hero selected chartWrapperEdit">
         <div className="tile-inner-wrapper">
-          {this.state.renderChart && this.state.chartData ? (
+          {this.state.show && this.state.chartData ? (
             <div className="image-add">
               <ResponsiveContainer>
                 <BarChart
@@ -134,6 +136,7 @@ class StackedBarChart extends Component {
             </div>
           )}
           <div className="hero-body">
+            <label>Enter JSON data</label>
             <textarea
               defaultValue={JSON.stringify(this.getChartData())}
               placeholder="Enter data in JSON format"
