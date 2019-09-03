@@ -10,9 +10,7 @@
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import dropRight from 'lodash/dropRight';
-import Editor from 'draft-js-plugins-editor';
 
-import { settings } from '~/config';
 
 import {
   Corner,
@@ -572,7 +570,9 @@ class Form extends Component {
     //     index={0}
     //   />
     // );
+    console.log(formData)
     return (
+      <div>
       <Tile
         id={tileid}
         tile={tileid}
@@ -590,6 +590,7 @@ class Form extends Component {
         selected={true}
         index={0}
       />
+      </div>
     );
   }
 
