@@ -53,6 +53,7 @@ import {
 import cameraSVG from '@plone/volto/icons/camera.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import textSVG from '@plone/volto/icons/text.svg';
+import { Resizable, ResizableBox } from 'react-resizable';
 
 // import aheadSVG from '@plone/volto/icons/ahead.svg';
 // import clearSVG from '@plone/volto/icons/clear.svg';
@@ -265,6 +266,7 @@ class Form extends Component {
           ? formData[tilesLayoutFieldname].items[0]
           : null,
       currentNode,
+      height: 500
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -640,6 +642,10 @@ class Form extends Component {
     <AddNewTile onMutateTile={onMutateTile} tile={tile} />,
   ];
 
+  onResize = (event, {element, size, handle}) => {
+    this.setState({height: size.height});
+  };
+
   /**
    * Render method.
    * @method render
@@ -656,6 +662,13 @@ class Form extends Component {
 
     return (
       <div className="ui wrapper">
+
+        <ResizableBox 
+          width={200} 
+          height={200} 
+          minConstraints={[100, 100]} 
+          onResize={this.onResize}
+        >
         <Mosaic
           renderTile={(tileid, path) => (
             <MosaicWindow
@@ -681,6 +694,9 @@ class Form extends Component {
           onRelease={this.onRelease}
           className={THEMES[this.state.currentTheme]}
         />
+    </ResizableBox>
+
+
 
         <Portal
           node={__CLIENT__ && document.getElementById('sidebar-metadata')}

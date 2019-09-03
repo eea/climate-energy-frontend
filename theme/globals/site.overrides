@@ -342,9 +342,6 @@ body #page-document .imageAndRichText + p {
   }
 }
 
-.mosaic-blueprint-theme {
-  min-height: 600px;
-}
 
 .chartWrapperView {
   .tile-inner-wrapper {
