@@ -11,7 +11,6 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import dropRight from 'lodash/dropRight';
 
-
 import {
   Corner,
   // createBalancedTreeFromLeaves,
@@ -34,7 +33,7 @@ import PropTypes from 'prop-types';
 import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 // import move from 'lodash-move';
 import {
-  // Button,
+  Button,
   Form as UiForm,
   Segment,
   // Tab,
@@ -44,12 +43,16 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { Field } from '@plone/volto/components'; // EditTile,
-// Icon,
+import { Field, Icon } from '@plone/volto/components'; // EditTile,
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
 } from '@plone/volto/helpers';
+
+// import addSVG from '@plone/volto/icons/circle-plus.svg';
+import cameraSVG from '@plone/volto/icons/camera.svg';
+import videoSVG from '@plone/volto/icons/videocamera.svg';
+import textSVG from '@plone/volto/icons/text.svg';
 
 // import aheadSVG from '@plone/volto/icons/ahead.svg';
 // import clearSVG from '@plone/volto/icons/clear.svg';
@@ -92,6 +95,60 @@ const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
 });
+
+class AddNewTile extends Component {
+  static propTypes = {
+    onMutateTile: PropTypes.func,
+    tile: PropTypes.string,
+  };
+
+  constructor(props) {
+    super(props);
+    let availableTiles = [
+      {
+        title: 'text',
+        icon: textSVG,
+      },
+      {
+        title: 'video',
+        icon: videoSVG,
+      },
+      {
+        title: 'image',
+        icon: cameraSVG,
+      },
+      ...tiles.customTiles,
+    ];
+    this.state = {
+      availableTiles,
+    };
+    console.log('Tiles:', tiles);
+    console.log('availableTiles:', availableTiles);
+  }
+
+  render() {
+    return (
+      <div className="add-tile toolbar">
+        {this.state.availableTiles.map(tile => (
+          <Button.Group key={tile.title}>
+            <Button
+              icon
+              basic
+              onClick={() =>
+                this.props.onMutateTile(this.props.tile, {
+                  '@type': tile.title,
+                })
+              }
+            >
+              <Icon name={tile.icon} size="24px" />
+              <span>{tile.title}</span>
+            </Button>
+          </Button.Group>
+        ))}
+      </div>
+    );
+  }
+}
 
 /**
  * Form container class.
@@ -181,6 +238,7 @@ class Form extends Component {
     if (!formData[tilesLayoutFieldname]) {
       formData[tilesLayoutFieldname] = {
         items: [ids.title, ids.description, ids.text],
+        layout: null,
       };
     }
     if (!formData[tilesFieldname]) {
@@ -196,7 +254,6 @@ class Form extends Component {
         },
       };
     }
-
 
     this.state = {
       formData,
@@ -262,6 +319,7 @@ class Form extends Component {
    * @param {*} value Value of the field
    * @returns {undefined}
    */
+  // TODO: reimplement this
   onMutateTile(id, value) {
     const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
@@ -269,25 +327,34 @@ class Form extends Component {
     const index =
       this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [tilesFieldname]: {
-          ...this.state.formData[tilesFieldname],
-          [id]: value || null,
-          [idTrailingTile]: {
-            '@type': 'text',
+    this.setState(
+      {
+        formData: {
+          ...this.state.formData,
+          [tilesFieldname]: {
+            ...this.state.formData[tilesFieldname],
+            [id]: value || null,
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          },
+          [tilesLayoutFieldname]: {
+            items: [
+              ...this.state.formData[tilesLayoutFieldname].items.slice(
+                0,
+                index,
+              ),
+              idTrailingTile,
+              ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+            ],
+            layout: this.state.currentNode,
           },
         },
-        [tilesLayoutFieldname]: {
-          items: [
-            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
-            idTrailingTile,
-            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
-          ],
-        },
       },
-    });
+      () => {
+        console.log('mutated state', this.state);
+      },
+    );
   }
 
   /**
@@ -318,6 +385,7 @@ class Form extends Component {
         ...this.state.formData,
         [tilesLayoutFieldname]: {
           items: without(this.state.formData[tilesLayoutFieldname].items, id),
+          layout: this.state.currentNode,
         },
         [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
       },
@@ -337,31 +405,80 @@ class Form extends Component {
    * @returns {string} Id of the tile
    */
   onAddTile(type, index) {
+    console.log('doing on add tile');
     const id = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
     const insert = index === -1 ? totalItems : index;
 
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [tilesLayoutFieldname]: {
-          items: [
-            ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
-            id,
-            ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
-          ],
-        },
-        [tilesFieldname]: {
-          ...this.state.formData[tilesFieldname],
-          [id]: {
-            '@type': type,
+    console.log('Called createNode', this.state.currentNode);
+    // this.setState({ currentNode: this.state.currentNode || uuid });
+    // console.log(this.state);
+
+    let { currentNode } = this.state;
+    if (currentNode) {
+      const path = getPathToCorner(currentNode, Corner.TOP_RIGHT);
+      const parent = getNodeAtPath(currentNode, dropRight(path));
+      const destination = getNodeAtPath(currentNode, path);
+      const direction = parent ? getOtherDirection(parent.direction) : 'row';
+
+      let first;
+      let second;
+      if (direction === 'row') {
+        first = destination;
+        second = uuid;
+      } else {
+        first = uuid;
+        second = destination;
+      }
+
+      currentNode = updateTree(currentNode, [
+        {
+          path,
+          spec: {
+            $set: {
+              direction,
+              first,
+              second,
+            },
           },
         },
+      ]);
+      console.log('Current node after updateTree', currentNode);
+    } else {
+      currentNode = id;
+      console.log('Current node after set uuid', currentNode);
+    }
+
+    console.log('Current node', currentNode);
+    this.setState(
+      {
+        // currentNode: currentNode,
+        formData: {
+          ...this.state.formData,
+          [tilesLayoutFieldname]: {
+            items: [
+              ...this.state.formData[tilesLayoutFieldname].items.slice(
+                0,
+                insert,
+              ),
+              id,
+              ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
+            ],
+            layout: currentNode,
+          },
+          [tilesFieldname]: {
+            ...this.state.formData[tilesFieldname],
+            [id]: {
+              '@type': type,
+            },
+          },
+        },
+        selected: id,
       },
-      selected: id,
-    });
+      // () => this.setState({ currentNode }),
+    );
 
     return id;
   }
@@ -376,6 +493,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
+
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
@@ -532,115 +650,56 @@ class Form extends Component {
   //   }
   // }
 
-  renderEditTile(type, tileid) {
-    let Tile = null;
-    Tile = tiles.defaultTilesEditMap[type];
-
+  renderEditTile(tileid) {
     const { formData } = this.state; // destructuring
     const tilesFieldname = getTilesFieldname(formData);
     const tilesDict = formData[tilesFieldname];
 
+    let Tile = null;
+    let type = tilesDict[tileid]['@type'];
+    Tile = tiles.defaultTilesEditMap[type];
+
     let data = tilesDict[tileid];
 
     let nop = () => {};
-    
-    // return (
-    //   <Editor
-    //     onChange={this.onChange}
-    //     id={tileid}
-    //     plugins={[
-    //       this.state.inlineToolbarPlugin,
-    //       ...settings.richTextEditorPlugins,
-    //     ]}
-    //     blockRenderMap={settings.extendedBlockRenderMap}
-    //     blockStyleFn={settings.blockStyleFn}
-    //     tile={tileid}
-    //     data={data}
-    //     properties={formData}
-    //     onAddTile={nop}
-    //     onChangeTile={nop}
-    //     onMutateTile={nop}
-    //     onChangeField={nop}
-    //     onDeleteTile={nop}
-    //     onSelectTile={nop}
-    //     onMoveTile={nop}
-    //     onFocusPreviousTile={nop}
-    //     onFocusNextTile={nop}
-    //     selected={true}
-    //     index={0}
-    //   />
-    // );
-    console.log(formData)
+
+    console.log('Form data', formData);
     return (
       <div>
-      <Tile
-        id={tileid}
-        tile={tileid}
-        data={data}
-        properties={formData}
-        onAddTile={nop}
-        onChangeTile={nop}
-        onMutateTile={nop}
-        onChangeField={nop}
-        onDeleteTile={nop}
-        onSelectTile={nop}
-        onMoveTile={nop}
-        onFocusPreviousTile={nop}
-        onFocusNextTile={nop}
-        selected={true}
-        index={0}
-      />
+        <Tile
+          id={tileid}
+          tile={tileid}
+          data={data}
+          properties={formData}
+          onAddTile={nop}
+          onChangeTile={nop}
+          onMutateTile={nop}
+          onChangeField={nop}
+          onDeleteTile={nop}
+          onSelectTile={nop}
+          onMoveTile={nop}
+          onFocusPreviousTile={nop}
+          onFocusNextTile={nop}
+          selected={true}
+          index={0}
+        />
       </div>
     );
   }
 
   createNode = () => {
     const uuid = this.onAddTile('text', 0);
-    console.log('Called createNode', this.state.currentNode);
-    // this.setState({ currentNode: this.state.currentNode || uuid });
-    // console.log(this.state);
-
-    let { currentNode } = this.state;
-    if (currentNode) {
-      const path = getPathToCorner(currentNode, Corner.TOP_RIGHT);
-      const parent = getNodeAtPath(currentNode, dropRight(path));
-      const destination = getNodeAtPath(currentNode, path);
-      const direction = parent ? getOtherDirection(parent.direction) : 'row';
-
-      let first;
-      let second;
-      if (direction === 'row') {
-        first = destination;
-        second = uuid;
-      } else {
-        first = uuid;
-        second = destination;
-      }
-
-      currentNode = updateTree(currentNode, [
-        {
-          path,
-          spec: {
-            $set: {
-              direction,
-              first,
-              second,
-            },
-          },
-        },
-      ]);
-    } else {
-      currentNode = uuid;
-    }
-
-    this.setState({ currentNode });
-
     return uuid;
   };
 
-  onChange = (currentNode) => {
+  onChange = currentNode => {
+    console.log('On change, setting currentNode', currentNode);
     this.setState({ currentNode });
   };
+
+  additionalControls = (tile, onMutateTile) => [
+    <AddNewTile onMutateTile={onMutateTile} tile={tile} />,
+  ];
 
   /**
    * Render method.
@@ -648,13 +707,12 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
     const tilesFieldname = getTilesFieldname(formData);
     // const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
     // const renderTiles = formData[tilesLayoutFieldname].items;
-    const tilesDict = formData[tilesFieldname];
+    // const tilesDict = formData[tilesFieldname];
     // const content = this.props.content;
 
     return (
@@ -663,7 +721,10 @@ class Form extends Component {
           renderTile={(tileid, path) => (
             <MosaicWindow
               // <number>
-              // additionalControls={count === 3 ? additionalControls : EMPTY_ARRAY}
+              additionalControls={this.additionalControls(
+                tileid,
+                this.onMutateTile,
+              )}
               title="Window"
               createNode={this.createNode}
               path={path}
@@ -672,28 +733,7 @@ class Form extends Component {
               renderToolbar={false}
             >
               <button onClick={() => console.log(this.state)}>test</button>
-              {this.renderEditTile(tilesDict[tileid]['@type'], tileid)}
-              {/* <EditTile */}
-              {/*   id={tile} */}
-              {/*   index={index} */}
-              {/*   type={tilesDict[tile]['@type']} */}
-              {/*   key={tile} */}
-              {/*   handleKeyDown={this.handleKeyDown} */}
-              {/*   onAddTile={this.onAddTile} */}
-              {/*   onChangeTile={this.onChangeTile} */}
-              {/*   onMutateTile={this.onMutateTile} */}
-              {/*   onChangeField={this.onChangeField} */}
-              {/*   onDeleteTile={this.onDeleteTile} */}
-              {/*   onSelectTile={this.onSelectTile} */}
-              {/*   onMoveTile={this.onMoveTile} */}
-              {/*   onFocusPreviousTile={this.onFocusPreviousTile} */}
-              {/*   onFocusNextTile={this.onFocusNextTile} */}
-              {/*   properties={formData} */}
-              {/*   data={tilesDict[tile]} */}
-              {/*   pathname={this.props.pathname} */}
-              {/*   tile={tile} */}
-              {/*   selected={this.state.selected === tile} */}
-              {/* /> */}
+              {this.renderEditTile(tileid)}
             </MosaicWindow>
           )}
           zeroStateView={<MosaicZeroState createNode={this.createNode} />}

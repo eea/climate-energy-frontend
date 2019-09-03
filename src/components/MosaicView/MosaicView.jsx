@@ -81,13 +81,14 @@ class MosaicView extends Component {
     Tile = tiles.defaultTilesViewMap[tiletype];
     console.log('My tile', Tile);
     return Tile !== null ? (
-      <div><span>Aici vine tile</span>
-      <Tile
-        key={tileid}
-        properties={content}
-        data={content[tilesFieldname][tileid]}
-      />
-    </div>
+      <div>
+        <span>Aici vine tile</span>
+        <Tile
+          key={tileid}
+          properties={content}
+          data={content[tilesFieldname][tileid]}
+        />
+      </div>
     ) : (
       <div> {JSON.stringify(content[tilesFieldname][tileid]['@type'])} </div>
     );
@@ -108,9 +109,7 @@ class MosaicView extends Component {
               createNode={this.createNode}
               path={path}
             >
-              {
-                this.renderTile(content, tileid, tilesFieldname)
-              }
+              {this.renderTile(content, tileid, tilesFieldname)}
             </MosaicWindow>
           )}
           value={this.state.currentNode}
