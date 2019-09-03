@@ -255,6 +255,8 @@ class Form extends Component {
       };
     }
 
+    let currentNode = formData[tilesLayoutFieldname].layout;
+
     this.state = {
       formData,
       errors: {},
@@ -262,6 +264,7 @@ class Form extends Component {
         formData[tilesLayoutFieldname].items.length > 0
           ? formData[tilesLayoutFieldname].items[0]
           : null,
+      currentNode,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -693,8 +696,22 @@ class Form extends Component {
   };
 
   onChange = currentNode => {
-    console.log('On change, setting currentNode', currentNode);
-    this.setState({ currentNode });
+    // this.setState({  });
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
+    this.setState(
+      {
+        currentNode,
+        formData: {
+          ...this.state.formData,
+          [tilesLayoutFieldname]: {
+            ...this.state.formData[tilesLayoutFieldname],
+            layout: currentNode,
+          },
+        },
+      },
+      () => console.log('State after onChange', this.state),
+    );
   };
 
   additionalControls = (tile, onMutateTile) => [
