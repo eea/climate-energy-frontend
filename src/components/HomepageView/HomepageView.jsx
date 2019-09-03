@@ -152,7 +152,7 @@ class HomepageView extends Component {
     return (
       <div id="page-document" className="ui wrapper">
 
-          <div className="home-main-content">
+          <div className="main-content">
             <div className="centered-content">
               <h2>A bird's-eye view on Europe’s forests</h2>
               <p>Europe is one of the few regions of the world where forest cover has increased over the last century. The EU currently contains 5 % of the world's forests. Let’s take a look at factors which led to this net growth as well as their economical and ecological implication.</p>
@@ -160,7 +160,7 @@ class HomepageView extends Component {
 
             {
               this.tabs && this.tabs.length ?
-              <div className={'ui item stackable tabs menu ' + numberToWord[this.tabs.length]}>
+              <div className={'ui home-tab item stackable tabs menu ' + numberToWord[this.tabs.length]}>
                 {this.tabs.map(item => (
                   <Link key={item.url} className="item" to={item.url} title={item['@type']}>
                     {item.title}
@@ -171,7 +171,7 @@ class HomepageView extends Component {
               ''
             }
 
-            <div className="home-tab-content">
+            <div className="ui active tab tab-content">
               <div className="ui stackable two column grid">
                 <div className="column">
                   <div className="ui two column stackable grid">
@@ -195,7 +195,7 @@ class HomepageView extends Component {
                     </div>
 
                     <div className="column">
-                      <div className="ui segment protected-segment">
+                      <div className="ui segment data-box orange-data-highlight">
                         <h5>Protected forests</h5>
                         <div className="land-data-wrapper">
                           <div className="land-data">12%</div>
@@ -242,7 +242,7 @@ class HomepageView extends Component {
 
                 <div className="column map-container">
                   <div className="map-wrapper">
-                    <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true" width="100%" height="100%"></iframe>
+                    <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true" width="100%" height="490"></iframe>
                   </div>
 
                   <div className="map-buttons">

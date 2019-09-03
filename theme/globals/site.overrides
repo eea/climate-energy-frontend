@@ -1,3 +1,7 @@
+body {
+    color: @textColor;
+}
+
 .ui.basic.segment .header .logo-nav-wrapper .navigation {
     overflow: initial!important;
     margin-top: 2rem;
@@ -336,8 +340,8 @@ body #page-document .imageAndRichText + p {
 
 /*---  Home page  ---*/
 
-.home-main-content {
-    .ui.item.menu {
+.main-content {
+    .home-tab.ui.item.menu {
         max-width: 715px;
         margin: 2em auto !important;
     }
@@ -345,6 +349,9 @@ body #page-document .imageAndRichText + p {
         min-height: 260px;
         border-radius: 5px;
         position: relative;
+    }
+    .ui.bulleted.list > .item {
+        font-size: 12px;
     }
     ul.ui.list li:before,
     .ui.bulleted.list .list > .item:before,
@@ -369,7 +376,7 @@ body #page-document .imageAndRichText + p {
         }
     }
 
-    .home-tab-content {
+    .tab-content {
         margin-bottom: 5em;
 
         h5 {
@@ -402,14 +409,38 @@ body #page-document .imageAndRichText + p {
             }
         }
 
-        .protected-segment {
+        .data-box {
+          .ui.list .item span {
+              float: right;
+          }
+        }
+
+        .data-box.orange-data-highlight {
             .land-data,
             .land-data-content span {
                 color: @darkOrange;
             }
+        }
 
-            .ui.list .item span {
-                float: right;
+        .data-box.deadwood-segment {
+            .land-data,
+            .land-data-content span {
+                color: @lightGreen;
+            }
+
+            ul.ui.list li:before,
+            .ui.bulleted.list .list > .item:before,
+            .ui.bulleted.list > .item:before {
+                background-color: @lightGreen;
+                content: '';
+                border-radius: 50%;
+                height: 0.80rem;
+                width: 0.80rem;
+                top: 2px;
+            }
+
+            .ui.bulleted.list > .item {
+                padding-bottom: 18px;
             }
         }
 
@@ -457,13 +488,7 @@ body #page-document .imageAndRichText + p {
             padding: 1em;
         }
 
-        .map-container {
-            display: flex !important;
-            flex-direction: column;
-        }
-
         .map-wrapper {
-            flex: 1 0 auto;
             border: 1px solid @darkGreen;
             border-radius: 5px;
             padding: 5px;
