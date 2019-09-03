@@ -20,6 +20,8 @@ import HomepageSlider from '~/components/Header/HomepageSlider';
 
 import { getFrontpageSlides, getDefaultHeaderImage } from '~/actions';
 
+import HeaderBackground from './header-bg.png';
+
 /**
  * Header component class.
  * @class Header
@@ -125,6 +127,7 @@ class Header extends Component {
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
+          <img className="header-bg" src={HeaderBackground} alt="" />
           <div className="header">
             <div className="logo-nav-wrapper space-between">
               <div className="logo">

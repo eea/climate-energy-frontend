@@ -1,5 +1,6 @@
 body {
     color: @textColor;
+    background-color: #f4f4f1;
 }
 
 .ui.basic.segment .header .logo-nav-wrapper .navigation {
@@ -22,12 +23,49 @@ body {
 }
 
 
+.ui.basic.segment.header-wrapper {
+    padding-bottom: 0;
+    background-color: #fff;
+    position: relative !important;
+}
+
+
+.ui.basic.segment.content-area {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body.has-toolbar {
+    .content-area main {
+        max-width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+    }
+}
+
+.content-area main {
+    background-color: #fff;
+    margin: auto;
+    max-width: calc(100% + 6rem);
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.header-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .header-image {
     max-width: calc(100% + 6rem);
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     position: relative;
-    z-index: -1;
+    /*z-index: -1;*/
     margin-left: -3rem;
     margin-right: -3rem;
     overflow: hidden;
@@ -37,13 +75,15 @@ body {
     flex-direction: column;
     h1, p {
         color: white;
-        max-width: 900px;
-        width: 75%;
         text-align: center;
     }
     h1 {
         margin-bottom: 2rem;
         font-weight: bold;
+    }
+    p {
+        max-width: 900px;
+        width: 75%;
     }
 }
 
@@ -548,7 +588,7 @@ body #page-document .imageAndRichText + p {
 }
 .chartWrapperEdit {
 
-    
+
     .image-add {
         height: 500px;
         width: 500px;

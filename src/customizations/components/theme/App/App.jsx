@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Container } from 'semantic-ui-react';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -111,17 +111,19 @@ class App extends Component {
           pathname={path}
         />
         <Segment basic className="content-area">
-          <main>
-            <Messages />
-            {this.state.hasError ? (
-              <Error
-                message={this.state.error.message}
-                stackTrace={this.state.errorInfo.componentStack}
-              />
-            ) : (
-              renderRoutes(this.props.route.routes)
-            )}
-          </main>
+          <Container>
+            <main>
+              <Messages />
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                  />
+              ) : (
+                renderRoutes(this.props.route.routes)
+              )}
+            </main>
+          </Container>
         </Segment>
         <Footer />
         <ToastContainer
