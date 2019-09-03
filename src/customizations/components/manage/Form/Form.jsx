@@ -11,9 +11,7 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import dropRight from 'lodash/dropRight';
 import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { settings } from '~/config';
 
 import {
@@ -201,20 +199,9 @@ class Form extends Component {
       };
     }
 
-    let editorState = EditorState.createEmpty();
-
-
-
-
-    const inlineToolbarPlugin = createInlineToolbarPlugin({
-      structure: settings.richTextEditorInlineToolbarButtons,
-    });
-
 
     this.state = {
-      editorState,
       formData,
-      inlineToolbarPlugin,
       errors: {},
       selected:
         formData[tilesLayoutFieldname].items.length > 0
@@ -559,8 +546,6 @@ class Form extends Component {
 
     let nop = () => {};
     
-    const onChange = (editorState) => this.setState({editorState});
-
     // return (
     //   <Editor
     //     onChange={this.onChange}
@@ -652,13 +637,16 @@ class Form extends Component {
     return uuid;
   };
 
+  onChange = (currentNode) => {
+    this.setState({ currentNode });
+  };
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
@@ -682,9 +670,8 @@ class Form extends Component {
               onDragEnd={type => console.log('MosaicWindow.onDragEnd', type)}
               renderToolbar={false}
             >
-
+              <button onClick={() => console.log(this.state)}>test</button>
               {this.renderEditTile(tilesDict[tileid]['@type'], tileid)}
-              <InlineToolbar />
               {/* <EditTile */}
               {/*   id={tile} */}
               {/*   index={index} */}
