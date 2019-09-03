@@ -313,11 +313,11 @@ body #page-document .imageAndRichText + p {
 
 #page-document {
   .mosaic-root {
-    position: relative;
+    // position: relative;
   }
   .mosaic-tile {
     margin: 0;
-    position: relative;
+    // position: relative;
   }
   .mosaic-window-toolbar {
     display: none;
@@ -334,11 +334,31 @@ body #page-document .imageAndRichText + p {
     box-shadow: none;
     border-radius: 0;
   }
+  .mosaic-window-additional-actions-bar {
+    display: none;
+  }
+  .mosaic-split {
+    display: none!important;
+  }
 }
 
 .mosaic-blueprint-theme {
-  min-height: 300px;
+  min-height: 600px;
 }
+
+.chartWrapperView {
+  .tile-inner-wrapper {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    > .recharts-responsive-container {
+      flex-grow: 1;
+    }
+  }
+}
+
+
 
 /*---  Country page  ---*/
 
