@@ -20,8 +20,9 @@ import {
 } from '@plone/volto/config';
 
 // Tiles
-import TwoColumnsTileEdit from '~/components/manage/Tiles/TwoColumnsTile/Edit';
-import TwoColumnsTileView from '~/components/manage/Tiles/TwoColumnsTile/View';
+import ChartTileEdit from '~/components/manage/Tiles/ChartTile/ChartTileEdit';
+import ChartTileView from '~/components/manage/Tiles/ChartTile/ChartTileView';
+
 
 import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
 import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
@@ -36,6 +37,7 @@ import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyl
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import underlineSVG from '@plone/volto/icons/underline.svg';
 import divideVertical from '@plone/volto/icons/divide-vertical.svg';
+import chartIcon from '@plone/volto/icons/world.svg'
 
 const Underline = createInlineStyleButton({
   style: 'UNDERLINE',
@@ -73,15 +75,21 @@ export const tiles = {
     {
       title: 'imageandrichtext',
       icon: divideVertical
+    },
+    {
+      title: 'charttile',
+      icon: chartIcon
     }
   ],
   defaultTilesViewMap: {
     ...defaultTiles.defaultTilesViewMap,
-    imageandrichtext: ImageAndRichTextTileView
+    imageandrichtext: ImageAndRichTextTileView,
+    charttile: ChartTileView
   },
   defaultTilesEditMap: {
     ...defaultTiles.defaultTilesEditMap,
-    imageandrichtext: ImageAndRichTextTileEdit
+    imageandrichtext: ImageAndRichTextTileEdit,
+    charttile: ChartTileEdit
   },
   // messagesTiles: defaultTiles.messagesTiles,
   // requiredTiles: defaultTiles.requiredTiles,

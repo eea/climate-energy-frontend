@@ -1,44 +1,57 @@
-import React, { Component } from 'react';
+/**
+* View image tile.
+* @module components/manage/Tiles/Hero/View
+*/
+
+import React from 'react';
 import PropTypes from 'prop-types';
+import { flattenToAppURL } from '@plone/volto/helpers';
+// import PropTypes from 'prop-types';
 
+import {
+    ResponsiveContainer,
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+  } from 'recharts';
 
-const data = [
-    {name: '00', Decidous: 4000, Conifers: 2400,},
-    {name: '04', Decidous: 3000, Conifers: 1398,},
-    {name: '08', Decidous: 2000, Conifers: 9800,},
-    {name: '12', Decidous: 2780, Conifers: 3908,},
-    {name: '16', Decidous: 1890, Conifers: 4800,},
-];
-  
-  class StackedBarChart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            renderChart: false,
-        
-        }
-    }
+/**
+ * View image tile class.
+ * @class View
+ * @extends Component
+ */
+const StackedBarChartView = ({ data }) => (
+  <div className="chartWrapperView">
+    <div className="tile-inner-wrapper">
+      <ResponsiveContainer>
+        <BarChart
+          data={JSON.parse(data.chartData)}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Decidous" stackId="a" fill="#225511" />
+          <Bar dataKey="Conifers" stackId="a" fill="#769e2e" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  </div>
+);
 
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+StackedBarChartView.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
-
-    render() {
-      return <ResponsiveContainer>
-                <BarChart
-                    data={this.state.chartData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="Decidous" stackId="a" fill="#225511" />
-                <Bar dataKey="Conifers" stackId="a" fill="#769e2e" />
-                </BarChart>
-              </ResponsiveContainer>
-         
-        }
-  }
-  
-
-  export default StackedBarChart
+export default StackedBarChartView;
