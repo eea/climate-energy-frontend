@@ -427,9 +427,9 @@ class Form extends Component {
       let second;
       if (direction === 'row') {
         first = destination;
-        second = uuid;
+        second = id;
       } else {
-        first = uuid;
+        first = id;
         second = destination;
       }
 
