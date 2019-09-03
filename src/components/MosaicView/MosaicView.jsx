@@ -14,25 +14,25 @@ import { Container, Image } from 'semantic-ui-react';
 import { settings, tiles } from '~/config';
 
 import {
+  Mosaic,
+  MosaicWindow,
   // Corner,
   // createBalancedTreeFromLeaves,
   // getLeaves,
   // getNodeAtPath,
   // getOtherDirection,
   // getPathToCorner,
-  Mosaic,
   // MosaicDirection,
   // MosaicNode,
   // MosaicParent,
-  MosaicWindow,
-  MosaicZeroState,
+  // MosaicZeroState,
   // updateTree,
 } from 'react-mosaic-component';
 
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
-  hasTilesData,
+  // hasTilesData,
 } from '@plone/volto/helpers';
 
 /**
@@ -50,15 +50,15 @@ class MosaicView extends Component {
     console.log('content', content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
-    let first = content[tilesLayoutFieldname].items[0];
+    let layout = content[tilesLayoutFieldname].layout;
 
     if (!__SERVER__) {
       this.state = {
-        currentNode: first,
+        currentNode: layout,
       };
     }
 
-    console.log('This.state', this.state);
+    console.log('This.state in constructor', this.state, content);
   }
 
   createNode = () => {
@@ -74,30 +74,29 @@ class MosaicView extends Component {
     console.log('Mosaic.onRelease():', currentNode);
   };
 
-  renderTile(content, tileid, tilesFieldname) {
+  renderTile(tileid) {
+    const content = this.props.content;
+    const tilesFieldname = getTilesFieldname(content);
+    const availableTiles = content[tilesFieldname];
+    const tiletype = availableTiles[tileid]['@type'];
+
+    console.log('Rendering tile:', tileid, tiletype, tilesFieldname, content);
+
     let Tile = null;
-    let tiletype = content[tilesFieldname][tileid]['@type'];
-    console.log('tiletype', tiletype);
     Tile = tiles.defaultTilesViewMap[tiletype];
-    console.log('My tile', Tile);
+
     return Tile !== null ? (
-      <div>
-        <span>Aici vine tile</span>
-        <Tile
-          key={tileid}
-          properties={content}
-          data={content[tilesFieldname][tileid]}
-        />
+      <div class="tile-container">
+        <Tile key={tileid} properties={content} data={availableTiles[tileid]} />
       </div>
     ) : (
-      <div> {JSON.stringify(content[tilesFieldname][tileid]['@type'])} </div>
+      <div> {JSON.stringify(tiletype)} </div>
     );
   }
 
   render() {
     const content = this.props.content;
-    const tilesFieldname = getTilesFieldname(content);
-    console.log('This.state', this.state);
+    console.log('This.state in render: ', this.state);
 
     return true ? (
       <div id="page-document" className="ui wrapper">
@@ -109,7 +108,7 @@ class MosaicView extends Component {
               createNode={this.createNode}
               path={path}
             >
-              {this.renderTile(content, tileid, tilesFieldname)}
+              {this.renderTile(tileid)}
             </MosaicWindow>
           )}
           value={this.state.currentNode}

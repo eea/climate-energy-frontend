@@ -672,7 +672,7 @@ class Form extends Component {
           data={data}
           properties={formData}
           onAddTile={nop}
-          onChangeTile={nop}
+          onChangeTile={this.onChangeTile}
           onMutateTile={nop}
           onChangeField={nop}
           onDeleteTile={nop}
