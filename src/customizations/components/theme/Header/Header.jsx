@@ -130,6 +130,26 @@ class Header extends Component {
     let headerImage = this.state.defaultHeaderImage
       ? this.state.defaultHeaderImage.image
       : staticHeader;
+    let headerImageUrl =
+      this.state.inCountryFolder && this.state.url
+        ? this.state.url
+        : headerImage;
+
+    // console.log(
+    //   'header',
+    //   this.state.defaultHeaderImage,
+    //   '1',
+    //   staticHeader,
+    //   '3',
+    //   this.state.inCountryFolder,
+    //   '4',
+    //   this.state.url,
+    //   '5',
+    //   headerImage,
+    //   '6',
+    //   headerImageUrl,
+    // );
+
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -160,9 +180,7 @@ class Header extends Component {
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
 
-              <HeaderImage
-                url={this.state.inCountryFolder ? this.state.url : headerImage}
-              >
+              <HeaderImage url={headerImageUrl}>
                 {this.state.inCountryFolder ? (
                   <div className="header-image">
                     <h1>{this.state.title}</h1>
