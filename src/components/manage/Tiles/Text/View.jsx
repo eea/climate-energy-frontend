@@ -5,22 +5,32 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
+import redraft from 'redraft';
+import { settings } from '~/config';
 
 /**
  * View text tile class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) =>
-  data.text ? (
+const View = ({ data }) => {
+  let text = data.text;
+
+  if (typeof data.text === 'string') {
+    data.text.replace(/(<? *script)/gi, 'illegalscript');
+  } else {
+    text = redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions);
+  }
+  return data.text ? (
     <div
       dangerouslySetInnerHTML={{
-        __html: typeof(data.text) === 'string' ? data.text.replace(/(<? *script)/gi, 'illegalscript') : '',
+        __html: text,
       }}
     />
   ) : (
     ''
   );
+};
 
 /**
  * Property types.

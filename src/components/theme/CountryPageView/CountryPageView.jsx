@@ -51,21 +51,20 @@ const mapDispatchToProps = {
   getParentFolderData,
 };
 
-
 const data = [
   { name: '01', uv: 31, Species: 9 },
   { name: '04', uv: 22, Species: 18 },
-  { name: '07', uv: 2,  Species: 38 },
+  { name: '07', uv: 2, Species: 38 },
   { name: '10', uv: 24, Species: 16 },
   { name: '18', uv: 21, Species: 19 },
 ];
 
 const coverage = [
   { name: '01', uv: 5, pv: 8, amt: 12 },
-  { name: '04', uv: 7, pv: 13, amt: 3},
+  { name: '04', uv: 7, pv: 13, amt: 3 },
   { name: '07', uv: 6, pv: 15, amt: 19 },
-  { name: '10', uv: 3, pv: 12, amt: 8},
-  { name: '18', uv: 5, pv: 15, amt: 9},
+  { name: '10', uv: 3, pv: 12, amt: 8 },
+  { name: '18', uv: 5, pv: 15, amt: 9 },
 ];
 
 class StackedBarChart extends Component {
@@ -96,16 +95,37 @@ class AreaBarChart extends Component {
           height={400}
           data={coverage}
           margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis unit="M"/>
+          <YAxis unit="M" />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stackId="1" stroke="#005555" fill="#005555" />
-          <Area type="monotone" dataKey="pv" stackId="1" stroke="#3d8888" fill="#3d8888" />
-          <Area type="monotone" dataKey="amt" stackId="1" stroke="#7abcbc" fill="#7abcbc" />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            stackId="1"
+            stroke="#005555"
+            fill="#005555"
+          />
+          <Area
+            type="monotone"
+            dataKey="pv"
+            stackId="1"
+            stroke="#3d8888"
+            fill="#3d8888"
+          />
+          <Area
+            type="monotone"
+            dataKey="amt"
+            stackId="1"
+            stroke="#7abcbc"
+            fill="#7abcbc"
+          />
         </AreaChart>
       </ResponsiveContainer>
     );
@@ -175,13 +195,15 @@ class CountryPageView extends Component {
     const content = this.props.content;
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-    {/*if (!this.tabs) {
+    {
+      /*if (!this.tabs) {
       const pathArr = this.props.location.pathname.split('/');
       pathArr.length = 3;
       const path = pathArr.join('/');
       this.props.getParentFolderData(path);
     }
-    */}
+    */
+    }
 
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
@@ -220,11 +242,15 @@ class CountryPageView extends Component {
           <div className="ui active tab tab-content ">
             <div className="ui stackable two column grid">
               <div className="column">
-
                 <div className="ui one column stackable grid">
                   <div className="column">
                     <h2>Biodiversity and nature</h2>
-                    <p>Forests are intimately linked to Romania's cultural, economic, social and historical development. The country is located in the continental temperate region, with a varied relief ranging from seaside to mountain.</p>
+                    <p>
+                      Forests are intimately linked to Romania's cultural,
+                      economic, social and historical development. The country
+                      is located in the continental temperate region, with a
+                      varied relief ranging from seaside to mountain.
+                    </p>
                   </div>
                 </div>
 
@@ -234,23 +260,27 @@ class CountryPageView extends Component {
                       <div className="ui grid">
                         <div className="four wide column">
                           <h5>Tree species lost</h5>
-                            <div className="land-data-wrapper">
-                              <div className="land-data">12</div>
-                              <div className="land-data-content">species threatened by extinction</div>
+                          <div className="land-data-wrapper">
+                            <div className="land-data">12</div>
+                            <div className="land-data-content">
+                              species threatened by extinction
                             </div>
-                            <div className="ui bulleted list">
-                              <div className="item">
-                                Conifer
-                                <span>8 species</span>
-                              </div>
-                              <div className="item">
-                                Broadleaved
-                                <span>4 species</span>
-                              </div>
+                          </div>
+                          <div className="ui bulleted list">
+                            <div className="item">
+                              Conifer
+                              <span>8 species</span>
                             </div>
+                            <div className="item">
+                              Broadleaved
+                              <span>4 species</span>
+                            </div>
+                          </div>
                           <p>Integer magna nunc, scelerisque in lacinia nec.</p>
                         </div>
-                        <span className="discreet">From 2001 to 2018, Romania lost 336kha of tree cover.</span>
+                        <span className="discreet">
+                          From 2001 to 2018, Romania lost 336kha of tree cover.
+                        </span>
                         <div className="eight wide column">
                           <div className="chart-container">
                             <StackedBarChart />
@@ -267,9 +297,16 @@ class CountryPageView extends Component {
                       <div className="ui grid">
                         <div className="four wide column">
                           <h5>Species Coverage</h5>
-                          <div className="chart-description">Vestibulum eget est ac lorem dapibus lacinia. Integer magna nunc, scelerisque in lacinia nec, laoreet non augue. Nunc quis pharetra magna, in convallis ligula.</div>
+                          <div className="chart-description">
+                            Vestibulum eget est ac lorem dapibus lacinia.
+                            Integer magna nunc, scelerisque in lacinia nec,
+                            laoreet non augue. Nunc quis pharetra magna, in
+                            convallis ligula.
+                          </div>
                         </div>
-                        <span className="discreet">From 2001 to 2018, Romania lost 336kha of tree cover.</span>
+                        <span className="discreet">
+                          From 2001 to 2018, Romania lost 336kha of tree cover.
+                        </span>
                         <div className="eight wide column">
                           <div className="chart-container">
                             <AreaBarChart />
@@ -286,7 +323,9 @@ class CountryPageView extends Component {
                       <h5>Forest coverage</h5>
                       <div className="land-data-wrapper">
                         <div className="land-data">26%</div>
-                        <div className="land-data-content">of Romania's land surface <span>6.2 Mha</span></div>
+                        <div className="land-data-content">
+                          of Romania's land surface <span>6.2 Mha</span>
+                        </div>
                       </div>
                       <div className="coverage-data">
                         <div className="owned-data">
@@ -305,34 +344,34 @@ class CountryPageView extends Component {
                       <h5>Forest deadwood volume</h5>
                       <div className="land-data-wrapper">
                         <div className="land-data">8</div>
-                        <div className="land-data-content">m3/ha <br /> standing deadwood volume</div>
+                        <div className="land-data-content">
+                          m3/ha <br /> standing deadwood volume
+                        </div>
                       </div>
                       <div className="ui bulleted list">
                         <div className="item">
                           Conifer
                           <span>94 species</span>
                         </div>
-                        <div className="item">
-                          Broadleaved
-                        </div>
+                        <div className="item">Broadleaved</div>
                       </div>
                       <span className="discreet">See all countries</span>
                     </div>
                   </div>
                 </div>
-
-
               </div>
 
               <div className="column map-container">
                 <div className="map-wrapper">
-                  <iframe src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true" width="100%" height="490"></iframe>
+                  <iframe
+                    src="https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe&extent=-20.0,30.0,44.0,66.0&zoom=true"
+                    width="100%"
+                    height="490"
+                  />
                 </div>
 
                 <div className="map-buttons">
-                  <button className="ui primary button">
-                    Land Cover
-                  </button>
+                  <button className="ui primary button">Land Cover</button>
                   <button className="ui button">Map type no2</button>
                   <button className="ui button">Map type no3</button>
                 </div>
@@ -340,7 +379,6 @@ class CountryPageView extends Component {
             </div>
           </div>
         </div>
-
 
         <div className="country-page-content-wrapper">
           {map(content[tilesLayoutFieldname].items, tile => {
