@@ -23,7 +23,6 @@ const messages = defineMessages({
     defaultMessage: 'Copyright',
   },
 });
-import 'semantic-ui-css/semantic.min.css'
 
 /**
  * Component to display the footer.
@@ -41,73 +40,70 @@ const Footer = ({ intl }) => (
   >
     <img className="footerImage" src={footerImage} alt="" />
     <Container>
-     
-
-      <Grid divided='vertically'>
-        <Grid.Row columns={4}>
 
 
-          <Grid.Column>
+      <div className="ui vertically divided grid">
+        <div className="four column row">
+          <div className="column">
+
             <b>ABOUT</b>
             <p>Fise - Forest Information System for Europe is a forest knowledge base in support of the EU Forest Strategy <a href="#">See more</a></p>
-            <img src={LogoImage} alt="Forest"/>
-          </Grid.Column>
+            <img style={{ width: '200px' }} src={LogoImage} alt="Forest" />
+          </div>
 
 
 
-          <Grid.Column>
-            <div style={{display: 'none'}}>fasasf</div>
-          </Grid.Column>
+          <div className="column">
+
+            <div>
+              <div style={{ display: 'none' }}> fasasf </div>
+            </div>
+          </div>
 
 
-          <Grid.Column>
-            
-                <b>LINKS</b>
-                <div role="listitem" className="item">
-                  <Link className="item" to="/legal_notice">
-                    <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
-                  </Link>
-                </div>
-                <div role="listitem" className="item">
-                  <Link className="item" to="/private_policy">
-                    <FormattedMessage
-                      id="private_policy"
-                      defaultMessage="Private policy"
-                    />
-                  </Link>
-                </div>
-                <div role="listitem" className="item">
-                  <Link className="item" to="/credits">
-                    <FormattedMessage id="Credits" defaultMessage="Credis" />
-                  </Link>
-                </div>
+          <div className="column">
 
-          </Grid.Column>
 
-          
-          <Grid.Column>
+            <b>LINKS</b>
+            <ul className="unlist">
+
+              <li>
+                <Link className="item" to="/legal_notice">
+                  <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
+                </Link>
+              </li>
+
+              <li>
+
+                <Link className="item" to="/private_policy">
+                  <FormattedMessage
+                    id="private_policy"
+                    defaultMessage="Private policy"
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link className="item" to="/credits">
+                  <FormattedMessage id="Credits" defaultMessage="Credis" />
+                </Link>
+              </li>
+            </ul>
+
+          </div>
+
+
+
+          <div className="column">
             <b>PARTNERS</b>
-            <Grid divide="vertically">
-              <Grid.Row columns={2}>
-
-                <Grid.Column>
-                  <img className="footerLogo" src={eeaLogo} alt=""/>
-                </Grid.Column>
-
-                <Grid.Column>              
-                  <img className="footerLogo" src={ecLogo} alt=""/>
-                </Grid.Column>
-
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
+            <div className="footerLogoWrapper">
+              <img className="footerLogo" src={eeaLogo} alt="" />
+              <img className="footerLogo" src={ecLogo} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-
-        </Grid.Row>
-      </Grid>
-
-  
     </Container>
   </Segment>
 );
