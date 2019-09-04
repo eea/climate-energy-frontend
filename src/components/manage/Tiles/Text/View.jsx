@@ -15,21 +15,21 @@ import { settings } from '~/config';
  */
 const View = ({ data }) => {
   let text = data.text;
+  let result;
 
-  if (typeof data.text === 'string') {
-    data.text.replace(/(<? *script)/gi, 'illegalscript');
+  if (typeof text === 'string') {
+    text = text.replace(/(<? *script)/gi, 'illegalscript');
+    result = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: text,
+        }}
+      />
+    );
   } else {
-    text = redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions);
+    result = redraft(text, settings.ToHTMLRenderers, settings.ToHTMLOptions);
   }
-  return data.text ? (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: text,
-      }}
-    />
-  ) : (
-    ''
-  );
+  return text ? result : '';
 };
 
 /**
