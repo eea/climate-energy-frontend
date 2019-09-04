@@ -48,7 +48,7 @@ const Footer = ({ intl }) => (
 
             <b>ABOUT</b>
             <p>Fise - Forest Information System for Europe is a forest knowledge base in support of the EU Forest Strategy <a href="#">See more</a></p>
-            <img src={LogoImage} alt="Forest" />
+            <img style={{ width: '200px' }} src={LogoImage} alt="Forest" />
           </div>
 
 
@@ -66,27 +66,27 @@ const Footer = ({ intl }) => (
 
             <b>LINKS</b>
             <ul className="unlist">
-              
-            <li>
-              <Link className="item" to="/legal_notice">
-                <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
-              </Link>
-            </li>
 
-            <li>
-            
-            <Link className="item" to="/private_policy">
-              <FormattedMessage
-                id="private_policy"
-                defaultMessage="Private policy"
-              />
-            </Link>
-            </li>
-            <li>
-            <Link className="item" to="/credits">
-              <FormattedMessage id="Credits" defaultMessage="Credis" />
-            </Link>
-            </li>
+              <li>
+                <Link className="item" to="/legal_notice">
+                  <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
+                </Link>
+              </li>
+
+              <li>
+
+                <Link className="item" to="/private_policy">
+                  <FormattedMessage
+                    id="private_policy"
+                    defaultMessage="Private policy"
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link className="item" to="/credits">
+                  <FormattedMessage id="Credits" defaultMessage="Credis" />
+                </Link>
+              </li>
             </ul>
 
           </div>
@@ -94,7 +94,7 @@ const Footer = ({ intl }) => (
 
 
           <div className="column">
-           <b>PARTNERS</b>
+            <b>PARTNERS</b>
             <div className="footerLogoWrapper">
               <img className="footerLogo" src={eeaLogo} alt="" />
               <img className="footerLogo" src={ecLogo} alt="" />
