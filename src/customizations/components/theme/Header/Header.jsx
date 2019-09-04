@@ -15,12 +15,15 @@ import {
   SearchWidget,
   Breadcrumbs,
 } from '@plone/volto/components';
+
 import HeaderImage from '~/components/theme/Header/HeaderImage';
 import HomepageSlider from '~/components/theme/Header/HomepageSlider';
 
 import { getFrontpageSlides, getDefaultHeaderImage } from '~/actions';
 
 import HeaderBackground from './header-bg.png';
+
+const staticHeader = require('~/static/s1.jpg');
 
 /**
  * Header component class.
@@ -31,7 +34,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHomepage: this.props.actualPathName == '/',
+      isHomepage: this.props.actualPathName === '/',
       url: null,
       description: null,
       title: null,
@@ -68,7 +71,7 @@ class Header extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.actualPathName !== this.props.actualPathName) {
       this.setState({
-        isHomepage: nextProps.actualPathName == '/',
+        isHomepage: nextProps.actualPathName === '/',
       });
     }
     if (
@@ -103,7 +106,7 @@ class Header extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.actualPathName !== this.props.actualPathName) {
       this.setState({
-        isHomepage: this.props.actualPathName == '/',
+        isHomepage: this.props.actualPathName === '/',
       });
     }
   }
@@ -124,6 +127,9 @@ class Header extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    let headerImage = this.state.defaultHeaderImage
+      ? this.state.defaultHeaderImage.image
+      : staticHeader;
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -151,17 +157,11 @@ class Header extends Component {
           {this.state.isHomepage ? (
             <HomepageSlider items={this.state.frontPageSlides} />
           ) : (
-            // <div>test</div>
             <div>
               <Breadcrumbs pathname={this.props.pathname} />
 
               <HeaderImage
-                url={
-                  this.state.inCountryFolder
-                    ? this.state.url
-                    : this.state.defaultHeaderImage &&
-                      this.state.defaultHeaderImage.image
-                }
+                url={this.state.inCountryFolder ? this.state.url : headerImage}
               >
                 {this.state.inCountryFolder ? (
                   <div className="header-image">
