@@ -10,6 +10,7 @@
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import dropRight from 'lodash/dropRight';
+// import classNames from 'classnames';
 
 import {
   Corner,
@@ -25,6 +26,10 @@ import {
   MosaicWindow,
   MosaicZeroState,
   updateTree,
+  SplitButton,
+  ExpandButton,
+  RemoveButton,
+  Separator,
 } from 'react-mosaic-component';
 
 import { tiles } from '~/config';
@@ -123,8 +128,6 @@ class AddNewTile extends Component {
     this.state = {
       availableTiles,
     };
-    console.log('Tiles:', tiles);
-    console.log('availableTiles:', availableTiles);
   }
 
   render() {
@@ -266,7 +269,7 @@ class Form extends Component {
           ? formData[tilesLayoutFieldname].items[0]
           : null,
       currentNode,
-      height: 500
+      height: 500,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -274,8 +277,9 @@ class Form extends Component {
     this.onSelectTile = this.onSelectTile.bind(this);
     this.onDeleteTile = this.onDeleteTile.bind(this);
     this.onAddTile = this.onAddTile.bind(this);
-    // this.onMoveTile = this.onMoveTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+    // this.onMoveTile = this.onMoveTile.bind(this);
     // this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
     // this.onFocusNextTile = this.onFocusNextTile.bind(this);
     // this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -411,17 +415,15 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     console.log('doing on add tile');
+
     const id = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
     const insert = index === -1 ? totalItems : index;
 
-    console.log('Called createNode', this.state.currentNode);
-    // this.setState({ currentNode: this.state.currentNode || uuid });
-    // console.log(this.state);
-
     let { currentNode } = this.state;
+
     if (currentNode) {
       const path = getPathToCorner(currentNode, Corner.TOP_RIGHT);
       const parent = getNodeAtPath(currentNode, dropRight(path));
@@ -450,40 +452,30 @@ class Form extends Component {
           },
         },
       ]);
-      console.log('Current node after updateTree', currentNode);
     } else {
       currentNode = id;
-      console.log('Current node after set uuid', currentNode);
     }
 
-    console.log('Current node', currentNode);
-    this.setState(
-      {
-        // currentNode: currentNode,
-        formData: {
-          ...this.state.formData,
-          [tilesLayoutFieldname]: {
-            items: [
-              ...this.state.formData[tilesLayoutFieldname].items.slice(
-                0,
-                insert,
-              ),
-              id,
-              ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
-            ],
-            layout: currentNode,
-          },
-          [tilesFieldname]: {
-            ...this.state.formData[tilesFieldname],
-            [id]: {
-              '@type': type,
-            },
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
+            id,
+            ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
+          ],
+          layout: currentNode,
+        },
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
+          [id]: {
+            '@type': type,
           },
         },
-        selected: id,
       },
-      // () => this.setState({ currentNode }),
-    );
+      selected: id,
+    });
 
     return id;
   }
@@ -590,7 +582,6 @@ class Form extends Component {
 
     let nop = () => {};
 
-    console.log('Form data', formData);
     return (
       <div>
         <Tile
@@ -615,8 +606,8 @@ class Form extends Component {
   }
 
   createNode = () => {
-    const uuid = this.onAddTile('text', 0);
-    return uuid;
+    const newNode = this.onAddTile('text', 0);
+    return newNode;
   };
 
   onChange = currentNode => {
@@ -642,8 +633,35 @@ class Form extends Component {
     <AddNewTile onMutateTile={onMutateTile} tile={tile} />,
   ];
 
-  onResize = (event, {element, size, handle}) => {
-    this.setState({height: size.height});
+  onResize = (event, { element, size, handle }) => {
+    this.setState({ height: size.height });
+  };
+
+  getToolbar = tileid => {
+    const { formData } = this.state;
+    const tilesFieldname = getTilesFieldname(formData);
+    const tileType = this.state.formData[tilesFieldname][tileid]['@type'];
+
+    let titlediv = <div className="mosaic-window-title">Tile: {tileType}</div>;
+
+    return (props, draggable) => {
+      console.log('props, draggable', props, draggable);
+      return (
+        <div
+          key={tileid}
+          className="mosaic-window-toolbar"
+          style={{ width: '100%' }}
+        >
+          {titlediv}
+          <div className="mosaic-window-controls">
+            <Separator />
+            <SplitButton />
+            <ExpandButton />
+            <RemoveButton />
+          </div>
+        </div>
+      );
+    };
   };
 
   /**
@@ -652,51 +670,50 @@ class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel, onSubmit } = this.props;
-    const { formData } = this.state;
-    const tilesFieldname = getTilesFieldname(formData);
+    const { schema } = this.props; // , onCancel, onSubmit
+    // const { formData } = this.state;
+    // const tilesFieldname = getTilesFieldname(formData);
     // const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
     // const renderTiles = formData[tilesLayoutFieldname].items;
     // const tilesDict = formData[tilesFieldname];
     // const content = this.props.content;
 
+    // additionalControls={this.additionalControls(
+    //   tileid,
+    //   this.onMutateTile,
+    // )}
+
     return (
       <div className="ui wrapper">
-
-        <ResizableBox 
-          width={200} 
-          height={200} 
-          minConstraints={[100, 100]} 
+        <ResizableBox
+          width={200}
+          height={200}
+          minConstraints={[100, 100]}
           onResize={this.onResize}
         >
-        <Mosaic
-          renderTile={(tileid, path) => (
-            <MosaicWindow
-              // <number>
-              additionalControls={this.additionalControls(
-                tileid,
-                this.onMutateTile,
-              )}
-              title="Window"
-              createNode={this.createNode}
-              path={path}
-              onDragStart={() => console.log('MosaicWindow.onDragStart')}
-              onDragEnd={type => console.log('MosaicWindow.onDragEnd', type)}
-              renderToolbar={false}
-            >
-              <button onClick={() => console.log(this.state)}>test</button>
-              {this.renderEditTile(tileid)}
-            </MosaicWindow>
-          )}
-          zeroStateView={<MosaicZeroState createNode={this.createNode} />}
-          value={this.state.currentNode}
-          onChange={this.onChange}
-          onRelease={this.onRelease}
-          className={THEMES[this.state.currentTheme]}
-        />
-    </ResizableBox>
-
-
+          <Mosaic
+            renderTile={(tileid, path) => (
+              <MosaicWindow
+                // <number>
+                title="Window"
+                createNode={this.createNode}
+                path={path}
+                onDragStart={() => console.log('MosaicWindow.onDragStart')}
+                onDragEnd={type => console.log('MosaicWindow.onDragEnd', type)}
+                renderToolbar={this.getToolbar(tileid)}
+                key={tileid}
+              >
+                <button onClick={() => console.log(this.state)}>test</button>
+                {this.renderEditTile(tileid)}
+              </MosaicWindow>
+            )}
+            zeroStateView={<MosaicZeroState createNode={this.createNode} />}
+            value={this.state.currentNode}
+            onChange={this.onChange}
+            onRelease={this.onRelease}
+            className={THEMES[this.state.currentTheme]}
+          />
+        </ResizableBox>
 
         <Portal
           node={__CLIENT__ && document.getElementById('sidebar-metadata')}
@@ -707,23 +724,27 @@ class Form extends Component {
             error={keys(this.state.errors).length > 0}
           >
             {map(schema.fieldsets, item => [
-              <Segment secondary attached>
-                {item.title}
-              </Segment>,
-              <Segment attached>
-                {map(item.fields, (field, index) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    focus={index === 0}
-                    value={this.state.formData[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>,
+              <React.Fragment key={item}>
+                <Segment secondary attached>
+                  {item.title}
+                </Segment>
+                ,
+                <Segment attached>
+                  {map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      focus={index === 0}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>
+                ,
+              </React.Fragment>,
             ])}
           </UiForm>
         </Portal>
