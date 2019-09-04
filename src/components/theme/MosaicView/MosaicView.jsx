@@ -98,8 +98,11 @@ class MosaicView extends Component {
     const content = this.props.content;
     console.log('This.state in render: ', this.state);
 
+    const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+    const height = content[tilesLayoutFieldname].layout_height || 500;
+
     return true ? (
-      <div id="page-document" className="ui wrapper">
+      <div id="page-document" className="ui wrapper" style={{ height: height }}>
         {/* <Helmet title={content.title} /> */}
         <Mosaic
           renderTile={(tileid, path) => (

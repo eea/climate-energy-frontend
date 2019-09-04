@@ -59,6 +59,7 @@ import cameraSVG from '@plone/volto/icons/camera.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import textSVG from '@plone/volto/icons/text.svg';
 import { Resizable, ResizableBox } from 'react-resizable';
+import 'react-resizable/css/styles.css';
 
 // import aheadSVG from '@plone/volto/icons/ahead.svg';
 // import clearSVG from '@plone/volto/icons/clear.svg';
@@ -235,6 +236,9 @@ class Form extends Component {
     const tilesFieldname = getTilesFieldname(formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
 
+    let defaultLayoutHeight =
+      formData[tilesLayoutFieldname].layout_height || 500;
+
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
@@ -244,6 +248,7 @@ class Form extends Component {
       formData[tilesLayoutFieldname] = {
         items: [ids.title, ids.description, ids.text],
         layout: null,
+        layout_height: defaultLayoutHeight,
       };
     }
     if (!formData[tilesFieldname]) {
@@ -270,7 +275,7 @@ class Form extends Component {
           ? formData[tilesLayoutFieldname].items[0]
           : null,
       currentNode,
-      height: 500,
+      height: defaultLayoutHeight,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -358,6 +363,7 @@ class Form extends Component {
               ...this.state.formData[tilesLayoutFieldname].items.slice(index),
             ],
             layout: this.state.currentNode,
+            layout_height: this.state.height,
           },
         },
       },
@@ -396,6 +402,7 @@ class Form extends Component {
         [tilesLayoutFieldname]: {
           items: without(this.state.formData[tilesLayoutFieldname].items, id),
           layout: this.state.currentNode,
+          layout_height: this.state.height,
         },
         [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
       },
@@ -467,6 +474,7 @@ class Form extends Component {
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
           layout: currentNode,
+          layout_height: this.state.height,
         },
         [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
@@ -584,25 +592,23 @@ class Form extends Component {
     let nop = () => {};
 
     return (
-      <div>
-        <Tile
-          id={tileid}
-          tile={tileid}
-          data={data}
-          properties={formData}
-          onAddTile={nop}
-          onChangeTile={this.onChangeTile}
-          onMutateTile={nop}
-          onChangeField={nop}
-          onDeleteTile={nop}
-          onSelectTile={nop}
-          onMoveTile={nop}
-          onFocusPreviousTile={nop}
-          onFocusNextTile={nop}
-          selected={true}
-          index={0}
-        />
-      </div>
+      <Tile
+        id={tileid}
+        tile={tileid}
+        data={data}
+        properties={formData}
+        onAddTile={nop}
+        onChangeTile={this.onChangeTile}
+        onMutateTile={nop}
+        onChangeField={nop}
+        onDeleteTile={nop}
+        onSelectTile={nop}
+        onMoveTile={nop}
+        onFocusPreviousTile={nop}
+        onFocusNextTile={nop}
+        selected={true}
+        index={0}
+      />
     );
   }
 
@@ -623,6 +629,7 @@ class Form extends Component {
           [tilesLayoutFieldname]: {
             ...this.state.formData[tilesLayoutFieldname],
             layout: currentNode,
+            layout_height: this.state.height,
           },
         },
       },
@@ -635,7 +642,18 @@ class Form extends Component {
   // ];
 
   onResize = (event, { element, size, handle }) => {
-    this.setState({ height: size.height });
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
+    this.setState({
+      height: size.height,
+      formData: {
+        ...this.state.formData,
+        [tilesLayoutFieldname]: {
+          ...this.state.formData[tilesLayoutFieldname],
+          layout_height: this.state.height,
+        },
+      },
+    });
   };
 
   getToolbar = (tileid, onMutateTile) => {
@@ -689,7 +707,7 @@ class Form extends Component {
       <div className="ui wrapper">
         <ResizableBox
           width={200}
-          height={200}
+          height={this.state.height}
           minConstraints={[100, 100]}
           onResize={this.onResize}
         >
@@ -705,7 +723,6 @@ class Form extends Component {
                 renderToolbar={this.getToolbar(tileid, this.onMutateTile)}
                 key={tileid}
               >
-                <button onClick={() => console.log(this.state)}>test</button>
                 {this.renderEditTile(tileid)}
               </MosaicWindow>
             )}

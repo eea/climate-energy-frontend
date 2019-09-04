@@ -340,12 +340,32 @@ body #page-document .imageAndRichText + p {
   .mosaic-split {
     display: none!important;
   }
+  .tile-container {
+    height: 100%;
+  }
 }
 
+#page-edit {
+  .mosaic-window-body {
+    padding: 0.3rem;
+    .tile {
+      height: 100%;
+      .tile-inner-wrapper {
+        height: 100%;
+        .hero-body {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
 
 .chartWrapperView {
+  height: 100%;
+  min-height: 100px;
   .tile-inner-wrapper {
-    height: 500px;
+    height: 100%;
+    min-height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
