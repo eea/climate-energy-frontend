@@ -133,9 +133,10 @@ class AddNewTile extends Component {
   render() {
     return (
       <div className="add-tile toolbar">
-        {this.state.availableTiles.map(tile => (
-          <Button.Group key={tile.title}>
+        <Button.Group>
+          {this.state.availableTiles.map(tile => (
             <Button
+              key={tile.title}
               icon
               basic
               onClick={() =>
@@ -147,8 +148,8 @@ class AddNewTile extends Component {
               <Icon name={tile.icon} size="24px" />
               {/* <span>{tile.title}</span> */}
             </Button>
-          </Button.Group>
-        ))}
+          ))}
+        </Button.Group>
       </div>
     );
   }
