@@ -127,7 +127,9 @@ class Header extends Component {
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
-          <img className="header-bg" src={HeaderBackground} alt="" />
+          <div className="header-bg">
+            <img src={HeaderBackground} alt="" />
+          </div>
           <div className="header">
             <div className="logo-nav-wrapper space-between">
               <div className="logo">

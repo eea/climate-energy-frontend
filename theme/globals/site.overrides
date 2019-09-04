@@ -57,7 +57,11 @@ body.has-toolbar {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -5px;
+
+    img {
+        width: 100%;
+    }
 }
 
 .header-image {
@@ -80,6 +84,7 @@ body.has-toolbar {
     h1 {
         margin-bottom: 2rem;
         font-weight: bold;
+        font-size: 48px;
     }
     p {
         max-width: 900px;
