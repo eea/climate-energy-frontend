@@ -655,3 +655,7 @@ body #page-document .imageAndRichText + p {
     display: none;
   }
 }
+
+.footerLogo {
+  width: 150px;
+}
