@@ -45,51 +45,65 @@ const Footer = ({ intl }) => (
 
       <Grid divided='vertically'>
         <Grid.Row columns={4}>
+
+
           <Grid.Column>
             <b>ABOUT</b>
             <p>Fise - Forest Information System for Europe is a forest knowledge base in support of the EU Forest Strategy <a href="#">See more</a></p>
             <img src={LogoImage} alt="Forest"/>
           </Grid.Column>
+
+
+
+          <Grid.Column>
             <div style={{display: 'none'}}>fasasf</div>
-          <Grid.Column>
           </Grid.Column>
+
+
           <Grid.Column>
-          <b>LINKS</b>
-          <List vertical>
-            {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
-            <div role="listitem" className="item">
-              <Link className="item" to="/legal_notice">
-                <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
-              </Link>
-            </div>
-            <div role="listitem" className="item">
-              <Link className="item" to="/private_policy">
-                <FormattedMessage
-                  id="private_policy"
-                  defaultMessage="Private policy"
-                />
-              </Link>
-            </div>
-            <div role="listitem" className="item">
-              <Link className="item" to="/credits">
-                <FormattedMessage id="Credits" defaultMessage="Credis" />
-              </Link>
-            </div>
-            </List>
+            
+                <b>LINKS</b>
+                <div role="listitem" className="item">
+                  <Link className="item" to="/legal_notice">
+                    <FormattedMessage id="legal_notice" defaultMessage="Legal notice" />
+                  </Link>
+                </div>
+                <div role="listitem" className="item">
+                  <Link className="item" to="/private_policy">
+                    <FormattedMessage
+                      id="private_policy"
+                      defaultMessage="Private policy"
+                    />
+                  </Link>
+                </div>
+                <div role="listitem" className="item">
+                  <Link className="item" to="/credits">
+                    <FormattedMessage id="Credits" defaultMessage="Credis" />
+                  </Link>
+                </div>
+
           </Grid.Column>
+
+          
           <Grid.Column>
             <b>PARTNERS</b>
             <Grid divide="vertically">
               <Grid.Row columns={2}>
+
                 <Grid.Column>
                   <img className="footerLogo" src={eeaLogo} alt=""/>
                 </Grid.Column>
+
                 <Grid.Column>              
                   <img className="footerLogo" src={ecLogo} alt=""/>
                 </Grid.Column>
+
               </Grid.Row>
             </Grid>
           </Grid.Column>
+
+
+
         </Grid.Row>
       </Grid>
 
