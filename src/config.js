@@ -27,6 +27,7 @@ import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichText
 import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
 import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
+import TextTileView from '~/components/manage/Tiles/Text/View';
 
 // Display types
 import CountryView from '~/components/theme/CountryView/CountryView';
@@ -88,6 +89,7 @@ export const tiles = {
     ...defaultTiles.defaultTilesViewMap,
     imageandrichtext: ImageAndRichTextTileView,
     charttile: ChartTileView,
+    text: TextTileView,
   },
   defaultTilesEditMap: {
     ...defaultTiles.defaultTilesEditMap,

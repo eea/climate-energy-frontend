@@ -76,29 +76,21 @@ class Edit extends Component {
   constructor(props) {
     super(props);
 
-    // if (!__SERVER__) {
-    //   let editorState;
-    //   if (props.data && props.data.text) {
-    //     editorState = EditorState.createWithContent(
-    //       convertFromRaw(props.data.text),
-    //     );
-    //   } else {
-    //     editorState = EditorState.createEmpty();
-    //   }
-    //
-    //   const inlineToolbarPlugin = createInlineToolbarPlugin({
-    //     structure: settings.richTextEditorInlineToolbarButtons,
-    //   });
-    //
-    //   this.state = {
-    //     editorState,
-    //     inlineToolbarPlugin,
-    //     addNewTileOpened: false,
-    //     customTilesOpened: false,
-    //   };
-    // }
-    //
-    // this.onChange = this.onChange.bind(this);
+    if (!__SERVER__) {
+      let htmltext;
+      if (props.data && props.data.text) {
+        htmltext = props.data.text;
+      } else {
+        htmltext = '<p>Please edit this text...</p>';
+      }
+
+      this.state = {
+        htmltext,
+      };
+      console.log('This text', htmltext);
+    }
+
+    this.onChange = this.onChange.bind(this);
   }
 
   /**
@@ -161,19 +153,14 @@ class Edit extends Component {
   //   this.setState({ editorState });
   // }
 
-  onChange(editorState) {
-    if (
-      !isEqual(
-        convertToRaw(editorState.getCurrentContent()),
-        convertToRaw(this.state.editorState.getCurrentContent()),
-      )
-    ) {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        text: convertToRaw(editorState.getCurrentContent()),
-      });
-    }
-    this.setState({ editorState });
+  onChange(event, editor) {
+    const text = editor.getData();
+    console.log({ event, editor, text });
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      text,
+    });
+    // this.setState({ editorState });
   }
 
   // toggleAddNewTile = () =>
@@ -210,15 +197,12 @@ class Edit extends Component {
       >
         <CKEditor
           editor={ClassicEditor}
-          data="<p>Hello from CKEditor 5!</p>"
+          data={this.state.htmltext}
           onInit={editor => {
             // You can store the "editor" and use when it is needed.
             console.log('Editor is ready to use!', editor);
           }}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            console.log({ event, editor, data });
-          }}
+          onChange={this.onChange}
           onBlur={(event, editor) => {
             console.log('Blur.', editor);
           }}
