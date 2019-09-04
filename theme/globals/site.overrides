@@ -693,7 +693,7 @@ color: @darkerGreen;
   margin-left: -2rem;
   background: #f4f4f1;
 }
-nav.navigation .menu a.item:first-of-type { display:none !important }
+nav.navigation .menu > a.item:first-of-type { display:none !important }
 .slider-slide {
   position: relative;
 }
