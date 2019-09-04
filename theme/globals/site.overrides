@@ -687,3 +687,13 @@ color: @darkerGreen;
   list-style-type: none;
   padding-left: 0;
 }
+.thematic-areas {
+  padding-top: 2rem;
+  margin-right: -2rem;
+  margin-left: -2rem;
+  background: #f4f4f1;
+}
+nav.navigation .menu a.item:first-of-type { display:none !important }
+.slider-slide {
+  position: relative;
+}
