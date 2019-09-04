@@ -23,21 +23,23 @@ import {
 import ChartTileEdit from '~/components/manage/Tiles/ChartTile/ChartTileEdit';
 import ChartTileView from '~/components/manage/Tiles/ChartTile/ChartTileView';
 
-
 import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
 import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
+import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
+
 // Display types
-import CountryView from '~/components/CountryView/CountryView';
-import CountryPageView from '~/components/CountryPageView/CountryPageView';
-import HomepageView from '~/components/HomepageView/HomepageView';
+import CountryView from '~/components/theme/CountryView/CountryView';
+import CountryPageView from '~/components/theme/CountryPageView/CountryPageView';
+import HomepageView from '~/components/theme/HomepageView/HomepageView';
+import MosaicView from '~/components/theme/MosaicView/MosaicView';
 
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import underlineSVG from '@plone/volto/icons/underline.svg';
 import divideVertical from '@plone/volto/icons/divide-vertical.svg';
-import chartIcon from '@plone/volto/icons/world.svg'
+import chartIcon from '@plone/volto/icons/world.svg';
 
 const Underline = createInlineStyleButton({
   style: 'UNDERLINE',
@@ -52,7 +54,7 @@ export const settings = {
   ],
 };
 
-console.log(settings)
+console.log(settings);
 
 export const views = {
   ...defaultViews,
@@ -61,7 +63,8 @@ export const views = {
     full_view: CountryView,
     country_tab_view: CountryPageView,
     homepage_view: HomepageView,
-  }
+    mosaic_tiles_view: MosaicView,
+  },
 };
 
 export const widgets = {
@@ -74,22 +77,23 @@ export const tiles = {
     ...defaultTiles.customTiles,
     {
       title: 'imageandrichtext',
-      icon: divideVertical
+      icon: divideVertical,
     },
     {
       title: 'charttile',
-      icon: chartIcon
-    }
+      icon: chartIcon,
+    },
   ],
   defaultTilesViewMap: {
     ...defaultTiles.defaultTilesViewMap,
     imageandrichtext: ImageAndRichTextTileView,
-    charttile: ChartTileView
+    charttile: ChartTileView,
   },
   defaultTilesEditMap: {
     ...defaultTiles.defaultTilesEditMap,
     imageandrichtext: ImageAndRichTextTileEdit,
-    charttile: ChartTileEdit
+    charttile: ChartTileEdit,
+    text: TextTileEdit,
   },
   // messagesTiles: defaultTiles.messagesTiles,
   // requiredTiles: defaultTiles.requiredTiles,

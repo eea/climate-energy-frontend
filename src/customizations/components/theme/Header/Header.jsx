@@ -15,8 +15,8 @@ import {
   SearchWidget,
   Breadcrumbs,
 } from '@plone/volto/components';
-import HeaderImage from '~/components/Header/HeaderImage';
-import HomepageSlider from '~/components/Header/HomepageSlider';
+import HeaderImage from '~/components/theme/Header/HeaderImage';
+import HomepageSlider from '~/components/theme/Header/HomepageSlider';
 
 import { getFrontpageSlides, getDefaultHeaderImage } from '~/actions';
 
