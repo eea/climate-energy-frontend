@@ -543,41 +543,6 @@ class Form extends Component {
     }
   }
 
-  /**
-   * handleKeyDown, sports a way to disable the listeners via an options named
-   * parameter
-   * @method handleKeyDown
-   * @param {object} e Event
-   * @param {number} index Tile index
-   * @param {string} tile Tile type
-   * @param {node} node The tile node
-   * @returns {undefined}
-   */
-  // handleKeyDown(
-  //   e,
-  //   index,
-  //   tile,
-  //   node,
-  //   {
-  //     disableEnter = false,
-  //     disableArrowUp = false,
-  //     disableArrowDown = false,
-  //   } = {},
-  // ) {
-  //   if (e.key === 'ArrowUp' && !disableArrowUp) {
-  //     this.onFocusPreviousTile(tile, node);
-  //     e.preventDefault();
-  //   }
-  //   if (e.key === 'ArrowDown' && !disableArrowDown) {
-  //     this.onFocusNextTile(tile, node);
-  //     e.preventDefault();
-  //   }
-  //   if (e.key === 'Enter' && !disableEnter) {
-  //     this.onAddTile('text', index + 1);
-  //     e.preventDefault();
-  //   }
-  // }
-
   renderEditTile(tileid) {
     const { formData } = this.state; // destructuring
     const tilesFieldname = getTilesFieldname(formData);
@@ -691,17 +656,6 @@ class Form extends Component {
    */
   render() {
     const { schema } = this.props; // , onCancel, onSubmit
-    // const { formData } = this.state;
-    // const tilesFieldname = getTilesFieldname(formData);
-    // const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
-    // const renderTiles = formData[tilesLayoutFieldname].items;
-    // const tilesDict = formData[tilesFieldname];
-    // const content = this.props.content;
-
-    // additionalControls={this.additionalControls(
-    //   tileid,
-    //   this.onMutateTile,
-    // )}
 
     return (
       <div className="ui wrapper">
