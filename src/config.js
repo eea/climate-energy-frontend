@@ -66,6 +66,10 @@ export const views = {
     homepage_view: HomepageView,
     mosaic_tiles_view: MosaicView,
   },
+  contentTypesViews: {
+    ...defaultViews.contentTypesViews,
+    'Plone Site': HomepageView,
+  },
 };
 
 export const widgets = {
