@@ -61,6 +61,7 @@ class HomepageSlider extends Component {
             className="slider-image"
             style={{ backgroundImage: `url(${item.image})` }}
           />
+          <div className="slide-overlay"></div>
           <div className="slide-body">
             <div className="slide-title">{item.title}</div>
             <div className="slide-description">{item.description}</div>
