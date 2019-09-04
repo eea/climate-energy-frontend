@@ -15,7 +15,7 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <div className="slideArrow nextArrow" onClick={onClick}>
-      <Icon name={right} size="25px" />
+      <Icon name={right} size="45px" />
     </div>
   );
 }
@@ -24,7 +24,7 @@ function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <div className="slideArrow prevArrow" onClick={onClick}>
-      <Icon name={left} size="25px" />
+      <Icon name={left} size="45px" />
     </div>
   );
 }

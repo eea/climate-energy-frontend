@@ -15,7 +15,7 @@ const View = ({ data }) =>
   data.text ? (
     <div
       dangerouslySetInnerHTML={{
-        __html: data.text.replace(/(<? *script)/gi, 'illegalscript'),
+        __html: typeof(data.text) === 'string' ? data.text.replace(/(<? *script)/gi, 'illegalscript') : '',
       }}
     />
   ) : (
