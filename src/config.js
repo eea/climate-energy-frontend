@@ -26,6 +26,8 @@ import ChartTileView from '~/components/manage/Tiles/ChartTile/ChartTileView';
 import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
 import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
+import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
+
 // Display types
 import CountryView from '~/components/theme/CountryView/CountryView';
 import CountryPageView from '~/components/theme/CountryPageView/CountryPageView';
@@ -91,6 +93,7 @@ export const tiles = {
     ...defaultTiles.defaultTilesEditMap,
     imageandrichtext: ImageAndRichTextTileEdit,
     charttile: ChartTileEdit,
+    text: TextTileEdit,
   },
   // messagesTiles: defaultTiles.messagesTiles,
   // requiredTiles: defaultTiles.requiredTiles,
