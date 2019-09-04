@@ -5,31 +5,28 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-// import Editor from 'draft-js-plugins-editor';
-// import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { includes, isEqual } from 'lodash';
 import cx from 'classnames';
 
-import { settings, tiles } from '~/config';
+// import Editor from 'draft-js-plugins-editor';
+// import TemplatedTilesSVG from '@plone/volto/icons/theme.svg';
+// import addSVG from '@plone/volto/icons/circle-plus.svg';
+// import cameraSVG from '@plone/volto/icons/camera.svg';
+// import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+// import videoSVG from '@plone/volto/icons/videocamera.svg';
+// import { Button } from 'semantic-ui-react';
+// import { Icon } from '@plone/volto/components';
+// import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
+// import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+// import { includes, isEqual } from 'lodash';
+// import { settings, tiles } from '~/config';
 
-import { Icon } from '@plone/volto/components';
-import addSVG from '@plone/volto/icons/circle-plus.svg';
-import cameraSVG from '@plone/volto/icons/camera.svg';
-import videoSVG from '@plone/volto/icons/videocamera.svg';
-import TemplatedTilesSVG from '@plone/volto/icons/theme.svg';
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-const messages = defineMessages({
-  text: {
-    id: 'Type text…',
-    defaultMessage: 'Type text…',
-  },
-});
+// const messages = defineMessages({
+//   text: {
+//     id: 'Type text…',
+//     defaultMessage: 'Type text…',
+//   },
+// });
 
 /**
  * Edit text tile class.
@@ -87,71 +84,10 @@ class Edit extends Component {
       this.state = {
         htmltext,
       };
-      console.log('This text', htmltext);
     }
 
     this.onChange = this.onChange.bind(this);
   }
-
-  /**
-   * Component will receive props
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  // componentDidMount() {
-  //   if (this.props.selected) {
-  //     this.node.focus();
-  //   }
-  //   document.addEventListener('mousedown', this.handleClickOutside, false);
-  // }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  // componentWillReceiveProps(nextProps) {
-  //   if (!this.props.selected && nextProps.selected) {
-  //     this.node.focus();
-  //     this.setState({
-  //       editorState: EditorState.moveFocusToEnd(this.state.editorState),
-  //     });
-  //   }
-  // }
-  //
-  /**
-   * Component will receive props
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  // componentWillUnmount() {
-  //   if (this.props.selected) {
-  //     this.node.focus();
-  //   }
-  //   document.removeEventListener('mousedown', this.handleClickOutside, false);
-  // }
-
-  /**
-   * Change handler
-   * @method onChange
-   * @param {object} editorState Editor state.
-   * @returns {undefined}
-   */
-  // onChange(editorState) {
-  //   if (
-  //     !isEqual(
-  //       convertToRaw(editorState.getCurrentContent()),
-  //       convertToRaw(this.state.editorState.getCurrentContent()),
-  //     )
-  //   ) {
-  //     this.props.onChangeTile(this.props.tile, {
-  //       ...this.props.data,
-  //       text: convertToRaw(editorState.getCurrentContent()),
-  //     });
-  //   }
-  //   this.setState({ editorState });
-  // }
 
   onChange(event, editor) {
     const text = editor.getData();
@@ -160,21 +96,7 @@ class Edit extends Component {
       ...this.props.data,
       text,
     });
-    // this.setState({ editorState });
   }
-
-  // toggleAddNewTile = () =>
-  //   this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
-  //
-  // handleClickOutside = e => {
-  //   if (this.ref && doesNodeContainClick(this.ref, e)) return;
-  //   this.setState(() => ({
-  //     addNewTileOpened: false,
-  //     customTilesOpened: false,
-  //   }));
-  // };
-
-  // openCustomTileMenu = () => this.setState(() => ({ customTilesOpened: true }));
 
   /**
    * Render method.
@@ -186,7 +108,8 @@ class Edit extends Component {
       return <div />;
     }
 
-    // const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const CKEditor = require('@ckeditor/ckeditor5-react');
+    const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 
     return (
       <div
