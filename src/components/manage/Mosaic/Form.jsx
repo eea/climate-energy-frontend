@@ -145,7 +145,7 @@ class AddNewTile extends Component {
               }
             >
               <Icon name={tile.icon} size="24px" />
-              <span>{tile.title}</span>
+              {/* <span>{tile.title}</span> */}
             </Button>
           </Button.Group>
         ))}
@@ -629,15 +629,15 @@ class Form extends Component {
     );
   };
 
-  additionalControls = (tile, onMutateTile) => [
-    <AddNewTile onMutateTile={onMutateTile} tile={tile} />,
-  ];
+  // additionalControls = (tile, onMutateTile) => [
+  //   <AddNewTile onMutateTile={onMutateTile} tile={tile} />,
+  // ];
 
   onResize = (event, { element, size, handle }) => {
     this.setState({ height: size.height });
   };
 
-  getToolbar = tileid => {
+  getToolbar = (tileid, onMutateTile) => {
     const { formData } = this.state;
     const tilesFieldname = getTilesFieldname(formData);
     const tileType = this.state.formData[tilesFieldname][tileid]['@type'];
@@ -645,7 +645,6 @@ class Form extends Component {
     let titlediv = <div className="mosaic-window-title">Tile: {tileType}</div>;
 
     return (props, draggable) => {
-      console.log('props, draggable', props, draggable);
       return (
         <div
           key={tileid}
@@ -654,6 +653,8 @@ class Form extends Component {
         >
           {titlediv}
           <div className="mosaic-window-controls">
+            <Separator />
+            <AddNewTile onMutateTile={onMutateTile} tile={tileid} />
             <Separator />
             <SplitButton />
             <ExpandButton />
@@ -700,7 +701,7 @@ class Form extends Component {
                 path={path}
                 onDragStart={() => console.log('MosaicWindow.onDragStart')}
                 onDragEnd={type => console.log('MosaicWindow.onDragEnd', type)}
-                renderToolbar={this.getToolbar(tileid)}
+                renderToolbar={this.getToolbar(tileid, this.onMutateTile)}
                 key={tileid}
               >
                 <button onClick={() => console.log(this.state)}>test</button>
