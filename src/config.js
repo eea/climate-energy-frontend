@@ -33,7 +33,9 @@ import TextTileView from '~/components/manage/Tiles/Text/View';
 import CountryView from '~/components/theme/CountryView/CountryView';
 import CountryPageView from '~/components/theme/CountryPageView/CountryPageView';
 import HomepageView from '~/components/theme/HomepageView/HomepageView';
-import MosaicView from '~/components/theme/MosaicView/MosaicView';
+// import MosaicView from '~/components/theme/MosaicView/MosaicView';
+
+import { layoutViews } from '../volto-mosaic/src'
 
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
@@ -55,8 +57,6 @@ export const settings = {
   ],
 };
 
-console.log(settings);
-
 export const views = {
   ...defaultViews,
   layoutViews: {
@@ -64,7 +64,8 @@ export const views = {
     full_view: CountryView,
     country_tab_view: CountryPageView,
     homepage_view: HomepageView,
-    mosaic_tiles_view: MosaicView,
+    // mosaic_tiles_view: MosaicView,
+    ...layoutViews
   },
   contentTypesViews: {
     ...defaultViews.contentTypesViews,

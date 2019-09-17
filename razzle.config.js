@@ -13,6 +13,17 @@ Object.keys(pathsConfig).forEach(pkg => {
   }
 });
 
-console.log(voltoPath);
 
-module.exports = require(`${voltoPath}/razzle.config`);
+const razzleConfig = require(`${voltoPath}/razzle.config`);
+
+const razzleModify = razzleConfig.modify 
+
+
+module.exports = {
+    ...razzleConfig,
+    modify: (config, { target, dev }, webpack) => {
+      const modifiedConfig = razzleModify(config, { target, dev }, webpack)
+      modifiedConfig.module.rules[0].include.push('/opt/fise/volto-mosaic')
+      return modifiedConfig
+    }
+}
