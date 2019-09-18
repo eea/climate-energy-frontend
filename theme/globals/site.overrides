@@ -697,3 +697,13 @@ nav.navigation .menu > a.item:first-of-type { display:none !important }
 .slider-slide {
   position: relative;
 }
+
+
+.modal .tile {
+    min-height: 600px;
+}
+
+.ui.modal {
+    transform: translate(-50%,-50%);
+    margin: 0!important;
+}
