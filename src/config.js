@@ -23,6 +23,9 @@ import {
 import ChartTileEdit from '~/components/manage/Tiles/ChartTile/ChartTileEdit';
 import ChartTileView from '~/components/manage/Tiles/ChartTile/ChartTileView';
 
+import TableauTileEdit from '~/components/manage/Tiles/TableauTile/TableauTileEdit';
+import tableauTileView from '~/components/manage/Tiles/TableauTile/TableauTileView';
+
 import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
 import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
@@ -35,7 +38,7 @@ import CountryPageView from '~/components/theme/CountryPageView/CountryPageView'
 import HomepageView from '~/components/theme/HomepageView/HomepageView';
 // import MosaicView from '~/components/theme/MosaicView/MosaicView';
 
-import { layoutViews } from '../volto-mosaic/src'
+import { layoutViews } from '../volto-mosaic/src';
 
 import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
@@ -65,7 +68,7 @@ export const views = {
     country_tab_view: CountryPageView,
     homepage_view: HomepageView,
     // mosaic_tiles_view: MosaicView,
-    ...layoutViews
+    ...layoutViews,
   },
   contentTypesViews: {
     ...defaultViews.contentTypesViews,
@@ -89,17 +92,23 @@ export const tiles = {
       title: 'charttile',
       icon: chartIcon,
     },
+    {
+      title: 'tableautile',
+      icon: chartIcon,
+    },
   ],
   defaultTilesViewMap: {
     ...defaultTiles.defaultTilesViewMap,
     imageandrichtext: ImageAndRichTextTileView,
     charttile: ChartTileView,
+    tableautile: tableauTileView,
     text: TextTileView,
   },
   defaultTilesEditMap: {
     ...defaultTiles.defaultTilesEditMap,
     imageandrichtext: ImageAndRichTextTileEdit,
     charttile: ChartTileEdit,
+    tableautile: TableauTileEdit,
     text: TextTileEdit,
   },
   // messagesTiles: defaultTiles.messagesTiles,

@@ -361,55 +361,7 @@ clear: both;
 height: 1000px;
 }
 
-#page-document {
-.mosaic-root {
-  // position: relative;
-}
-.mosaic-tile {
-  margin: 0;
-  // position: relative;
-}
-.mosaic-window-toolbar {
-  display: none;
-}
-.mosaic-window-body {
-  background: none;
-  border: none;
-}
-.mosaic-preview {
-  display: none;
-}
-.mosaic-drop-target {
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-.mosaic-window-additional-actions-bar {
-  display: none;
-}
-.mosaic-split {
-  display: none!important;
-}
-.tile-container {
-  height: 100%;
-}
-}
 
-#page-edit {
-.mosaic-window-body {
-  padding: 0.3rem;
-  .tile {
-    height: 100%;
-    .tile-inner-wrapper {
-      height: 100%;
-      .hero-body {
-        height: 100%;
-        min-width: 100px;
-      }
-    }
-  }
-}
-}
 
 .chartWrapperView {
 height: 100%;
