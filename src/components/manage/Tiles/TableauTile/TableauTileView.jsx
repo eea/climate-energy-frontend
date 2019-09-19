@@ -4,42 +4,23 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import { flattenToAppURL } from '@plone/volto/helpers';
 // import PropTypes from 'prop-types';
-// import TableauReport from 'tableau-react';
 
 /**
  * View image tile class.
  * @class View
  * @extends Component
  */
-class StackedBarChartView extends Component {
+class TableauTestView extends Component {
   constructor(props) {
     super(props);
 
-    const chartData = this.props.data.chartData || [];
     this.state = {
       renderChart: __SERVER__ ? false : true,
-      chartData: chartData,
+      visURL: '',
     };
-
-    this.getChartData = this.getChartData.bind(this);
-  }
-
-  getChartData() {
-    let chartData = this.state.chartData;
-    // if (typeof chartData == 'string') {
-    //   try {
-    //     // chartData = chartData;
-    //     console.log(chartData);
-    //   } catch (error) {
-    //     console.log(error);
-    //     chartData = '';
-    //   }
-    // }
-    console.log('Chartdata', chartData);
-    return chartData;
   }
 
   render() {
@@ -47,13 +28,11 @@ class StackedBarChartView extends Component {
     const TableauReport = require('tableau-react');
     return (
       <div className="chartWrapperView">
-        <div className="tile-inner-wrapper">
-          {this.state.renderChart ? (
-            <TableauReport url={this.getChartData()} />
-          ) : (
-            <div>Invalid or missing data.</div>
-          )}
-        </div>
+        {this.state.renderChart ? (
+          <TableauReport url={this.getChartData()} />
+        ) : (
+          <div>Invalid or missing data.</div>
+        )}
       </div>
     );
   }
@@ -64,8 +43,4 @@ class StackedBarChartView extends Component {
  * @property {Object} propTypes Property types.
  * @static
  */
-StackedBarChartView.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-export default StackedBarChartView;
+export default TableauTestView;
