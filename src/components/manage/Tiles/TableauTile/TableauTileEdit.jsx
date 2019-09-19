@@ -69,7 +69,7 @@ class StackedBarChart extends Component {
         {
           url: data,
         },
-        this.onSubmit,
+        // this.onSubmit,
       );
     } catch {
       console.warning('Invalid JSON data: ', data);
@@ -154,6 +154,10 @@ class StackedBarChart extends Component {
             >
               Show dashboard
             </Button>
+            <Button onClick={this.onSubmit} >
+              Save
+            </Button>
+
           </div>
         </div>
       </div>

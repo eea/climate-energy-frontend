@@ -197,7 +197,14 @@ class TableauReport extends React.Component {
         let saveData = JSON.parse(JSON.stringify(this.state.saveData));
         saveData['url'] = this.viz.getUrl();
         saveData['sheetname'] = activeSheet.getName();
-        this.setState({ saveData }, this.onChange);
+
+        console.log('urls', this.props.url, this.state.saveData.url);
+
+        if (this.props.url != this.state.saveData.url) {
+          this.setState({ saveData }, this.onChange);
+        } else {
+          this.setState({ saveData });
+        }
 
         this.viz.addEventListener(
           this.api.tableauSoftware.TableauEventName.TAB_SWITCH,
@@ -221,20 +228,41 @@ class TableauReport extends React.Component {
           e => {
             console.log('changed filter');
 
-            this.viz.getCurrentUrlAsync().then(r => {
-              console.log('url after filter change', r);
-            });
             e.getFilterAsync().then(r => {
+
               console.log('filter async', r);
               let name = r.$caption;
               let values = r.$appliedValues.map(e => e.value);
 
-              let saveData = JSON.parse(JSON.stringify(this.state.saveData));
-              let sheetname = saveData['sheetname'];
-              saveData['filters'][sheetname][name] = values;
+              let save = {
+                ...this.state.saveData,
+                filters: {
+                  ...this.state.saveData.filters,
+                  [sheetname]: {
+                    ...this.state.saveData.filters[sheetname] || {},
+                    [name]: values
+                  }
+                }
+              };
 
-              console.log('SavedData2: ', saveData);
-              this.setState({ saveData: saveData }, this.onChange);
+              // let sd = JSON.stringify(this.state.saveData);
+              // console.log('sd', sd);
+              // let saveData = JSON.parse(sd);
+              //
+              // let sheetname = saveData['sheetname'];
+              // console.log('sheet name', sheetname, values, name, saveData);
+              //
+              // saveData['filters'][sheetname][name] = values;
+              // console.log("Setting filter", sheetname, ' => ',  name, values, saveData);
+              //
+              // // console.log('SavedData2: ', saveData);
+
+              console.log("will save data: ", save);
+              this.setState({ saveData: save }, this.onChange);
+
+              // e.getViz().getCurrentUrlAsync().then(r => {
+              //   console.log('url after filter change', r);
+              // });
             });
           },
         );
@@ -254,10 +282,6 @@ class TableauReport extends React.Component {
       options,
     );
 
-    // console.log('viz', this.viz);
-    // this.viz.getParametersAsync().then(r => {
-    //   console.log('parameters', r);
-    // });
   }
 
   render() {
