@@ -212,14 +212,15 @@ class TableauReport extends React.Component {
             let sheetname = e.getNewSheetName();
 
             this.viz.getCurrentUrlAsync().then(r => {
-              let saveData = JSON.parse(JSON.stringify(this.state.saveData));
-              saveData['url'] = r;
-              saveData['sheetname'] = sheetname;
-              saveData['filters'] = {
-                ...saveData['filters'],
-                [sheetname]: saveData['filters'][sheetname] || {},
-              };
-              this.setState({ saveData }, this.onChange);
+              const save = {
+                ...this.state.saveData,
+                sheetname: sheetname,
+                url: r,
+                filters: {
+                  ...this.state.saveData.filters
+                }
+              }
+              this.setState({ saveData: save }, this.onChange);
             });
           },
         );
@@ -233,8 +234,8 @@ class TableauReport extends React.Component {
               console.log('filter async', r);
               let name = r.$caption;
               let values = r.$appliedValues.map(e => e.value);
-
-              let save = {
+              let sheetname = this.state.saveData.sheetname              
+              const save = {
                 ...this.state.saveData,
                 filters: {
                   ...this.state.saveData.filters,
@@ -244,25 +245,7 @@ class TableauReport extends React.Component {
                   }
                 }
               };
-
-              // let sd = JSON.stringify(this.state.saveData);
-              // console.log('sd', sd);
-              // let saveData = JSON.parse(sd);
-              //
-              // let sheetname = saveData['sheetname'];
-              // console.log('sheet name', sheetname, values, name, saveData);
-              //
-              // saveData['filters'][sheetname][name] = values;
-              // console.log("Setting filter", sheetname, ' => ',  name, values, saveData);
-              //
-              // // console.log('SavedData2: ', saveData);
-
-              console.log("will save data: ", save);
               this.setState({ saveData: save }, this.onChange);
-
-              // e.getViz().getCurrentUrlAsync().then(r => {
-              //   console.log('url after filter change', r);
-              // });
             });
           },
         );

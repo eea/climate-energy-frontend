@@ -81,6 +81,7 @@ class StackedBarChart extends Component {
       ...this.props.data,
       tableauData: this.state.tableauData,
     });
+    this.props.handleClose()
   }
 
   saveCallback(saveData) {
