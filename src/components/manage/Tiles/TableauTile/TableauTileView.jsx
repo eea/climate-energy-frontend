@@ -5,10 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { flattenToAppURL } from '@plone/volto/helpers';
+// import { flattenToAppURL } from '@plone/volto/helpers';
 // import PropTypes from 'prop-types';
-import TableauReport from 'tableau-react';
-
+// import TableauReport from 'tableau-react';
 
 /**
  * View image tile class.
@@ -21,7 +20,7 @@ class StackedBarChartView extends Component {
 
     const chartData = this.props.data.chartData || [];
     this.state = {
-      renderChart: true,
+      renderChart: __SERVER__ ? false : true,
       chartData: chartData,
     };
 
@@ -30,19 +29,22 @@ class StackedBarChartView extends Component {
 
   getChartData() {
     let chartData = this.state.chartData;
-    if (typeof chartData == 'string') {
-      try {
-        chartData = chartData;
-      } catch (error) {
-        console.log(error);
-        chartData = [];
-      }
-    }
-    console.log(chartData);
+    // if (typeof chartData == 'string') {
+    //   try {
+    //     // chartData = chartData;
+    //     console.log(chartData);
+    //   } catch (error) {
+    //     console.log(error);
+    //     chartData = '';
+    //   }
+    // }
+    console.log('Chartdata', chartData);
     return chartData;
   }
 
   render() {
+    if (__SERVER__) return '';
+    const TableauReport = require('tableau-react');
     return (
       <div className="chartWrapperView">
         <div className="tile-inner-wrapper">

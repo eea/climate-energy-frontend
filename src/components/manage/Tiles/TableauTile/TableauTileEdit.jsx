@@ -12,7 +12,6 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
-import TableauReport from 'tableau-react';
 
 const data = 'http://public.tableau.com/views/RegionalSampleWorkbook/Storms';
 
@@ -63,7 +62,7 @@ class StackedBarChart extends Component {
       this.setState(
         {
           chartData: data,
-          show: true,
+          show: __SERVER__ ? false : true,
         },
         this.onSubmit,
       );
@@ -94,6 +93,8 @@ class StackedBarChart extends Component {
   }
 
   render() {
+    if (__SERVER__) return '';
+    const TableauReport = require('tableau-react');
     console.log(this.state);
     return (
       <div className="tile chartWrapperEdit">
