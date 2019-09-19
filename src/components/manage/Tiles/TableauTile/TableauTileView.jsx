@@ -1,35 +1,30 @@
-/**
- * View image tile.
- * @module components/manage/Tiles/Hero/View
- */
-
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { flattenToAppURL } from '@plone/volto/helpers';
-// import PropTypes from 'prop-types';
+import TableauReport from '~/components/theme/TableauView/TableauReport';
 
-/**
- * View image tile class.
- * @class View
- * @extends Component
- */
-class TableauTestView extends Component {
+class TableauTileView extends Component {
   constructor(props) {
     super(props);
 
+    let data = this.props.data.tableauData || {};
+    let filters = data.filters && data.sheetname ? data.filters[data.sheetname] : {};
     this.state = {
-      renderChart: __SERVER__ ? false : true,
-      visURL: '',
+      show: __SERVER__ ? false : true,
+      url: data.url || '',
+      sheetname: data.sheetname || '',
+      filters: filters
     };
   }
 
   render() {
     if (__SERVER__) return '';
-    const TableauReport = require('tableau-react');
     return (
       <div className="chartWrapperView">
-        {this.state.renderChart ? (
-          <TableauReport url={this.getChartData()} />
+        {this.state.show && this.state.url ? (
+          <TableauReport
+            url={this.state.url}
+            filters={this.state.filters}
+            sheetname={this.state.sheetname}
+          />
         ) : (
           <div>Invalid or missing data.</div>
         )}
@@ -38,9 +33,4 @@ class TableauTestView extends Component {
   }
 }
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-export default TableauTestView;
+export default TableauTileView;

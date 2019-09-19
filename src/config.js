@@ -36,7 +36,7 @@ import TextTileView from '~/components/manage/Tiles/Text/View';
 import CountryView from '~/components/theme/CountryView/CountryView';
 import CountryPageView from '~/components/theme/CountryPageView/CountryPageView';
 import HomepageView from '~/components/theme/HomepageView/HomepageView';
-import TableauTestView from '~/components/theme/TableauTestView/View';
+// import TableauTestView from '~/components/theme/TableauTestView/View';
 // import MosaicView from '~/components/theme/MosaicView/MosaicView';
 
 import { layoutViews } from '../volto-mosaic/src';
@@ -68,7 +68,7 @@ export const views = {
     full_view: CountryView,
     country_tab_view: CountryPageView,
     homepage_view: HomepageView,
-    tableau_test_view: TableauTestView,
+    // tableau_test_view: TableauTestView,
     // mosaic_tiles_view: MosaicView,
     ...layoutViews,
   },

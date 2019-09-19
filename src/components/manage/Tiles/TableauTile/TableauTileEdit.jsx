@@ -13,8 +13,9 @@ import {
   Legend,
 } from 'recharts';
 
-const data = 'http://public.tableau.com/views/RegionalSampleWorkbook/Storms';
+import TableauReport from '~/components/theme/TableauView/TableauReport';
 
+// const url = 'http://public.tableau.com/views/RegionalSampleWorkbook/Storms';
 // const messages = defineMessages({
 //     ChartTile: {
 //       id: 'Enter chart data',
@@ -41,18 +42,23 @@ class StackedBarChart extends Component {
   constructor(props) {
     super(props);
 
-    const chartData = this.props.data.chartData || data;
-    let show = this.props.data.chartData ? true : false;
+    const data = this.props.data.tableauData || {};
+    let show = !__SERVER__ && data ? true : false;
+
+    let filters = data.filters && data.sheetname ? data.filters[data.sheetname] : {};
 
     this.state = {
       show,
-      chartData: chartData,
-      tableauUrl: null,
+      tableauData: data,
+      url: data.url || '',
+      filters,
+      sheetname: data.sheetname || '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.getChartData = this.getChartData.bind(this);
+    this.saveCallback = this.saveCallback.bind(this);
   }
 
   handleChange(e) {
@@ -61,8 +67,7 @@ class StackedBarChart extends Component {
       data = e.target.value;
       this.setState(
         {
-          chartData: data,
-          show: __SERVER__ ? false : true,
+          url: data,
         },
         this.onSubmit,
       );
@@ -74,35 +79,48 @@ class StackedBarChart extends Component {
   onSubmit() {
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
-      chartData: this.state.chartData,
+      tableauData: this.state.tableauData,
     });
   }
 
+  saveCallback(saveData) {
+    console.log("Received save data", saveData);
+    let stateData = JSON.parse(JSON.stringify(this.state));
+    this.setState({
+      tableauData: saveData
+    }, this.onSubmit)
+  }
+
   getChartData() {
-    let chartData = this.state.chartData;
-    if (typeof chartData == 'string') {
+    let tableauData = this.state.tableauData;
+    if (typeof tableauData == 'string') {
       try {
-        chartData = chartData;
+        tableauData = tableauData;
       } catch (error) {
         console.log(error);
-        chartData = [];
+        tableauData = {};
       }
     }
-    console.log(chartData);
-    return chartData;
+    console.log(tableauData);
+    return tableauData;
   }
 
   render() {
     if (__SERVER__) return '';
-    const TableauReport = require('tableau-react');
+    // const TableauReport = require('tableau-react');
     console.log(this.state);
     return (
       <div className="tile chartWrapperEdit">
         <div className="tile-inner-wrapper">
-          {this.state.show && this.state.chartData && this.state.tableauUrl ? (
+          {this.state.show && this.state.url ? (
             <div className="image-add">
               <ResponsiveContainer>
-                <TableauReport url={this.state.tableauUrl} />
+                <TableauReport
+                  url={this.state.url}
+                  filters={this.state.filters}
+                  sheetname={this.state.sheetname}
+                  callback={this.saveCallback}
+                />
               </ResponsiveContainer>
             </div>
           ) : (
@@ -125,16 +143,16 @@ class StackedBarChart extends Component {
             <label>Enter JSON data</label>
             <input
               type="text"
-              defaultValue={this.getChartData()}
-              placeholder="Enter data in JSON format"
+              defaultValue={this.state.url}
+              placeholder="Enter tableau URL"
               onChange={this.handleChange}
             />
             <Button
               onClick={() =>
-                this.setState({ tableauUrl: this.getChartData(), show: true })
+                this.setState({ show: true })
               }
             >
-              Show tableau
+              Show dashboard
             </Button>
           </div>
         </div>
