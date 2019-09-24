@@ -61,6 +61,7 @@ export const settings = {
   ],
 };
 
+
 export const views = {
   ...defaultViews,
   layoutViews: {
@@ -82,40 +83,30 @@ export const widgets = {
   ...defaultWidgets,
 };
 
+console.log('------',defaultTiles)
+
 export const tiles = {
   ...defaultTiles,
-  customTiles: [
-    ...defaultTiles.customTiles,
-    {
-      title: 'imageandrichtext',
-      icon: divideVertical,
-    },
-    {
+ 
+    tilesConfig: {
+    ...defaultTiles.tilesConfig,
+    charttile:  {
       title: 'charttile',
+      view: ChartTileView,
+      edit: ChartTileEdit,
       icon: chartIcon,
     },
-    {
+    tableautile: {
       title: 'tableautile',
+      view: tableauTileView,
+      edit: TableauTileEdit,
       icon: chartIcon,
     },
-  ],
-  defaultTilesViewMap: {
-    ...defaultTiles.defaultTilesViewMap,
-    imageandrichtext: ImageAndRichTextTileView,
-    charttile: ChartTileView,
-    tableautile: tableauTileView,
-    text: TextTileView,
-  },
-  defaultTilesEditMap: {
-    ...defaultTiles.defaultTilesEditMap,
-    imageandrichtext: ImageAndRichTextTileEdit,
-    charttile: ChartTileEdit,
-    tableautile: TableauTileEdit,
-    text: TextTileEdit,
-  },
-  // messagesTiles: defaultTiles.messagesTiles,
-  // requiredTiles: defaultTiles.requiredTiles,
-  // sidebarComponents: {
-  //   ...defaultTiles.sidebarComponents
-  // }
+    text: {
+      ...defaultTiles.tilesConfig.text,
+      view: TextTileView,
+      edit: TextTileEdit
+    }
+  }
+ 
 };
