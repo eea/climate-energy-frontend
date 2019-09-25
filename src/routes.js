@@ -7,6 +7,7 @@ import { App } from '@plone/volto/components';
 import { defaultRoutes } from '@plone/volto/routes';
 import { EditMosaic } from '../volto-mosaic/src';
 
+import MosaicSettingsView from '~/components/theme/TestViews/MosaicSettingsView';
 
 /**
  * Routes array.
@@ -26,6 +27,12 @@ const routes = [
       {
         path: '*/**/edit',
         component: EditMosaic,
+      },
+
+      // test routes
+      {
+        path: '*/mosaic-settings-view',
+        component: MosaicSettingsView,
       },
       ...defaultRoutes
     ],

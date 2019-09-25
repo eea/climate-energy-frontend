@@ -17,6 +17,7 @@ import {
   GET_DEFAULT_HEADER_IMAGE,
   SET_FOLDER_TABS,
   GET_PARENT_FOLDER_DATA,
+  GET_MOSAIC_SETTINGS,
 } from '~/constants/ActionTypes';
 
 export function getFrontpageSlides() {
@@ -69,6 +70,17 @@ export function getParentFolderData(url) {
     request: {
       op: 'get',
       path: `/${url}?fullobjects`,
+    },
+  };
+}
+
+
+export function getMosaicSettings() {
+  return {
+    type: GET_MOSAIC_SETTINGS,
+    request: {
+      op: 'get',
+      path: `/@mosaic-settings`,
     },
   };
 }
