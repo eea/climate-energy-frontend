@@ -28,7 +28,7 @@
       "alias": {
         "map": [
           ["@plone/volto", "./node_modules/@plone/volto/src"],
-          ["~", "./src"]
+          ["~", "./src"],
           ["~/actions", "./src/actions"]
         ],
         "extensions": [".js", ".jsx", ".json"]
