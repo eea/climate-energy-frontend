@@ -26,8 +26,8 @@ import ChartTileView from '~/components/manage/Tiles/ChartTile/ChartTileView';
 import TableauTileEdit from '~/components/manage/Tiles/TableauTile/TableauTileEdit';
 import tableauTileView from '~/components/manage/Tiles/TableauTile/TableauTileView';
 
-import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
-import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
+// import ImageAndRichTextTileEdit from '~/components/manage/Tiles/ImageAndRichTextTile/Edit';
+// import ImageAndRichTextTileView from '~/components/manage/Tiles/ImageAndRichTextTile/View';
 
 import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
 import TextTileView from '~/components/manage/Tiles/Text/View';
@@ -46,7 +46,7 @@ import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import underlineSVG from '@plone/volto/icons/underline.svg';
-import divideVertical from '@plone/volto/icons/divide-vertical.svg';
+// import divideVertical from '@plone/volto/icons/divide-vertical.svg';
 import chartIcon from '@plone/volto/icons/world.svg';
 
 const Underline = createInlineStyleButton({
@@ -61,7 +61,6 @@ export const settings = {
     ...defaultSettings.richTextEditorInlineToolbarButtons,
   ],
 };
-
 
 export const views = {
   ...defaultViews,
@@ -84,14 +83,14 @@ export const widgets = {
   ...defaultWidgets,
 };
 
-console.log('------',defaultTiles)
+console.log('------', defaultTiles);
 
 export const tiles = {
   ...defaultTiles,
- 
-    tilesConfig: {
+
+  tilesConfig: {
     ...defaultTiles.tilesConfig,
-    charttile:  {
+    charttile: {
       title: 'charttile',
       view: ChartTileView,
       edit: ChartTileEdit,
@@ -106,8 +105,7 @@ export const tiles = {
     text: {
       ...defaultTiles.tilesConfig.text,
       view: TextTileView,
-      edit: TextTileEdit
-    }
-  }
- 
+      edit: TextTileEdit,
+    },
+  },
 };
