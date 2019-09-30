@@ -95,17 +95,44 @@ export const tiles = {
       view: ChartTileView,
       edit: ChartTileEdit,
       icon: chartIcon,
+      height: 400,
     },
     tableautile: {
       title: 'tableautile',
       view: tableauTileView,
       edit: TableauTileEdit,
       icon: chartIcon,
+      height: 400,
     },
     text: {
       ...defaultTiles.tilesConfig.text,
       view: TextTileView,
       edit: TextTileEdit,
+      height: 200,
+    },
+    video: {
+      ...defaultTiles.tilesConfig.video,
+      height: 600,
+    },
+    image: {
+      ...defaultTiles.tilesConfig.image,
+      height: 600,
+    },
+    hero: {
+      ...defaultTiles.tilesConfig.hero,
+      height: 600,
+    },
+    maps: {
+      ...defaultTiles.tilesConfig.maps,
+      height: 600,
+    },
+    html: {
+      ...defaultTiles.tilesConfig.html,
+      height: 600,
+    },
+    table: {
+      ...defaultTiles.tilesConfig.image,
+      height: 600,
     },
   },
 };
