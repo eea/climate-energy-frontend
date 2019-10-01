@@ -1,7 +1,0 @@
-[submodule "volto"]
-	path = volto
-	url = git@github.com:tiberiuichim/volto.git
-
-[submodule "volto-mosaic"]
-	path = volto-mosaic
-	url = git@github.com:eaudeweb/volto-mosaic.git
