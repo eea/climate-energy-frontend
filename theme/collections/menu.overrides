@@ -691,3 +691,9 @@ body > #main:not(.homepage) {
   }
   
   
+
+
+  .cols .col-3 .header-wrapper {
+      position: sticky;
+      top: 0;
+  }

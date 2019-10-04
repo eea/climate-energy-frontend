@@ -162,7 +162,7 @@ class App extends Component {
                   )}
                 </main>
               </div>
-              <div className="col-3">asfas</div>
+              <div className="col-3 inPageNavigation"></div>
             </div>
           </div>
         )}
@@ -205,7 +205,7 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getNavigation(getBaseUrl(location.pathname))),
+        dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
     },
     {
       key: 'types',
