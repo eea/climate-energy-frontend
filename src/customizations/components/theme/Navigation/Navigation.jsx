@@ -62,7 +62,7 @@ class Navigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getNavigation(getBaseUrl(nextProps.pathname));
+      this.props.getNavigation(getBaseUrl(nextProps.pathname), 3);
     }
   }
 
