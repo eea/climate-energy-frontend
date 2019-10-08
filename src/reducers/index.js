@@ -5,16 +5,15 @@
 
 import defaultReducers from '@plone/volto/reducers';
 
-/**
- * Root reducer.
- * @function
- * @param {Object} state Current state.
- * @param {Object} action Action to be handled.
- * @returns {Object} New state.
- */
+// import folder_header from '~/reducers/folder_header';
+import folder_tabs from '~/reducers/folder_tabs';
+import parent_folder_data from '~/reducers/parent_folder_data';
+
 const reducers = {
   ...defaultReducers,
   // Add your reducers here
+  parent_folder_data,
+  folder_tabs
 };
 
 export default reducers;

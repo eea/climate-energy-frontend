@@ -19,12 +19,18 @@ import {
   tiles as defaultTiles,
 } from '@plone/volto/config';
 
+import TopicsView from '~/components/theme/View/TopicsView'
+
 export const settings = {
   ...defaultSettings,
 };
 
 export const views = {
   ...defaultViews,
+  layoutViews: {
+    ...defaultViews.layoutViews,
+    topics_view: TopicsView,
+  }
 };
 
 export const widgets = {

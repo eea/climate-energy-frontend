@@ -60,14 +60,14 @@ class Header extends Component {
   }
   render() {
     return (
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <div className="header">
-              <Logo />
-              <div className="searcbar">
-                <SearchWidget pathname={this.props.pathname} />
-              </div>
-            </div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className="header">
+          <Logo isHomepage={this.state.isHomepage} />
+          <div className="searcbar">
+            <SearchWidget pathname={this.props.pathname} />
           </div>
+        </div>
+      </div>
     );
   }
 }

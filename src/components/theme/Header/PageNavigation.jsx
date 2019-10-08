@@ -163,10 +163,44 @@ class PageNavigation extends Component {
                     </h2>
                     <div className="menuExpanded">
                       <ul>
-                        <h5>Topic name</h5>
+                        <h5>
+                          {item.items.find(i =>
+                            window.location.href.includes(i.url),
+                          ) ? (
+                            <Link
+                              to={
+                                item.items.find(i =>
+                                  window.location.href.includes(i.url),
+                                ).url
+                              }
+                              key={
+                                item.items.find(i =>
+                                  window.location.href.includes(i.url),
+                                ).url
+                              }
+                            >
+                              {
+                                item.items.find(i =>
+                                  window.location.href.includes(i.url),
+                                ).title
+                              }
+                            </Link>
+                          ) : (
+                            ''
+                          )}
+                        </h5>
                         {item.items.map(sub =>
                           sub.items && sub.items.length
-                            ? sub.items.map(subSub => <li>{subSub.title}</li>)
+                            ? sub.items.map(subSub => (
+                                <li key={subSub.url}>
+                                  <Link
+                                    to={subSub.url === '' ? '/' : subSub.url}
+                                    key={subSub.url}
+                                  >
+                                    {subSub.title}
+                                  </Link>
+                                </li>
+                              ))
                             : '',
                         )}
                       </ul>

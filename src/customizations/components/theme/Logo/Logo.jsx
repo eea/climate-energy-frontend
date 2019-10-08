@@ -9,6 +9,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
+import LogoImagePage from './logo-page.svg';
 
 const messages = defineMessages({
   site: {
@@ -27,13 +28,14 @@ const messages = defineMessages({
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component.
  */
-const Logo = ({ intl }) => (
+const Logo = ({ intl, isHomepage }) => (
   <Link to="/" title={intl.formatMessage(messages.site)}>
     <Image
-      src={LogoImage}
+      src={isHomepage === true ? LogoImage : LogoImagePage}
       alt={intl.formatMessage(messages.plonesite)}
       title={intl.formatMessage(messages.plonesite)}
       width={550}
+      className={`${isHomepage === true ? '' : 'page-logo'}`}
     />
   </Link>
 );

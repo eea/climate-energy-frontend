@@ -123,7 +123,7 @@ class App extends Component {
         {this.props.pathname === '/' ? (
           <div>
             <Header actualPathName={this.props.pathname} pathname={path} />
-            <Segment basic className="content-area">
+            <Segment  className="content-area">
               <main>
                 <Messages />
                 {this.state.hasError ? (
@@ -138,7 +138,7 @@ class App extends Component {
             </Segment>
           </div>
         ) : (
-          <div basic className="topics">
+          <div  className="topics">
             <PageHeader />
             <PageHeaderBg />
             <div className="cols content-cols">
@@ -164,9 +164,9 @@ class App extends Component {
               </div>
               <div className="col-3 inPageNavigation"></div>
             </div>
+            <Footer />
           </div>
         )}
-        {/* <Footer /> */}
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar

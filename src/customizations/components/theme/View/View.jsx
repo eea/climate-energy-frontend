@@ -268,7 +268,7 @@ class View extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
-        {document.querySelector('.cols.content-cols .inPageNavigation') ? (
+        {__CLIENT__ && document.querySelector('.cols.content-cols .inPageNavigation') ? (
           <Portal
             node={
               __CLIENT__ &&
