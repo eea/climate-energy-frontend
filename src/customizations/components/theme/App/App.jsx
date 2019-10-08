@@ -34,7 +34,7 @@ import PageHeader from '~/components/theme/Header/PageHeader';
 import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-
+import './app.css';
 /**
  * @export
  * @class App

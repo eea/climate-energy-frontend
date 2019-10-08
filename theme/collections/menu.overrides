@@ -697,3 +697,14 @@ body > #main:not(.homepage) {
       position: sticky;
       top: 0;
   }
+
+
+  .tools {
+    position: absolute;
+    top:0;
+    right: 0;
+    z-index: 1;
+    a {
+      color: white;
+    }
+  }
