@@ -90,3 +90,17 @@ nav.tabs {
   }
   
 }
+
+.card {
+  h3.card-title {
+    padding-left: 0!important;
+  }
+  .card-content {
+    // background: #eee;
+  }
+}
+
+.card-bottom .muted {
+  color: #aaa;
+  margin-right: 3px;
+}

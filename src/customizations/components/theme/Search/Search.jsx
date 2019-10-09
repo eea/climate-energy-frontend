@@ -19,6 +19,8 @@ import { searchContent } from '@plone/volto/actions';
 
 import { SearchTags, Toolbar } from '@plone/volto/components';
 
+import Placeholder from './placeholder.jpg'
+
 const toSearchOptions = (searchableText, subject, path) => {
   return {
     ...(searchableText && { SearchableText: searchableText }),
@@ -57,6 +59,14 @@ class Search extends Component {
     ),
     pathname: PropTypes.string.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      value: this.props.searchableText,
+    };
+  }
 
   /**
    * Default properties.
@@ -118,18 +128,18 @@ class Search extends Component {
     );
   };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
   render() {
+    console.log('props in search', this.props.items);
     return (
       <Container id="page-search" className="catalogue-body full-width">
         <Helmet title="Search" />
         <div className="container">
           <article id="content">
-            <header>
+            {/* <header>
               <h1 className="documentFirstHeading">
                 {this.props.searchableText ? (
                   <FormattedMessage
@@ -147,7 +157,18 @@ class Search extends Component {
                 )}
               </h1>
               <SearchTags />
-            </header>
+            </header> */}
+            <div class="catalogue-header">
+              <div style={{ position: 'relative' }}>
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  placeholder="eg: Renewable energy"
+                />
+                <i aria-hidden="true" onClick={()=>this.doSearch(this.state.value)} class="fa fa-search" />
+              </div>
+            </div>
             <div class="cards" id="content-core">
               {this.props.items.map(item => (
                 <div className="card" key={item['@id']}>
@@ -156,27 +177,30 @@ class Search extends Component {
                     className="card-content"
                     title={item['@type']}
                   >
-                    <div className="card-title">{item.title}</div>
-                  </Link>
-                  <div className="card-detail with-content">
-                    {item.description && <span>{item.description}</span>}
-                    <div className="card-bottom" style={{ display: 'flex' }}>
-                      <small>
-                        <span className="muted">Content type:</span> Data
-                      </small>
-                      <small>
-                        <span className="muted">Topic:</span> Energy efficiency
-                      </small>
-                      <small>
-                        <span className="muted">Date:</span> October 4, 2019
-                      </small>
+                    <div className="card-image">
+                      <img src={Placeholder}></img>
                     </div>
-                    <Link to={item['@id']}>
-                      <FormattedMessage
-                        id="Read More…"
-                        defaultMessage="Read More…"
-                      />
+                  </Link>
+
+                  <div className="card-detail with-content">
+                  <Link to={item['@id']}>
+                    <h3 className="card-title">{item.title}</h3>
+                    {item.description && <span>{item.description}</span>}
                     </Link>
+                    <div className="card-bottom" style={{ display: 'flex' }}>
+                      <p>
+                        <span className="muted">Content type:</span> Data
+                      </p>
+                      &nbsp; &nbsp; &nbsp;
+                      <p>
+                        <span className="muted">Topic:</span> Energy efficiency
+                      </p>
+                      &nbsp; &nbsp; &nbsp;
+                      <p>
+                        <span className="muted">Date:</span> October 4, 2019
+                      </p>
+                    </div>
+                   
                   </div>
                   <div className="visualClear" />
                 </div>
@@ -199,15 +223,12 @@ class Search extends Component {
               document.querySelector('.cols.content-cols .inPageNavigation')
             }
           >
-            <div data-v-74fee316="" className="content-page catalogue-filters">
-              <h5 data-v-74fee316="" style={{ color: 'rgb(170, 170, 170)' }}>
-                <b data-v-74fee316="">FILTERS</b>
+            <div className="content-page catalogue-filters">
+              <h5 style={{ color: 'rgb(170, 170, 170)' }}>
+                <b>FILTERS</b>
               </h5>
-              <div data-v-74fee316="" className="collapsible-wrapper">
-                <div
-                  data-v-74fee316=""
-                  className="collapsible-panel accordion-item"
-                >
+              <div className="collapsible-wrapper">
+                <div className="collapsible-panel accordion-item">
                   <div className="collapsible-panel__header">
                     <button
                       aria-controls="collapsible-0"
@@ -225,8 +246,8 @@ class Search extends Component {
                           fill="#333"
                         />
                       </svg>
-                      <div data-v-74fee316="">
-                        <b data-v-74fee316="">Content Types</b>
+                      <div>
+                        <b>Content Types</b>
                       </div>
                     </button>
                     <div className="collapsible-panel__actions" />
@@ -235,33 +256,30 @@ class Search extends Component {
                     id="collapsible-0"
                     className="collapsible-panel__container"
                   >
-                    <div data-v-74fee316="" className="filters-list">
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                    <div className="filters-list">
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Data
                       </div>
-                      <div data-v-74fee316="" className="filter selected">
-                        <i data-v-74fee316="" className="fa fa-check" />
+                      <div className="filter selected">
+                        <i className="fa fa-check" />
                         Indicators
                       </div>
-                      <div data-v-74fee316="" className="filter selected">
-                        <i data-v-74fee316="" className="fa fa-check" />
+                      <div className="filter selected">
+                        <i className="fa fa-check" />
                         Briefings
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Reports
                       </div>
                     </div>
                   </div>
                 </div>
-                <div data-v-74fee316="" className="filters-list" />
+                <div className="filters-list" />
               </div>
-              <div data-v-74fee316="" className="collapsible-wrapper">
-                <div
-                  data-v-74fee316=""
-                  className="collapsible-panel accordion-item"
-                >
+              <div className="collapsible-wrapper">
+                <div className="collapsible-panel accordion-item">
                   <div className="collapsible-panel__header">
                     <button
                       aria-expanded="true"
@@ -279,8 +297,8 @@ class Search extends Component {
                           fill="#333"
                         />
                       </svg>
-                      <div data-v-74fee316="">
-                        <b data-v-74fee316=""> Topics</b>
+                      <div>
+                        <b> Topics</b>
                       </div>
                     </button>
                     <div className="collapsible-panel__actions" />
@@ -289,43 +307,43 @@ class Search extends Component {
                     id="collapsible-0"
                     className="collapsible-panel__container"
                   >
-                    <div data-v-74fee316="" className="filters-list">
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                    <div className="filters-list">
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Greenhouse gas emissions and projections
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Renewable energy
                       </div>
-                      <div data-v-74fee316="" className="filter selected">
-                        <i data-v-74fee316="" className="fa fa-check" />
+                      <div className="filter selected">
+                        <i className="fa fa-check" />
                         Energy efficiency
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Transport
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Ozone-depleting substances
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Fluorinated greenhouse gases
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Land and forests
                       </div>
-                      <div data-v-74fee316="" className="filter">
-                        <i data-v-74fee316="" className="fa fa-dot-circle" />
+                      <div className="filter">
+                        <i className="fa fa-dot-circle" />
                         Adaptation to climate change
                       </div>
                     </div>
                   </div>
                 </div>
-                <div data-v-74fee316="" className="filters-list" />
+                <div className="filters-list" />
               </div>
             </div>
           </Portal>

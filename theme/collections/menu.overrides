@@ -1,11 +1,16 @@
 
-body.section-controlpanel {
+
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body.section-controlpanel,
+body.view-contentsview {
   .col-3.inPageNavigation {
     display: none;
   }
   .col-6 {
     flex: 0 0 75%;
     max-width: 75%;
+    padding-right: 0;
   }
 } 
 
@@ -764,6 +769,8 @@ body > #main:not(.homepage) {
     }
     .catalogue-header {
       position: relative;
+      margin-top: -2rem;
+      margin-bottom: 3rem;
       i {
         position: absolute;
         right: 1rem;
@@ -883,7 +890,7 @@ body > #main:not(.homepage) {
         }
       }
       &-detail{
-        font-size: .8rem;
+        font-size: 1rem;
         &.with-content {
           flex: 1 0;
         }
@@ -931,7 +938,7 @@ body > #main:not(.homepage) {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
         .card {
           a {
-                display: flex;
+                // display: flex;
             justify-content: center;
             align-items: center;
           }
