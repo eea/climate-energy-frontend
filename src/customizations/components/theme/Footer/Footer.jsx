@@ -38,7 +38,7 @@ const Footer = ({ intl }) => (
   >
     <Container>
       <div className="ui vertically divided grid">
-        <div className="four column row">
+        <div className="column row container">
           <div className="column row">
             <p>
               Find information on the EU and its Member States' progress in

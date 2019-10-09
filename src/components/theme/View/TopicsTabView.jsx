@@ -51,7 +51,6 @@ class DefaultView extends Component {
 
     this.state = {
       tabs: null,
-      isTopic: false,
     };
     console.log('defaultView');
   }
@@ -72,37 +71,37 @@ class DefaultView extends Component {
     setFolderTabs: PropTypes.func.isRequired,
   };
 
-  componentDidMount(){
-    console.log('mounted here', this.props)
+  componentDidMount() {
+    console.log('mounted here', this.props);
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('current', this.state, this.props)
-    console.log('previous', prevProps, prevState)
+  //   componentDidUpdate(prevProps, prevState, snapshot) {
+  //     console.log('current', this.state, this.props);
+  //     console.log('previous', prevProps, prevState);
 
-    if (!this.props.parent.length && this.props.location.pathname != '/') {
-      const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      this.props.getParentFolderData(path);
-    }
+  //     if (!this.props.parent.length && this.props.location.pathname != '/') {
+  //       const pathArr = this.props.location.pathname.split('/');
+  //       pathArr.length = 4;
+  //       const path = pathArr.join('/');
+  //       this.props.getParentFolderData(path);
+  //     }
 
-    if (!this.state.isTopic && this.props.parent.layout === 'topics_view' && this.props.location.pathname !== '/') {
-      this.setState({ isTopic: true });
-    }
-    if (this.state.isTopic && this.props.location.pathname === '/') {
-      this.setState({ isTopic: false });
-    }
-  }
+  //     if (
+  //       !this.state.isTopic &&
+  //       this.props.parent.layout === 'topics_view' &&
+  //       this.props.location.pathname !== '/'
+  //     ) {
+  //       this.setState({ isTopic: true });
+  //     }
+  //     if (this.state.isTopic && this.props.location.pathname === '/') {
+  //       this.setState({ isTopic: false });
+  //     }
+  //   }
 
   componentWillReceiveProps(nextProps) {
     console.log('herere', nextProps.parent, this.props.parent);
     if (nextProps.parent && nextProps.parent.id !== this.props.parent.id) {
       console.log('props parent', nextProps.parent);
-      if (nextProps.parent.layout === 'topics_view') {
-        this.setState({ isTopic: true });
-      } else {
-        this.setState({ isTopic: false });
-      }
+
       // const title = nextProps.parent.title;
       // const description = nextProps.parent.description;
       // const image =
@@ -138,7 +137,7 @@ class DefaultView extends Component {
     }
     return hasTilesData(content) ? (
       <div id="page-document" className="ui wrapper">
-        {this.props.tabs && this.props.tabs.length && this.state.isTopic ? (
+        {this.props.tabs && this.props.tabs.length ? (
           <nav className="tabs">
             {this.props.tabs.map((tab, index) => (
               <Link
