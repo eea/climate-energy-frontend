@@ -90,7 +90,7 @@ class View extends Component {
        */
       status: PropTypes.number,
     }),
-    intl: intlShape.isRequired,
+    
   };
 
   /**

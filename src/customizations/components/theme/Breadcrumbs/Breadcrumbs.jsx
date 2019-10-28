@@ -44,7 +44,7 @@ class Breadcrumbs extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
+    
   };
 
   /**

@@ -94,7 +94,6 @@ Footer.propTypes = {
   /**
    * i18n object
    */
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(Footer);

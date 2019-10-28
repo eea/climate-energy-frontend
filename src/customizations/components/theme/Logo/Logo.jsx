@@ -46,7 +46,7 @@ const Logo = ({ intl, isHomepage }) => (
  * @static
  */
 Logo.propTypes = {
-  intl: intlShape.isRequired,
+  
 };
 
 export default injectIntl(Logo);

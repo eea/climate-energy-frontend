@@ -34,7 +34,7 @@ class Navigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
+    
   };
 
   constructor(props) {

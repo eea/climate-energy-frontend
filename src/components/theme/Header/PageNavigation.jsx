@@ -32,7 +32,6 @@ class PageNavigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   constructor(props) {
