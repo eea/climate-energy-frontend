@@ -427,6 +427,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onFocusPreviousTile(currentTile, tileNode) {
+      console.log('onFocusPreviousTile')
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
@@ -452,6 +453,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onFocusNextTile(currentTile, tileNode) {
+      console.log('onFocusNextTile')
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
@@ -494,6 +496,7 @@ class Form extends Component {
       disableArrowDown = false,
     } = {},
   ) {
+      console.log('in handle keydown')
     if (e.key === 'ArrowUp' && !disableArrowUp) {
       this.onFocusPreviousTile(tile, node);
       e.preventDefault();
@@ -560,8 +563,8 @@ class Form extends Component {
               onDeleteTile={this.onDeleteTile}
               onSelectTile={() => {}}
               onMoveTile={this.onMoveTile}
-              onFocusPreviousTile={() => {}}
-              onFocusNextTile={() => {}}
+              onFocusPreviousTile={this.onFocusPreviousTile}
+              onFocusNextTile={this.onFocusNextTile}
               properties={formData}
               data={tilesDict[tile]}
               pathname={this.props.pathname}
