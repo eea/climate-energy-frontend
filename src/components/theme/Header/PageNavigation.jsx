@@ -59,11 +59,15 @@ class PageNavigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
+      this.setSubmenu(this.state.subMenu.type, [])
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
   setSubmenu(title, items) {
+    const body = document.querySelector('body');
+
     if (this.state.subMenu.type === title) {
+      body.classList.remove('menu-open-contentpage');
       this.setState({
         subMenu: {
           type: null,
@@ -75,6 +79,8 @@ class PageNavigation extends Component {
         },
       });
     } else {
+      body.classList.add('menu-open-contentpage');
+
       this.setState({
         subMenu: {
           type: title,
@@ -153,11 +159,13 @@ class PageNavigation extends Component {
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
                   <div>
-                    {/* onClick={() => this.setSubmenu(item.title, item.items)} */}
-                    <h2 className="menu-title">
-                      <Link to={item.url} key={item.url}>
+                    <h2 
+                    onClick={() => this.setSubmenu(item.title, item.items)}
+                    className="menu-title"
+                    >
+                      {/* <Link to={item.url} key={item.url}> */}
                         {item.title}
-                      </Link>
+                      {/* </Link> */}
                     </h2>
                     <div className="menuExpanded">
                       <ul>
@@ -222,6 +230,57 @@ class PageNavigation extends Component {
               </div>
             ))}
           </div>
+          {this.state.subMenu.items && this.state.subMenu.items.length ? (
+            <div className="sub-menu columns-3">
+              {this.state.subMenu.items.map(item => (
+                <div key={item.url} className="sub-menu-item">
+                  <h2
+                    onClick={() => this.setSubtopics(item.title, item.items)}
+                    className="submenu-title"
+                    onKeyPress={() => {}}
+                  >
+                    {item.items && item.items.length ? (
+                      item.title
+                    ) : (
+                      <Link
+                        to={item.url === '' ? '/' : item.url}
+                        key={item.url}
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </h2>
+                </div>
+              ))}
+            </div>
+          ) : (
+            ''
+          )}
+           {this.state.subTopics.items && this.state.subTopics.items.length ? (
+            <div className="sub-topics columns-3">
+              <h2 className="bold mb-2">
+                <i>{this.state.subTopics.type}</i>
+              </h2>
+              <p className="mb-5">Subtopics</p>
+              {this.state.subTopics.items.map(item => (
+                <div key={item.url} className="sub-topic-item">
+                  <h3 className="sub-topic-title">
+                    <Link
+                      to={item.url === '' ? '/' : item.url}
+                      key={item.url}
+                      className={
+                        this.isActive(item.url) ? 'item active' : 'item'
+                      }
+                    >
+                      {item.title}
+                    </Link>
+                  </h3>
+                </div>
+              ))}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     );
