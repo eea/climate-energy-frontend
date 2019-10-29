@@ -113,6 +113,7 @@ class PageNavigation extends Component {
   }
 
   render() {
+    if(!__CLIENT__) return ''
     return (
       <div id="app-menu-content">
         <div className="menu">
