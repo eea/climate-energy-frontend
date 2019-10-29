@@ -74,7 +74,7 @@ class Header extends Component {
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div className="header">
                 <Logo isHomepage={this.props.actualPathName === '/' || false} />
-                <div className="searcbar">
+                <div className="searchbar">
                   <SearchWidget pathname={this.props.pathname} />
                 </div>
               </div>
