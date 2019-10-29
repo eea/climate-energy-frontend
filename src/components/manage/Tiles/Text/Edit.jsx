@@ -74,6 +74,7 @@ class Edit extends Component {
       ...this.props.data,
       cktext,
     });
+    this.node.focus()
   }
 
   /**
@@ -151,7 +152,7 @@ class Edit extends Component {
         role="presentation"
         // onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile text', { selected: this.props.selected })}
-        ref={node => (this.ref = node)}
+        // ref={node => (this.ref = node)}
       >
         <CKEditor
           config={editorConfiguration}
@@ -160,6 +161,8 @@ class Edit extends Component {
           onInit={editor => {
             // You can store the "editor" and use when it is needed.
             // console.log('Editor is ready to use!', editor);
+            this.node = editor.ui.getEditableElement();
+            this.node.focus();
           }}
           onChange={this.onChange}
           onBlur={(event, editor) => {}}
