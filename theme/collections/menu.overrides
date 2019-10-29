@@ -13,7 +13,13 @@ body.view-contentsview {
     padding-right: 0;
   }
 } 
-
+body.menu-open-homepage {
+  .content-area {
+    main {
+      display: none;
+    }
+  }
+}
 
 #main.homepage {
     .content-area {
@@ -25,9 +31,10 @@ body.view-contentsview {
         justify-content: center;
         align-items: center;
         main {
-            position: absolute;
-            top: 150px;
-            left: 66.66%;
+          position: absolute;
+          top: 150px;
+          left: 33%;
+          width: 66%;
             h1 {
                 color: white;
                 border-bottom: none;
@@ -628,6 +635,9 @@ body > #main:not(.homepage) {
         width: 100%;
         h2.menu-title {
           color: #444;
+          a {
+            color: #444;
+          }
           &.white {
             color: white;
           }

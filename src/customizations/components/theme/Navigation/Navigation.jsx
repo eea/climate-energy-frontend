@@ -34,7 +34,6 @@ class Navigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    
   };
 
   constructor(props) {
@@ -67,7 +66,9 @@ class Navigation extends Component {
   }
 
   setSubmenu(title, items) {
+    const body = document.querySelector('body');
     if (this.state.subMenu.type === title) {
+      body.classList.remove('menu-open-homepage');
       this.setState({
         subMenu: {
           type: null,
@@ -79,11 +80,12 @@ class Navigation extends Component {
         },
       });
     } else {
+      body.classList.add('menu-open-homepage');
       this.setState({
         subMenu: {
           type: title,
           items: items,
-        }
+        },
       });
     }
   }
@@ -190,7 +192,16 @@ class Navigation extends Component {
                     className="submenu-title"
                     onKeyPress={() => {}}
                   >
-                    {item.title}
+                    {item.items && item.items.length ? (
+                      item.title
+                    ) : (
+                      <Link
+                        to={item.url === '' ? '/' : item.url}
+                        key={item.url}
+                      >
+                        {item.title}
+                      </Link>
+                    )}
                   </h2>
                 </div>
               ))}

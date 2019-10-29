@@ -37,8 +37,8 @@ class PageNavigation extends Component {
   constructor(props) {
     super(props);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-    this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.setSubmenu = this.setSubmenu.bind(this);
+    this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.setSubtopics = this.setSubtopics.bind(this);
     this.state = {
       isMobileMenuOpen: false,
@@ -62,7 +62,6 @@ class PageNavigation extends Component {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
-
   setSubmenu(title, items) {
     if (this.state.subMenu.type === title) {
       this.setState({
@@ -113,7 +112,7 @@ class PageNavigation extends Component {
   }
 
   render() {
-    if(!__CLIENT__) return ''
+    if (!__CLIENT__) return '';
     return (
       <div id="app-menu-content">
         <div className="menu">
@@ -154,34 +153,42 @@ class PageNavigation extends Component {
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
                   <div>
+                    onClick={() => this.setSubmenu(item.title, item.items)}
                     <h2
-                      onClick={() => this.setSubmenu(item.title, item.items)}
                       className="menu-title"
                       onKeyPress={() => {}}
                     >
-                      {item.title}
+                      <Link to={item.url} key={item.url}>
+                        {item.title}
+                      </Link>
                     </h2>
                     <div className="menuExpanded">
                       <ul>
                         <h5>
-                          {item.items.find(i =>
-                            window && window.location.href.includes(i.url),
+                          {item.items.find(
+                            i => window && window.location.href.includes(i.url),
                           ) ? (
                             <Link
                               to={
-                                item.items.find(i =>
-                                  window && window.location.href.includes(i.url),
+                                item.items.find(
+                                  i =>
+                                    window &&
+                                    window.location.href.includes(i.url),
                                 ).url
                               }
                               key={
-                                item.items.find(i =>
-                                  window && window.location.href.includes(i.url),
+                                item.items.find(
+                                  i =>
+                                    window &&
+                                    window.location.href.includes(i.url),
                                 ).url
                               }
                             >
                               {
-                                item.items.find(i =>
-                                  window && window.location.href.includes(i.url),
+                                item.items.find(
+                                  i =>
+                                    window &&
+                                    window.location.href.includes(i.url),
                                 ).title
                               }
                             </Link>
