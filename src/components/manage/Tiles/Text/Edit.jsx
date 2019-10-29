@@ -131,10 +131,10 @@ class Edit extends Component {
             model: 'tile_description',
             view: {
               name: 'div',
-              classes: 'chart-highlight',
+              classes: 'descTile',
             },
             title: 'Tile Description',
-            class: 'chart-highlight',
+            class: 'descTile',
           },
           // {
           //   model: 'heading2',

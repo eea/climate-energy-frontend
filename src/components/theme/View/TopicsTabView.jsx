@@ -142,7 +142,7 @@ class DefaultView extends Component {
             {this.props.tabs.map((tab, index) => (
               <Link
                 key={tab.url}
-                className="tabs__item"
+                className={`tabs__item${tab.url === this.props.location.pathname && ' tabs__item_active' || ''}`}
                 to={tab.url}
                 title={tab['@type']}
               >

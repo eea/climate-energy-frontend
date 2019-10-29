@@ -52,10 +52,10 @@ const CKText = ({
           model: 'tile_description',
           view: {
             name: 'div',
-            classes: 'chart-highlight',
+            classes: 'tile-description',
           },
           title: 'Tile Description',
-          class: 'chart-highlight',
+          class: 'tile-description',
         },
         // {
         //   model: 'heading2',

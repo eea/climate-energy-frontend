@@ -1,6 +1,14 @@
 html {
   font-size: 16px;
 }
+body {
+  line-height: 1.7em;
+}
+
+html,body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
 
 .footerLogoWrapper {
   display: flex;
@@ -116,6 +124,30 @@ nav.tabs {
   margin-right: 3px;
 }
 
+
+
+// content styles
 .content-page {
   min-height: 600px;
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: Lato;
+  }
+
+  .descTile {
+    font-weight: 300;
+  }
+
+  h1.documentFirstHeading {
+    font-size: 2.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .5rem;
+    &:before {
+      display: none;
+    }
+  }
 }
