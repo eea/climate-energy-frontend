@@ -21,6 +21,12 @@ import {
 
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
+import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
+
+import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
+import TextTileView from '~/components/manage/Tiles/Text/View';
+
+
 
 export const settings = {
   ...defaultSettings,
@@ -37,8 +43,25 @@ export const views = {
 
 export const widgets = {
   ...defaultWidgets,
+  widget: {
+    ...defaultWidgets.widget,
+    cktext: CKEditorWidget,
+  },
 };
+
 
 export const tiles = {
   ...defaultTiles,
+
+  tilesConfig: {
+    ...defaultTiles.tilesConfig,
+    cktext: {
+      id: 'cktext',
+      group: 'text',
+      title: 'CKEditor',
+      view: TextTileView,
+      edit: TextTileEdit,
+      icon: defaultTiles.tilesConfig.text.icon,
+    },
+  },
 };
