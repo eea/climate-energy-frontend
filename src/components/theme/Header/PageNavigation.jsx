@@ -153,11 +153,8 @@ class PageNavigation extends Component {
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
                   <div>
-                    onClick={() => this.setSubmenu(item.title, item.items)}
-                    <h2
-                      className="menu-title"
-                      onKeyPress={() => {}}
-                    >
+                    {/* onClick={() => this.setSubmenu(item.title, item.items)} */}
+                    <h2 className="menu-title">
                       <Link to={item.url} key={item.url}>
                         {item.title}
                       </Link>
