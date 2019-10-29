@@ -933,7 +933,7 @@ body > #main:not(.homepage) {
     display: flex;
     justify-content: space-between;
   }
-  .full-width {
+  .full-width-catalogue {
     .cards {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
         .card {
@@ -1011,7 +1011,7 @@ body > #main:not(.homepage) {
     justify-content: center;
     align-items: center;
   }
-  .catalogue-body:not(.full-width) {
+  .catalogue-body:not(.full-width-catalogue) {
     .card-title,
     .card-detail {
       padding-left: 90px;
@@ -1073,4 +1073,11 @@ body > #main:not(.homepage) {
   }
 }
 
+}
+
+
+.menu {
+  h3,h1,h2 {
+    cursor: pointer;
+  }
 }

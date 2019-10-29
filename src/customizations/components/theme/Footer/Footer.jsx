@@ -46,7 +46,7 @@ const Footer = ({ intl }) => (
             </p>
           </div>
 
-          <div className="column">
+          <div style={{ minWidth: '283px' }} className="column">
             <div className="footerLogoWrapper">
               <img className="footerLogo" src={eeaLogo} alt="" />
               <img className="footerLogo" src={ecLogo} alt="" />

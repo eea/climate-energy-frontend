@@ -7,22 +7,25 @@
 --------------------*/
 
 @fontName          : 'Lato';
-@fontSmoothing     : antialiased;
+@headerFontName    : 'Roboto';
 
-@headerFont        : @fontName, 'Roboto Condensed', 'Roboto', 'Lato', sans-serif;
-@pageFont          : @fontName, 'Lato', 'Roboto', 'Roboto Condensed', sans-serif;
+// @googleFontSizes   : '300,400,500,700,400italic,700italic';
+
+@headerFont        : 'Roboto Condensed', sans-serif;
+@pageFont          : 'Lato', sans-serif;
 
 @googleFontName    : @fontName;
 @importGoogleFonts : true;
-@googleFontSizes   : '400,700,400italic,700italic';
+@googleFontSizes   : '300,400,500,600,700,400italic,700italic';
 @googleSubset      : 'latin';
 
 @googleProtocol    : 'https://';
-@googleFontRequest : '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}';
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}|@{headerFontName}:@{googleFontSizes}';
 
 
 @bold              : bold;
 @normal            : normal;
+
 
 /*-------------------
       Base Sizes

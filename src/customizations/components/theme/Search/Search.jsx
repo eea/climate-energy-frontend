@@ -18,8 +18,7 @@ import qs from 'query-string';
 import { searchContent } from '@plone/volto/actions';
 
 import { SearchTags, Toolbar } from '@plone/volto/components';
-
-import Placeholder from './placeholder.jpg'
+import { Placeholder } from 'semantic-ui-react'
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {
@@ -135,7 +134,7 @@ class Search extends Component {
   render() {
     console.log('props in search', this.props.items);
     return (
-      <Container id="page-search" className="catalogue-body full-width">
+      <Container id="page-search" className="catalogue-body full-width-catalogue">
         <Helmet title="Search" />
         <div className="container">
           <article id="content">
@@ -178,7 +177,10 @@ class Search extends Component {
                     title={item['@type']}
                   >
                     <div className="card-image">
-                      <img src={Placeholder}></img>
+                      {/* <img src={Placeholder}></img> */}
+                      <Placeholder style={{ height: 150, width: 150 }}>
+                        <Placeholder.Image />
+                      </Placeholder>
                     </div>
                   </Link>
 

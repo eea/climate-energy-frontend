@@ -1,3 +1,7 @@
+html {
+  font-size: 16px;
+}
+
 .footerLogoWrapper {
   display: flex;
   .footerLogo {
@@ -73,7 +77,14 @@ nav.tabs {
 
 .topics{
 
-  
+  .header {
+    .searchbar {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-weight: bold;
+    }
+  }
   .header {
 
     img {
@@ -103,4 +114,8 @@ nav.tabs {
 .card-bottom .muted {
   color: #aaa;
   margin-right: 3px;
+}
+
+.content-page {
+  min-height: 600px;
 }
