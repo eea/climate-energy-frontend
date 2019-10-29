@@ -1079,5 +1079,6 @@ body > #main:not(.homepage) {
 .menu {
   h3,h1,h2 {
     cursor: pointer;
+    font-weight: 400;
   }
 }
