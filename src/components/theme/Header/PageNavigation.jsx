@@ -164,23 +164,23 @@ class PageNavigation extends Component {
                       <ul>
                         <h5>
                           {item.items.find(i =>
-                            window.location.href.includes(i.url),
+                            window && window.location.href.includes(i.url),
                           ) ? (
                             <Link
                               to={
                                 item.items.find(i =>
-                                  window.location.href.includes(i.url),
+                                  window && window.location.href.includes(i.url),
                                 ).url
                               }
                               key={
                                 item.items.find(i =>
-                                  window.location.href.includes(i.url),
+                                  window && window.location.href.includes(i.url),
                                 ).url
                               }
                             >
                               {
                                 item.items.find(i =>
-                                  window.location.href.includes(i.url),
+                                  window && window.location.href.includes(i.url),
                                 ).title
                               }
                             </Link>
