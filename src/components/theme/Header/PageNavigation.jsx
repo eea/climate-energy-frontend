@@ -59,7 +59,7 @@ class PageNavigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.setSubmenu(this.state.subMenu.type, [])
+      this.setSubmenu(this.state.subMenu.type, []);
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
@@ -159,63 +159,47 @@ class PageNavigation extends Component {
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
                   <div>
-                    <h2 
-                    onClick={() => this.setSubmenu(item.title, item.items)}
-                    className="menu-title"
+                    <h2
+                      onClick={() => this.setSubmenu(item.title, item.items)}
+                      className="menu-title"
                     >
                       {/* <Link to={item.url} key={item.url}> */}
-                        {item.title}
+                      {item.title}
                       {/* </Link> */}
                     </h2>
-                    <div className="menuExpanded">
-                      <ul>
-                        <h5>
-                          {item.items.find(
-                            i => window && window.location.href.includes(i.url),
-                          ) ? (
-                            <Link
-                              to={
-                                item.items.find(
-                                  i =>
-                                    window &&
-                                    window.location.href.includes(i.url),
-                                ).url
-                              }
-                              key={
-                                item.items.find(
-                                  i =>
-                                    window &&
-                                    window.location.href.includes(i.url),
-                                ).url
-                              }
-                            >
-                              {
-                                item.items.find(
-                                  i =>
-                                    window &&
-                                    window.location.href.includes(i.url),
-                                ).title
-                              }
-                            </Link>
-                          ) : (
-                            ''
-                          )}
-                        </h5>
-                        {item.items.map(sub =>
-                          sub.items && sub.items.length
-                            ? sub.items.map(subSub => (
-                                <li key={subSub.url}>
-                                  <Link
-                                    to={subSub.url === '' ? '/' : subSub.url}
-                                    key={subSub.url}
-                                  >
-                                    {subSub.title}
-                                  </Link>
-                                </li>
-                              ))
-                            : '',
+                    <div className="menuExpanded" id="menuExpanded">
+                      <h5>
+                        {item.items.find(
+                          i => window && window.location.href.includes(i.url),
+                        ) ? (
+                          <Link
+                            to={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                            key={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                          >
+                            {
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).title
+                            }
+                          </Link>
+                        ) : (
+                          ''
                         )}
-                      </ul>
+                      </h5>
                     </div>
                   </div>
                 ) : (
@@ -256,7 +240,7 @@ class PageNavigation extends Component {
           ) : (
             ''
           )}
-           {this.state.subTopics.items && this.state.subTopics.items.length ? (
+          {this.state.subTopics.items && this.state.subTopics.items.length ? (
             <div className="sub-topics columns-3">
               <h2 className="bold mb-2">
                 <i>{this.state.subTopics.type}</i>

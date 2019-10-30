@@ -15,6 +15,7 @@ import {
   SET_FOLDER_HEADER,
   SET_FOLDER_TABS,
   GET_PARENT_FOLDER_DATA,
+  GET_LOCALNAVIGATION,
 } from '~/constants/ActionTypes';
 
 export function setFolderHeader(payload) {
@@ -32,6 +33,16 @@ export function setFolderHeader(payload) {
     };
   }
   return;
+}
+
+export function getLocalnavigation(folder) {
+  return {
+    type: GET_LOCALNAVIGATION,
+    request: {
+      op: 'get',
+      path: `${folder}/@localnavigation`,
+    },
+  };
 }
 
 export function setFolderTabs(payload) {

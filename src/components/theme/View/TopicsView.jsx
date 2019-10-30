@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { Portal } from 'react-portal';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 // import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
-import { setFolderHeader, setFolderTabs } from '~/actions';
+import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
 const mapDispatchToProps = {
   setFolderHeader,
   setFolderTabs,
+  getLocalnavigation,
 };
 class TopicsView extends Component {
   constructor(props) {
@@ -43,12 +46,18 @@ class TopicsView extends Component {
         }),
       ),
     }).isRequired,
+    localNavigation: PropTypes.any,
+    getLocalnavigation: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    console.log('mounted');
-    // this.getFolderHeader();
+    this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
     this.renderTabs();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.pathname !== this.props.pathname) {
+      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -85,6 +94,12 @@ class TopicsView extends Component {
 
   render() {
     const content = this.props.content;
+    const localNavigation =
+      (this.props.localNavigation.items &&
+        this.props.localNavigation.items.filter(
+          item => item.title !== 'Home',
+        )) ||
+      [];
     return (
       <Container className="view-wrapper">
         {this.state.tabs}
@@ -125,20 +140,26 @@ class TopicsView extends Component {
             ))} */}
           </section>
         </article>
+
+        <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
+          <ul className="localNavigation">
+            {localNavigation.map(item => (
+              <li>
+                <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Portal>
       </Container>
     );
   }
 }
 
-// export default connect(
-//   state => ({
-//     tabs: state.folder_tabs.items,
-//     //   parent: state.parent_folder_data.items,
-//   }),
-//   mapDispatchToProps,
-// )(TopicsView);
-
 export default connect(
-  null,
-  mapDispatchToProps,
+  state => ({
+    localNavigation: state.localnavigation.items,
+  }),
+  { setFolderHeader, setFolderTabs, getLocalnavigation },
 )(TopicsView);

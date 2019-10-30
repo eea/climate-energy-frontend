@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Portal } from 'react-portal';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
@@ -16,14 +17,18 @@ import { Link } from 'react-router-dom';
 // import { compose } from 'redux';
 
 import { settings, tiles } from '~/config';
-import { setFolderTabs, getParentFolderData } from '~/actions';
+import {
+  setFolderTabs,
+  getParentFolderData,
+  getLocalnavigation,
+} from '~/actions';
 
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
   hasTilesData,
 } from '@plone/volto/helpers';
-import { defaultProps } from 'react-select/lib/Select';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -69,11 +74,20 @@ class DefaultView extends Component {
     }).isRequired,
     getParentFolderData: PropTypes.func.isRequired,
     setFolderTabs: PropTypes.func.isRequired,
+    localNavigation: PropTypes.any,
+    getLocalnavigation: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     console.log('mounted here', this.props);
+    this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.pathname !== this.props.pathname) {
+      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
+    }
+  }
+
   //   componentDidUpdate(prevProps, prevState, snapshot) {
   //     console.log('current', this.state, this.props);
   //     console.log('previous', prevProps, prevState);
@@ -128,7 +142,12 @@ class DefaultView extends Component {
     const intl = this.props.intl;
     const tilesFieldname = getTilesFieldname(content);
     const tilesLayoutFieldname = getTilesLayoutFieldname(content);
-
+    const localNavigation =
+      (this.props.localNavigation.items &&
+        this.props.localNavigation.items.filter(
+          item => item.title !== 'Home',
+        )) ||
+      [];
     if (!this.props.tabs && this.props.location.pathname != '/') {
       const pathArr = this.props.location.pathname.split('/');
       pathArr.length = 4;
@@ -142,7 +161,10 @@ class DefaultView extends Component {
             {this.props.tabs.map((tab, index) => (
               <Link
                 key={tab.url}
-                className={`tabs__item${tab.url === this.props.location.pathname && ' tabs__item_active' || ''}`}
+                className={`tabs__item${(tab.url ===
+                  this.props.location.pathname &&
+                  ' tabs__item_active') ||
+                  ''}`}
                 to={tab.url}
                 title={tab['@type']}
               >
@@ -153,6 +175,18 @@ class DefaultView extends Component {
         ) : (
           ''
         )}
+
+        <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
+          <ul className="localNavigation">
+            {localNavigation.map(item => (
+              <li>
+                <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Portal>
 
         <Helmet title={content.title} />
         {map(content[tilesLayoutFieldname].items, tile => {
@@ -223,8 +257,9 @@ export default connect(
   state => ({
     tabs: state.folder_tabs.items,
     parent: state.parent_folder_data.items,
+    localNavigation: state.localnavigation.items,
   }),
-  { setFolderTabs, getParentFolderData },
+  { setFolderTabs, getParentFolderData, getLocalnavigation },
 )(DefaultView);
 
 // export default compose(
