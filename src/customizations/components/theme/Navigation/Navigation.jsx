@@ -86,6 +86,10 @@ class Navigation extends Component {
           type: title,
           items: items,
         },
+        subTopics: {
+          type: null,
+          items: [],
+        },
       });
     }
   }
@@ -196,7 +200,10 @@ class Navigation extends Component {
                       item.title
                     ) : (
                       <Link
-                        to={item.url === '' ? '/' : item.url}
+                      to={() => {
+                        console.log(item)
+                        return item.url === '' ? '/' : item.url
+                      }}
                         key={item.url}
                       >
                         {item.title}
@@ -219,7 +226,10 @@ class Navigation extends Component {
                 <div key={item.url} className="sub-topic-item">
                   <h3 className="sub-topic-title">
                     <Link
-                      to={item.url === '' ? '/' : item.url}
+                      to={() => {
+                        const url = item.items ? item.items[0].url : item.url
+                        return item.url === '' ? '/' : url
+                      }}
                       key={item.url}
                       className={
                         this.isActive(item.url) ? 'item active' : 'item'

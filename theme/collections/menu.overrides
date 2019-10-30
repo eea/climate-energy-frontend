@@ -663,7 +663,7 @@ body > #main:not(.homepage) {
         margin-top: 0;
         top:0;
         left: 0;
-        width: 50%;
+        width: 38%;
         padding-left: 22rem;
         background: linear-gradient(90deg,rgba(29,40,39,.69) 1%,#008675 80%,#008675);
         .sub-menu-item {
@@ -679,13 +679,19 @@ body > #main:not(.homepage) {
   
       .sub-topics {
         position: fixed;
-        left: 50%;
-        width: 25%;
+        left: 38%;
+        width: 20%;
         padding-top: 5rem;
         top: 0;
         margin-top: 0;
         height: calc(100% + 150px);
         background: #d7d7d7;
+        h2 {
+          color: #444;
+        }
+        p {
+          color: #444;
+        }
         .sub-topic-item {
           padding-right: 1rem;
           margin-bottom: 2rem;
@@ -1119,6 +1125,16 @@ body > #main:not(.homepage) {
 }
 
 
-.menu-open-contentpage .menu-title {
-  color: white!important;
+.menu-open-contentpage {
+  .menu-item .menuExpanded ul li {
+    a {
+      color: white!important;
+    }
+  }
+  .menuExpanded a {
+    color: white!important;
+  }
+  .menu-title {
+    color: white!important;
+  }
 }
