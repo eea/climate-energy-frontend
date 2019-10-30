@@ -168,10 +168,13 @@ class PageNavigation extends Component {
                       {/* </Link> */}
                     </h2>
                     <div className="menuExpanded" id="menuExpanded">
-                      <h5>
-                        {item.items.find(
-                          i => window && window.location.href.includes(i.url),
-                        ) ? (
+                      {item.items.find(
+                        i =>
+                          window &&
+                          window.location.href.includes(i.url) &&
+                          window.location.href.includes('topics'),
+                      ) ? (
+                        <h5>
                           <Link
                             to={
                               item.items.find(
@@ -196,10 +199,10 @@ class PageNavigation extends Component {
                               ).title
                             }
                           </Link>
-                        ) : (
-                          ''
-                        )}
-                      </h5>
+                        </h5>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 ) : (
