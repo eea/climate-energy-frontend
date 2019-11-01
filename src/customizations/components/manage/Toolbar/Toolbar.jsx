@@ -11,6 +11,7 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
+import { Portal } from 'react-portal';
 
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
@@ -386,6 +387,32 @@ class Toolbar extends Component {
             </div>
           </div>
           <div className="pusher" />
+          <Portal
+            node={
+              __CLIENT__ &&
+              document.querySelector(
+                '#page-contents #content-core .ui.stackable.attached.menu .menu',
+              )
+            }
+          >
+            {this.props.content &&
+              this.props.content.is_folderish &&
+              this.props.types.length > 0 && (
+                <div className="item"
+                style={{ cursor: 'pointer' }}>
+                  <Icon
+                    className="add"
+                    aria-label="Add"
+                    onClick={e => this.toggleMenu(e, 'types')}
+                    tabIndex={0}
+                    style={{ color: '#767676', cursor: 'pointer' }}
+                    id="toolbar-add"
+                    name={addSVG}
+                    size="20px"
+                  />
+                </div>
+              )}
+          </Portal>
         </>
       )
     );
