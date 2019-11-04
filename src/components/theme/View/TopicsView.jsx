@@ -100,6 +100,7 @@ class TopicsView extends Component {
           item => item.title !== 'Home',
         )) ||
       [];
+    console.log('pathname', this.props.content['@id'] + '/manage_interfaces');
     return (
       <Container className="view-wrapper">
         {this.state.tabs}
@@ -151,6 +152,16 @@ class TopicsView extends Component {
               </li>
             ))}
           </ul>
+        </Portal>
+        <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
+          <a
+            href={this.props.content['@id'] + '/manage_interfaces'}
+            key={this.props.content['@id']}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Manage
+          </a>
         </Portal>
       </Container>
     );
