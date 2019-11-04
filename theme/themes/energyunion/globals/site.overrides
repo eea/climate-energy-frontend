@@ -71,6 +71,8 @@ nav.tabs {
         margin-top: .5rem;
       }
       z-index: 1;
+      position: relative;
+      left: -6px;
     }
     .page-logo {
       width: 750px;
@@ -96,6 +98,8 @@ nav.tabs {
   color: #aaa;
   margin-right: 3px;
 }
+
+//Cards End
 
 
 // Content
