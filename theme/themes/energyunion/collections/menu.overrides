@@ -22,14 +22,14 @@ body.menu-open-homepage {
   }
 }
 
-#view{
+#main.homepage {
+  #view{
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
-    // position: relative;
-    // left: -120px;
+    position: relative;
+    left: -130px;
 }
 
-#main.homepage {
     .content-area {
         display: flex;
         height: 100vh;
@@ -59,6 +59,8 @@ body.menu-open-homepage {
         }
         .ui.form .searchbox.field {
             border-left: none;
+            top: -20px;
+            position: relative;
             input {
                 color: white;
             }
@@ -200,7 +202,7 @@ position: relative;
       padding-left: 40%;
       width: 66.66%;
       left: -120px;
-      background: linear-gradient(90deg,rgba(115, 139, 65, .69) 1%,#738b41 80%,#738b41);
+      background: rgba(0, 134, 117, 0.5);
       &.columns-2 {
         background: linear-gradient(to right, rgba(29, 40, 39, 0.69) 1%, #004B87 80%, #004B87 100%);
               .sub-menu-item {
@@ -263,7 +265,8 @@ position: relative;
     padding-top: 150px;
     margin-top: -150px;
     height: calc(100% + 150px);
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(255, 255, 255, 0.8);
+    left: -120px;
     .sub-topic-item {
       margin-bottom: 2.5rem;
       h4 {
@@ -517,11 +520,21 @@ position: relative;
     
 body > #main:not(.homepage) {
 
-  #view{
-    top: -30px;
-    position: relative;
-
-  }
+    #view{
+      top: -15px;
+      position: relative;
+    }
+    .ui.form .searchbox.field {
+    border-left: none;
+    // position: relative;
+    // top: 10px;
+    input {
+        color: white;
+    }
+    button {
+        color: white;
+    }
+    }
     #app-menu-content {
       position: relative;
       top: 0;
@@ -608,10 +621,10 @@ body > #main:not(.homepage) {
         padding-top: 5rem;
         margin-top: 0;
         top:0;
-        left: -50px;
+        left: -3%;
         width: 38%;
         padding-left: 22rem;
-        background: linear-gradient(90deg,rgba(115, 139, 65, .69) 1%,#738b41 80%,#738b41);
+        background: rgba(0, 134, 117, 0.8);
         .sub-menu-item {
           &.country {
             display: inline-block;
@@ -631,7 +644,8 @@ body > #main:not(.homepage) {
         top: 0;
         margin-top: 0;
         height: calc(100% + 150px);
-        background: #d7d7d7;
+        background: rgba(215, 215, 215, 0.9);
+        left: 35%;
         h2 {
           color: #444;
         }
@@ -698,20 +712,6 @@ body > #main:not(.homepage) {
       position: sticky;
       top: 0;
   }
-
-  .ui.form .searchbox.field {
-    border-left: none;
-    position: relative;
-    top: -20px;
-    input {
-        color: white;
-    }
-    button {
-        color: white;
-    }
-}
-
-
 
 
 // Catalogue
