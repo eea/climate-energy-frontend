@@ -2,6 +2,7 @@
         Global Overrides
 *******************************/
 
+@import url("site.variables");
 
 html {
   font-size: 16px;
@@ -31,7 +32,7 @@ nav.tabs {
   width: 100%;
   a {
       background: none;
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: @headerFont;
       font-size: 1.5rem;
       display: block;
       border: none;
@@ -45,7 +46,7 @@ nav.tabs {
       text-align: center;
       transition: border-bottom-color 300ms ease-in-out;
       &.tabs__item_active {
-          font-weight: bold;
+        font-weight: bold;
         border-bottom-color: #fff;
       }
   }
@@ -111,7 +112,7 @@ nav.tabs {
   h3,
   h4,
   h5 {
-    font-family: Lato;
+    font-family: @fontName;
   }
 
   .descTile {
