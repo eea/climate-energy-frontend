@@ -44,7 +44,7 @@
     Media Queries
 --------------------*/
 
-/* Mobile S - Max Width = 767px */
+/* Max Width = 767px (Mobile + Tablet) */ 
 
 //Logo
 @headerLogoWidth: 500px;
@@ -55,7 +55,7 @@
 //SearchBox
 @searchBoxPosition: absolute;
 @searchBoxLeftPosition: 0;
-@searchBoxTopPosition: 135px;
+@searchBoxTopPosition: 125px;
 
 //Hamburger Menu
 @mobileMenuPosition: absolute;

@@ -126,6 +126,7 @@ nav.tabs {
     &:before {
       display: none;
     }
+    
   }
 }
 
