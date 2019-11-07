@@ -118,15 +118,14 @@ nav.tabs {
   .descTile {
     font-weight: 300;
   }
-
+  
   h1.documentFirstHeading {
-    font-size: 2.5rem;
+    font-size: @h1documentFirstHeading;
     border-bottom: 1px solid #ddd;
     padding-bottom: .5rem;
     &:before {
       display: none;
     }
-    
   }
 }
 

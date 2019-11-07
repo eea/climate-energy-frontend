@@ -39,6 +39,9 @@
 /* The size of page text  */
 @fontSize : 14px;
 
+/* h1 Main Content   */
+@h1documentFirstHeading: 2.5rem;
+
 
 /*-------------------
     Media Queries
@@ -69,7 +72,6 @@
 @mainContentRightPosition: 0;
 @mainContentTopPosition: 180px;
 @mainContentMarginLeft: 15px;
-//add font
 
 /*-------------------
     Border Radius
