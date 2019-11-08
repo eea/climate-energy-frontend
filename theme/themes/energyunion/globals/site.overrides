@@ -59,26 +59,25 @@ nav.tabs {
   .header {
     .searchbar {
       position: absolute;
-      top: 2rem;
-      right: 2rem;
+      top: @searchBoxTopPositionTopics;
+      right: @searchBoxRightPosition;
       font-weight: bold;
+      @media (max-width: 600px){
+        right: calc(@searchBoxRightPosition + 1);
+      }
     }
   }
   .header {
 
     img {
-      @media (max-width: 700px) {
-        width: 100%;
-        margin-top: .5rem;
-      }
       z-index: 1;
       position: relative;
       left: -6px;
     }
-    .page-logo {
-      width: 750px;
-      margin-top: 2rem;
-    }
+    // .page-logo {
+    //   width: 750px;
+    //   margin-top: 2rem;
+    // }
   }
   
 }
@@ -151,6 +150,9 @@ nav.tabs {
   margin-top: -3rem;
   li {
     margin-right: 1rem;
+  }
+  @media (max-width: 600px){
+    margin-top: 0rem;
   }
 }
 
