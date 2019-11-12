@@ -58,15 +58,19 @@
 //SearchBox
 @searchBoxPosition: absolute;
 @searchBoxLeftPosition: 0;
-@searchBoxTopPosition: 125px;
+@searchBoxTopPositionHomepage: 8rem;
 
 @searchBoxTopPositionTopics: 2rem;
 @searchBoxMarginRight: -1rem;
+@searchBoxMarginLeft: 4rem;
 @searchBoxRightPosition: 1rem;
 
 //Hamburger Menu
 @mobileMenuPosition: absolute;
 @mobileMenuTopPosition: 20px;
+
+@mobileMenuTopPositionTopics: -17.9rem;
+@mobileMenuLeftPositionTopics: -1rem;
 
 //View Content
 @mainContentWidth: 92%;

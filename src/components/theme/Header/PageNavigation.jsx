@@ -36,6 +36,7 @@ class PageNavigation extends Component {
 
   constructor(props) {
     super(props);
+    this.isMobile = this.isMobile.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.setSubmenu = this.setSubmenu.bind(this);
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
@@ -50,11 +51,18 @@ class PageNavigation extends Component {
         type: null,
         items: [],
       },
+      isMobile: false
     };
   }
 
+
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
+  } 
+
+  componentDidMount(){
+      document.addEventListener('resize', this.isMobile);
+      this.isMobile();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,6 +71,16 @@ class PageNavigation extends Component {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
+
+  isMobile() {
+    if(window.matchMedia("(max-width: 900px)").matches) {
+      this.setState({isMobile: !this.state.isMobile})
+    }
+    else{
+      this.setState({isMobile: this.state.isMobile})
+    }
+  }
+
   setSubmenu(title, items) {
     const body = document.querySelector('body');
 
@@ -89,6 +107,7 @@ class PageNavigation extends Component {
       });
     }
   }
+
 
   setSubtopics(title, items) {
     this.setState({
@@ -117,9 +136,10 @@ class PageNavigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
+
   render() {
     if (!__CLIENT__) return '';
-    return (
+    if(!this.state.isMobile) return (
       <div id="app-menu-content">
         <div className="menu">
           <div className="hamburger-wrapper mobile only">
@@ -153,7 +173,127 @@ class PageNavigation extends Component {
               </span>
             </button>
           </div>
+          <div className={cx('menu-items', {'menu-open' : !this.state.isMobileMenuOpen})}>
+            {this.props.items.map(item => (
+              <div key={item.url} className="menu-item">
+                {item.items && item.items.length ? (
+                  <div>
+                    <h2
+                      onClick={() => this.setSubmenu(item.title, item.items)}
+                      className="menu-title"
+                    >
+                      {/* <Link to={item.url} key={item.url}> */}
+                      {item.title}
+                      {/* </Link> */}
+                    </h2>
+                    <div className="menuExpanded" id="menuExpanded">
+                      {item.items.find(
+                        i =>
+                          window &&
+                          window.location.href.includes(i.url) &&
+                          window.location.href.includes('topics'),
+                      ) ? (
+                        <h5>
+                          <Link
+                            to={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                            key={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                          >
+                            {
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).title
+                            }
+                          </Link>
+                        </h5>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to={item.url === '' ? '/' : item.url}
+                    key={item.url}
+                    className={this.isActive(item.url) ? 'item active' : 'item'}
+                  >
+                    <h2 className="menu-title">{item.title}</h2>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+          {this.state.subMenu.items && this.state.subMenu.items.length ? (
+            <div className="sub-menu columns-3">
+              {this.state.subMenu.items.map(item => (
+                <div key={item.url} className="sub-menu-item">
+                  <h2
+                    onClick={() => this.setSubtopics(item.title, item.items)}
+                    className="submenu-title"
+                    onKeyPress={() => {}}
+                  >
+                    {item.items && item.items.length ? (
+                      item.title
+                    ) : (
+                      <Link
+                        to={item.url === '' ? '/' : item.url}
+                        key={item.url}
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </h2>
+                </div>
+              ))}
+            </div>
+          ) : (
+            ''
+          )}
+          {this.state.subTopics.items && this.state.subTopics.items.length ? (
+            <div className="sub-topics columns-3">
+              <h2 className="bold mb-2">
+                <i>{this.state.subTopics.type}</i>
+              </h2>
+              <p className="mb-5">Subtopics</p>
+              {this.state.subTopics.items.map(item => (
+                <div key={item.url} className="sub-topic-item">
+                  <h3 className="sub-topic-title">
+                    <Link
+                      to={item.url === '' ? '/' : item.url}
+                      key={item.url}
+                      className={
+                        this.isActive(item.url) ? 'item active' : 'item'
+                      }
+                    >
+                      {item.title}
+                    </Link>
+                  </h3>
+                </div>
+              ))}
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+      </div>
+    );    
 
+    if(this.state.isMobile) return (
+      <div id="app-menu-content">
+        <div className="menu">
           <div className="menu-items">
             {this.props.items.map(item => (
               <div key={item.url} className="menu-item">
@@ -271,6 +411,7 @@ class PageNavigation extends Component {
         </div>
       </div>
     );
+
   }
 }
 

@@ -147,13 +147,16 @@ nav.tabs {
   display: flex;
   flex-direction: row;
   margin-top: .5rem;
-  margin-top: -3rem;
+  margin-top: -2rem;
   li {
     margin-right: 1rem;
   }
   @media (max-width: 600px){
     margin-top: 0rem;
   }
+  // @media only screen and (min-width: 600px) and (max-width: 900px){
+  //   margin-top: 1rem;
+  // }
 }
 
 .footerWrapper {
@@ -169,5 +172,22 @@ nav.tabs {
   float: left;
   padding-left: 0!important;
 }
+
+@media (min-width: 360px){
+  .footerWrapper .column {
+    width: 20% !important;
+  }
+  .footerWrapper .column.row{
+    width: 20% !important;
+  }
+
+.footerWrapper{
+  .column, .column.row {
+    min-width: 360px;
+  }
+}
+}
+
+
 
 //Footer End
