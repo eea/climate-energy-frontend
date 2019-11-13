@@ -136,13 +136,14 @@ class App extends Component {
                 )}
               </main>
             </Segment>
+            <Footer />
           </div>
         ) : (
-          <div  className="topics">
+          <div className="topics">
             <PageHeader />
             <PageHeaderBg />
             <div className="cols content-cols">
-              <div className="col-3">
+              <div className="col-3 menu-hamburger">
                 <Header
                   noBreadcrumbs={true}
                   actualPathName={this.props.pathname}

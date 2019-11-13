@@ -5,6 +5,21 @@
 @import url("../globals/site.variables");
 
 
+//hamburger menu visible until 900px
+@media only screen and (min-width: 768px) and (max-width: 900px){
+  body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='mobile only']:not(.tablet), body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='tablet hidden'], body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='computer only']:not(.tablet), body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='large screen only']:not(.tablet), body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='widescreen only']:not(.tablet), body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) [class*='or lower hidden']:not(.mobile) {
+    display: unset !important;
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 900px){
+  body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='mobile only']:not(.tablet), body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='tablet hidden'], body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='computer only']:not(.tablet), body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='large screen only']:not(.tablet), body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='widescreen only']:not(.tablet), body:not(.has-sidebar):not(.has-sidebar-collapsed) [class*='or lower hidden']:not(.mobile) {
+    display: unset !important;
+  }
+}
+
+
 //Home Page
 
 body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) .ui.container {
@@ -46,7 +61,7 @@ body.menu-open-homepage {
                 &:before {
                   border-bottom: none;
                 }
-                @media (max-width: 360px){
+                @media (max-width: 900px){
                   font-size: @h1documentFirstHeading - .5rem;
                 }
             }
@@ -55,7 +70,7 @@ body.menu-open-homepage {
             }
             //Mobile Media Queries
             @media (max-width: 360px){
-              top: calc(@mainContentTopPosition - 30px);
+              top: @mainContentTopPosition;
               width: @mainContentWidth;
               height: @mainContentHeight;
               overflow: @mainContentOverflow;
@@ -64,7 +79,7 @@ body.menu-open-homepage {
               margin-left: @mainContentMarginLeft;
             }
             //Tablet Media Queries
-            @media only screen and (min-width: 360px) and (max-width: 767px){
+            @media only screen and (min-width: 360px) and (max-width: 900px){
               top: @mainContentTopPosition;
               width: @mainContentWidth;
               height: @mainContentHeight;
@@ -74,7 +89,7 @@ body.menu-open-homepage {
               margin-left: @mainContentMarginLeft;
             } 
             //Tablet to Laptop
-            @media only screen and (min-width: 768px) and (max-width: 1200px) {
+            @media only screen and (min-width: 900px) and (max-width: 1200px) {
               // width: @mainContentWidth;
               height: @mainContentHeight;
               overflow: @mainContentOverflow;
@@ -95,6 +110,13 @@ body.menu-open-homepage {
         }
     }
 
+  .headerTop {
+    position: relative;
+    z-index: 1;
+    @media (max-width: 900px){
+      z-index: unset;
+    }
+ } 
     .header {
         position: absolute;
         width: 100%;
@@ -110,7 +132,9 @@ body.menu-open-homepage {
         .ui.form .searchbox.field {
             border-left: none;
             top: -1rem;
+            // margin-right: -5rem;
             position: relative;
+            z-index: 1;
             input {
                 color: white;
             }
@@ -124,7 +148,7 @@ body.menu-open-homepage {
               top: @searchBoxTopPositionHomepage;
             }
             //Tablet Media Queries
-            @media only screen and (min-width: 360px) and (max-width: 767px) {
+            @media only screen and (min-width: 360px) and (max-width: 900px) {
               top: @searchBoxTopPositionHomepage;
               position: @searchBoxPosition;
               left: @searchBoxLeftPosition;
@@ -139,7 +163,7 @@ body.menu-open-homepage {
           left: -6px; 
           // margin-top: .5rem;
           //mobileS queries
-          @media (max-width: 767px){
+          @media (max-width: 900px){
             width: @headerLogoWidth;
             left: @headerLogoLeftPosition;
           }
@@ -191,15 +215,27 @@ body.menu-open-homepage {
   align-items: flex-start;
 
   .hamburger-wrapper.mobile.only{
+    position: @mobileMenuPosition;
+    left: @mobileMenuLeftPosition;
+    background: rgba(0, 134, 117, 0.9);
     //Mobile Media Queries
     @media (max-width: 360px){
-      position: @mobileMenuPosition;
-      top: calc(@mobileMenuTopPosition + 5px);  
+      top: calc(@mobileMenuTopPosition + 7px);  
     }
     //Tablet Media Queries
-    @media only screen and (min-width: 360px) and (max-width: 767px){
+    @media only screen and (min-width: 360px) and (max-width: 900px){
       position: @mobileMenuPosition;
       top: @mobileMenuTopPosition;  
+    }
+    .hamburger{
+      @media (max-width: 900px){
+        padding: 10px 10px;
+      }
+      .hamburger-box{
+        @media (max-width: 900px){
+          height: 27px;
+        }
+      }
     }
     .hamburger-inner,
     .hamburger-inner::before, 
@@ -235,22 +271,17 @@ body.menu-open-homepage {
       // height: 300px;
       display: inline-block;
 
-        @media (max-width: 600px){
+        @media (max-width: 360px){
           background: rgba(0, 134, 117, 0.9);          
-          margin-left: 1rem;
+          margin-left: 15px;
           top: 4.5rem;
           padding: 2rem;
-          // transition-delay: 2s;
-
-        //   transform: translateY(-2em);
-        //   z-index: -1;
-        //   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
         }  
 
-        @media only screen and (min-width: 600px) and (max-width: 900px){
+        @media only screen and (min-width: 360px) and (max-width: 900px){
           background: rgba(0, 134, 117, 0.9);
-          margin-left: 0; 
-          top: -10.2rem;
+          margin-left: 15px; 
+          top: 4.2rem;
           padding: 2rem;
         }
 
@@ -265,6 +296,15 @@ body.menu-open-homepage {
         h2.menu-title {
           font-size: 2rem!important;
           margin-bottom: 2.5rem;
+          @media (max-width: 900px){
+            padding: 15px;
+            margin: 0px -31px;
+          }
+          &:hover{
+            @media (max-width: 900px){
+              background-color: rgba(0, 143, 124);
+            }
+          } 
         }
         color: #fff;
         &.active {
@@ -561,6 +601,7 @@ body.menu-open-homepage {
 //Home Page End
 
 //Topics Page
+
 .topics {
     .cols {
         display: flex;
@@ -685,14 +726,17 @@ body > #main:not(.homepage) {
         top: -10rem;
       }
     }
+
     .topics {
       .header {
         a img {
             margin-left: 1rem;
             @media (max-width: 500px){
-              width: 75%; 
+              // width: 75%; 
+              // margin-left: @searchBoxMarginLeft + 2;
+              display: none;
             }
-            @media (max-width: 900px){
+            @media only screen and (min-width: 500px) and (max-width: 900px){
                width: 100%; 
                margin-top: @searchBoxMarginRight;
                margin-left: @searchBoxMarginLeft + 2;
@@ -793,10 +837,15 @@ body > #main:not(.homepage) {
         //   background: rgba(0, 134, 117, 0.9);
         //   transition: height 2s;
         // }
+        @media (max-width: 900px){
+          max-width: 215px;
+        }
 
-        // &:active{
+        // &:hover {
+        //   &:active{
         //   @media (max-width: 900px){
         //     height: 250px; /* */
+        //   }
         //   }
         // }
 
@@ -806,11 +855,6 @@ body > #main:not(.homepage) {
           margin-left: 0; 
           top: -14.5rem;
           padding: 2rem;
-          // transition-delay: 2s;
-
-        //   transform: translateY(-2em);
-        //   z-index: -1;
-        //   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
         }  
 
         @media only screen and (min-width: 600px) and (max-width: 900px){
@@ -842,6 +886,15 @@ body > #main:not(.homepage) {
           h2.menu-title {
             font-size: 2rem!important;
             margin-bottom: 2.5rem;
+          @media (max-width: 900px){
+            padding: 15px;
+            margin: 0px -31px;
+          }
+          &:hover{
+            @media (max-width: 900px){
+              background-color: rgba(0, 143, 124);
+            }
+          } 
           }
           color: #fff;
           &.active {
@@ -887,6 +940,16 @@ body > #main:not(.homepage) {
         //   }
         // }
       }
+
+      // .menu-items.example{
+      //   @media (max-width: 900px){
+      //     background: rgba(0, 134, 117, 0.9);
+      //     transition: height .35s ease-in-out;
+      //     &:active{
+      //       height: 200px;
+      //     }
+      //   }  
+      // }
 
       .sub-menu {
         position: fixed;

@@ -67,7 +67,8 @@
 
 //Hamburger Menu
 @mobileMenuPosition: absolute;
-@mobileMenuTopPosition: 20px;
+@mobileMenuTopPosition: 13.5px;
+@mobileMenuLeftPosition: 15px;
 
 @mobileMenuTopPositionTopics: -17.9rem;
 @mobileMenuLeftPositionTopics: -1rem;
