@@ -2,6 +2,7 @@
         Global Overrides
 *******************************/
 
+@import url("site.variables");
 
 html {
   font-size: 16px;
@@ -31,7 +32,7 @@ nav.tabs {
   width: 100%;
   a {
       background: none;
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: @headerFont;
       font-size: 1.5rem;
       display: block;
       border: none;
@@ -45,7 +46,7 @@ nav.tabs {
       text-align: center;
       transition: border-bottom-color 300ms ease-in-out;
       &.tabs__item_active {
-          font-weight: bold;
+        font-weight: bold;
         border-bottom-color: #fff;
       }
   }
@@ -58,26 +59,25 @@ nav.tabs {
   .header {
     .searchbar {
       position: absolute;
-      top: 2rem;
-      right: 2rem;
+      top: @searchBoxTopPositionTopics;
+      right: @searchBoxRightPosition;
       font-weight: bold;
+      @media (max-width: 600px){
+        right: calc(@searchBoxRightPosition + 1);
+      }
     }
   }
   .header {
 
     img {
-      @media (max-width: 700px) {
-        width: 100%;
-        margin-top: .5rem;
-      }
       z-index: 1;
       position: relative;
       left: -6px;
     }
-    .page-logo {
-      width: 750px;
-      margin-top: 2rem;
-    }
+    // .page-logo {
+    //   width: 750px;
+    //   margin-top: 2rem;
+    // }
   }
   
 }
@@ -111,15 +111,15 @@ nav.tabs {
   h3,
   h4,
   h5 {
-    font-family: Lato;
+    font-family: @fontName;
   }
 
   .descTile {
     font-weight: 300;
   }
-
+  
   h1.documentFirstHeading {
-    font-size: 2.5rem;
+    font-size: @h1documentFirstHeading;
     border-bottom: 1px solid #ddd;
     padding-bottom: .5rem;
     &:before {
@@ -147,9 +147,12 @@ nav.tabs {
   display: flex;
   flex-direction: row;
   margin-top: .5rem;
-  margin-top: -3rem;
+  margin-top: -2rem;
   li {
     margin-right: 1rem;
+  }
+  @media (max-width: 900px){
+    margin-top: 0rem;
   }
 }
 
@@ -166,5 +169,22 @@ nav.tabs {
   float: left;
   padding-left: 0!important;
 }
+
+@media (min-width: 360px){
+  .footerWrapper .column {
+    width: 20% !important;
+  }
+  .footerWrapper .column.row{
+    width: 20% !important;
+  }
+
+.footerWrapper{
+  .column, .column.row {
+    min-width: 360px;
+  }
+}
+}
+
+
 
 //Footer End

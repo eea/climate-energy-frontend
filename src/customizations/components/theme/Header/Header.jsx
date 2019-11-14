@@ -71,7 +71,7 @@ class Header extends Component {
           {this.props.noBreadcrumbs ? (
             ''
           ) : (
-            <div style={{ position: 'relative', zIndex: 1 }}>
+            <div className="headerTop">
               <div className="header">
                 <Logo isHomepage={this.props.actualPathName === '/' || false} />
                 <div className="searchbar">

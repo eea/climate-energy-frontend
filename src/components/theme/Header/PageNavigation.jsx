@@ -36,6 +36,7 @@ class PageNavigation extends Component {
 
   constructor(props) {
     super(props);
+    // this.isMobile = this.isMobile.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.setSubmenu = this.setSubmenu.bind(this);
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
@@ -49,13 +50,20 @@ class PageNavigation extends Component {
       subTopics: {
         type: null,
         items: [],
-      },
+      }
+      //, isMobile: false
     };
   }
 
+
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
-  }
+  } 
+
+  // componentDidMount(){
+  //     document.addEventListener('resize', this.isMobile);
+  //     this.isMobile();
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -63,6 +71,16 @@ class PageNavigation extends Component {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
+
+  // isMobile() {
+  //   if(window.matchMedia("(max-width: 900px)").matches) {
+  //     this.setState({isMobile: !this.state.isMobile})
+  //   }
+  //   else{
+  //     this.setState({isMobile: this.state.isMobile})
+  //   }
+  // }
+
   setSubmenu(title, items) {
     const body = document.querySelector('body');
 
@@ -90,6 +108,7 @@ class PageNavigation extends Component {
     }
   }
 
+
   setSubtopics(title, items) {
     this.setState({
       subTopics: {
@@ -116,6 +135,7 @@ class PageNavigation extends Component {
     }
     this.setState({ isMobileMenuOpen: false });
   }
+
 
   render() {
     if (!__CLIENT__) return '';
@@ -153,8 +173,7 @@ class PageNavigation extends Component {
               </span>
             </button>
           </div>
-
-          <div className="menu-items">
+          <div className={cx('menu-items', 'example', {'menu-open' : !this.state.isMobileMenuOpen})}>
             {this.props.items.map(item => (
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
@@ -270,7 +289,8 @@ class PageNavigation extends Component {
           )}
         </div>
       </div>
-    );
+    );    
+
   }
 }
 

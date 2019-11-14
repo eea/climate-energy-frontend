@@ -38,6 +38,7 @@ class Navigation extends Component {
 
   constructor(props) {
     super(props);
+    this.isMobile = this.isMobile.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.setSubmenu = this.setSubmenu.bind(this);
@@ -52,6 +53,7 @@ class Navigation extends Component {
         type: null,
         items: [],
       },
+      isMobile: false
     };
   }
 
@@ -59,9 +61,23 @@ class Navigation extends Component {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
   }
 
+  componentDidMount(){
+      document.addEventListener('resize', this.isMobile);
+      this.isMobile();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getNavigation(getBaseUrl(nextProps.pathname), 3);
+    }
+  }
+
+   isMobile() {
+    if(window.matchMedia("(max-width: 900px)").matches) {
+      this.setState({isMobile: !this.state.isMobile})
+    }
+    else{
+      this.setState({isMobile: this.state.isMobile})
     }
   }
 
@@ -111,7 +127,7 @@ class Navigation extends Component {
   }
 
   toggleMobileMenu() {
-    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+      this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
   }
 
   closeMobileMenu() {
@@ -121,7 +137,7 @@ class Navigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
-  render() {
+render() {
     return (
       <div id="app-menu-content">
         <div id="menu-underlay" />
@@ -164,17 +180,57 @@ class Navigation extends Component {
             </button>
           </div>
 
-          <div className="menu-items">
+          <div className={cx('menu-items', {'menu-open' : !this.state.isMobileMenuOpen})}>
             {this.props.items.map(item => (
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
-                  <h2
-                    onClick={() => this.setSubmenu(item.title, item.items)}
-                    className="menu-title"
-                    onKeyPress={() => {}}
-                  >
-                    {item.title}
-                  </h2>
+                  <div>
+                    <h2
+                      onClick={() => this.setSubmenu(item.title, item.items)}
+                      className="menu-title"
+                    >
+                      {/* <Link to={item.url} key={item.url}> */}
+                      {item.title}
+                      {/* </Link> */}
+                    </h2>
+                    <div className="menuExpanded" id="menuExpanded">
+                      {item.items.find(
+                        i =>
+                          window &&
+                          window.location.href.includes(i.url) &&
+                          window.location.href.includes('topics'),
+                      ) ? (
+                        <h5>
+                          <Link
+                            to={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                            key={
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                          >
+                            {
+                              item.items.find(
+                                i =>
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).title
+                            }
+                          </Link>
+                        </h5>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </div>
                 ) : (
                   <Link
                     to={item.url === '' ? '/' : item.url}
@@ -247,9 +303,9 @@ class Navigation extends Component {
         </div>
       </div>
     );
+
   }
 }
-
 export default compose(
   injectIntl,
   connect(
