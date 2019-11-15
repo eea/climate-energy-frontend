@@ -1,5 +1,8 @@
 {
   "volto-mosaic": {
       "url": "https://github.com/eea/volto-mosaic.git"
+  },
+  "volto-datablocks": {
+      "url": "https://github.com/eea/volto-datablocks.git"
   }
 }
