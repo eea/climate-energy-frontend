@@ -63,6 +63,8 @@ def activate(target):
     with open('.eslintrc', 'w') as f:
         f.write(json.dumps(j, indent=4, sort_keys=True))
 
+    print("Activated package: {}".format(target))
+
 
 def deactivate(target):
     if not os.path.exists('jsconfig.json'):
@@ -103,6 +105,8 @@ def deactivate(target):
 
     with open('.eslintrc', 'w') as f:
         f.write(json.dumps(j, indent=4, sort_keys=True))
+
+    print("Deactivated package: {}".format(target))
 
 
 def main(op, target):
