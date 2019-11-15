@@ -9,7 +9,7 @@ import defaultReducers from '@plone/volto/reducers';
 import folder_tabs from '~/reducers/folder_tabs';
 import parent_folder_data from '~/reducers/parent_folder_data';
 import localnavigation from '~/reducers/localnavigation';
-import { sparql_data } from 'volto-datablocks/reducers';
+import { addonReducers } from '~/config';
 
 const reducers = {
   ...defaultReducers,
@@ -17,7 +17,7 @@ const reducers = {
   parent_folder_data,
   folder_tabs,
   localnavigation,
-  sparql_data,
+  ...addonReducers,
 };
 
 export default reducers;

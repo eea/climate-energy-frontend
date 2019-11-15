@@ -27,6 +27,7 @@ import TextBlockEdit from '~/components/manage/Blocks/Text/Edit';
 import TextBlockView from '~/components/manage/Blocks/Text/View';
 
 import { DataTileEdit, DataTileView } from 'volto-datablocks';
+import { sparql_data } from 'volto-datablocks/reducers';
 
 export const settings = {
   ...defaultSettings,
@@ -72,3 +73,5 @@ export const blocks = {
     },
   },
 };
+
+export const addonReducers = [sparql_data];
