@@ -26,7 +26,7 @@ import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
 import TextBlockEdit from '~/components/manage/Blocks/Text/Edit';
 import TextBlockView from '~/components/manage/Blocks/Text/View';
 
-// import { DataBlockEdit, DataBlockView } from 'volto-datablocks';
+import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 export const settings = {
   ...defaultSettings,
@@ -60,6 +60,14 @@ export const blocks = {
       title: 'CKEditor',
       view: TextBlockView,
       edit: TextBlockEdit,
+      icon: defaultBlocks.blocksConfig.text.icon,
+    },
+    sparqlisting: {
+      id: 'sparqlisting',
+      group: 'text',
+      title: 'SPARQL Listing',
+      view: DataTileView,
+      edit: DataTileEdit,
       icon: defaultBlocks.blocksConfig.text.icon,
     },
   },
