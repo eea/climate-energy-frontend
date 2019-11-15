@@ -7,7 +7,6 @@ import { App } from '@plone/volto/components';
 import { defaultRoutes } from '@plone/volto/routes';
 import { EditMosaic } from 'volto-mosaic';
 
-
 /**
  * Routes array.
  * @array
