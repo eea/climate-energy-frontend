@@ -26,7 +26,7 @@ import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
 import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
 import TextTileView from '~/components/manage/Tiles/Text/View';
 
-
+// import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 export const settings = {
   ...defaultSettings,
@@ -48,7 +48,6 @@ export const widgets = {
     cktext: CKEditorWidget,
   },
 };
-
 
 export const tiles = {
   ...defaultTiles,
