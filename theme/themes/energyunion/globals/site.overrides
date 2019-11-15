@@ -26,10 +26,10 @@ html,body {
 nav.tabs {
   position: absolute;
   // top:-5rem;
-  bottom: 100%;
+  bottom: @100ValuePercentage;
   display: flex!important;
   left: 0;
-  width: 100%;
+  width: @100ValuePercentage;
   a {
       background: none;
       font-family: @headerFont;
@@ -41,7 +41,7 @@ nav.tabs {
       text-transform: uppercase;
       border-bottom: 5px solid transparent;
       color: white;
-      width: 100%;
+      width: @100ValuePercentage;
       outline: none;
       text-align: center;
       transition: border-bottom-color 300ms ease-in-out;
@@ -66,8 +66,6 @@ nav.tabs {
         right: calc(@searchBoxRightPosition + 1);
       }
     }
-  }
-  .header {
 
     img {
       z-index: 1;
@@ -78,7 +76,20 @@ nav.tabs {
     //   width: 750px;
     //   margin-top: 2rem;
     // }
+
   }
+  // .header {
+
+  //   img {
+  //     z-index: 1;
+  //     position: relative;
+  //     left: -6px;
+  //   }
+  //   // .page-logo {
+  //   //   width: 750px;
+  //   //   margin-top: 2rem;
+  //   // }
+  // }
   
 }
 //Topics End
@@ -128,18 +139,42 @@ nav.tabs {
   }
 }
 
-//Cards End
 
 
 //Footer
-.footerLogoWrapper {
-  display: flex;
-  .footerLogo {
-    height: 50px;
-    width: auto;
-    margin: .5rem;
+
+.footerWrapper {
+  border-top: 1px solid #cccc!important;
+  .container {
+    margin-left: 2rem!important;
+    margin-right: 2rem!important;
   }
 }
+
+.footerWrapper{
+  .column, .column.row {
+    @media (max-width: 900px){
+     min-width: 360px;
+    }
+  }
+}
+
+.footerWrapper .column {
+  @media (min-width: 360px){
+    width: 20% !important;
+  }
+}
+
+.footerWrapper .column.row {
+  flex-grow: 1;
+  text-align: left;
+  float: left;
+  padding-left: 0!important;
+  @media (max-width: 900px){
+    width: 20% !important;
+  }
+}
+
 
 .unlist {
   list-style-type: none;
@@ -156,35 +191,14 @@ nav.tabs {
   }
 }
 
-.footerWrapper {
-  border-top: 1px solid #cccc!important;
-  .container {
-    margin-left: 2rem!important;
-    margin-right: 2rem!important;
+.footerLogoWrapper {
+  display: flex;
+  .footerLogo {
+    height: 50px;
+    width: auto;
+    margin: .5rem;
   }
 }
-.footerWrapper .column.row {
-  flex-grow: 1;
-  text-align: left;
-  float: left;
-  padding-left: 0!important;
-}
-
-@media (min-width: 360px){
-  .footerWrapper .column {
-    width: 20% !important;
-  }
-  .footerWrapper .column.row{
-    width: 20% !important;
-  }
-
-.footerWrapper{
-  .column, .column.row {
-    min-width: 360px;
-  }
-}
-}
-
 
 
 //Footer End
