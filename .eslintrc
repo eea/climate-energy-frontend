@@ -1,28 +1,32 @@
 {
-    "extends": "./node_modules/@plone/volto/.eslintrc",
+    "extends": "./node_modules/@plone/volto/.eslintrc", 
     "settings": {
         "import/resolver": {
             "alias": {
                 "extensions": [
-                    ".js",
-                    ".jsx",
+                    ".js", 
+                    ".jsx", 
                     ".json"
-                ],
+                ], 
                 "map": [
                     [
-                        "@plone/volto",
+                        "@plone/volto", 
                         "@plone/volto/src"
-                    ],
+                    ], 
                     [
-                        "@package",
+                        "@package", 
                         "./src"
-                    ],
+                    ], 
                     [
-                        "~",
+                        "~", 
                         "./src"
+                    ], 
+                    [
+                        "volto-datablocks", 
+                        "./src/addons/volto-datablocks/src"
                     ]
                 ]
-            },
+            }, 
             "babel-plugin-root-import": {
                 "rootPathSuffix": "src"
             }

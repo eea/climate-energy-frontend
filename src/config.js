@@ -16,7 +16,7 @@ import {
   settings as defaultSettings,
   views as defaultViews,
   widgets as defaultWidgets,
-  tiles as defaultTiles,
+  blocks as defaultBlocks,
 } from '@plone/volto/config';
 
 import TopicsView from '~/components/theme/View/TopicsView';
@@ -49,18 +49,18 @@ export const widgets = {
   },
 };
 
-export const tiles = {
-  ...defaultTiles,
+export const blocks = {
+  ...defaultBlocks,
 
-  tilesConfig: {
-    ...defaultTiles.tilesConfig,
+  blocksConfig: {
+    ...defaultBlocks.blocksConfig,
     cktext: {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
       view: TextTileView,
       edit: TextTileEdit,
-      icon: defaultTiles.tilesConfig.text.icon,
+      icon: defaultBlocks.blocksConfig.text.icon,
     },
   },
 };

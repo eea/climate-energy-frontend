@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
-        "paths": {}
+        "baseUrl": "src", 
+        "paths": {
+            "volto-datablocks": [
+                "addons/volto-datablocks/src"
+            ]
+        }
     }
 }
