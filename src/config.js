@@ -64,3 +64,5 @@ export const blocks = {
     },
   },
 };
+
+export const addonReducers = [];
