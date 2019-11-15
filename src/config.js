@@ -23,10 +23,10 @@ import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
 
-import TextTileEdit from '~/components/manage/Tiles/Text/Edit';
-import TextTileView from '~/components/manage/Tiles/Text/View';
+import TextBlockEdit from '~/components/manage/Blocks/Text/Edit';
+import TextBlockView from '~/components/manage/Blocks/Text/View';
 
-// import { DataTileEdit, DataTileView } from 'volto-datablocks';
+// import { DataBlockEdit, DataBlockView } from 'volto-datablocks';
 
 export const settings = {
   ...defaultSettings,
@@ -58,8 +58,8 @@ export const blocks = {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
-      view: TextTileView,
-      edit: TextTileEdit,
+      view: TextBlockView,
+      edit: TextBlockEdit,
       icon: defaultBlocks.blocksConfig.text.icon,
     },
   },

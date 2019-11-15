@@ -33,7 +33,7 @@ const CKText = ({
         {
           model: 'heading5',
           view: 'h5',
-          title: 'Tile Title (H5)',
+          title: 'Block Title (H5)',
           class: 'ck-heading_heading5',
         },
         {
@@ -49,13 +49,13 @@ const CKText = ({
           class: 'ck-heading_heading3',
         },
         {
-          model: 'tile_description',
+          model: 'block_description',
           view: {
             name: 'div',
-            classes: 'tile-description',
+            classes: 'block-description',
           },
-          title: 'Tile Description',
-          class: 'tile-description',
+          title: 'Block Description',
+          class: 'block-description',
         },
         // {
         //   model: 'heading2',

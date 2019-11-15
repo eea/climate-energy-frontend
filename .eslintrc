@@ -24,6 +24,10 @@
                     [
                         "volto-datablocks", 
                         "./src/addons/volto-datablocks/src"
+                    ],
+                    [
+                        "volto-mosaic", 
+                        "./src/addons/volto-mosaic/src"
                     ]
                 ]
             }, 

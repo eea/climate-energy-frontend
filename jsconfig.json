@@ -4,6 +4,9 @@
         "paths": {
             "volto-datablocks": [
                 "addons/volto-datablocks/src"
+            ],
+            "volto-mosaic": [
+                "addons/volto-mosaic/src"
             ]
         }
     }

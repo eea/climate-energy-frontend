@@ -189,22 +189,22 @@ class DefaultView extends Component {
         </Portal>
 
         <Helmet title={content.title} />
-        {map(content[blocksLayoutFieldname].items, tile => {
+        {map(content[blocksLayoutFieldname].items, block => {
           const Block =
-            blocks.blocksConfig[
-              (content[blocksFieldname]?.[tile]?.['@type'])
-            ]?.['view'] || null;
+            blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
+              'view'
+            ] || null;
           return Block !== null ? (
             <Block
-              key={tile}
-              blockID={tile}
+              key={block}
+              blockID={block}
               properties={content}
-              data={content[blocksFieldname][tile]}
+              data={content[blocksFieldname][block]}
             />
           ) : (
-            <div key={tile}>
+            <div key={block}>
               {intl.formatMessage(messages.unknownBlock, {
-                block: content[blocksFieldname]?.[tile]?.['@type'],
+                block: content[blocksFieldname]?.[block]?.['@type'],
               })}
             </div>
           );
