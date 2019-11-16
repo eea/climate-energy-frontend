@@ -12,12 +12,12 @@
  * }
  */
 
-import {
-  settings as defaultSettings,
-  views as defaultViews,
-  widgets as defaultWidgets,
-  blocks as defaultBlocks,
-} from '@plone/volto/config';
+// import {
+//   settings as defaultSettings,
+//   views as defaultViews,
+//   widgets as defaultWidgets,
+//   blocks as defaultBlocks,
+// } from '@plone/volto/config';
 
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
@@ -30,42 +30,46 @@ import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 import { sparql_data } from 'volto-datablocks/reducers';
 
-import { voltoConfig as mosaicConfig } from 'volto-mosaic/config';
-import { voltoConfig as dataBlocksConfig } from 'volto-datablocks/config';
+import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
+import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
+
+import * as voltoConfig from '@plone/volto/config';
+
+const config = mosaicConfig(dataBlocksConfig(voltoConfig));
 
 export const settings = {
-  ...defaultSettings,
+  ...config.settings,
 };
 
 export const views = {
-  ...defaultViews,
+  ...config.views,
   layoutViews: {
-    ...defaultViews.layoutViews,
+    ...config.views.layoutViews,
     topics_view: TopicsView,
     topic_tab_view: TopicsTabView,
   },
 };
 
 export const widgets = {
-  ...defaultWidgets,
+  ...config.widgets,
   widget: {
-    ...defaultWidgets.widget,
+    ...config.widgets.widget,
     cktext: CKEditorWidget,
   },
 };
 
 export const blocks = {
-  ...defaultBlocks,
+  ...config.blocks,
 
   blocksConfig: {
-    ...defaultBlocks.blocksConfig,
+    ...config.blocks.blocksConfig,
     cktext: {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
       view: TextBlockView,
       edit: TextBlockEdit,
-      icon: defaultBlocks.blocksConfig.text.icon,
+      icon: config.blocks.blocksConfig.text.icon,
     },
     sparqlisting: {
       id: 'sparqlisting',
@@ -73,21 +77,9 @@ export const blocks = {
       title: 'SPARQL Listing',
       view: DataTileView,
       edit: DataTileEdit,
-      icon: defaultBlocks.blocksConfig.text.icon,
+      icon: config.blocks.blocksConfig.text.icon,
     },
   },
 };
 
 export const addonReducers = [sparql_data];
-
-const config = {
-  ...dataBlocksConfig,
-  ...mosaicConfig,
-  blocks,
-  addonReducers,
-  views,
-  settings,
-  widgets,
-};
-
-export default config;
