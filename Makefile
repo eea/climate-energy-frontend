@@ -14,6 +14,10 @@ activate:		## Activate an addon package for development
 		echo "Ex: make activate pkg=volto-datablocks";\
 	else \
 		exec ./pkg_helper.py activate ${pkg};\
+		echo "Running npm install in src/addons/${pkg}";\
+		cd "src/addons/${pkg}";\
+		npm install;\
+		echo "Done.";\
 	fi
 
 .PHONY: deactivate
@@ -23,6 +27,7 @@ deactivate:		## Deactivate an addon package for development
 		echo "Ex: make deactivate pkg=volto-datablocks";\
 	else \
 		exec ./pkg_helper.py deactivate ${pkg};\
+		echo "Deactivated";\
 	fi
 
 .PHONY: all

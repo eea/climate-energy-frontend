@@ -1,5 +1,5 @@
 {
-  "name": "volto-starter-kit",
+  "name": "energy-union-frontend",
   "description": "Volto Starter Kit",
   "license": "MIT",
   "version": "3.1.0",
@@ -74,5 +74,9 @@
     "postcss-overrides": "3.1.4",
     "prettier": "1.17.0",
     "prettier-stylelint": "0.4.2"
-  }
+  },
+  "voltoAddons": [
+    "volto-mosaic",
+    "volto-datablocks"
+  ]
 }
