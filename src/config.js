@@ -30,8 +30,8 @@ import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 import { sparql_data } from 'volto-datablocks/reducers';
 
-import mosaicConfig from 'volto-mosaic/config';
-import dataBlocksConfig from 'volto-datablocks/config';
+import { voltoConfig as mosaicConfig } from 'volto-mosaic/config';
+import { voltoConfig as dataBlocksConfig } from 'volto-datablocks/config';
 
 export const settings = {
   ...defaultSettings,
@@ -81,13 +81,13 @@ export const blocks = {
 export const addonReducers = [sparql_data];
 
 const config = {
+  ...dataBlocksConfig,
+  ...mosaicConfig,
   blocks,
   addonReducers,
   views,
   settings,
   widgets,
-  ...dataBlocksConfig.voltoConfig,
-  ...mosaicConfig.voltoConfig,
 };
 
 export default config;
