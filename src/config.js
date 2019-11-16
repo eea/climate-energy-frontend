@@ -86,8 +86,8 @@ const config = {
   views,
   settings,
   widgets,
-  ...dataBlocksConfig,
-  ...mosaicConfig,
+  ...dataBlocksConfig.voltoConfig,
+  ...mosaicConfig.voltoConfig,
 };
 
 export default config;
