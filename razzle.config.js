@@ -3,6 +3,7 @@
  * @module razzle.config
  */
 
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const jsConfig = require('./jsconfig').compilerOptions;
 
 const pathsConfig = jsConfig.paths;
@@ -13,24 +14,26 @@ Object.keys(pathsConfig).forEach(pkg => {
   }
 });
 
-module.exports = require(`${voltoPath}/razzle.config`);
+// module.exports = require(`${voltoPath}/razzle.config`);
 
-// let config = require(`${voltoPath}/razzle.config`);
-// // console.log(config);
-// // module.exports = config;
-//
-// const razzleModify = config.modify;
-//
-// module.exports = {
-//   modify: (config, { target, dev }, webpack) => {
-//     const vc = razzleModify(config, { target, dev }, webpack);
-//     console.log('vc', vc);
-//     vc.module.rules.forEach((rule, i) => {
-//       console.log('rule', i, '-----');
-//       console.log(rule);
-//       console.log('rule options');
-//       console.log(rule.use && rule.use[0].options);
-//     });
-//     return vc;
-//   },
-// };
+let config = require(`${voltoPath}/razzle.config`);
+// console.log(config);
+// module.exports = config;
+
+const razzleModify = config.modify;
+
+module.exports = {
+  modify: (config, { target, dev }, webpack) => {
+    const vc = razzleModify(config, { target, dev }, webpack);
+    // console.log('vc', vc);
+    // vc.module.rules.forEach((rule, i) => {
+    //   console.log('rule', i, '-----');
+    //   console.log(rule);
+    //   console.log('rule options');
+    //   console.log(rule.use && rule.use[0].options);
+    // });
+    const hardSource = new HardSourceWebpackPlugin();
+    vc.plugins.push(hardSource);
+    return vc;
+  },
+};

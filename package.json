@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.0.1",
+    "hard-source-webpack-plugin": "^0.13.1",
     "postcss-overrides": "3.1.4",
     "prettier": "1.17.0",
     "prettier-stylelint": "0.4.2"
