@@ -9,7 +9,7 @@ IMAGE=$(shell cat $(DOCKERIMAGE_FILE))
 
 .PHONY: activate
 activate:		## Activate an addon package for development
-	@if [[ -z "${pkg}" ]]; then\
+	@if [[ -z ${pkg} ]]; then\
 		echo "You need to specify package name in make command";\
 		echo "Ex: make activate pkg=volto-datablocks";\
 	else \
@@ -22,12 +22,12 @@ activate:		## Activate an addon package for development
 
 .PHONY: deactivate
 deactivate:		## Deactivate an addon package for development
-	@if [[ -z "${pkg}" ]]; then\
+	@if [[ -z ${pkg} ]]; then\
 		echo "You need to specify package name in make command";\
 		echo "Ex: make deactivate pkg=volto-datablocks";\
 	else \
 		exec ./pkg_helper.py deactivate ${pkg};\
-		echo "Deactivated";\
+		echo "Deactivated ${pkg}";\
 	fi
 
 .PHONY: all
@@ -80,10 +80,9 @@ push:
 	docker tag $(IMAGE) $(NAME):latest
 	docker push $(NAME):latest
 
-.PHONY: init-submodules		## Initialize the git submodules
-init-submodules:
-	git submodule init
-	git submodule update
+.PHONY: init-submodules
+init-submodules:		## Initialize the git submodules
+	git submodule update --init --recursive
 
 .PHONY: help
 help:		## Show this help.
