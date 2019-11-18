@@ -44,41 +44,37 @@
 
 
 /*-------------------
-    Media Queries
+    Collection
 --------------------*/
 
-/* Max Width = 767px (Mobile + Tablet) */ 
+/* Globals */
 
-//Homepage
+@absolutePosition: absolute;
+@autoValue: auto;
 
-//Logo
-@headerLogoWidth: 500px;
-@headerLogoLeftPosition: 50px;
+@zeroValuePosition: 0;
+@100ValuePercentage: 100%;
+
+@grayBgColor: rgba(140, 140, 140, .3);
+
+
+
+/* Menu */
 
 //SearchBox
-@searchBoxPosition: absolute;
-@searchBoxLeftPosition: 0;
-@searchBoxTopPositionHomepage: 8rem;
-
-@searchBoxTopPositionTopics: 2rem;
-@searchBoxMarginRight: -1rem;
-@searchBoxMarginLeft: 4rem;
 @searchBoxRightPosition: 1rem;
+@searchBoxTopPositionHomepage: 8rem;
+@searchBoxTopPositionTopics: 2rem;
 
 //Hamburger Menu
-@mobileMenuPosition: absolute;
 @mobileMenuTopPosition: 13.5px;
-@mobileMenuLeftPosition: 15px;
 
 @mobileMenuTopPositionTopics: -17.9rem;
-@mobileMenuLeftPositionTopics: -1rem;
 
 //View Content
 @mainContentWidth: 92%;
 @mainContentHeight: 75%;
-@mainContentOverflow: auto;
-@mainContentLeftPosition: 0;
-@mainContentRightPosition: 0;
+
 @mainContentTopPosition: 180px;
 @mainContentMarginLeft: 15px;
 

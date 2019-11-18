@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 
-import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
+import LogoImage from './Logo.svg';
 import LogoImagePage from './logo-page.svg';
 
 const messages = defineMessages({
