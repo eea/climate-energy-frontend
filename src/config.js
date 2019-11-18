@@ -23,8 +23,26 @@ import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
 
-import TextBlockEdit from '~/components/manage/Blocks/Text/Edit';
-import TextBlockView from '~/components/manage/Blocks/Text/View';
+import { defineMessages } from 'react-intl';
+
+import ChartBlockEdit from 'volto-blocks/ChartBlock/ChartBlockEdit';
+import ChartBlockView from 'volto-blocks/ChartBlock/ChartBlockView';
+
+import EuropeCompareBlockEdit from 'volto-blocks/EuropeCompareBlock/Edit';
+import EuropeCompareBlockView from 'volto-blocks/EuropeCompareBlock/View';
+
+import EuropeForestBlockEdit from 'volto-blocks/EuropeForestBlock/Edit';
+import EuropeForestBlockView from 'volto-blocks/EuropeForestBlock/View';
+
+import PlotlyBlockEdit from 'volto-blocks/PlotlyChart/Edit';
+import PlotlyBlockView from 'volto-blocks/PlotlyChart/View';
+
+import TableauBlockEdit from 'volto-blocks/TableauBlock/TableauBlockEdit';
+import tableauBlockView from 'volto-blocks/TableauBlock/TableauBlockView';
+
+import TextBlockEdit from 'volto-blocks/Text/Edit';
+
+import chartIcon from '@plone/volto/icons/world.svg';
 
 import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
@@ -58,16 +76,85 @@ export const widgets = {
   },
 };
 
+defineMessages({
+  custom_addons: {
+    id: 'custom_addons',
+    defaultMessage: 'Custom Addons',
+  },
+  plotly_chart: {
+    id: 'plotly_chart',
+    defaultMessage: 'Plotly Chart',
+  },
+  demo_chart: {
+    id: 'demo_chart',
+    defaultMessage: 'Demo Chart',
+  },
+  tableau: {
+    id: 'tableau',
+    defaultMessage: 'Tableau',
+  },
+  forests_specific: {
+    id: 'forests_specific',
+    defaultMessage: 'Forests Specific Blocks',
+  },
+});
+
 export const blocks = {
   ...config.blocks,
 
+  groupBlocksOrder: [
+    ...config.settings.groupBlocksOrder,
+    { id: 'custom_addons', title: 'Custom addons' },
+    { id: 'forests_specific', title: 'Forests Specific Blocks' },
+  ],
+
   blocksConfig: {
-    ...config.blocks.blocksConfig,
+    ...config.settings.defaultBlocks.blocksConfig,
+    europe_compare_block: {
+      id: 'europe_compare_block',
+      title: 'Europe Compare Block',
+      view: EuropeCompareBlockView,
+      edit: EuropeCompareBlockEdit,
+      icon: chartIcon,
+      group: 'forests_specific',
+    },
+    europe_forest_block: {
+      id: 'europe_forest_block',
+      title: 'Europe Forest Area Block',
+      view: EuropeForestBlockView,
+      edit: EuropeForestBlockEdit,
+      icon: chartIcon,
+      group: 'forests_specific',
+    },
+    embed_chart: {
+      id: 'embed_chart',
+      title: 'Embed Chart',
+      view: ChartBlockView,
+      edit: ChartBlockEdit,
+      icon: chartIcon,
+      group: 'custom_addons',
+    },
+    plotly_chart: {
+      id: 'plotly_chart',
+      title: 'Plotly Chart',
+      view: PlotlyBlockView,
+      edit: PlotlyBlockEdit,
+      icon: chartIcon,
+      group: 'custom_addons',
+    },
+    tableau: {
+      id: 'tableau',
+      title: 'Tableau',
+      view: tableauBlockView,
+      edit: TableauBlockEdit,
+      icon: chartIcon,
+      group: 'custom_addons',
+    },
     cktext: {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
-      view: TextBlockView,
+      view: config.settings.blocksConfig.text.view,
       edit: TextBlockEdit,
       icon: config.blocks.blocksConfig.text.icon,
     },

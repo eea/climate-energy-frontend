@@ -28,6 +28,10 @@
                     [
                         "volto-mosaic",
                         "./src/addons/volto-mosaic/src"
+                    ], 
+                    [
+                        "volto-blocks", 
+                        "./src/addons/volto-blocks/src"
                     ]
                 ]
             },

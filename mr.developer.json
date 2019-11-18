@@ -4,5 +4,8 @@
   },
   "volto-datablocks": {
       "url": "https://github.com/eea/volto-datablocks.git"
+  },
+  "volto-blocks": {
+    "url": "https://github.com/eea/volto-blocks.git"
   }
 }
