@@ -47,6 +47,7 @@ import chartIcon from '@plone/volto/icons/world.svg';
 import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 import { sparql_data } from 'volto-datablocks/reducers';
+import { chart_data_visualization } from 'volto-blocks/reducers'
 
 import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
 import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
@@ -99,17 +100,18 @@ defineMessages({
   },
 });
 
+
 export const blocks = {
-  ...config.blocks,
+  // ...config.blocks.defaultBlocks,
 
   groupBlocksOrder: [
-    ...config.settings.groupBlocksOrder,
+    ...config.blocks.groupBlocksOrder,
     { id: 'custom_addons', title: 'Custom addons' },
     { id: 'forests_specific', title: 'Forests Specific Blocks' },
   ],
 
   blocksConfig: {
-    ...config.settings.defaultBlocks.blocksConfig,
+    ...config.blocks.blocksConfig,
     europe_compare_block: {
       id: 'europe_compare_block',
       title: 'Europe Compare Block',
@@ -154,7 +156,7 @@ export const blocks = {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
-      view: config.settings.blocksConfig.text.view,
+      view: config.blocks.blocksConfig.text.view,
       edit: TextBlockEdit,
       icon: config.blocks.blocksConfig.text.icon,
     },
@@ -169,4 +171,4 @@ export const blocks = {
   },
 };
 
-export const addonReducers = [sparql_data];
+export const addonReducers = [sparql_data, chart_data_visualization];

@@ -18,6 +18,14 @@ import {
   GET_LOCALNAVIGATION,
 } from '~/constants/ActionTypes';
 
+import { getChartDataFromVisualization } from 'volto-blocks/actions'
+
+// const getChartDataFromVisualization = getChartDataFromVisualization 
+// export getChartDataFromVisualization
+console.log(getChartDataFromVisualization)
+
+// export getChartDataFromVisualization;
+
 export function setFolderHeader(payload) {
   const actualPayload = {};
   for (const key in payload) {
