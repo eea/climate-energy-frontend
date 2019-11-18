@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 // import { compose } from 'redux';
 
-import { settings, tiles } from '~/config';
+import { settings, blocks } from '~/config';
 import {
   setFolderTabs,
   getParentFolderData,
@@ -24,9 +24,9 @@ import {
 } from '~/actions';
 
 import {
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-  hasTilesData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
 } from '@plone/volto/helpers';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -140,8 +140,8 @@ class DefaultView extends Component {
   render() {
     const content = this.props.content;
     const intl = this.props.intl;
-    const tilesFieldname = getTilesFieldname(content);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+    const blocksFieldname = getBlocksFieldname(content);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
     const localNavigation =
       (this.props.localNavigation.items &&
         this.props.localNavigation.items.filter(
@@ -154,7 +154,7 @@ class DefaultView extends Component {
       const path = pathArr.join('/');
       this.props.getParentFolderData(path);
     }
-    return hasTilesData(content) ? (
+    return hasBlocksData(content) ? (
       <div id="page-document" className="ui wrapper">
         {this.props.tabs && this.props.tabs.length ? (
           <nav className="tabs">
@@ -189,22 +189,22 @@ class DefaultView extends Component {
         </Portal>
 
         <Helmet title={content.title} />
-        {map(content[tilesLayoutFieldname].items, tile => {
-          const Tile =
-            tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+        {map(content[blocksLayoutFieldname].items, block => {
+          const Block =
+            blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
               'view'
             ] || null;
-          return Tile !== null ? (
-            <Tile
-              key={tile}
-              blockID={tile}
+          return Block !== null ? (
+            <Block
+              key={block}
+              blockID={block}
               properties={content}
-              data={content[tilesFieldname][tile]}
+              data={content[blocksFieldname][block]}
             />
           ) : (
-            <div key={tile}>
+            <div key={block}>
               {intl.formatMessage(messages.unknownBlock, {
-                block: content[tilesFieldname]?.[tile]?.['@type'],
+                block: content[blocksFieldname]?.[block]?.['@type'],
               })}
             </div>
           );
