@@ -18,11 +18,11 @@ import {
   GET_LOCALNAVIGATION,
 } from '~/constants/ActionTypes';
 
-import { getChartDataFromVisualization } from 'volto-blocks/actions'
+export { getChartDataFromVisualization } from 'volto-blocks/actions'
 
 // const getChartDataFromVisualization = getChartDataFromVisualization 
 // export getChartDataFromVisualization
-console.log(getChartDataFromVisualization)
+// console.log(getChartDataFromVisualization)
 
 // export getChartDataFromVisualization;
 
