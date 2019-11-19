@@ -13,12 +13,12 @@ activate:		## Activate an addon package for development
 		echo "You need to specify package name in make command";\
 		echo "Ex: make activate pkg=volto-datablocks";\
 	else \
-		./pkg_helper.py activate ${pkg};\
+		./pkg_helper.py --target=${pkg} activate;\
 		echo "Running npm install src/addons/${pkg}";\
 		npm install "src/addons/${pkg}";\
 		echo "Cleaning up after npm install";\
-		unlink "node_modules/${pkg}";\
-		./pkg_helper.py stage2 --target=${pkg};\
+		rm -rf "node_modules/${pkg}";\
+		./pkg_helper.py --target=${pkg} stage2;\
 		echo "Done.";\
 	fi
 
@@ -33,7 +33,8 @@ deactivate:		## Deactivate an addon package for development
 		echo "You need to specify package name in make command";\
 		echo "Ex: make deactivate pkg=volto-datablocks";\
 	else \
-		exec ./pkg_helper.py deactivate --target=${pkg};\
+		exec ./pkg_helper.py --target=${pkg} deactivate;\
+		rm -rf node_modules/${pkg};\
 		echo "Deactivated ${pkg}";\
 	fi
 

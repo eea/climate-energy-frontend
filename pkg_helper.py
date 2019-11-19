@@ -173,6 +173,7 @@ if __name__ == "__main__":
                         choices=['activate', 'deactivate', 'stage2',
                                  'activate-all'],
                         help="Operation type")
-    parser.add_argument('--target', type=str, default='', help="target name")
+    parser.add_argument('--target', type=str, default='', help="target name",
+                        dest="target")
     args = parser.parse_args()
     main(args.op, args.target)

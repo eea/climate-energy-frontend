@@ -99,17 +99,20 @@ defineMessages({
   },
 });
 
+console.log('config', config);
+console.log('config.blocks', config.blocks);
+
 export const blocks = {
   ...config.blocks,
 
   groupBlocksOrder: [
-    ...config.settings.groupBlocksOrder,
+    ...(config.blocks.groupBlocksOrder || []),
     { id: 'custom_addons', title: 'Custom addons' },
     { id: 'forests_specific', title: 'Forests Specific Blocks' },
   ],
 
   blocksConfig: {
-    ...config.settings.defaultBlocks.blocksConfig,
+    ...(config.blocksConfig || {}),
     europe_compare_block: {
       id: 'europe_compare_block',
       title: 'Europe Compare Block',
@@ -154,7 +157,7 @@ export const blocks = {
       id: 'cktext',
       group: 'text',
       title: 'CKEditor',
-      view: config.settings.blocksConfig.text.view,
+      view: config.blocks.blocksConfig.text.view,
       edit: TextBlockEdit,
       icon: config.blocks.blocksConfig.text.icon,
     },
