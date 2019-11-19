@@ -133,6 +133,20 @@ def activate_all():
         subprocess.call(['npm', 'install', 'src/addons/{}'.format(name)])
 
 
+def list_addons():
+    """ Prints a list of addons available
+    """
+
+    if not os.path.exists('./mr.developer.json'):
+        return
+
+    with open('./mr.developer.json') as f:
+        j = json.load(f)
+
+    for k in j.keys():
+        print(k)
+
+
 def main(op, target):
     if op == 'activate':
         if target:
@@ -145,11 +159,15 @@ def main(op, target):
     if op == 'activate-all':
         activate_all()
 
+    if op == 'list':
+        list_addons()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Volto development helper')
     parser.add_argument('op', type=str,
-                        choices=['activate', 'deactivate', 'activate-all'],
+                        choices=['activate', 'deactivate',
+                                 'activate-all', 'list'],
                         help="Operation type")
     parser.add_argument('--target', type=str, default='', help="target name",
                         dest="target")

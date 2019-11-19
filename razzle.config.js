@@ -25,7 +25,7 @@ const razzleModify = config.modify;
 module.exports = {
   modify: (config, { target, dev }, webpack) => {
     const vc = razzleModify(config, { target, dev }, webpack);
-    // console.log('vc', vc);
+    console.log('vc', vc);
     // vc.module.rules.forEach((rule, i) => {
     //   console.log('rule', i, '-----');
     //   console.log(rule);
