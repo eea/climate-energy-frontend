@@ -53,7 +53,7 @@ class Navigation extends Component {
         type: null,
         items: [],
       },
-      isMobile: false
+      isMobile: false,
     };
   }
 
@@ -61,9 +61,9 @@ class Navigation extends Component {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
   }
 
-  componentDidMount(){
-      document.addEventListener('resize', this.isMobile);
-      this.isMobile();
+  componentDidMount() {
+    document.addEventListener('resize', this.isMobile);
+    this.isMobile();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -72,12 +72,11 @@ class Navigation extends Component {
     }
   }
 
-   isMobile() {
-    if(window.matchMedia("(max-width: 900px)").matches) {
-      this.setState({isMobile: !this.state.isMobile})
-    }
-    else{
-      this.setState({isMobile: this.state.isMobile})
+  isMobile() {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      this.setState({ isMobile: !this.state.isMobile });
+    } else {
+      this.setState({ isMobile: this.state.isMobile });
     }
   }
 
@@ -127,7 +126,7 @@ class Navigation extends Component {
   }
 
   toggleMobileMenu() {
-      this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
   }
 
   closeMobileMenu() {
@@ -137,7 +136,7 @@ class Navigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
-render() {
+  render() {
     return (
       <div id="app-menu-content">
         <div id="menu-underlay" />
@@ -180,7 +179,11 @@ render() {
             </button>
           </div>
 
-          <div className={cx('menu-items', {'menu-open' : !this.state.isMobileMenuOpen})}>
+          <div
+            className={cx('menu-items', {
+              'menu-open': !this.state.isMobileMenuOpen,
+            })}
+          >
             {this.props.items.map(item => (
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
@@ -256,10 +259,10 @@ render() {
                       item.title
                     ) : (
                       <Link
-                      to={() => {
-                        console.log(item)
-                        return item.url === '' ? '/' : item.url
-                      }}
+                        to={() => {
+                          console.log(item);
+                          return item.url === '' ? '/' : item.url;
+                        }}
                         key={item.url}
                       >
                         {item.title}
@@ -283,8 +286,8 @@ render() {
                   <h3 className="sub-topic-title">
                     <Link
                       to={() => {
-                        const url = item.items ? item.items[0].url : item.url
-                        return item.url === '' ? '/' : url
+                        const url = item.items ? item.items[0].url : item.url;
+                        return item.url === '' ? '/' : url;
                       }}
                       key={item.url}
                       className={
@@ -303,7 +306,6 @@ render() {
         </div>
       </div>
     );
-
   }
 }
 export default compose(
