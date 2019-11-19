@@ -18,9 +18,14 @@ activate:		## Activate an addon package for development
 		npm install "src/addons/${pkg}";\
 		echo "Cleaning up after npm install";\
 		unlink "node_modules/${pkg}";\
-		./pkg_helper.py stage2 ${pkg};\
+		./pkg_helper.py stage2 --target=${pkg};\
 		echo "Done.";\
 	fi
+
+.PHONY: activate-all
+activate-all:		## Automatically activates all addons from mr.developer.json
+	@echo "Activating all addon packages"
+	./pkg_helper.py activate-all
 
 .PHONY: deactivate
 deactivate:		## Deactivate an addon package for development
@@ -28,7 +33,7 @@ deactivate:		## Deactivate an addon package for development
 		echo "You need to specify package name in make command";\
 		echo "Ex: make deactivate pkg=volto-datablocks";\
 	else \
-		exec ./pkg_helper.py deactivate ${pkg};\
+		exec ./pkg_helper.py deactivate --target=${pkg};\
 		echo "Deactivated ${pkg}";\
 	fi
 

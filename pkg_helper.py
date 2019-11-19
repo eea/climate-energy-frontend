@@ -3,11 +3,14 @@
 import argparse
 import json
 import os
+import subprocess
 import sys
 from collections import OrderedDict
 
 
 def activate(target):
+    """ Activates a package: write the required files for this
+    """
 
     if os.path.exists('jsconfig.json'):
         with open('jsconfig.json') as f:
@@ -68,6 +71,9 @@ def activate(target):
 
 
 def deactivate(target):
+    """ Removes activation for a package
+    """
+
     if not os.path.exists('jsconfig.json'):
         pass
     else:
@@ -127,21 +133,46 @@ def remove_develop_from_pkgjson(target):
             json.dump(j, f, indent=4, sort_keys=False)
 
 
+def activate_all():
+    """ Activates all packages in mr.developer.json
+    """
+
+    if not os.path.exists('./mr.developer.json'):
+        print("No Volto addons declared, no activation step needed")
+
+        return
+
+    with open('./mr.developer.json') as f:
+        j = json.load(f)
+
+    for name in j.keys():
+        activate(name)
+        subprocess.call(['npm', 'install', 'src/addons/{}'.format(name)])
+        remove_develop_from_pkgjson(name)
+
+
 def main(op, target):
     if op == 'activate':
-        activate(target)
+        if target:
+            activate(target)
 
     if op == 'deactivate':
-        deactivate(target)
+        if target:
+            deactivate(target)
 
     if op == "stage2":
         remove_develop_from_pkgjson(target)
+
+    if op == 'activate-all':
+        activate_all()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Volto development helper')
     parser.add_argument('op', type=str,
-                        choices=['activate', 'deactivate', 'stage2'])
-    parser.add_argument('target', type=str)
+                        choices=['activate', 'deactivate', 'stage2',
+                                 'activate-all'],
+                        help="Operation type")
+    parser.add_argument('--target', type=str, default='', help="target name")
     args = parser.parse_args()
     main(args.op, args.target)
