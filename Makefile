@@ -27,6 +27,16 @@ activate:		## Activate an addon package for development
 		echo "Done.";\
 	fi
 
+PHONY: clean-addons
+clean-addons:
+	set -x; \
+		echo "Cleaning up after npm install";\
+		read -ra ADDR <<< "${VOLTO_ADDONS}"; \
+		for pkg in "$${ADDR[@]}"; do \
+			echo "removing $$pkg"; \
+			rm -rf "./node_modules/$$pkg";\
+		done; \
+
 .PHONY: activate-all
 activate-all:		## Automatically activates all addons from mr.developer.json
 	@echo "Activating all addon packages"
