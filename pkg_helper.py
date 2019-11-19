@@ -116,23 +116,6 @@ def deactivate(target):
     print("Deactivated package: {}".format(target))
 
 
-def remove_develop_from_pkgjson(target):
-    """ Cleans up src: target from package.json dependencies
-    """
-
-    with open('package.json') as f:
-        j = json.load(f, object_pairs_hook=OrderedDict)
-
-    deps = j.get('dependencies', {})
-
-    if target in deps:
-        print("Removing %s from dependencies" % target)
-        del deps[target]
-
-        with open('package.json', 'w') as f:
-            json.dump(j, f, indent=4, sort_keys=False)
-
-
 def activate_all():
     """ Activates all packages in mr.developer.json
     """
@@ -148,7 +131,6 @@ def activate_all():
     for name in j.keys():
         activate(name)
         subprocess.call(['npm', 'install', 'src/addons/{}'.format(name)])
-        remove_develop_from_pkgjson(name)
 
 
 def main(op, target):
@@ -160,9 +142,6 @@ def main(op, target):
         if target:
             deactivate(target)
 
-    if op == "stage2":
-        remove_develop_from_pkgjson(target)
-
     if op == 'activate-all':
         activate_all()
 
@@ -170,8 +149,7 @@ def main(op, target):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Volto development helper')
     parser.add_argument('op', type=str,
-                        choices=['activate', 'deactivate', 'stage2',
-                                 'activate-all'],
+                        choices=['activate', 'deactivate', 'activate-all'],
                         help="Operation type")
     parser.add_argument('--target', type=str, default='', help="target name",
                         dest="target")

@@ -18,7 +18,6 @@ activate:		## Activate an addon package for development
 		npm install "src/addons/${pkg}";\
 		echo "Cleaning up after npm install";\
 		rm -rf "node_modules/${pkg}";\
-		./pkg_helper.py --target=${pkg} stage2;\
 		echo "Done.";\
 	fi
 
