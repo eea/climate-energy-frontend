@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import sys
+from collections import OrderedDict
 
 
 def activate(target):
@@ -15,7 +16,7 @@ def activate(target):
         t = '{}'
 
     try:
-        o = json.loads(t)
+        o = json.loads(t, object_pairs_hook=OrderedDict)
     except:
         print("Error in loading jsconfig.json file")
         sys.exit(137)
@@ -39,7 +40,7 @@ def activate(target):
         with open('.eslintrc') as f:
             t = f.read()
         try:
-            j = json.loads(t)
+            j = json.loads(t, object_pairs_hook=OrderedDict)
         except:
             print("Error in loading .eslintrc file")
             sys.exit(137)
@@ -74,7 +75,7 @@ def deactivate(target):
             t = f.read()
 
         try:
-            j = json.loads(t)
+            j = json.loads(t, object_pairs_hook=OrderedDict)
         except:
             print("Error in loading jsconfig.json file")
             sys.exit(137)
@@ -94,7 +95,7 @@ def deactivate(target):
         t = f.read()
 
     try:
-        j = json.loads(t)
+        j = json.loads(t, object_pairs_hook=OrderedDict)
     except:
         print("Error in loading .eslintrc file")
         sys.exit(137)
@@ -109,6 +110,23 @@ def deactivate(target):
     print("Deactivated package: {}".format(target))
 
 
+def remove_develop_from_pkgjson(target):
+    """ Cleans up src: target from package.json dependencies
+    """
+
+    with open('package.json') as f:
+        j = json.load(f, object_pairs_hook=OrderedDict)
+
+    deps = j.get('dependencies', {})
+
+    if target in deps:
+        print("Removing %s from dependencies" % target)
+        del deps[target]
+
+        with open('package.json', 'w') as f:
+            json.dump(j, f, indent=4, sort_keys=False)
+
+
 def main(op, target):
     if op == 'activate':
         activate(target)
@@ -116,10 +134,14 @@ def main(op, target):
     if op == 'deactivate':
         deactivate(target)
 
+    if op == "stage2":
+        remove_develop_from_pkgjson(target)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Volto development helper')
-    parser.add_argument('op', type=str, choices=['activate', 'deactivate'])
+    parser.add_argument('op', type=str,
+                        choices=['activate', 'deactivate', 'stage2'])
     parser.add_argument('target', type=str)
     args = parser.parse_args()
     main(args.op, args.target)

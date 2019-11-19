@@ -9,20 +9,22 @@ IMAGE=$(shell cat $(DOCKERIMAGE_FILE))
 
 .PHONY: activate
 activate:		## Activate an addon package for development
-	@if [[ -z ${pkg} ]]; then\
+	if [[ -z "${pkg}" ]]; then\
 		echo "You need to specify package name in make command";\
 		echo "Ex: make activate pkg=volto-datablocks";\
 	else \
-		exec ./pkg_helper.py activate ${pkg};\
-		echo "Running npm install in src/addons/${pkg}";\
-		cd "src/addons/${pkg}";\
-		npm install;\
+		./pkg_helper.py activate ${pkg};\
+		echo "Running npm install src/addons/${pkg}";\
+		npm install "src/addons/${pkg}";\
+		echo "Cleaning up after npm install";\
+		unlink "node_modules/${pkg}";\
+		./pkg_helper.py stage2 ${pkg};\
 		echo "Done.";\
 	fi
 
 .PHONY: deactivate
 deactivate:		## Deactivate an addon package for development
-	@if [[ -z ${pkg} ]]; then\
+	@if [[ -z "${pkg}" ]]; then\
 		echo "You need to specify package name in make command";\
 		echo "Ex: make deactivate pkg=volto-datablocks";\
 	else \
