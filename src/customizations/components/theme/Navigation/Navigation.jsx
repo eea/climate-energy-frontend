@@ -73,6 +73,7 @@ class Navigation extends Component {
   }
 
   isMobile() {
+    if (!window) return;
     if (window.matchMedia('(max-width: 900px)').matches) {
       this.setState({ isMobile: !this.state.isMobile });
     } else {
@@ -197,12 +198,14 @@ class Navigation extends Component {
                       {/* </Link> */}
                     </h2>
                     <div className="menuExpanded" id="menuExpanded">
-                      {item.items.find(
-                        i =>
+                      {item.items.find(i => {
+                        return (
+                          __CLIENT__ &&
                           window &&
                           window.location.href.includes(i.url) &&
-                          window.location.href.includes('topics'),
-                      ) ? (
+                          window.location.href.includes('topics')
+                        );
+                      }) ? (
                         <h5>
                           <Link
                             to={

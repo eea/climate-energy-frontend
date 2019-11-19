@@ -112,7 +112,7 @@ export const blocks = {
   ],
 
   blocksConfig: {
-    ...(config.blocksConfig || {}),
+    ...config.blocks.blocksConfig,
     europe_compare_block: {
       id: 'europe_compare_block',
       title: 'Europe Compare Block',
