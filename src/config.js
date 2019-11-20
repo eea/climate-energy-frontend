@@ -69,6 +69,7 @@ export const views = {
   },
 };
 
+// read @plone/volto/components/manage/Form/Field.jsx to understand this
 export const widgets = {
   ...config.widgets,
   vocabulary: {
