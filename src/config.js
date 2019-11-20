@@ -22,6 +22,7 @@
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
+import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
 import { defineMessages } from 'react-intl';
 
@@ -75,8 +76,14 @@ export const views = {
   },
 };
 
+// read @plone/volto/components/manage/Form/Field.jsx to understand this
 export const widgets = {
   ...config.widgets,
+  vocabulary: {
+    ...config.widgets.vocabulary,
+    'energy.resource_type': TokenWidget,
+    'energy.topics': TokenWidget,
+  },
   widget: {
     ...config.widgets.widget,
     cktext: CKEditorWidget,
@@ -106,12 +113,14 @@ defineMessages({
   },
 });
 
+console.log('config', config);
+console.log('config.blocks', config.blocks);
 
 export const blocks = {
   // ...config.blocks.defaultBlocks,
 
   groupBlocksOrder: [
-    ...config.blocks.groupBlocksOrder,
+    ...(config.blocks.groupBlocksOrder || []),
     { id: 'custom_addons', title: 'Custom addons' },
     { id: 'forests_specific', title: 'Forests Specific Blocks' },
   ],

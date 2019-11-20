@@ -13,3 +13,5 @@ build
 
 data
 *~
+src/addons
+npm-cache
