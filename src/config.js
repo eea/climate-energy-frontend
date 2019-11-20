@@ -22,6 +22,7 @@
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 import CKEditorWidget from '~/components/manage/Widgets/CKEditor';
+import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
 import { defineMessages } from 'react-intl';
 
@@ -70,6 +71,11 @@ export const views = {
 
 export const widgets = {
   ...config.widgets,
+  vocabulary: {
+    ...config.widgets.vocabulary,
+    'energy.resource_type': TokenWidget,
+    'energy.topics': TokenWidget,
+  },
   widget: {
     ...config.widgets.widget,
     cktext: CKEditorWidget,
