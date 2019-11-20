@@ -198,13 +198,8 @@ class Navigation extends Component {
                       {/* </Link> */}
                     </h2>
                     <div className="menuExpanded" id="menuExpanded">
-<<<<<<< HEAD
-                      {item.items.find(
-                        i =>
-=======
                       {item.items.find(i => {
                         return (
->>>>>>> 11b136c39d9b8cc2dc1db42d29e7d21ecbcbc00f
                           __CLIENT__ &&
                           window &&
                           window.location.href.includes(i.url) &&
