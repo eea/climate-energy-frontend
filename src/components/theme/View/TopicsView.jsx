@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 // import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
 import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
@@ -53,6 +54,12 @@ class TopicsView extends Component {
   componentDidMount() {
     this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
     this.renderTabs();
+    const mainItem = this.props.content.items.find(item => item.id === 'main');
+    const mainUrl = mainItem && mainItem.url;
+    console.log('mainitem,mainurl', mainItem, mainUrl);
+    if (__CLIENT___ && mainUrl && window) {
+      window && window.location.href = mainUrl;
+    }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.pathname !== this.props.pathname) {
