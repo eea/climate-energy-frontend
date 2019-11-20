@@ -58,7 +58,7 @@ class TopicsView extends Component {
     const mainUrl = mainItem && mainItem.url;
     console.log('mainitem,mainurl', mainItem, mainUrl);
     if (__CLIENT___ && mainUrl && window) {
-      window && window.location.href = mainUrl;
+      window.location.href = mainUrl;
     }
   }
   componentDidUpdate(prevProps) {
