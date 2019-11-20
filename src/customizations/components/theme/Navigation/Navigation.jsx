@@ -286,10 +286,7 @@ class Navigation extends Component {
                 <div key={item.url} className="sub-topic-item">
                   <h3 className="sub-topic-title">
                     <Link
-                      to={() => {
-                        const url = item.items ? item.items[0].url : item.url;
-                        return item.url === '' ? '/' : url;
-                      }}
+                      to={item.url}
                       key={item.url}
                       className={
                         this.isActive(item.url) ? 'item active' : 'item'
