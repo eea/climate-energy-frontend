@@ -491,7 +491,7 @@ class Form extends Component {
     block,
     node,
     {
-      disableEnter = false,
+      disableEnter = true,
       disableArrowUp = false,
       disableArrowDown = false,
     } = {},

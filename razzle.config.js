@@ -32,8 +32,8 @@ module.exports = {
     //   console.log('rule options');
     //   console.log(rule.use && rule.use[0].options);
     // });
-    const hardSource = new HardSourceWebpackPlugin();
-    vc.plugins.push(hardSource);
+    // const hardSource = new HardSourceWebpackPlugin();
+    // vc.plugins.push(hardSource);
     return vc;
   },
 };

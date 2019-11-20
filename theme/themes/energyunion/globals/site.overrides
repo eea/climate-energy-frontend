@@ -26,8 +26,9 @@ html,body {
 nav.tabs {
   position: absolute;
   // top:-5rem;
-  bottom: @100ValuePercentage;
+  // bottom: @100ValuePercentage;
   display: flex!important;
+  top: -87px;
   left: 0;
   width: @100ValuePercentage;
   a {

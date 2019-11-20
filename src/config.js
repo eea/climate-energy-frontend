@@ -41,13 +41,20 @@ import PlotlyBlockView from 'volto-blocks/PlotlyChart/View';
 import TableauBlockEdit from 'volto-blocks/TableauBlock/TableauBlockEdit';
 import tableauBlockView from 'volto-blocks/TableauBlock/TableauBlockView';
 
-import TextBlockEdit from 'volto-blocks/Text/Edit';
+import TextBlockEdit from 'volto-blocks/Ckeditor/Edit';
+import TextBlockView from 'volto-blocks/Ckeditor/View';
+
+
+import TextBlockEditWysiwyg from 'volto-blocks/Text/Edit';
+import TextBlockViewWysiwyg from 'volto-blocks/Text/View';
+
 
 import chartIcon from '@plone/volto/icons/world.svg';
 
 import { DataTileEdit, DataTileView } from 'volto-datablocks';
 
 import { sparql_data } from 'volto-datablocks/reducers';
+import { chart_data_visualization } from 'volto-blocks/reducers'
 
 import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
 import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
@@ -110,7 +117,7 @@ console.log('config', config);
 console.log('config.blocks', config.blocks);
 
 export const blocks = {
-  ...config.blocks,
+  // ...config.blocks.defaultBlocks,
 
   groupBlocksOrder: [
     ...(config.blocks.groupBlocksOrder || []),
@@ -176,7 +183,15 @@ export const blocks = {
       edit: DataTileEdit,
       icon: config.blocks.blocksConfig.text.icon,
     },
+    wysiwyg: {
+      id: 'wysiwyg',
+      group: 'text',
+      title: 'WYSIWYG',
+      view: TextBlockViewWysiwyg,
+      edit: TextBlockEditWysiwyg,
+      icon: config.blocks.blocksConfig.text.icon,
+    }
   },
 };
 
-export const addonReducers = [sparql_data];
+export const addonReducers = [sparql_data, chart_data_visualization];
