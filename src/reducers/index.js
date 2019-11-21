@@ -13,11 +13,11 @@ import { addonReducers } from '~/config';
 
 const reducers = {
   ...defaultReducers,
+  ...addonReducers,
   // Add your reducers here
   parent_folder_data,
   folder_tabs,
   localnavigation,
-  ...addonReducers,
 };
 
 export default reducers;
