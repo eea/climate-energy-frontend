@@ -69,8 +69,11 @@
         "@plone/volto": "4.0.0-alpha.11",
         "mr-developer": "1.4.0",
         "volto-blocks": "file:src/addons/volto-blocks",
+        "volto-ckeditor": "file:src/addons/volto-ckeditor",
         "volto-datablocks": "file:src/addons/volto-datablocks",
-        "volto-mosaic": "file:src/addons/volto-mosaic"
+        "volto-drafteditor": "file:src/addons/volto-drafteditor",
+        "volto-mosaic": "file:src/addons/volto-mosaic",
+        "volto-plotlycharts": "file:src/addons/volto-plotlycharts"
     },
     "devDependencies": {
         "eslint-plugin-prettier": "3.0.1",
