@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 from collections import OrderedDict
@@ -11,6 +12,10 @@ from collections import OrderedDict
 def activate(target):
     """ Activates a package: write the required files for this
     """
+    nm_folder = 'src/addons/{}/node_modules'.format(target)
+
+    if os.path.exists(nm_folder):
+        shutil.rmtree(nm_folder)
 
     if os.path.exists('jsconfig.json'):
         with open('jsconfig.json') as f:
@@ -143,8 +148,7 @@ def list_addons():
     with open('./mr.developer.json') as f:
         j = json.load(f)
 
-    for k in j.keys():
-        print(k)
+    print(" ".join(j.keys()))
 
 
 def main(op, target):
