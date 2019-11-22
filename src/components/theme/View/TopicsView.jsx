@@ -57,7 +57,7 @@ class TopicsView extends Component {
     const mainItem = this.props.content.items.find(item => item.id === 'main');
     const mainUrl = mainItem && mainItem.url;
     console.log('mainitem,mainurl', mainItem, mainUrl);
-    if (__CLIENT___ && mainUrl && window) {
+    if (__CLIENT__ && mainUrl && window) {
       window.location.href = mainUrl;
     }
   }
