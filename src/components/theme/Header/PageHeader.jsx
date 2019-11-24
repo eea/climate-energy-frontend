@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-  Anontools,
-  Logo,
-  Navigation,
-  SearchWidget,
-  Breadcrumbs,
-} from '@plone/volto/components';
+import { Logo, SearchWidget } from '@plone/volto/components';
 
-class Header extends Component {
+class PageHeader extends Component {
   constructor(props) {
     super(props);
     this.setHomepageClass = this.setHomepageClass.bind(this);
@@ -19,29 +12,23 @@ class Header extends Component {
       isHomepage: this.props.actualPathName === '/',
     };
   }
-  static propTypes = {
-    token: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-  };
 
-  static defaultProps = {
-    token: null,
+  static propTypes = {
+    pathname: PropTypes.string.isRequired,
   };
 
   setHomepageClass(is) {
     const body = document.getElementById('main');
-    // console.log('setting', is, body);
-    if (is) {
-      body.classList.add('homepage');
-      return;
-    }
-    body.classList.remove('homepage');
+    return is
+      ? body.classList.add('homepage')
+      : body.classList.remove('homepage');
   }
+
   componentDidMount() {
     this.setHomepageClass(this.state.isHomepage);
   }
+
   componentWillReceiveProps(nextProps) {
-    // console.log('alala', nextProps);
     if (nextProps.actualPathName !== this.props.actualPathName) {
       this.setHomepageClass(nextProps.actualPathName === '/');
       this.setState({
@@ -49,8 +36,8 @@ class Header extends Component {
       });
     }
   }
+
   componentDidUpdate(prevProps) {
-    // console.log('didupdate', prevProps);
     if (prevProps.actualPathName !== this.props.actualPathName) {
       this.setHomepageClass(this.props.actualPathName === '/');
       this.setState({
@@ -58,6 +45,7 @@ class Header extends Component {
       });
     }
   }
+
   render() {
     return (
       <div style={{ position: 'relative', zIndex: 1 }}>
@@ -73,5 +61,5 @@ class Header extends Component {
 }
 
 export default connect(state => ({
-  token: state.userSession.token,
-}))(Header);
+  // token: state.userSession.token,
+}))(PageHeader);

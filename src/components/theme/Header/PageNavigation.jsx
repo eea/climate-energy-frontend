@@ -4,10 +4,10 @@ import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { getBaseUrl } from '@plone/volto/helpers';
+import {} from 'semantic-ui-react';
 
 import { getNavigation } from '@plone/volto/actions';
 
@@ -50,15 +50,14 @@ class PageNavigation extends Component {
       subTopics: {
         type: null,
         items: [],
-      }
+      },
       //, isMobile: false
     };
   }
 
-
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
-  } 
+  }
 
   // componentDidMount(){
   //     document.addEventListener('resize', this.isMobile);
@@ -81,7 +80,7 @@ class PageNavigation extends Component {
   //   }
   // }
 
-  setSubmenu(title, items) {
+  setSubmenu(title, items, ev) {
     const body = document.querySelector('body');
 
     if (this.state.subMenu.type === title) {
@@ -106,16 +105,17 @@ class PageNavigation extends Component {
         },
       });
     }
+    ev && ev.preventDefault();
   }
 
-
-  setSubtopics(title, items) {
+  setSubtopics(title, items, ev) {
     this.setState({
       subTopics: {
         type: title,
         items: items,
       },
     });
+    ev.preventDefault();
   }
 
   isActive(url) {
@@ -135,7 +135,6 @@ class PageNavigation extends Component {
     }
     this.setState({ isMobileMenuOpen: false });
   }
-
 
   render() {
     if (!__CLIENT__) return '';
@@ -173,18 +172,29 @@ class PageNavigation extends Component {
               </span>
             </button>
           </div>
-          <div className={cx('menu-items', 'example', {'menu-open' : !this.state.isMobileMenuOpen})}>
-            {this.props.items.map(item => (
+          <div
+            className={cx('menu-items', 'example', {
+              'menu-open': !this.state.isMobileMenuOpen,
+            })}
+          >
+            {this.props.items.map((item, index) => (
               <div key={item.url} className="menu-item">
                 {item.items && item.items.length ? (
                   <div>
-                    <h2
-                      onClick={() => this.setSubmenu(item.title, item.items)}
-                      className="menu-title"
-                    >
-                      {/* <Link to={item.url} key={item.url}> */}
-                      {item.title}
-                      {/* </Link> */}
+                    <h2 className="menu-title">
+                      <a
+                        href={item.url}
+                        role="button"
+                        tabindex={index}
+                        onClick={ev =>
+                          this.setSubmenu(item.title, item.items, ev)
+                        }
+                        onKeyPress={() => {}}
+                      >
+                        {/* <Link to={item.url} key={item.url}> */}
+                        {item.title}
+                        {/* </Link> */}
+                      </a>
                     </h2>
                     <div className="menuExpanded" id="menuExpanded">
                       {item.items.find(
@@ -241,9 +251,12 @@ class PageNavigation extends Component {
               {this.state.subMenu.items.map(item => (
                 <div key={item.url} className="sub-menu-item">
                   <h2
-                    onClick={() => this.setSubtopics(item.title, item.items)}
-                    className="submenu-title"
+                    role="button"
+                    onClick={ev =>
+                      this.setSubtopics(item.title, item.items, ev)
+                    }
                     onKeyPress={() => {}}
+                    className="submenu-title"
                   >
                     {item.items && item.items.length ? (
                       item.title
@@ -289,8 +302,7 @@ class PageNavigation extends Component {
           )}
         </div>
       </div>
-    );    
-
+    );
   }
 }
 
