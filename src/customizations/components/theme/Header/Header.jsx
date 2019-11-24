@@ -31,7 +31,7 @@ class Header extends Component {
 
   setHomepageClass(is) {
     const body = document.getElementById('main');
-    console.log('setting', is, body);
+    // console.log('setting', is, body);
     if (is) {
       body.classList.add('homepage');
       return;
@@ -42,7 +42,7 @@ class Header extends Component {
     this.setHomepageClass(this.state.isHomepage);
   }
   componentWillReceiveProps(nextProps) {
-    console.log('alala', nextProps);
+    // console.log('alala', nextProps);
     if (nextProps.actualPathName !== this.props.actualPathName) {
       this.setHomepageClass(nextProps.actualPathName === '/');
       this.setState({
@@ -51,7 +51,7 @@ class Header extends Component {
     }
   }
   componentDidUpdate(prevProps) {
-    console.log('didupdate', prevProps);
+    // console.log('didupdate', prevProps);
     if (prevProps.actualPathName !== this.props.actualPathName) {
       this.setHomepageClass(this.props.actualPathName === '/');
       this.setState({
