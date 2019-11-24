@@ -20,10 +20,10 @@ class Header extends Component {
       isHomepage: this.props.actualPathName === '/',
     };
   }
-  static propTypes = {
-    token: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-  };
+  // static propTypes = {
+  //   token: PropTypes.string,
+  //   pathname: PropTypes.string.isRequired,
+  // };
 
   static defaultProps = {
     token: null,
@@ -104,4 +104,5 @@ class Header extends Component {
 
 export default connect(state => ({
   token: state.userSession.token,
+  pathname: state.router.location ? state.router.location.pathname : '',
 }))(Header);

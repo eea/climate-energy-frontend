@@ -18,7 +18,7 @@ import qs from 'query-string';
 import { searchContent } from '@plone/volto/actions';
 
 import { SearchTags, Toolbar } from '@plone/volto/components';
-import { Placeholder } from 'semantic-ui-react'
+import { Placeholder } from 'semantic-ui-react';
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {
@@ -134,7 +134,10 @@ class Search extends Component {
   render() {
     console.log('props in search', this.props.items);
     return (
-      <Container id="page-search" className="catalogue-body full-width-catalogue">
+      <Container
+        id="page-search"
+        className="catalogue-body full-width-catalogue"
+      >
         <Helmet title="Search" />
         <div className="container">
           <article id="content">
@@ -165,7 +168,11 @@ class Search extends Component {
                   onChange={this.handleChange}
                   placeholder="eg: Renewable energy"
                 />
-                <i aria-hidden="true" onClick={()=>this.doSearch(this.state.value)} class="fa fa-search" />
+                <i
+                  aria-hidden="true"
+                  onClick={() => this.doSearch(this.state.value)}
+                  class="fa fa-search"
+                />
               </div>
             </div>
             <div class="cards" id="content-core">
@@ -185,9 +192,9 @@ class Search extends Component {
                   </Link>
 
                   <div className="card-detail with-content">
-                  <Link to={item['@id']}>
-                    <h3 className="card-title">{item.title}</h3>
-                    {item.description && <span>{item.description}</span>}
+                    <Link to={item['@id']}>
+                      <h3 className="card-title">{item.title}</h3>
+                      {item.description && <span>{item.description}</span>}
                     </Link>
                     <div className="card-bottom" style={{ display: 'flex' }}>
                       <p>
@@ -202,7 +209,6 @@ class Search extends Component {
                         <span className="muted">Date:</span> October 4, 2019
                       </p>
                     </div>
-                   
                   </div>
                   <div className="visualClear" />
                 </div>
