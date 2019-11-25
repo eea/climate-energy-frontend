@@ -3,7 +3,7 @@
  * @module index
  */
 
-import start from '@plone/volto/start-server';
+import start from 'volto-corsproxy/start-server';
 
 const reloadServer = start();
 
