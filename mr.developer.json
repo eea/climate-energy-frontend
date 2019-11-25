@@ -17,6 +17,9 @@
     "volto-drafteditor": {
       "url": "https://github.com/eea/volto-drafteditor.git"
     },
+    "volto-corsproxy": {
+      "url": "https://github.com/eea/volto-corsproxy.git"
+    },
     "volto-plotlycharts": {
       "url": "https://github.com/eea/volto-plotlycharts.git"
     }

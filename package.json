@@ -72,8 +72,10 @@
         "mr-developer": "1.4.0",
         "volto-blocks": "file:src/addons/volto-blocks",
         "volto-ckeditor": "file:src/addons/volto-ckeditor",
+        "volto-corsproxy": "file:src/addons/volto-corsproxy",
         "volto-datablocks": "file:src/addons/volto-datablocks",
         "volto-drafteditor": "file:src/addons/volto-drafteditor",
+        "volto-misc": "file:src/addons/volto-addons",
         "volto-mosaic": "file:src/addons/volto-mosaic",
         "volto-plotlycharts": "file:src/addons/volto-plotlycharts"
     },

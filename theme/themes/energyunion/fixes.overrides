@@ -1,0 +1,9 @@
+.view-addview #main .content-cols {
+  .menu-hamburger {
+    display: none;
+  }
+  &>.col-6 {
+  flex: 1 0 50%;
+  max-width: 75%;
+  }
+}

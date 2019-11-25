@@ -263,7 +263,7 @@ class Navigation extends Component {
                     ) : (
                       <Link
                         to={() => {
-                          console.log(item);
+                          // console.log(item);
                           return item.url === '' ? '/' : item.url;
                         }}
                         key={item.url}
