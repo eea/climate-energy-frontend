@@ -25,12 +25,11 @@ html,body {
 //Nav
 nav.tabs {
   position: absolute;
-  // top:-5rem;
-  // bottom: @100ValuePercentage;
   display: flex!important;
-  top: -87px;
   left: 0;
-  width: @100ValuePercentage;
+  width: 100%;
+  z-index: 1;
+  bottom: 100%;
   a {
       background: none;
       font-family: @headerFont;
@@ -116,7 +115,7 @@ nav.tabs {
 
 // Content
 .content-page {
-  min-height: 600px;
+  min-height: calc(100vh - 295px);
   
   h1,
   h2,

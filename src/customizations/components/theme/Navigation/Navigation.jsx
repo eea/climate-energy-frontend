@@ -140,13 +140,19 @@ class Navigation extends Component {
   render() {
     return (
       <div id="app-menu-content">
-        <div id="menu-underlay" />
+        <div
+          onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
+          className="menu-underlay"
+        />
         <div
           id="menu-background"
           className="background-img"
           style={{ backgroundImage: `url(${bgimage})` }}
         />
-        <div id="menu-background-overlay" />
+        <div
+          id="menu-background-overlay"
+          onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
+        />
         <div className="menu">
           <div className="hamburger-wrapper mobile only">
             <button

@@ -140,6 +140,10 @@ class PageNavigation extends Component {
     if (!__CLIENT__) return '';
     return (
       <div id="app-menu-content">
+        <div
+          onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
+          className="menu-underlay"
+        />
         <div className="menu">
           <div className="hamburger-wrapper mobile only">
             <button
