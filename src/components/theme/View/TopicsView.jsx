@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -22,6 +22,7 @@ class TopicsView extends Component {
     this.renderTabs = this.renderTabs.bind(this);
     this.state = {
       tabs: null,
+      redirect: false,
     };
     console.log('topicsView');
   }
@@ -54,12 +55,14 @@ class TopicsView extends Component {
   componentDidMount() {
     this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
     this.renderTabs();
-    // const mainItem = this.props.content.items[0];
-    // const mainUrl = mainItem && mainItem.url;
-    // console.log('mainitem,mainurl', mainItem, mainUrl);
-    // if (__CLIENT__ && mainUrl && window) {
-    //   window.location.href = mainUrl;
-    // }
+    const mainItem = this.props.content.items[0];
+    const mainUrl = mainItem && mainItem.url;
+    console.log('mainitem,mainurl', mainItem, mainUrl);
+    if (__CLIENT__ && mainUrl && window) {
+      this.setState({ redirect: mainUrl });
+    } else {
+      this.setState({ redirect: false });
+    }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.pathname !== this.props.pathname) {
@@ -100,6 +103,10 @@ class TopicsView extends Component {
   }
 
   render() {
+    console.log('redirect state', this.state.redirect);
+    if (this.state.redirect) {
+      return <Redirect to={{ pathname: this.state.redirect }} />;
+    }
     const content = this.props.content;
     const localNavigation =
       (this.props.localNavigation.items &&

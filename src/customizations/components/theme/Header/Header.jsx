@@ -62,6 +62,11 @@ class Header extends Component {
   render() {
     return (
       <div className="header-wrapper" role="banner">
+        {!this.props.token && (
+          <div className="tools">
+            <Anontools />
+          </div>
+        )}
         <div id="app-menu">
           {this.state.isHomepage || this.props.noBreadcrumbs ? (
             ''
@@ -90,11 +95,6 @@ class Header extends Component {
               isHomepage={this.state.isHomepage}
               pathname={this.props.pathname}
             />
-          )}
-          {!this.props.token && (
-            <div className="tools">
-              <Anontools />
-            </div>
           )}
         </div>
       </div>
