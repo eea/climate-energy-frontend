@@ -817,12 +817,12 @@ body > #main:not(.homepage) {
         // padding: 1rem;
         padding-top: 1rem;
         display: inline-block;
-        position: absolute;
+        // position: absolute;
         max-width: 180px;
         top: 0;
         width: @100ValuePercentage;
         padding-left: 3rem;
-
+        position: relative;
         // @media (max-width: 900px){
         //   height: 0px;
         //   background: rgba(0, 134, 117, 0.9);
