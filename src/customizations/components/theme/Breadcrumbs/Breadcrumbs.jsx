@@ -44,7 +44,6 @@ class Breadcrumbs extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    
   };
 
   /**
@@ -75,37 +74,27 @@ class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <Segment
-        role="navigation"
-        aria-label="Breadcrumbs"
-        className="breadcrumbs"
-        secondary
-        vertical
-      >
-        <Container>
-          <Breadcrumb>
-            <Link
-              to="/"
-              className="section"
-              title={this.props.intl.formatMessage(messages.home)}
-            >
-              <Icon name={homeSVG} size="18px" />
+      <Breadcrumb>
+        <Link
+          to="/"
+          className="section"
+          title={this.props.intl.formatMessage(messages.home)}
+        >
+          <Icon name={homeSVG} size="18px" />
+        </Link>
+        {this.props.items.map((item, index, items) => [
+          <Breadcrumb.Divider key={`divider-${item.url}`} />,
+          index < items.length - 1 ? (
+            <Link key={item.url} to={item.url} className="section">
+              {item.title}
             </Link>
-            {this.props.items.map((item, index, items) => [
-              <Breadcrumb.Divider key={`divider-${item.url}`} />,
-              index < items.length - 1 ? (
-                <Link key={item.url} to={item.url} className="section">
-                  {item.title}
-                </Link>
-              ) : (
-                <Breadcrumb.Section key={item.url} active>
-                  {item.title}
-                </Breadcrumb.Section>
-              ),
-            ])}
-          </Breadcrumb>
-        </Container>
-      </Segment>
+          ) : (
+            <Breadcrumb.Section key={item.url} active>
+              {item.title}
+            </Breadcrumb.Section>
+          ),
+        ])}
+      </Breadcrumb>
     );
   }
 }

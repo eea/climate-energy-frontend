@@ -8,50 +8,53 @@
 
 .inline.field {
   .wrapper {
-    display: flex;
-    min-height: 60px;
-    align-items: center;
+    display      : flex;
+    min-height   : 60px;
+    align-items  : center;
     border-bottom: 1px solid @lightGreyBorderColor;
   }
 
   &.required .wrapper {
+
     label[for]::after,
     .ui.label::after {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin-left: 5px;
+      display         : inline-block;
+      width           : 10px;
+      height          : 10px;
+      margin-left     : 5px;
       background-color: @pink;
-      border-radius: 50%;
-      content: '';
+      border-radius   : 50%;
+      content         : '';
     }
   }
 
   &.text {
     .toolbar {
-      display: block;
+      display   : block;
       margin-top: 18px;
     }
   }
 
   &.textarea {
+
     .wrapper,
     .toolbar {
-      display: block;
+      display   : block;
       margin-top: 18px;
     }
 
     textarea {
       min-height: 60px;
-      padding: 0;
+      padding   : 0;
       margin-top: 18px;
     }
   }
 
   &.wysiwyg {
+
     .wrapper,
     .toolbar {
-      display: block;
+      display   : block;
       margin-top: 18px;
     }
 
@@ -61,28 +64,35 @@
     }
   }
 
-  .ui.checkbox ~ .ui.basic.label {
+  .ui.checkbox~.ui.basic.label {
     border: 0;
   }
 }
 
 .ui.form .searchbox.field {
-  display: flex;
-  padding-left: 1em;
-  border-left: 1px solid @purpleBackground;
+  display      : flex;
+  padding-left : 1em;
+  border-bottom: 1px solid @purpleBackground;
+  font-size    : 1.3rem;
+  padding-left : 0;
+  min-width    : 168px;
+  padding      : .5rem;
 
   .ui.input input {
-    width: 106px;
-    height: auto;
+    width      : 106px;
+    height     : auto;
     line-height: initial;
+    color: white;
+    font-weight: bold;
   }
 
   button {
-    padding: 0;
-    border: 0;
+    padding   : 0;
+    border    : 0;
     background: transparent;
-    color: @blue;
-    cursor: pointer;
+    color     : white;
+    ;
+    cursor    : pointer;
     text-align: initial;
 
     &:focus {

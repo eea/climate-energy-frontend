@@ -34,7 +34,6 @@ import PageHeader from '~/components/theme/Header/PageHeader';
 import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import './app.css';
 /**
  * @export
  * @class App
@@ -123,7 +122,7 @@ class App extends Component {
         {this.props.pathname === '/' ? (
           <div>
             <Header actualPathName={this.props.pathname} pathname={path} />
-            <Segment  className="content-area">
+            {/* <Segment  className="content-area">
               <main>
                 <Messages />
                 {this.state.hasError ? (
@@ -135,14 +134,13 @@ class App extends Component {
                   renderRoutes(this.props.route.routes)
                 )}
               </main>
-            </Segment>
-            <Footer />
+            </Segment> */}
+            {/* <Footer /> */}
           </div>
         ) : (
           <div className="topics">
             <PageHeader />
-            <PageHeaderBg />
-            <div className="cols content-cols">
+            {/* <div className="cols content-cols">
               <div className="col-3 menu-hamburger">
                 <Header
                   noBreadcrumbs={true}
@@ -164,8 +162,8 @@ class App extends Component {
                 </main>
               </div>
               <div className="col-3 inPageNavigation"></div>
-            </div>
-            <Footer />
+            </div> */}
+            {/* <Footer /> */}
           </div>
         )}
         <ToastContainer
