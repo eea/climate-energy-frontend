@@ -12,7 +12,7 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { Portal } from 'react-portal';
-import { Container } from 'semantic-ui-react';
+import { Container, Breadcrumb } from 'semantic-ui-react';
 import qs from 'query-string';
 
 import { searchContent } from '@plone/volto/actions';
@@ -168,11 +168,20 @@ class Search extends Component {
                     </Link>
                     {item['@components'] && item['@components'].breadcrumbs && (
                       <div className="card-content">
-                        {item['@components'].breadcrumbs.items.map(b => (
-                          <div key={b['@id']}>
-                            <Link to={b['@id']}>{b.title}</Link>
-                          </div>
-                        ))}
+                        <Breadcrumb>
+                        {item['@components'].breadcrumbs.items.map((item, index, items) => [
+                          index < items.length - 1 ? (
+                            <Breadcrumb.Section key={item['@id']}>
+                              <Link to={item['@id']}>{item.title}</Link>
+                              <Breadcrumb.Divider key={`divider-${item.url}`} />
+                            </Breadcrumb.Section>
+                          ) : (
+                            <Breadcrumb.Section key={item['@id']}>
+                              <Link to={item['@id']}>{item.title}</Link>
+                            </Breadcrumb.Section>
+                          ),
+                        ])}
+                        </Breadcrumb>
                       </div>
                     )}
                     <div className="card-bottom" style={{ display: 'flex' }}>
