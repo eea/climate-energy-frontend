@@ -1501,3 +1501,8 @@ body:not(.section-controlpanel) {
   }
 
 }
+
+
+.homepage .tools {
+  z-index: 5;
+}
