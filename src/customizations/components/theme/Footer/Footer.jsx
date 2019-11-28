@@ -6,12 +6,7 @@
 import React from 'react';
 import { Container, List, Segment, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import eeaLogo from './ec.svg.png';
 import ecLogo from './eea.png';
 
@@ -34,26 +29,24 @@ const Footer = ({ intl }) => (
     vertical
     padded
     textAlign="center"
-    className="footerWrapper"
+    className="footer"
   >
-    <Container>
-      <div className="ui vertically divided grid">
-        <div className="column row container">
-          <div className="column row">
+    <Container fluid>
+      <Grid columns={3}>
+        <Grid.Row>
+          <Grid.Column
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <p>
               Find information on the EU and its Member States' progress in
               their 2030 targets on climate and energy.
             </p>
-          </div>
-
-          <div className="column">
-            <div className="footerLogoWrapper">
-              <img className="footerLogo" src={eeaLogo} alt="" />
-              <img className="footerLogo" src={ecLogo} alt="" />
-            </div>
-          </div>
-
-          <div className="row" style={{ width: '100%', textAlign: 'left' }}>
+          </Grid.Column>
+          <Grid.Column>
             <ul className="unlist">
               <li>
                 <Link className="item" to="/legal_notice">
@@ -63,12 +56,11 @@ const Footer = ({ intl }) => (
                   />
                 </Link>
               </li>
-
               <li>
-                <Link className="item" to="/private_policy">
+                <Link className="item" to="/privacy_policy">
                   <FormattedMessage
-                    id="private_policy"
-                    defaultMessage="Private policy"
+                    id="privacy_policy"
+                    defaultMessage="Privacy policy"
                   />
                 </Link>
               </li>
@@ -78,9 +70,25 @@ const Footer = ({ intl }) => (
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
+          </Grid.Column>
+          <Grid.Column>
+            <div className="footerLogoWrapper">
+              <img
+                style={{ width: '120px', marginRight: '2rem' }}
+                className="footerLogo"
+                src={eeaLogo}
+                alt=""
+              />
+              <img
+                style={{ width: '160px' }}
+                className="footerLogo"
+                src={ecLogo}
+                alt=""
+              />
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </Container>
   </Segment>
 );
