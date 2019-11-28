@@ -96,3 +96,9 @@
     color: #e40166 !important;
   }
 }
+
+
+.ui.modal {
+  transform: none;
+  transform-origin: unset;
+}
