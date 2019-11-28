@@ -66,7 +66,7 @@
         "@ckeditor/ckeditor5-heading": "^11.0.5",
         "@ckeditor/ckeditor5-paragraph": "^11.0.5",
         "@ckeditor/ckeditor5-react": "^1.1.3",
-        "@plone/volto": "4.0.0-alpha.11",
+        "@plone/volto": "4.0.0-alpha.15",
         "draftjs-to-html": "^0.8.4",
         "mgr-pdf-viewer-react": "^1.0.3",
         "mr-developer": "1.4.0",
@@ -85,5 +85,9 @@
         "postcss-overrides": "3.1.4",
         "prettier": "1.17.0",
         "prettier-stylelint": "0.4.2"
-    }
+    },
+    "customizationPaths": [
+        "src/customizations/",
+        "src/addons/volto-addons/src/customizations/"
+    ]
 }
