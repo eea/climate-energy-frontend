@@ -16,6 +16,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
+import { Grid } from 'semantic-ui-react';
 
 import Error from '@plone/volto/error';
 
@@ -138,8 +139,9 @@ class App extends Component {
             {/* <Footer /> */}
           </div>
         ) : (
-          <div className="topics">
+          <div className="content-page">
             <PageHeader />
+
             {/* <div className="cols content-cols">
               <div className="col-3 menu-hamburger">
                 <Header
@@ -163,7 +165,34 @@ class App extends Component {
               </div>
               <div className="col-3 inPageNavigation"></div>
             </div> */}
-            {/* <Footer /> */}
+
+            <Grid columns={3} divided>
+              <Grid.Row>
+                <Grid.Column width="2" className="menu-hamburger">
+                  <Header
+                    noBreadcrumbs={true}
+                    actualPathName={this.props.pathname}
+                    pathname={path}
+                  />
+                </Grid.Column>
+                <Grid.Column width="7">
+                  <main className="content-page">
+                    <Messages />
+                    {this.state.hasError ? (
+                      <Error
+                        message={this.state.error.message}
+                        stackTrace={this.state.errorInfo.componentStack}
+                      />
+                    ) : (
+                      renderRoutes(this.props.route.routes)
+                    )}
+                  </main>
+                </Grid.Column>
+                <Grid.Column width="3" className="inPageNavigation" />
+              </Grid.Row>
+            </Grid>
+
+            <Footer />
           </div>
         )}
         <ToastContainer

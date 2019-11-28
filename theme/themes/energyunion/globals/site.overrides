@@ -53,12 +53,31 @@
         background: white;
         font-size: 1.3rem;
         padding-left: 1rem;
-        color: black;
+        color: white;
         border-bottom: 1px solid #000;
-        box-shadow: 0px 3px 8px 2px #444;
-        background: #fafafa;
+        box-shadow: 0px 3px 8px 2px rgba(0, 0, 0, 0.45);
+        background: #152529;
         a {
-            // color: white;
+            color: white;
         }
+    }
+}
+
+
+// footer
+.footer {
+    border-top: 1px solid #eee!important;
+}
+
+
+// main
+main {
+    &.content-page {
+        min-height: calc(100vh - 430px);
+        margin-top: -5rem;
+        background: white;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 1rem;
     }
 }

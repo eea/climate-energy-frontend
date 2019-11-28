@@ -25,12 +25,9 @@ function PageHeader(props) {
         <div className="searchbar">
           <SearchWidget pathname={props.pathname || ''} />
         </div>
-
       </div>
     </React.Fragment>
   );
 }
-
-// export default PageHeader;
 
 export default PageHeader;
