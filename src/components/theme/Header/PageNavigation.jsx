@@ -189,7 +189,7 @@ class PageNavigation extends Component {
                       <a
                         href={item.url}
                         role="button"
-                        tabindex={index}
+                        tabIndex={index}
                         onClick={ev =>
                           this.setSubmenu(item.title, item.items, ev)
                         }

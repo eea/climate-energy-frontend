@@ -10,14 +10,14 @@ import { compose } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import qs from 'query-string';
 
 import { searchContent } from '@plone/volto/actions';
 
-import { SearchTags, Toolbar } from '@plone/volto/components';
+import { Toolbar } from '@plone/volto/components'; // SearchTags,
 import { Placeholder } from 'semantic-ui-react';
 
 const toSearchOptions = (searchableText, subject, path) => {
@@ -160,7 +160,7 @@ class Search extends Component {
               </h1>
               <SearchTags />
             </header> */}
-            <div class="catalogue-header">
+            <div className="catalogue-header">
               <div style={{ position: 'relative' }}>
                 <input
                   type="text"
@@ -171,11 +171,11 @@ class Search extends Component {
                 <i
                   aria-hidden="true"
                   onClick={() => this.doSearch(this.state.value)}
-                  class="fa fa-search"
+                  className="fa fa-search"
                 />
               </div>
             </div>
-            <div class="cards" id="content-core">
+            <div className="cards" id="content-core">
               {this.props.items.map(item => (
                 <div className="card" key={item['@id']}>
                   <Link

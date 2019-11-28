@@ -62,4 +62,5 @@ class PageHeader extends Component {
 
 export default connect(state => ({
   // token: state.userSession.token,
+  pathname: state.router.location ? state.router.location.pathname : '',
 }))(PageHeader);
