@@ -24,6 +24,7 @@ const config = [
 
 export const settings = {
   ...config.settings,
+  allowed_cors_destinations: ['www.eea.europa.eu'],
 };
 
 export const views = {
