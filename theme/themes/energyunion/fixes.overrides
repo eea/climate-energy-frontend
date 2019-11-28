@@ -7,3 +7,14 @@
   max-width: 75%;
   }
 }
+
+// temporary override
+body:not(.section-controlpanel) .topics .ui.items .header {
+  position: relative !important;
+  width: 100%;
+  height: auto;
+  display: block;
+  justify-content: unset;
+  top: auto;
+  align-items: unset;
+}
