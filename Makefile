@@ -113,6 +113,10 @@ push:
 init-submodules:		## Initialize the git submodules
 	git submodule update --init --recursive
 
+.PHONY: develop
+develop:		## Runs "git pull" in all addons
+	./pkg_helper.py develop
+
 .PHONY: help
 help:		## Show this help.
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
