@@ -147,7 +147,12 @@ class App extends Component {
             <PageHeader />
             <Grid columns={3} divided>
               <Grid.Row>
-                <Grid.Column tablet={12} computer={3} largeScreen={3} className="menu-hamburger">
+                <Grid.Column
+                  tablet={12}
+                  computer={3}
+                  largeScreen={3}
+                  className="menu-hamburger"
+                >
                   <Header
                     noBreadcrumbs={true}
                     actualPathName={this.props.pathname}
@@ -168,7 +173,12 @@ class App extends Component {
                     )}
                   </main>
                 </Grid.Column>
-                <Grid.Column tablet={12} computer={3} largeScreen={3} className="inPageNavigation" />
+                <Grid.Column
+                  tablet={12}
+                  computer={3}
+                  largeScreen={3}
+                  className="inPageNavigation"
+                />
               </Grid.Row>
             </Grid>
 
