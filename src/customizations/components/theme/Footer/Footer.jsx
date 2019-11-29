@@ -39,14 +39,15 @@ const Footer = ({ intl }) => (
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              textAlign: 'left',
+              flexDirection: 'column'
             }}
+            width="6"
           >
             <p>
               Find information on the EU and its Member States' progress in
               their 2030 targets on climate and energy.
             </p>
-          </Grid.Column>
-          <Grid.Column>
             <ul className="unlist">
               <li>
                 <Link className="item" to="/legal_notice">
@@ -70,6 +71,9 @@ const Footer = ({ intl }) => (
                 </Link>
               </li>
             </ul>
+          </Grid.Column>
+          <Grid.Column width="2">
+          
           </Grid.Column>
           <Grid.Column>
             <div className="footerLogoWrapper">
