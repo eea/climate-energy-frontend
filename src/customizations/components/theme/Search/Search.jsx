@@ -193,7 +193,7 @@ class Search extends Component {
                                     </Breadcrumb.Section>
                                   ) : (
                                     <Breadcrumb.Section key={item['@id']}>
-                                      <Link to={item['@id']}>{item.title}</Link>
+                                      <Link to={this.getPath(item['@id'])}>{item.title}</Link>
                                     </Breadcrumb.Section>
                                   ),
                                 ],
