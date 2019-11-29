@@ -12,8 +12,9 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { Portal } from 'react-portal';
-import { Container, Breadcrumb } from 'semantic-ui-react';
+import { Container, Breadcrumb, Item } from 'semantic-ui-react';
 import qs from 'query-string';
+import { settings } from '~/config';
 
 import { searchContent } from '@plone/volto/actions';
 
@@ -133,6 +134,12 @@ class Search extends Component {
     this.setState({ value: event.target.value });
   }
 
+  getPath(url) {
+  return url
+    .replace(settings.apiPath, '')
+    .replace(settings.internalApiPath, '');
+  }
+
   render() {
     console.log('props in search', this.props.items);
     return (
@@ -158,55 +165,66 @@ class Search extends Component {
                 />
               </div>
             </div>
-            <div className="cards" id="content-core">
-              {this.props.items.map(item => (
-                <div className="card" key={item['@id']}>
-                  <div className="card-detail with-content">
-                    <Link to={item['@id']}>
-                      <h3 className="card-title">{item.title}</h3>
-                      {item.description && <span>{item.description}</span>}
-                    </Link>
-                    {item['@components'] && item['@components'].breadcrumbs && (
-                      <div className="card-content">
-                        <Breadcrumb>
-                          {item['@components'].breadcrumbs.items.map(
-                            (item, index, items) => [
-                              index < items.length - 1 ? (
-                                <Breadcrumb.Section key={item['@id']}>
-                                  <Link to={item['@id']}>{item.title}</Link>
-                                  <Breadcrumb.Divider
-                                    key={`divider-${item.url}`}
-                                  />
-                                </Breadcrumb.Section>
-                              ) : (
-                                <Breadcrumb.Section key={item['@id']}>
-                                  <Link to={item['@id']}>{item.title}</Link>
-                                </Breadcrumb.Section>
-                              ),
-                            ],
-                          )}
-                        </Breadcrumb>
-                      </div>
-                    )}
-                    <div className="card-bottom" style={{ display: 'flex' }}>
-                      <p>
-                        <span className="muted">Content type:</span>{' '}
-                        {item['@type']}
-                      </p>
-                      &nbsp; &nbsp; &nbsp;
-                      <p>
-                        <span className="muted">Topic:</span> Energy efficiency
-                      </p>
-                      &nbsp; &nbsp; &nbsp;
-                      <p>
-                        <span className="muted">Date:</span>{' '}
-                        {moment(item.ModificationDate).calendar()}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="visualClear" />
-                </div>
-              ))}
+            <div id="content-core">
+              <div className="item-listing">
+                <Item.Group>
+                  {this.props.items.map(item => (
+                    <Item key={item['@id']}>
+                      <Item.Content>
+                        <Item.Header>
+                          <Link to={this.getPath(item['@id'])}>
+                            <h3 className="item-title">{item.Title || item.title}</h3>
+                          </Link>
+                        </Item.Header>
+
+                        {item['@components'] && item['@components'].breadcrumbs && (
+                          <div className="item-breadcrumb">
+                            <Breadcrumb>
+                              {item['@components'].breadcrumbs.items.map(
+                                (item, index, items) => [
+                                  index < items.length - 1 ? (
+                                    <Breadcrumb.Section key={item['@id']}>
+                                      <Link to={this.getPath(item['@id'])}>
+                                        {item.title}
+                                      </Link>
+                                      <Breadcrumb.Divider
+                                        key={`divider-${item.url}`}
+                                        />
+                                    </Breadcrumb.Section>
+                                  ) : (
+                                    <Breadcrumb.Section key={item['@id']}>
+                                      <Link to={item['@id']}>{item.title}</Link>
+                                    </Breadcrumb.Section>
+                                  ),
+                                ],
+                              )}
+                            </Breadcrumb>
+                          </div>
+                        )}
+
+                        <Item.Description>
+                          {item.description && <span>{item.description}</span>}
+                        </Item.Description>
+
+                        <Item.Extra>
+                          <span>
+                            <span className="muted">Content type:</span>{' '}
+                              {item['@type']}
+                          </span>
+                          <span>
+                            <span className="muted">Topic:</span>{' '}
+                              Energy efficiency
+                          </span>
+                          <span>
+                            <span className="muted">Date:</span>{' '}
+                              {moment(item.ModificationDate).calendar()}
+                          </span>
+                        </Item.Extra>
+                      </Item.Content>
+                    </Item>
+                  ))}
+                </Item.Group>
+              </div>
             </div>
           </article>
         </div>

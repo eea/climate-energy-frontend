@@ -195,7 +195,7 @@ nav.tabs {
 
 //   end in page navigation
 
-// searchbox 
+// searchbox
 
 .searchbox {
     input {
@@ -211,7 +211,7 @@ nav.tabs {
 
 
 
-// HOMEPAGE  
+// HOMEPAGE
 
 body.homepage {
     .header .logo-wrapper {
@@ -481,4 +481,40 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 
 .personal-tools.pastanaga-menu {
     position: relative;
+}
+
+
+// Search
+
+.item-listing {
+    margin-top: 2rem;
+}
+
+.item-listing .ui.breadcrumb .divider {
+    margin: 0 0.3rem;
+}
+
+.item-listing .ui.items > .item {
+    margin-bottom: 2rem;
+}
+
+.item-listing .tile-title {
+    margin-bottom: 0.5em;
+}
+
+.item-listing .ui.items > .item .extra {
+    color: inherit;
+    font-size: 14px;
+}
+
+.item-listing .item-breadcrumb {
+    margin-top: 0.6em;
+}
+
+.item-listing .muted {
+    color: #aaa;
+}
+
+.item-listing .ui.items .header > a {
+    color: inherit;
 }
