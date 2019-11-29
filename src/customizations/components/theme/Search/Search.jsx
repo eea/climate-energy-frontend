@@ -169,18 +169,22 @@ class Search extends Component {
                     {item['@components'] && item['@components'].breadcrumbs && (
                       <div className="card-content">
                         <Breadcrumb>
-                        {item['@components'].breadcrumbs.items.map((item, index, items) => [
-                          index < items.length - 1 ? (
-                            <Breadcrumb.Section key={item['@id']}>
-                              <Link to={item['@id']}>{item.title}</Link>
-                              <Breadcrumb.Divider key={`divider-${item.url}`} />
-                            </Breadcrumb.Section>
-                          ) : (
-                            <Breadcrumb.Section key={item['@id']}>
-                              <Link to={item['@id']}>{item.title}</Link>
-                            </Breadcrumb.Section>
-                          ),
-                        ])}
+                          {item['@components'].breadcrumbs.items.map(
+                            (item, index, items) => [
+                              index < items.length - 1 ? (
+                                <Breadcrumb.Section key={item['@id']}>
+                                  <Link to={item['@id']}>{item.title}</Link>
+                                  <Breadcrumb.Divider
+                                    key={`divider-${item.url}`}
+                                  />
+                                </Breadcrumb.Section>
+                              ) : (
+                                <Breadcrumb.Section key={item['@id']}>
+                                  <Link to={item['@id']}>{item.title}</Link>
+                                </Breadcrumb.Section>
+                              ),
+                            ],
+                          )}
                         </Breadcrumb>
                       </div>
                     )}
