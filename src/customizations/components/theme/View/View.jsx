@@ -267,26 +267,27 @@ class View extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
-        {__CLIENT__ && document.querySelector('.inPageNavigation') ? (
-          <Portal
-            node={__CLIENT__ && document.querySelector('.inPageNavigation')}
-          >
-            <div className="headings_navigation">
-              <h5>
-                <b>In page navigation</b>
-              </h5>
-              <ul className="headings_navigation_list">
-                {this.makeHeadings().map(({ id, text }) => (
-                  <li key={id}>
-                    <a href={`#${id}`}>{text}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Portal>
-        ) : (
-          ''
-        )}
+        {this.props.content &&
+          this.props.content.table_of_contents &&
+          __CLIENT__ &&
+          document.querySelector('.inPageNavigation') && (
+            <Portal
+              node={__CLIENT__ && document.querySelector('.inPageNavigation')}
+            >
+              <div className="headings_navigation">
+                <h5>
+                  <b>In page navigation</b>
+                </h5>
+                <ul className="headings_navigation_list">
+                  {this.makeHeadings().map(({ id, text }) => (
+                    <li key={id}>
+                      <a href={`#${id}`}>{text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Portal>
+          )}
       </div>
     );
   }
