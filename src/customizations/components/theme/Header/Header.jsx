@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Portal } from 'react-portal';
+import { BodyClass } from '@plone/volto/helpers';
 
 import {
   Anontools,
@@ -28,6 +30,7 @@ class Header extends Component {
   render() {
     return (
       <div className="header-wrapper" role="banner">
+        {!this.props.token && <BodyClass className="anonymous" />}
         {this.props.homepage || this.props.noBreadcrumbs ? (
           ''
         ) : (
@@ -47,17 +50,29 @@ class Header extends Component {
               isHomepage={this.props.homepage}
               pathname={this.props.pathname}
             />
+            {!this.props.token && (
+              <div className="tools">
+                <Anontools />
+              </div>
+            )}
           </React.Fragment>
         ) : (
-          <PageNavigation
-            isHomepage={this.props.homepage}
-            pathname={this.props.pathname}
-          />
-        )}
-        {!this.props.token && (
-          <div className="tools">
-            <Anontools />
-          </div>
+          <React.Fragment>
+            <PageNavigation
+              isHomepage={this.props.homepage}
+              pathname={this.props.pathname}
+            />
+
+            {!this.props.token && (
+              <Portal
+                node={__CLIENT__ && document.querySelector('.page-header')}
+              >
+                <div className="tools">
+                  <Anontools />
+                </div>
+              </Portal>
+            )}
+          </React.Fragment>
         )}
       </div>
     );
