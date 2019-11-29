@@ -55,6 +55,7 @@ class App extends Component {
     hasError: false,
     error: null,
     errorInfo: null,
+    hideMenu: false,
   };
 
   /**
@@ -85,6 +86,16 @@ class App extends Component {
     }
   }
 
+  checkProps(props) {
+    const hideMenuConditions = ['add', 'edit'];
+    const pathname = props.pathname && props.pathname.split('/');
+    const pageType = pathname[pathname.length - 1];
+    if (hideMenuConditions.includes(pageType)) {
+      return true;
+    }
+    return false;
+  }
+
   /**
    * ComponentDidCatch
    * @method ComponentDidCatch
@@ -107,7 +118,7 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
-
+    const hideMenu = this.checkProps(this.props);
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
@@ -147,20 +158,27 @@ class App extends Component {
             <PageHeader />
             <Grid columns={3} divided>
               <Grid.Row>
+                {!hideMenu && (
+                  <Grid.Column
+                    tablet={12}
+                    computer={3}
+                    largeScreen={3}
+                    className="menu-hamburger"
+                  >
+                    <Header
+                      noBreadcrumbs={true}
+                      actualPathName={this.props.pathname}
+                      pathname={path}
+                      homepage={false}
+                    />
+                  </Grid.Column>
+                )}
+
                 <Grid.Column
                   tablet={12}
-                  computer={3}
-                  largeScreen={3}
-                  className="menu-hamburger"
+                  computer={hideMenu ? 12 : 6}
+                  largeScreen={hideMenu ? 12 : 6}
                 >
-                  <Header
-                    noBreadcrumbs={true}
-                    actualPathName={this.props.pathname}
-                    pathname={path}
-                    homepage={false}
-                  />
-                </Grid.Column>
-                <Grid.Column tablet={12} computer={6} largeScreen={6}>
                   <main className="content-page">
                     <Messages />
                     {this.state.hasError ? (
@@ -173,12 +191,14 @@ class App extends Component {
                     )}
                   </main>
                 </Grid.Column>
-                <Grid.Column
-                  tablet={12}
-                  computer={3}
-                  largeScreen={3}
-                  className="inPageNavigation"
-                />
+                {!hideMenu && (
+                  <Grid.Column
+                    tablet={12}
+                    computer={3}
+                    largeScreen={3}
+                    className="inPageNavigation"
+                  />
+                )}
               </Grid.Row>
             </Grid>
 
