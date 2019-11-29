@@ -16,6 +16,7 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
+import { Grid } from 'semantic-ui-react';
 
 import Error from '@plone/volto/error';
 
@@ -34,7 +35,6 @@ import PageHeader from '~/components/theme/Header/PageHeader';
 import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import './app.css';
 /**
  * @export
  * @class App
@@ -55,6 +55,7 @@ class App extends Component {
     hasError: false,
     error: null,
     errorInfo: null,
+    hideMenu: false,
   };
 
   /**
@@ -85,6 +86,16 @@ class App extends Component {
     }
   }
 
+  checkProps(props) {
+    const hideMenuConditions = ['add', 'edit'];
+    const pathname = props.pathname && props.pathname.split('/');
+    const pageType = pathname[pathname.length - 1];
+    if (hideMenuConditions.includes(pageType)) {
+      return true;
+    }
+    return false;
+  }
+
   /**
    * ComponentDidCatch
    * @method ComponentDidCatch
@@ -107,10 +118,11 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
-
+    const hideMenu = this.checkProps(this.props);
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+        {/* <BodyClass className={this.props.pathname === '/' ? 'homepage' : ''} /> */}
 
         {/* Body class depending on sections */}
         <BodyClass
@@ -121,9 +133,13 @@ class App extends Component {
           })}
         />
         {this.props.pathname === '/' ? (
-          <div>
-            <Header actualPathName={this.props.pathname} pathname={path} />
-            <Segment  className="content-area">
+          <React.Fragment>
+            <Header
+              actualPathName={this.props.pathname}
+              homepage={true}
+              pathname={path}
+            />
+            <Segment className="content-area">
               <main>
                 <Messages />
                 {this.state.hasError ? (
@@ -136,35 +152,56 @@ class App extends Component {
                 )}
               </main>
             </Segment>
-            <Footer />
-          </div>
+          </React.Fragment>
         ) : (
-          <div className="topics">
+          <div className="content-page">
             <PageHeader />
-            <PageHeaderBg />
-            <div className="cols content-cols">
-              <div className="col-3 menu-hamburger">
-                <Header
-                  noBreadcrumbs={true}
-                  actualPathName={this.props.pathname}
-                  pathname={path}
-                />
-              </div>
-              <div className="col-6">
-                <main className="content-page">
-                  <Messages />
-                  {this.state.hasError ? (
-                    <Error
-                      message={this.state.error.message}
-                      stackTrace={this.state.errorInfo.componentStack}
+            <Grid columns={3} divided>
+              <Grid.Row>
+                {!hideMenu && (
+                  <Grid.Column
+                    tablet={12}
+                    computer={3}
+                    largeScreen={3}
+                    className="menu-hamburger"
+                  >
+                    <Header
+                      noBreadcrumbs={true}
+                      actualPathName={this.props.pathname}
+                      pathname={path}
+                      homepage={false}
                     />
-                  ) : (
-                    renderRoutes(this.props.route.routes)
-                  )}
-                </main>
-              </div>
-              <div className="col-3 inPageNavigation"></div>
-            </div>
+                  </Grid.Column>
+                )}
+
+                <Grid.Column
+                  tablet={12}
+                  computer={hideMenu ? 12 : 6}
+                  largeScreen={hideMenu ? 12 : 6}
+                >
+                  <main className="content-page">
+                    <Messages />
+                    {this.state.hasError ? (
+                      <Error
+                        message={this.state.error.message}
+                        stackTrace={this.state.errorInfo.componentStack}
+                      />
+                    ) : (
+                      renderRoutes(this.props.route.routes)
+                    )}
+                  </main>
+                </Grid.Column>
+                {!hideMenu && (
+                  <Grid.Column
+                    tablet={12}
+                    computer={3}
+                    largeScreen={3}
+                    className="inPageNavigation"
+                  />
+                )}
+              </Grid.Row>
+            </Grid>
+
             <Footer />
           </div>
         )}

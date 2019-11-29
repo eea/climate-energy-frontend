@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Portal } from 'react-portal';
+import { BodyClass } from '@plone/volto/helpers';
 
 import {
   Anontools,
@@ -15,10 +17,6 @@ import PageNavigation from '~/components/theme/Header/PageNavigation';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.setHomepageClass = this.setHomepageClass.bind(this);
-    this.state = {
-      isHomepage: this.props.actualPathName === '/',
-    };
   }
   // static propTypes = {
   //   token: PropTypes.string,
@@ -29,53 +27,17 @@ class Header extends Component {
     token: null,
   };
 
-  setHomepageClass(is) {
-    const body = document.getElementById('main');
-    // console.log('setting', is, body);
-    if (is) {
-      body.classList.add('homepage');
-      return;
-    }
-    body.classList.remove('homepage');
-  }
-  componentDidMount() {
-    this.setHomepageClass(this.state.isHomepage);
-  }
-  componentWillReceiveProps(nextProps) {
-    // console.log('alala', nextProps);
-    if (nextProps.actualPathName !== this.props.actualPathName) {
-      this.setHomepageClass(nextProps.actualPathName === '/');
-      this.setState({
-        isHomepage: nextProps.actualPathName === '/',
-      });
-    }
-  }
-  componentDidUpdate(prevProps) {
-    // console.log('didupdate', prevProps);
-    if (prevProps.actualPathName !== this.props.actualPathName) {
-      this.setHomepageClass(this.props.actualPathName === '/');
-      this.setState({
-        isHomepage: this.props.actualPathName === '/',
-      });
-    }
-  }
   render() {
     return (
       <div className="header-wrapper" role="banner">
-        {!this.props.token && (
-          <div className="tools">
-            <Anontools />
-          </div>
+        {!this.props.token && <BodyClass className="anonymous" />}
+        {this.props.homepage || this.props.noBreadcrumbs ? (
+          ''
+        ) : (
+          <Breadcrumbs pathname={this.props.pathname} />
         )}
-        <div id="app-menu">
-          {this.state.isHomepage || this.props.noBreadcrumbs ? (
-            ''
-          ) : (
-            <Breadcrumbs pathname={this.props.pathname} />
-          )}
-          {this.props.noBreadcrumbs ? (
-            ''
-          ) : (
+        {this.props.homepage ? (
+          <React.Fragment>
             <div className="headerTop">
               <div className="header">
                 <Logo isHomepage={this.props.actualPathName === '/' || false} />
@@ -84,19 +46,34 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-          )}
-          {this.state.isHomepage ? (
             <Navigation
-              isHomepage={this.state.isHomepage}
+              isHomepage={this.props.homepage}
               pathname={this.props.pathname}
             />
-          ) : (
+            {!this.props.token && (
+              <div className="tools">
+                <Anontools />
+              </div>
+            )}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
             <PageNavigation
-              isHomepage={this.state.isHomepage}
+              isHomepage={this.props.homepage}
               pathname={this.props.pathname}
             />
-          )}
-        </div>
+
+            {!this.props.token && (
+              <Portal
+                node={__CLIENT__ && document.querySelector('.page-header')}
+              >
+                <div className="tools">
+                  <Anontools />
+                </div>
+              </Portal>
+            )}
+          </React.Fragment>
+        )}
       </div>
     );
   }

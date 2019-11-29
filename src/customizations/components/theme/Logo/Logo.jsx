@@ -29,12 +29,15 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const Logo = ({ intl, isHomepage }) => (
-  <Link to="/" title={intl.formatMessage(messages.site)}>
+  <Link
+    className="logo-wrapper"
+    to="/"
+    title={intl.formatMessage(messages.site)}
+  >
     <Image
       src={isHomepage === true ? LogoImage : LogoImagePage}
       alt={intl.formatMessage(messages.plonesite)}
       title={intl.formatMessage(messages.plonesite)}
-      width={550}
       className={`${isHomepage === true ? '' : 'page-logo'}`}
     />
   </Link>
@@ -45,8 +48,6 @@ const Logo = ({ intl, isHomepage }) => (
  * @property {Object} propTypes Property types.
  * @static
  */
-Logo.propTypes = {
-  
-};
+Logo.propTypes = {};
 
 export default injectIntl(Logo);
