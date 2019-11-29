@@ -46,11 +46,16 @@
             color    : #444 !important;
             font-size: 1rem;
             padding  : 0;
+            text-transform: initial;
+            font-weight: 200!important;
           }
 
           &.active {
             font-weight: bold;
             color      : #444;
+            a {
+              font-weight: bold!important;
+            }
           }
         }
       }
@@ -82,7 +87,8 @@
     background  : rgba(0, 134, 117, 0.95);
     height      : 100%;
     display     : inline-block;
-    width       : 300px;
+    width       : 360px;
+    padding-right: 2rem;
     padding-left: 4rem;
     padding-top : 300px;
 
@@ -102,8 +108,9 @@
     background    : #d7d7d7;
     height        : 100%;
     display       : inline-block;
-    width         : 300px;
+    width         : 360px;
     padding-left  : 4rem;
+    padding-right:  2rem;
     // padding-top: 260px;
     padding-top   : 207px;
     color         : #4d4d4d;
@@ -198,7 +205,7 @@
           font-weight  : 100;
           padding      : 1.3rem 0;
           display      : block;
-          margin-bottom: 2.5rem;
+          margin-bottom: .5rem;
         }
       }
     }
@@ -208,8 +215,9 @@
       background  : rgba(0, 134, 117, 0.95);
       height      : 100%;
       display     : inline-block;
-      width       : 300px;
+      width       : 360px;
       padding-left: 4rem;
+      padding-right: 2rem;
       padding-top : 200px;
 
       .menu-item {
@@ -228,7 +236,8 @@
       background    : #d7d7d7;
       height        : 100%;
       display       : inline-block;
-      width         : 300px;
+      width         : 360px;
+      padding-right: 2rem;
       padding-left  : 4rem;
       // padding-top: 260px;
       padding-top   : 105px;

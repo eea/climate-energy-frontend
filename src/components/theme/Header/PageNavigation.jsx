@@ -221,32 +221,32 @@ class PageNavigation extends Component {
                           window.location.href.includes(i.url) &&
                           window.location.href.includes('topics'),
                       ) ? (
-                        <h5>
-                          <Link
-                            to={
-                              item.items.find(
-                                i =>
-                                  window &&
-                                  window.location.href.includes(i.url),
-                              ).url
-                            }
-                            key={
-                              item.items.find(
-                                i =>
-                                  window &&
-                                  window.location.href.includes(i.url),
-                              ).url
-                            }
-                          >
-                            {
-                              item.items.find(
-                                i =>
-                                  window &&
-                                  window.location.href.includes(i.url),
-                              ).title
-                            }
-                          </Link>
-                        </h5>
+                        <Link
+                          style={{
+                            fontSize: '1.2rem',
+                            textTransform: 'initial',
+                            borderBottom: '1px solid #eee'
+                          }}
+                          to={
+                            item.items.find(
+                              i =>
+                                window && window.location.href.includes(i.url),
+                            ).url
+                          }
+                          key={
+                            item.items.find(
+                              i =>
+                                window && window.location.href.includes(i.url),
+                            ).url
+                          }
+                        >
+                          {
+                            item.items.find(
+                              i =>
+                                window && window.location.href.includes(i.url),
+                            ).title
+                          }
+                        </Link>
                       ) : (
                         ''
                       )}

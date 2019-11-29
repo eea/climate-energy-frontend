@@ -167,7 +167,7 @@ class TopicsView extends Component {
             ))}
           </ul>
         </Portal>
-        <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
+        {/* <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
           <a
             href={this.props.content['@id'] + '/manage_interfaces'}
             key={this.props.content['@id']}
@@ -176,7 +176,7 @@ class TopicsView extends Component {
           >
             Manage
           </a>
-        </Portal>
+        </Portal> */}
       </Container>
     );
   }
