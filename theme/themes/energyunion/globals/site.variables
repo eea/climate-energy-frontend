@@ -8,7 +8,7 @@
 
 
 @fontName          : 'Lato';
-@headerFontName    : 'Roboto';
+@headerFontName    : 'Roboto+Condensed';
 
 // @googleFontSizes   : '300,400,500,700,400italic,700italic';
 

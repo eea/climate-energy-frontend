@@ -3,6 +3,14 @@
 // menu 
 
 .main-menu {
+  font-family: 'Roboto Condensed';
+
+  .first-level {
+    .menu-indicator {
+      right: 0!important;
+    }
+  }
+  
   .menu-item {
     position: relative;
 
@@ -18,7 +26,7 @@
 
     .menu-indicator {
       position : absolute;
-      right    : 2rem;
+      right    : -2rem;
       top      : 50%;
       color    : white;
       transform: translateY(-50%);
@@ -62,7 +70,6 @@
     }
   }
 
-  font-family: 'Roboto Condensed';
 
   // transition: all 300ms;
   .first-level {
@@ -76,7 +83,7 @@
         color      : #444;
         font-size  : 2rem;
         font-weight: 100;
-        padding    : 1.3rem 0;
+        padding    : 1rem 0;
         display    : block;
       }
     }
@@ -95,9 +102,9 @@
     .menu-item {
       a {
         color      : white;
-        font-size  : 1.5rem;
+        font-size  : 1.2rem;
         font-weight: 100;
-        padding    : 1.3rem 0;
+        padding    : 1rem 0;
         display    : block;
       }
     }
@@ -112,15 +119,15 @@
     padding-left  : 4rem;
     padding-right:  2rem;
     // padding-top: 260px;
-    padding-top   : 207px;
+    padding-top   : 181px;
     color         : #4d4d4d;
 
     .menu-item {
       a {
         color      : #4d4d4d;
-        font-size  : 1.5rem;
+        font-size  : 1.2rem;
         font-weight: 100;
-        padding    : 1.3rem 0;
+        padding    : 1rem 0;
         display    : block;
       }
     }
@@ -203,7 +210,7 @@
           color        : white;
           font-size    : 2rem;
           font-weight  : 100;
-          padding      : 1.3rem 0;
+          padding      : 1rem 0;
           display      : block;
           margin-bottom: .5rem;
         }
@@ -223,9 +230,9 @@
       .menu-item {
         a {
           color      : white;
-          font-size  : 1.5rem;
+          font-size  : 1.2rem;
           font-weight: 100;
-          padding    : 1.3rem 0;
+          padding    : 1rem 0;
           display    : block;
         }
       }
@@ -240,15 +247,15 @@
       padding-right: 2rem;
       padding-left  : 4rem;
       // padding-top: 260px;
-      padding-top   : 105px;
+      padding-top   : 40px;
       color         : #4d4d4d;
 
       .menu-item {
         a {
           color      : #4d4d4d;
-          font-size  : 1.5rem;
+          font-size  : 1.2rem;
           font-weight: 100;
-          padding    : 1.3rem 0;
+          padding    : 1rem 0;
           display    : block;
         }
       }
