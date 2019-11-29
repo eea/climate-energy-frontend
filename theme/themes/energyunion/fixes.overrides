@@ -18,3 +18,7 @@ body:not(.section-controlpanel) .topics .ui.items .header {
   top: auto;
   align-items: unset;
 }
+
+.headings_navigation .ui.vertical.menu {
+  width: 100%;
+}
