@@ -111,6 +111,7 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+        {/* <BodyClass className={this.props.pathname === '/' ? 'homepage' : ''} /> */}
 
         {/* Body class depending on sections */}
         <BodyClass
@@ -121,9 +122,13 @@ class App extends Component {
           })}
         />
         {this.props.pathname === '/' ? (
-          <div>
-            <Header actualPathName={this.props.pathname} pathname={path} />
-            {/* <Segment  className="content-area">
+          <React.Fragment>
+            <Header
+              actualPathName={this.props.pathname}
+              homepage={true}
+              pathname={path}
+            />
+            <Segment className="content-area">
               <main>
                 <Messages />
                 {this.state.hasError ? (
@@ -135,47 +140,22 @@ class App extends Component {
                   renderRoutes(this.props.route.routes)
                 )}
               </main>
-            </Segment> */}
-            {/* <Footer /> */}
-          </div>
+            </Segment>
+          </React.Fragment>
         ) : (
           <div className="content-page">
             <PageHeader />
-
-            {/* <div className="cols content-cols">
-              <div className="col-3 menu-hamburger">
-                <Header
-                  noBreadcrumbs={true}
-                  actualPathName={this.props.pathname}
-                  pathname={path}
-                />
-              </div>
-              <div className="col-6">
-                <main className="content-page">
-                  <Messages />
-                  {this.state.hasError ? (
-                    <Error
-                      message={this.state.error.message}
-                      stackTrace={this.state.errorInfo.componentStack}
-                    />
-                  ) : (
-                    renderRoutes(this.props.route.routes)
-                  )}
-                </main>
-              </div>
-              <div className="col-3 inPageNavigation"></div>
-            </div> */}
-
             <Grid columns={3} divided>
               <Grid.Row>
-                <Grid.Column width="2" className="menu-hamburger">
+                <Grid.Column tablet={12} computer={3} largeScreen={3} className="menu-hamburger">
                   <Header
                     noBreadcrumbs={true}
                     actualPathName={this.props.pathname}
                     pathname={path}
+                    homepage={false}
                   />
                 </Grid.Column>
-                <Grid.Column width="7">
+                <Grid.Column tablet={12} computer={6} largeScreen={6}>
                   <main className="content-page">
                     <Messages />
                     {this.state.hasError ? (
@@ -188,7 +168,7 @@ class App extends Component {
                     )}
                   </main>
                 </Grid.Column>
-                <Grid.Column width="3" className="inPageNavigation" />
+                <Grid.Column tablet={12} computer={3} largeScreen={3} className="inPageNavigation" />
               </Grid.Row>
             </Grid>
 

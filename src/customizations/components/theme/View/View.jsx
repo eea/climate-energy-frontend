@@ -267,13 +267,9 @@ class View extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
-        {__CLIENT__ &&
-        document.querySelector('.cols.content-cols .inPageNavigation') ? (
+        {__CLIENT__ && document.querySelector('.inPageNavigation') ? (
           <Portal
-            node={
-              __CLIENT__ &&
-              document.querySelector('.cols.content-cols .inPageNavigation')
-            }
+            node={__CLIENT__ && document.querySelector('.inPageNavigation')}
           >
             <div className="headings_navigation">
               <h5>

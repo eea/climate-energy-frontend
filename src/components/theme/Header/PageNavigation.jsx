@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
@@ -8,8 +11,10 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { getBaseUrl } from '@plone/volto/helpers';
 import {} from 'semantic-ui-react';
-
 import { getNavigation } from '@plone/volto/actions';
+import rightKey from '@plone/volto/icons/right-key.svg';
+import { Icon } from '@plone/volto/components';
+import backIcon from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -139,67 +144,76 @@ class PageNavigation extends Component {
   render() {
     if (!__CLIENT__) return '';
     return (
-      <div id="app-menu-content">
-        <div
-          onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
-          className="menu-underlay"
-        />
-        <div className="menu">
-          <div className="hamburger-wrapper mobile only">
-            <button
-              className={cx('hamburger hamburger--collapse', {
-                'is-active': this.state.isMobileMenuOpen,
-              })}
-              aria-label={
-                this.state.isMobileMenuOpen
-                  ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                      type: this.props.type,
-                    })
-                  : this.props.intl.formatMessage(messages.openMobileMenu, {
-                      type: this.props.type,
-                    })
-              }
-              title={
-                this.state.isMobileMenuOpen
-                  ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                      type: this.props.type,
-                    })
-                  : this.props.intl.formatMessage(messages.openMobileMenu, {
-                      type: this.props.type,
-                    })
-              }
-              type="button"
-              onClick={this.toggleMobileMenu}
-            >
-              <span className="hamburger-box">
-                <span className="hamburger-inner" />
-              </span>
-            </button>
-          </div>
-          <div
-            className={cx('menu-items', 'example', {
-              'menu-open': !this.state.isMobileMenuOpen,
+      <React.Fragment>
+        <div className="hamburger-wrapper tablet mobile only">
+          <button
+            className={cx('hamburger hamburger--collapse', {
+              'is-active': this.state.isMobileMenuOpen,
             })}
+            aria-label={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
+            }
+            title={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
+            }
+            type="button"
+            onClick={this.toggleMobileMenu}
           >
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+        </div>
+        <div
+          className={cx('main-menu', {
+            'menu-open': this.state.isMobileMenuOpen,
+          })}
+        >
+          <div
+            onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
+            className="menu-underlay"
+          />
+
+          <div className="first-level">
             {this.props.items.map((item, index) => (
-              <div key={item.url} className="menu-item">
+              <div
+                key={item.url}
+                className={
+                  this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                }
+              >
                 {item.items && item.items.length ? (
-                  <div>
-                    <h2 className="menu-title">
-                      <a
-                        href={item.url}
-                        role="button"
-                        tabIndex={index}
-                        onClick={ev =>
-                          this.setSubmenu(item.title, item.items, ev)
-                        }
-                        onKeyPress={() => {}}
-                      >
-                        {/* <Link to={item.url} key={item.url}> */}
-                        {item.title}
-                        {/* </Link> */}
-                      </a>
-                    </h2>
+                  <React.Fragment>
+                    <a
+                      href="#"
+                      role="button"
+                      onClick={ev =>
+                        this.setSubmenu(item.title, item.items, ev)
+                      }
+                      onKeyPress={() => {}}
+                    >
+                      {this.state.subMenu.type === item.title && (
+                        <Icon
+                          className="menu-indicator"
+                          name={rightKey}
+                          size="30px"
+                        />
+                      )}
+
+                      {item.title}
+                    </a>
                     <div className="menuExpanded" id="menuExpanded">
                       {item.items.find(
                         i =>
@@ -237,67 +251,81 @@ class PageNavigation extends Component {
                         ''
                       )}
                     </div>
-                  </div>
+                  </React.Fragment>
                 ) : (
-                  <Link
-                    to={item.url === '' ? '/' : item.url}
-                    key={item.url}
-                    className={this.isActive(item.url) ? 'item active' : 'item'}
-                  >
-                    <h2 className="menu-title">{item.title}</h2>
+                  <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                    {item.title}
                   </Link>
                 )}
               </div>
             ))}
           </div>
           {this.state.subMenu.items && this.state.subMenu.items.length ? (
-            <div className="sub-menu columns-3">
+            <div className="second-level">
+              <Icon
+                name={backIcon}
+                onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
+                className="mobile-back-button"
+              />
               {this.state.subMenu.items.map(item => (
-                <div key={item.url} className="sub-menu-item">
-                  <h2
-                    role="button"
-                    onClick={ev =>
-                      this.setSubtopics(item.title, item.items, ev)
-                    }
-                    onKeyPress={() => {}}
-                    className="submenu-title"
-                  >
-                    {item.items && item.items.length ? (
-                      item.title
-                    ) : (
-                      <Link
-                        to={item.url === '' ? '/' : item.url}
-                        key={item.url}
-                      >
-                        {item.title}
-                      </Link>
-                    )}
-                  </h2>
+                <div
+                  key={item.url}
+                  className={
+                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                  }
+                >
+                  {item.items && item.items.length ? (
+                    <a
+                      href="#"
+                      role="button"
+                      onClick={ev =>
+                        this.setSubtopics(item.title, item.items, ev)
+                      }
+                      onKeyPress={() => {}}
+                    >
+                      {this.state.subTopics.type === item.title && (
+                        <Icon
+                          className="menu-indicator"
+                          name={rightKey}
+                          size="30px"
+                        />
+                      )}
+                      {item.title}
+                    </a>
+                  ) : (
+                    <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                      {item.title}
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
           ) : (
-            ''
+            <div />
           )}
           {this.state.subTopics.items && this.state.subTopics.items.length ? (
-            <div className="sub-topics columns-3">
-              <h2 className="bold mb-2">
+            <div className="third-level">
+              <Icon
+                name={backIcon}
+                onClick={() => this.setSubtopics(null, [])}
+                className="mobile-back-button"
+              />
+              <h2 style={{ fontWeight: 600 }}>
                 <i>{this.state.subTopics.type}</i>
               </h2>
-              <p className="mb-5">Subtopics</p>
+              <p style={{ fontWeight: 100 }} className="mb-5">
+                Subtopics
+              </p>
               {this.state.subTopics.items.map(item => (
-                <div key={item.url} className="sub-topic-item">
-                  <h3 className="sub-topic-title">
-                    <Link
-                      to={item.url === '' ? '/' : item.url}
-                      key={item.url}
-                      className={
-                        this.isActive(item.url) ? 'item active' : 'item'
-                      }
-                    >
-                      {item.title}
-                    </Link>
-                  </h3>
+                <div
+                  key={item.url}
+                  className={
+                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                  }
+                >
+                  <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                    {item.title}
+                  </Link>
                 </div>
               ))}
             </div>
@@ -305,7 +333,7 @@ class PageNavigation extends Component {
             ''
           )}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

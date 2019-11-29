@@ -1,5 +1,4 @@
 import React from 'react';
-import { BodyClass } from '@plone/volto/helpers';
 
 import { Logo, SearchWidget, Breadcrumbs } from '@plone/volto/components';
 import headerImg from './topic-bg.jpg';
@@ -9,8 +8,8 @@ function PageHeader(props) {
   console.log(props);
   return (
     <React.Fragment>
-      <BodyClass className="homepage" />
-      <div className="header">
+      {/* <BodyClass className="homepage" /> */}
+      <div className="page-header">
         {props.pathname ? <Breadcrumbs pathname={props.pathname} /> : ''}
 
         <div
