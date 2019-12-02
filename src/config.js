@@ -4,7 +4,11 @@ import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
 import * as voltoConfig from '@plone/volto/config';
 
-import { applyConfig as addonsConfig } from 'volto-addons/config';
+import {
+  applyConfig as addonsConfig,
+  installFolderListing,
+  installCustomAddonGroup,
+} from 'volto-addons/config';
 import { applyConfig as ckeditorConfig } from 'volto-ckeditor/config';
 import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
 import { applyConfig as draftConfig } from 'volto-drafteditor/config';
@@ -13,7 +17,9 @@ import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
 import { applyConfig as plotlyConfig } from 'volto-plotlycharts/config';
 
 const config = [
+  installCustomAddonGroup,
   addonsConfig,
+  installFolderListing,
   plotlyConfig,
   ckeditorConfig,
   draftConfig,
