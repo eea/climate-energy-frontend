@@ -6,15 +6,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages } from 'react-intl';
 import { Portal } from 'react-portal';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-// import { compose } from 'redux';
 
 import { settings, blocks } from '~/config';
 import {
@@ -37,11 +35,12 @@ const messages = defineMessages({
   },
 });
 
-const mapDispatchToProps = {
-  //   setFolderHeader,
-  setFolderTabs,
-  getParentFolderData,
-};
+// import { compose } from 'redux';
+// const mapDispatchToProps = {
+//   //   setFolderHeader,
+//   setFolderTabs,
+//   getParentFolderData,
+// };
 
 /**
  * Component to display the default view.
@@ -160,7 +159,7 @@ class DefaultView extends Component {
           <nav className="tabs">
             {this.props.tabs.map((tab, index) => (
               <Link
-                key={tab.url}
+                key={`localtab-${tab.url}`}
                 className={`tabs__item${(tab.url ===
                   this.props.location.pathname &&
                   ' tabs__item_active') ||
@@ -179,7 +178,7 @@ class DefaultView extends Component {
         <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
           <ul className="localNavigation">
             {localNavigation.map(item => (
-              <li>
+              <li key={`li-${item['@id']}`}>
                 <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
                   {item.title}
                 </Link>
@@ -196,13 +195,13 @@ class DefaultView extends Component {
             ]?.['view'] || null;
           return Block !== null ? (
             <Block
-              key={block}
+              key={`block-${block}`}
               blockID={block}
               properties={content}
               data={content[blocksFieldname][block]}
             />
           ) : (
-            <div key={block}>
+            <div key={`blocktype-${block}`}>
               {intl.formatMessage(messages.unknownBlock, {
                 block: content[blocksFieldname]?.[block]?.['@type'],
               })}

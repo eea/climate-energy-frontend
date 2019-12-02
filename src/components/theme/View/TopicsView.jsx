@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Image } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { getBaseUrl } from '@plone/volto/helpers';
-
-// import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
 import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
-const mapDispatchToProps = {
-  setFolderHeader,
-  setFolderTabs,
-  getLocalnavigation,
-};
+
+// import { getBaseUrl } from '@plone/volto/helpers';
+// import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
+// const mapDispatchToProps = {
+//   setFolderHeader,
+//   setFolderTabs,
+//   getLocalnavigation,
+// };
+
 class TopicsView extends Component {
   constructor(props) {
     super(props);
@@ -35,15 +35,10 @@ class TopicsView extends Component {
       items: PropTypes.arrayOf(
         PropTypes.shape({
           title: PropTypes.string,
-
           description: PropTypes.string,
-
           url: PropTypes.string,
-
           image: PropTypes.object,
-
           image_caption: PropTypes.string,
-
           '@type': PropTypes.string,
         }),
       ),
@@ -86,7 +81,7 @@ class TopicsView extends Component {
       <nav className="tabs">
         {content.map(item => (
           <Link
-            key={item.url}
+            key={`tab-${item.url}`}
             className="tabs__item"
             to={item.url}
             title={item['@type']}
@@ -159,7 +154,7 @@ class TopicsView extends Component {
         <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
           <ul className="localNavigation">
             {localNavigation.map(item => (
-              <li>
+              <li key={`localnav-${item['@id']}`}>
                 <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
                   {item.title}
                 </Link>
@@ -167,7 +162,8 @@ class TopicsView extends Component {
             ))}
           </ul>
         </Portal>
-        {/* <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
+        {/*
+        <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
           <a
             href={this.props.content['@id'] + '/manage_interfaces'}
             key={this.props.content['@id']}
