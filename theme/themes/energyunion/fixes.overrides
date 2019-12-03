@@ -22,3 +22,11 @@ body:not(.section-controlpanel) .topics .ui.items .header {
 .headings_navigation .ui.vertical.menu {
   width: 100%;
 }
+
+
+.block.align {
+  &.right, 
+  &.left {
+    z-index: unset;
+  }
+}
