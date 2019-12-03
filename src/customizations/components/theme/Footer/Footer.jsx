@@ -42,7 +42,9 @@ const Footer = ({ intl }) => (
               textAlign: 'left',
               flexDirection: 'column'
             }}
-            width="6"
+            tablet={12}
+            computer={6}
+            largeScreen={6}
           >
             <p>
               Find information on the EU and its Member States' progress in
@@ -72,10 +74,18 @@ const Footer = ({ intl }) => (
               </li>
             </ul>
           </Grid.Column>
-          <Grid.Column width="2">
+          <Grid.Column 
+                    tablet={12}
+                    computer={2}
+                    largeScreen={2}
+          >
           
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+                    tablet={12}
+                    computer={4}
+                    largeScreen={4}
+                    >
             <div className="footerLogoWrapper">
               <img
                 style={{ width: '120px', marginRight: '2rem' }}

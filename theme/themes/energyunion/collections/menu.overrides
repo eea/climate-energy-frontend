@@ -322,9 +322,9 @@
 
   .content-page {
     .hamburger {
-      position: fixed;
-    top: 4rem;
-    left: 0;
+      position: absolute;
+      top: -15.9rem;
+      left: 1rem;
     }
     .main-menu {
       .first-level {

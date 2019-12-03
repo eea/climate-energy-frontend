@@ -39,7 +39,7 @@ class Header extends Component {
         {this.props.homepage ? (
           <React.Fragment>
             <div className="headerTop">
-              <div className="header">
+              <div className="homepageHeader">
                 <Logo isHomepage={this.props.actualPathName === '/' || false} />
                 <div className="searchbar">
                   <SearchWidget pathname={this.props.pathname} />

@@ -1,7 +1,7 @@
 // root
 body,
 html {
-    font-size: 16px;
+    font-size  : 16px;
     line-height: 2em;
 }
 
@@ -11,10 +11,12 @@ html {
     height  : 300px;
     overflow: hidden;
     position: relative;
+
     .tools {
         position: absolute;
-        top: 42px;
-        right: 12px;
+        top     : 42px;
+        right   : 12px;
+
         a {
             color: white;
         }
@@ -80,7 +82,21 @@ html {
 
         a {
             color: white;
+            @media(max-width: 825px) {
+                &:not(:nth-last-child(-n+3)) {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 33px;
+                }
+            }
         }
+        @media(max-width: 825px) {
+            .divider {
+                margin: 0;
+            }
+        }
+
     }
 }
 
@@ -100,7 +116,7 @@ main {
         margin-left : -1rem;
         margin-right: -1rem;
         padding     : 2rem;
-        position: relative;
+        position    : relative;
 
         h1.documentFirstHeading {
             font-size     : 2.5rem;
@@ -120,11 +136,11 @@ main {
 
 //tabs
 nav.tabs {
-    display     : flex !important;
+    display : flex !important;
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
+    left    : 0;
+    right   : 0;
+    bottom  : 100%;
 
     a {
         background    : none;
@@ -146,6 +162,15 @@ nav.tabs {
             font-weight        : bold;
             border-bottom-color: #fff;
         }
+
+    }
+
+    @media (max-width: 1250px) {
+        a {
+            min-width: 130px;
+        }
+
+        overflow: auto;
     }
 }
 
@@ -214,7 +239,7 @@ nav.tabs {
 // HOMEPAGE
 
 body.homepage {
-    .header .logo-wrapper {
+    .homepageHeader .logo-wrapper {
         img {
             width: 550px;
         }
@@ -327,7 +352,7 @@ body.homepage {
         }
     }
 
-    .header {
+    .homepageHeader {
         position       : absolute;
         width          : @100ValuePercentage;
         height         : 115px;
@@ -364,7 +389,7 @@ body.homepage {
             }
 
             //Tablet Media Queries
-            @media only screen and (min-width: 360px) and (max-width: 900px) {
+            @media only screen and (min-width: 360px) and (max-width: 991px) {
                 top     : @searchBoxTopPositionHomepage;
                 position: @absolutePosition;
                 left    : @zeroValuePosition;
@@ -470,6 +495,7 @@ body.homepage {
 
 
 body:not(.has-toolbar-collapsed):not(.anonymous) {
+
     &.menu-open-homepage,
     &.menu-open-contentpage {
         .main-menu {
@@ -494,7 +520,7 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     margin: 0 0.3rem;
 }
 
-.item-listing .ui.items > .item {
+.item-listing .ui.items>.item {
     margin-bottom: 2rem;
 }
 
@@ -502,8 +528,8 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     margin-bottom: 0.5em;
 }
 
-.item-listing .ui.items > .item .extra {
-    color: inherit;
+.item-listing .ui.items>.item .extra {
+    color    : inherit;
     font-size: 14px;
 }
 
@@ -515,6 +541,82 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     color: #aaa;
 }
 
-.item-listing .ui.items .header > a {
+.item-listing .ui.items .header>a {
     color: inherit;
+}
+
+
+// responsive homepage
+@media(max-width: 991px) {
+
+    .homepage {
+        .hamburger-wrapper {
+            text-align: right;
+        }
+
+        .tools {
+            right: 0 !important;
+        }
+
+        .searchbox {
+            right: 5rem;
+            top  : 0.5rem !important;
+            left : unset !important;
+        }
+
+        .logo-wrapper {
+            img {
+                width: 300px !important;
+                left : 0 !important;
+                top  : -1rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 556px) {
+    .homepage {
+        .homepageHeader {
+            padding-right: 0 !important;
+            display      : block;
+
+            .logo-wrapper {
+                width     : 100%;
+                display   : block;
+                max-height: 110px;
+
+                img {
+                    max-width    : 400px;
+                    margin-top   : -4rem;
+                    min-width    : 300px;
+                    padding-right: 3rem !important;
+                    margin-left  : -2rem;
+                }
+            }
+        }
+
+        .hamburger-wrapper {
+            text-align: right;
+        }
+
+        .tools {
+            right: 0 !important;
+            top  : 7rem;
+        }
+
+        .searchbox {
+            position: absolute !important;
+            right   : unset;
+            left    : 0 !important;
+            top     : 7rem !important;
+        }
+
+        .logo-wrapper {
+            img {
+                width: 100% !important;
+                left : 0 !important;
+                top  : 0 !important;
+            }
+        }
+    }
 }
