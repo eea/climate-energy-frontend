@@ -12,15 +12,6 @@ html {
     overflow: hidden;
     position: relative;
 
-    .tools {
-        position: absolute;
-        top     : 42px;
-        right   : 12px;
-
-        a {
-            color: white;
-        }
-    }
 
     .header-bg {
         position       : absolute;
@@ -104,6 +95,12 @@ html {
 // footer
 .footer {
     border-top: 1px solid #eee !important;
+    .tools {
+        display: inline-flex;
+        .item:last-of-type {
+            display: none!important;
+        }
+    }
 }
 
 
@@ -248,17 +245,7 @@ body.homepage {
         position: relative;
     }
 
-    .tools {
-        position: absolute;
-        top     : 4rem;
-        right   : 7.6rem;
-
-        a {
-            color: white;
-        }
-
-
-    }
+   
 
     .content-area {
         display        : flex;
@@ -554,9 +541,6 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
             text-align: right;
         }
 
-        .tools {
-            right: 0 !important;
-        }
 
         .searchbox {
             right: 5rem;
@@ -599,10 +583,6 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
             text-align: right;
         }
 
-        .tools {
-            right: 0 !important;
-            top  : 7rem;
-        }
 
         .searchbox {
             position: absolute !important;

@@ -6,7 +6,6 @@ import { Portal } from 'react-portal';
 import { BodyClass } from '@plone/volto/helpers';
 
 import {
-  Anontools,
   Logo,
   Navigation,
   SearchWidget,
@@ -15,13 +14,10 @@ import {
 import PageNavigation from '~/components/theme/Header/PageNavigation';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-  // static propTypes = {
-  //   token: PropTypes.string,
-  //   pathname: PropTypes.string.isRequired,
-  // };
+  static propTypes = {
+    token: PropTypes.string,
+    pathname: PropTypes.string.isRequired,
+  };
 
   static defaultProps = {
     token: null,
@@ -50,29 +46,12 @@ class Header extends Component {
               isHomepage={this.props.homepage}
               pathname={this.props.pathname}
             />
-            {!this.props.token && (
-              <div className="tools">
-                <Anontools />
-              </div>
-            )}
           </React.Fragment>
         ) : (
-          <React.Fragment>
-            <PageNavigation
-              isHomepage={this.props.homepage}
-              pathname={this.props.pathname}
-            />
-
-            {!this.props.token && (
-              <Portal
-                node={__CLIENT__ && document.querySelector('.page-header')}
-              >
-                <div className="tools">
-                  <Anontools />
-                </div>
-              </Portal>
-            )}
-          </React.Fragment>
+          <PageNavigation
+            isHomepage={this.props.homepage}
+            pathname={this.props.pathname}
+          />
         )}
       </div>
     );

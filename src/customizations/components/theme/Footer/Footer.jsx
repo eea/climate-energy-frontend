@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import eeaLogo from './ec.svg.png';
 import ecLogo from './eea.png';
+import { connect } from 'react-redux';
+
+import { Anontools } from '@plone/volto/components';
 
 const messages = defineMessages({
   copyright: {
@@ -23,7 +26,7 @@ const messages = defineMessages({
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component
  */
-const Footer = ({ intl }) => (
+const Footer = (props) => (
   <Segment
     role="contentinfo"
     vertical
@@ -40,7 +43,7 @@ const Footer = ({ intl }) => (
               justifyContent: 'center',
               alignItems: 'center',
               textAlign: 'left',
-              flexDirection: 'column'
+              flexDirection: 'column',
             }}
             tablet={12}
             computer={6}
@@ -51,6 +54,11 @@ const Footer = ({ intl }) => (
               their 2030 targets on climate and energy.
             </p>
             <ul className="unlist">
+              {!props.token && (
+                <li className="tools">
+                  <Anontools />
+                </li>
+              )}
               <li>
                 <Link className="item" to="/legal_notice">
                   <FormattedMessage
@@ -74,18 +82,8 @@ const Footer = ({ intl }) => (
               </li>
             </ul>
           </Grid.Column>
-          <Grid.Column 
-                    tablet={12}
-                    computer={2}
-                    largeScreen={2}
-          >
-          
-          </Grid.Column>
-          <Grid.Column
-                    tablet={12}
-                    computer={4}
-                    largeScreen={4}
-                    >
+          <Grid.Column tablet={12} computer={2} largeScreen={2} />
+          <Grid.Column tablet={12} computer={4} largeScreen={4}>
             <div className="footerLogoWrapper">
               <img
                 style={{ width: '120px', marginRight: '2rem' }}
@@ -118,4 +116,6 @@ Footer.propTypes = {
    */
 };
 
-export default injectIntl(Footer);
+export default connect(state => ({
+  token: state.userSession.token,
+}))(injectIntl(Footer));
