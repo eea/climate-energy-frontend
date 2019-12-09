@@ -165,6 +165,7 @@
       }
       .active {
         .menuExpandedIndicator {
+          color: white;
           position: absolute;
            left: -20px;
         }
