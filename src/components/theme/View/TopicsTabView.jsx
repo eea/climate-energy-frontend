@@ -5,7 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';;
+// import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { defineMessages } from 'react-intl';
 import { Portal } from 'react-portal';
 
@@ -16,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 import { settings, blocks } from '~/config';
 import {
-  setFolderTabs,
+  // setFolderTabs,
   getParentFolderData,
   getLocalnavigation,
 } from '~/actions';
@@ -52,9 +53,9 @@ class DefaultView extends Component {
   constructor(props) {
     super(props);
     // this.renderTabs = this.renderTabs.bind(this);
-
     this.state = {
       tabs: null,
+      parent: null,
     };
     console.log('defaultView');
   }
@@ -72,19 +73,34 @@ class DefaultView extends Component {
       }),
     }).isRequired,
     getParentFolderData: PropTypes.func.isRequired,
-    setFolderTabs: PropTypes.func.isRequired,
+    // setFolderTabs: PropTypes.func.isRequired,
     localNavigation: PropTypes.any,
     getLocalnavigation: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    console.log('mounted here', this.props);
+    console.log('mounted here ------------>', this.props);
     this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.pathname !== this.props.pathname) {
-      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
-    }
+    const pathArr = this.props.location.pathname.split('/');
+    pathArr.length = 4;
+    const path = pathArr.join('/');
+    this.props.getParentFolderData(path).then(r => {
+      const pathArr = this.props.location.pathname.split('/');
+      pathArr.length = 4;
+      const path = pathArr.join('/');
+      const tabsItems = r.items.map(i => {
+        return {
+          url: `${path}/${i.id}`,
+          title: i.title,
+          '@type': i['@type'],
+        };
+      });
+      // this.props.setFolderTabs(tabsItems);
+      this.setState({
+        tabs: tabsItems,
+      });
+      // this.setState({ parent: r });
+    });
   }
 
   //   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -110,31 +126,16 @@ class DefaultView extends Component {
   //     }
   //   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('herere', nextProps.parent, this.props.parent);
-    if (nextProps.parent && nextProps.parent.id !== this.props.parent.id) {
-      console.log('props parent', nextProps.parent);
-
-      // const title = nextProps.parent.title;
-      // const description = nextProps.parent.description;
-      // const image =
-      //   nextProps.parent.items &&
-      //   nextProps.parent.items.find(c => c['@type'] === 'Image');
-      // const url = image && image.image.download;
-      // const inCountryFolder = true;
-      // this.props.setFolderHeader({ title, description, url, inCountryFolder });
-      const pathArr = nextProps.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      const tabsItems = nextProps.parent.items.map(i => {
-        return {
-          url: `${path}/${i.id}`,
-          title: i.title,
-          '@type': i['@type'],
-        };
-      });
-      this.props.setFolderTabs(tabsItems);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.pathname !== this.props.pathname) {
+      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
     }
+    // if (
+    //   (!prevState.parent && this.state.parent) ||
+    //   (!this.state.tabs && this.state.parent)
+    // ) {
+      
+    // }
   }
   render() {
     const content = this.props.content;
@@ -147,99 +148,67 @@ class DefaultView extends Component {
           item => item.title !== 'Home',
         )) ||
       [];
-    if (!this.props.tabs && this.props.location.pathname != '/') {
-      const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      this.props.getParentFolderData(path);
-    }
-    return hasBlocksData(content) ? (
-      <div id="page-document" className="ui wrapper">
-        {this.props.tabs && this.props.tabs.length ? (
-          <nav className="tabs">
-            {this.props.tabs.map((tab, index) => (
-              <Link
-                key={`localtab-${tab.url}`}
-                className={`tabs__item${(tab.url ===
-                  this.props.location.pathname &&
-                  ' tabs__item_active') ||
-                  ''}`}
-                to={tab.url}
-                title={tab['@type']}
-              >
-                {tab.title}
-              </Link>
-            ))}
-          </nav>
-        ) : (
-          ''
-        )}
+    // if (!this.props.tabs && this.props.location.pathname != '/') {
 
-        <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
-          <ul className="localNavigation">
-            {localNavigation.map(item => (
-              <li key={`li-${item['@id']}`}>
-                <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
-                  {item.title}
+    // }
+    return (
+      hasBlocksData(content) && (
+        <div id="page-document" className="ui wrapper">
+          {this.state.tabs && this.state.tabs.length ? (
+            <nav className="tabs">
+              {this.state.tabs.map((tab, index) => (
+                <Link
+                  key={`localtab-${tab.url}`}
+                  className={`tabs__item${(tab.url ===
+                    this.props.location.pathname &&
+                    ' tabs__item_active') ||
+                    ''}`}
+                  to={tab.url}
+                  title={tab['@type']}
+                >
+                  {tab.title}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </Portal>
-
-        <Helmet title={content.title} />
-        {map(content[blocksLayoutFieldname].items, block => {
-          const Block =
-            blocks.blocksConfig[
-              (content[blocksFieldname]?.[block]?.['@type'])
-            ]?.['view'] || null;
-          return Block !== null ? (
-            <Block
-              key={`block-${block}`}
-              blockID={block}
-              properties={content}
-              data={content[blocksFieldname][block]}
-            />
+              ))}
+            </nav>
           ) : (
-            <div key={`blocktype-${block}`}>
-              {intl.formatMessage(messages.unknownBlock, {
-                block: content[blocksFieldname]?.[block]?.['@type'],
-              })}
-            </div>
-          );
-        })}
-      </div>
-    ) : (
-      <Container id="page-document">
-        <Helmet title={content.title} />
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
-        {content.image && (
-          <Image
-            className="document-image"
-            src={content.image.scales.thumb.download}
-            floated="right"
-          />
-        )}
-        {content.remoteUrl && (
-          <span>
-            The link address is:
-            <a href={content.remoteUrl}>{content.remoteUrl}</a>
-          </span>
-        )}
-        {content.text && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: content.text.data.replace(
-                /a href="([^"]*\.[^"]*)"/g,
-                `a href="${settings.apiPath}$1/download/file"`,
-              ),
-            }}
-          />
-        )}
-      </Container>
+            ''
+          )}
+
+          <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
+            <ul className="localNavigation">
+              {localNavigation.map(item => (
+                <li key={`li-${item['@id']}`}>
+                  <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Portal>
+
+          <Helmet title={content.title} />
+          {map(content[blocksLayoutFieldname].items, block => {
+            const Block =
+              blocks.blocksConfig[
+                (content[blocksFieldname]?.[block]?.['@type'])
+              ]?.['view'] || null;
+            return Block !== null ? (
+              <Block
+                key={`block-${block}`}
+                blockID={block}
+                properties={content}
+                data={content[blocksFieldname][block]}
+              />
+            ) : (
+              <div key={`blocktype-${block}`}>
+                {intl.formatMessage(messages.unknownBlock, {
+                  block: content[blocksFieldname]?.[block]?.['@type'],
+                })}
+              </div>
+            );
+          })}
+        </div>
+      )
     );
   }
 }
@@ -254,11 +223,11 @@ class DefaultView extends Component {
 
 export default connect(
   state => ({
-    tabs: state.folder_tabs.items,
+    // tabs: state.folder_tabs.items,
     parent: state.parent_folder_data.items,
     localNavigation: state.localnavigation.items,
   }),
-  { setFolderTabs, getParentFolderData, getLocalnavigation },
+  { getParentFolderData, getLocalnavigation },
 )(DefaultView);
 
 // export default compose(

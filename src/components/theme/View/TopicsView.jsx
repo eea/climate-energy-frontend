@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';;
+import { Helmet } from '@plone/volto/helpers';
 import { Link, Redirect } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { Portal } from 'react-portal';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
+// import { connect } from 'react-redux';
+// import { Portal } from 'react-portal';
+// import { flattenToAppURL } from '@plone/volto/helpers';
+// import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
 
 // import { getBaseUrl } from '@plone/volto/helpers';
 // import { setFolderHeader, setFolderTabs, getParentFolderData } from '~/actions';
@@ -19,9 +19,9 @@ import { setFolderHeader, setFolderTabs, getLocalnavigation } from '~/actions';
 class TopicsView extends Component {
   constructor(props) {
     super(props);
-    this.renderTabs = this.renderTabs.bind(this);
+    // this.renderTabs = this.renderTabs.bind(this);
     this.state = {
-      tabs: null,
+      // tabs: null,
       redirect: false,
     };
     console.log('topicsView');
@@ -43,13 +43,10 @@ class TopicsView extends Component {
         }),
       ),
     }).isRequired,
-    localNavigation: PropTypes.any,
-    getLocalnavigation: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
-    this.renderTabs();
+    // this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
     const mainItem = this.props.content.items[0];
     const mainUrl = mainItem && mainItem.url;
     console.log('mainitem,mainurl', mainItem, mainUrl);
@@ -59,57 +56,59 @@ class TopicsView extends Component {
       this.setState({ redirect: false });
     }
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.pathname !== this.props.pathname) {
-      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.pathname !== this.props.pathname) {
+  //     this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
+  //   }
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      JSON.stringify(nextProps.content) !== JSON.stringify(this.props.content)
-    ) {
-      //   this.getFolderHeader(nextProps.content);
-      this.renderTabs(nextProps.content);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (
+  //     JSON.stringify(nextProps.content) !== JSON.stringify(this.props.content)
+  //   ) {
+  //     //   this.getFolderHeader(nextProps.content);
+  //     this.renderTabs(nextProps.content);
+  //   }
+  // }
 
-  renderTabs(nextContent) {
-    const items = nextContent ? nextContent.items : this.props.content.items;
-    const content = items;
-    const tabs = (
-      <nav className="tabs">
-        {content.map(item => (
-          <Link
-            key={`tab-${item.url}`}
-            className="tabs__item"
-            to={item.url}
-            title={item['@type']}
-          >
-            {item.title}
-          </Link>
-        ))}
-      </nav>
-    );
-    this.setState({
-      tabs: tabs,
-    });
-    this.props.setFolderTabs(content);
-  }
+  // renderTabs(nextContent) {
+  //   const items = nextContent ? nextContent.items : this.props.content.items;
+  //   const content = items;
+  //   const tabs = (
+  //     <nav className="tabs">
+  //       {content.map(item => (
+  //         <Link
+  //           key={`tab-${item.url}`}
+  //           className="tabs__item"
+  //           to={item.url}
+  //           title={item['@type']}
+  //         >
+  //           {item.title}
+  //         </Link>
+  //       ))}
+  //     </nav>
+  //   );
+  //   this.setState({
+  //     tabs: tabs,
+  //   });
+  //   this.props.setFolderTabs(content);
+  // }
 
   render() {
     console.log('redirect state', this.state.redirect);
     if (this.state.redirect) {
       return <Redirect to={{ pathname: this.state.redirect }} />;
+    } else {
+      return '';
     }
     const content = this.props.content;
-    const localNavigation =
-      (this.props.localNavigation.items &&
-        this.props.localNavigation.items.filter(
-          item => item.title !== 'Home',
-        )) ||
-      [];
-    console.log('pathname', this.props.content['@id'] + '/manage_interfaces');
+    // const localNavigation =
+    //   (this.props.localNavigation.items &&
+    //     this.props.localNavigation.items.filter(
+    //       item => item.title !== 'Home',
+    //     )) ||
+    //   [];
+    // console.log('pathname', this.props.content['@id'] + '/manage_interfaces');
     return (
       <Container className="view-wrapper">
         {this.state.tabs}
@@ -151,17 +150,17 @@ class TopicsView extends Component {
           </section>
         </article>
 
-        <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
+        {/* <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
           <ul className="localNavigation">
             {localNavigation.map(item => (
               <li key={`localnav-${item['@id']}`}>
                 <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
                   {item.title}
                 </Link>
-              </li>
+              </li>s
             ))}
           </ul>
-        </Portal>
+        </Portal> */}
         {/*
         <Portal node={__CLIENT__ && document.querySelector('.toolbar-actions')}>
           <a
@@ -178,9 +177,11 @@ class TopicsView extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    localNavigation: state.localnavigation.items,
-  }),
-  { setFolderHeader, setFolderTabs, getLocalnavigation },
-)(TopicsView);
+// export default connect(
+//   state => ({
+//     localNavigation: state.localnavigation.items,
+//   }),
+//   { setFolderHeader, setFolderTabs, getLocalnavigation },
+// )(TopicsView);
+
+export default TopicsView;
