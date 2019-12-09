@@ -20,7 +20,7 @@
 
     &.active {
       a {
-        font-weight: 500 !important;
+        font-weight: 600 !important;
       }
     }
 
@@ -152,6 +152,15 @@
 
       ul li a {
         color: @white  !important;
+      }
+      li {
+        position: relative;
+      }
+      .active {
+        .menuExpandedIndicator {
+          position: absolute;
+           left: -20px;
+        }
       }
     }
 

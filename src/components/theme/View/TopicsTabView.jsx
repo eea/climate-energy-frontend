@@ -64,7 +64,6 @@ class DefaultView extends Component {
   //   parent: null
   // }
   static propTypes = {
-    tabs: PropTypes.array,
     content: PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
@@ -134,7 +133,7 @@ class DefaultView extends Component {
     //   (!prevState.parent && this.state.parent) ||
     //   (!this.state.tabs && this.state.parent)
     // ) {
-      
+
     // }
   }
   render() {
@@ -177,7 +176,17 @@ class DefaultView extends Component {
           <Portal node={__CLIENT__ && document.getElementById('menuExpanded')}>
             <ul className="localNavigation">
               {localNavigation.map(item => (
-                <li key={`li-${item['@id']}`}>
+                <li
+                  className={
+                    flattenToAppURL(this.props.content['@id']).includes(
+                      flattenToAppURL(item['@id']),
+                    ) && 'active'
+                  }
+                  key={`li-${item['@id']}`}
+                >
+                  {flattenToAppURL(this.props.content['@id']).includes(
+                    flattenToAppURL(item['@id']),
+                  ) && <span className="menuExpandedIndicator">▶</span>}
                   <Link to={flattenToAppURL(item['@id'])} key={item['@id']}>
                     {item.title}
                   </Link>

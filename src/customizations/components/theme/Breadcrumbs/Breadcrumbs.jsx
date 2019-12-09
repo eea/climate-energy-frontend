@@ -85,7 +85,12 @@ class Breadcrumbs extends Component {
         {this.props.items.map((item, index, items) => [
           <Breadcrumb.Divider key={`divider-${item.url}`} />,
           index < items.length - 1 ? (
-            <Link key={item.url} title={item.title} to={item.url} className="section">
+            <Link
+              key={item.url}
+              title={item.title}
+              to={item.url}
+              className="section"
+            >
               {item.title}
             </Link>
           ) : (
