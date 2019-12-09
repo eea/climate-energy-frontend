@@ -134,7 +134,14 @@
   }
 }
 
-
+.menuExpanded {
+  .active {
+    .menuExpandedIndicator {
+      position: absolute;
+       left: -20px;
+    }
+  }
+}
 // open menu
 .menu-open-contentpage,
 .menu-open-homepage {
