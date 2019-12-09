@@ -119,6 +119,7 @@ class App extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const hideMenu = this.checkProps(this.props);
+    console.log('----------- rendering app', this.props.pathname)
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />

@@ -298,7 +298,10 @@ class Navigation extends Component {
                     this.isActive(item.url) ? 'menu-item active' : 'menu-item'
                   }
                 >
-                  <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                  <Link
+                    to={(item.url = item.items ? item.items[0].url : item.url)}
+                    key={item.url}
+                  >
                     {item.title}
                   </Link>
                 </div>

@@ -225,7 +225,7 @@ class PageNavigation extends Component {
                           style={{
                             fontSize: '1.2rem',
                             textTransform: 'initial',
-                            borderBottom: '1px solid #eee'
+                            borderBottom: '1px solid #eee',
                           }}
                           to={
                             item.items.find(
@@ -323,7 +323,10 @@ class PageNavigation extends Component {
                     this.isActive(item.url) ? 'menu-item active' : 'menu-item'
                   }
                 >
-                  <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                  <Link
+                    to={(item.url = item.items ? item.items[0].url : item.url)}
+                    key={item.url}
+                  >
                     {item.title}
                   </Link>
                 </div>

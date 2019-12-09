@@ -1,15 +1,17 @@
+
 import { GET_PARENT_FOLDER_DATA } from '~/constants/ActionTypes';
 
 const initialState = {
   error: null,
-  items: null,
+  items: [],
   loaded: false,
   loading: false,
 };
 
 export default function parent_folder_data(state = initialState, action = {}) {
-  if (action.type === 'GET_PARENT_FOLDER_DATA_SUCCESS') {
-    console.log('getting parent folder data', action);
+  if(action.type === 'GET_PARENT_FOLDER_DATA_SUCCESS') {
+
+    console.log('getting parent folder data', action)
   }
   switch (action.type) {
     case `${GET_PARENT_FOLDER_DATA}_PENDING`:
@@ -23,11 +25,7 @@ export default function parent_folder_data(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items:
-          {
-            items: action.result.items,
-            id: action.result['@id'],
-          } || null,
+        items: action.result || [],
         loaded: true,
         loading: false,
       };
@@ -35,7 +33,7 @@ export default function parent_folder_data(state = initialState, action = {}) {
       return {
         ...state,
         error: action.error,
-        items: null,
+        items: [],
         loaded: false,
         loading: false,
       };

@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Helmet from 'react-helmet';
 import { Helmet } from '@plone/volto/helpers';
 import { defineMessages } from 'react-intl';
 import { Portal } from 'react-portal';
@@ -17,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 import { settings, blocks } from '~/config';
 import {
-  // setFolderTabs,
+  setFolderTabs,
   getParentFolderData,
   getLocalnavigation,
 } from '~/actions';
@@ -53,9 +52,9 @@ class DefaultView extends Component {
   constructor(props) {
     super(props);
     // this.renderTabs = this.renderTabs.bind(this);
+
     this.state = {
       tabs: null,
-      parent: null,
     };
     console.log('defaultView');
   }
@@ -64,6 +63,7 @@ class DefaultView extends Component {
   //   parent: null
   // }
   static propTypes = {
+    tabs: PropTypes.array,
     content: PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
@@ -72,34 +72,19 @@ class DefaultView extends Component {
       }),
     }).isRequired,
     getParentFolderData: PropTypes.func.isRequired,
-    // setFolderTabs: PropTypes.func.isRequired,
+    setFolderTabs: PropTypes.func.isRequired,
     localNavigation: PropTypes.any,
     getLocalnavigation: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    console.log('mounted here ------------>', this.props);
+    console.log('mounted here', this.props);
     this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
-    const pathArr = this.props.location.pathname.split('/');
-    pathArr.length = 4;
-    const path = pathArr.join('/');
-    this.props.getParentFolderData(path).then(r => {
-      const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      const tabsItems = r.items.map(i => {
-        return {
-          url: `${path}/${i.id}`,
-          title: i.title,
-          '@type': i['@type'],
-        };
-      });
-      // this.props.setFolderTabs(tabsItems);
-      this.setState({
-        tabs: tabsItems,
-      });
-      // this.setState({ parent: r });
-    });
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.pathname !== this.props.pathname) {
+      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
+    }
   }
 
   //   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -125,16 +110,31 @@ class DefaultView extends Component {
   //     }
   //   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.pathname !== this.props.pathname) {
-      this.props.getLocalnavigation(flattenToAppURL(this.props.pathname));
-    }
-    // if (
-    //   (!prevState.parent && this.state.parent) ||
-    //   (!this.state.tabs && this.state.parent)
-    // ) {
+  componentWillReceiveProps(nextProps) {
+    console.log('herere', nextProps.parent, this.props.parent);
+    if (nextProps.parent && nextProps.parent.id !== this.props.parent?.id) {
+      console.log('props parent', nextProps.parent);
 
-    // }
+      // const title = nextProps.parent.title;
+      // const description = nextProps.parent.description;
+      // const image =
+      //   nextProps.parent.items &&
+      //   nextProps.parent.items.find(c => c['@type'] === 'Image');
+      // const url = image && image.image.download;
+      // const inCountryFolder = true;
+      // this.props.setFolderHeader({ title, description, url, inCountryFolder });
+      const pathArr = nextProps.location.pathname.split('/');
+      pathArr.length = 4;
+      const path = pathArr.join('/');
+      const tabsItems = nextProps.parent.items.map(i => {
+        return {
+          url: `${path}/${i.id}`,
+          title: i.title,
+          '@type': i['@type'],
+        };
+      });
+      this.props.setFolderTabs(tabsItems);
+    }
   }
   render() {
     const content = this.props.content;
@@ -147,15 +147,18 @@ class DefaultView extends Component {
           item => item.title !== 'Home',
         )) ||
       [];
-    // if (!this.props.tabs && this.props.location.pathname != '/') {
-
-    // }
+    if (!this.props.tabs && this.props.location.pathname != '/') {
+      const pathArr = this.props.location.pathname.split('/');
+      pathArr.length = 4;
+      const path = pathArr.join('/');
+      this.props.getParentFolderData(path);
+    }
     return (
       hasBlocksData(content) && (
         <div id="page-document" className="ui wrapper">
-          {this.state.tabs && this.state.tabs.length ? (
+          {this.props.tabs && this.props.tabs.length ? (
             <nav className="tabs">
-              {this.state.tabs.map((tab, index) => (
+              {this.props.tabs.map((tab, index) => (
                 <Link
                   key={`localtab-${tab.url}`}
                   className={`tabs__item${(tab.url ===
@@ -178,9 +181,11 @@ class DefaultView extends Component {
               {localNavigation.map(item => (
                 <li
                   className={
-                    flattenToAppURL(this.props.content['@id']).includes(
+                    (flattenToAppURL(this.props.content['@id']).includes(
                       flattenToAppURL(item['@id']),
-                    ) && 'active'
+                    ) &&
+                      'active') ||
+                    ''
                   }
                   key={`li-${item['@id']}`}
                 >
@@ -222,21 +227,13 @@ class DefaultView extends Component {
   }
 }
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-
-// export default injectIntl(DefaultView);
-
 export default connect(
   state => ({
-    // tabs: state.folder_tabs.items,
+    tabs: state.folder_tabs.items,
     parent: state.parent_folder_data.items,
     localNavigation: state.localnavigation.items,
   }),
-  { getParentFolderData, getLocalnavigation },
+  { setFolderTabs, getParentFolderData, getLocalnavigation },
 )(DefaultView);
 
 // export default compose(
