@@ -62,11 +62,23 @@ class DefaultView extends Component {
   };
 
   componentDidMount() {
-    const pathArr = this.props.pathname.split('/');
-    pathArr.length = 4;
-    const path = pathArr.join('/');
-    this.props.getParentFolderData(path);
+    const pathArr = this.props.location.pathname.split('/');
+      pathArr.length = 4;
+      const path = pathArr.join('/');
+      console.log('didmount', 'getParentFolderData', this.props.location.pathname)
+      this.props.getParentFolderData(path);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.pathname !== this.props.pathname) {
+      const pathArr = nextProps.location.pathname.split('/');
+      pathArr.length = 4;
+      const path = pathArr.join('/');
+      console.log('didmount', 'getParentFolderData', nextProps.location.pathname)
+      this.props.getParentFolderData(path);
+    }
+  }
+
 
   // componentWillReceiveProps(nextProps) {
   //   console.log('herere', nextProps.parent, this.props.parent);
@@ -101,6 +113,7 @@ class DefaultView extends Component {
   }
 
   computeFolderTabs = () => {
+    console.log('patharr', this.props.location.pathname)
     const pathArr = this.props.location.pathname.split('/');
     pathArr.length = 4;
     const path = pathArr.join('/');

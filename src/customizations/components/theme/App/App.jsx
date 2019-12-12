@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   checkProps(props) {
-    const hideMenuConditions = ['add', 'edit', 'contents', 'catalogue'];
+    const hideMenuConditions = ['add', 'edit', 'contents'];
     const pathname = props.pathname && props.pathname.split('/');
     const pageType = pathname[pathname.length - 1];
     if (hideMenuConditions.includes(pageType)) {
