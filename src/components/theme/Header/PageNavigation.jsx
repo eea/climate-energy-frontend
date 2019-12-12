@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
+import { asyncConnect } from 'redux-connect';
+
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -15,6 +17,9 @@ import { getNavigation } from '@plone/volto/actions';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import { Icon } from '@plone/volto/components';
 import backIcon from '@plone/volto/icons/back.svg';
+import { getLocalnavigation } from '~/actions';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { settings, blocks } from '~/config';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -30,6 +35,7 @@ const messages = defineMessages({
 class PageNavigation extends Component {
   static propTypes = {
     getNavigation: PropTypes.func.isRequired,
+    getLocalnavigation: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -59,20 +65,30 @@ class PageNavigation extends Component {
       //, isMobile: false
     };
   }
-
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.pathname !== this.props.pathname) {
+  //     const url = this.props.pathname;
+  //     this.props.getLocalnavigation(url);
+  //   }
+  // }
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
+    this.props.getLocalnavigation(getBaseUrl(this.props.pathname));
   }
 
-  // componentDidMount(){
-  //     document.addEventListener('resize', this.isMobile);
-  //     this.isMobile();
+  // componentDidMount() {
+  //   const url = this.props.content['@id']
+  //     .replace(settings.apiPath, '')
+  //     .replace(settings.internalApiPath, '');
+
+  //   this.props.getLocalnavigation(url);
   // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.setSubmenu(this.state.subMenu.type, []);
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
+      this.props.getLocalnavigation(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -142,6 +158,13 @@ class PageNavigation extends Component {
   }
 
   render() {
+    const localnavigation =
+      (this.props.localnavigation.items &&
+        this.props.localnavigation.items.length &&
+        this.props.localnavigation.items.filter(item => item.title !== 'Home')) ||
+      [];
+      console.log('------- pathname', this.props.pathname)
+    console.log('localnav', localnavigation, this.props.localnavigation);
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
@@ -193,7 +216,7 @@ class PageNavigation extends Component {
                   this.isActive(item.url) ? 'menu-item active' : 'menu-item'
                 }
               >
-                {item.items && item.items.length ? (
+                {this.isActive(item.url) && item.items && item.items.length ? (
                   <React.Fragment>
                     <a
                       href="#"
@@ -216,7 +239,8 @@ class PageNavigation extends Component {
                     <div className="menuExpanded" id="menuExpanded">
                       {item.items.find(
                         i =>
-                          __CLIENT__ && window &&
+                          __CLIENT__ &&
+                          window &&
                           window.location.href.includes(i.url) &&
                           window.location.href.includes('topics'),
                       ) ? (
@@ -229,23 +253,63 @@ class PageNavigation extends Component {
                           to={
                             item.items.find(
                               i =>
-                              __CLIENT__ &&window && window.location.href.includes(i.url),
+                                __CLIENT__ &&
+                                window &&
+                                window.location.href.includes(i.url),
                             ).url
                           }
                           key={
                             item.items.find(
                               i =>
-                              __CLIENT__ &&window && window.location.href.includes(i.url),
+                                __CLIENT__ &&
+                                window &&
+                                window.location.href.includes(i.url),
                             ).url
                           }
                         >
                           {
                             item.items.find(
                               i =>
-                              __CLIENT__ &&window && window.location.href.includes(i.url),
+                                __CLIENT__ &&
+                                window &&
+                                window.location.href.includes(i.url),
                             ).title
                           }
                         </Link>
+                      ) : (
+                        ''
+                      )}
+                      {localnavigation && localnavigation.length ? (
+                        <ul className="localnavigation">
+                          {localnavigation.map(item => (
+                            <li
+                              className={
+                                (flattenToAppURL(
+                                  this.props.pathname,
+                                ).includes(flattenToAppURL(item['@id'])) &&
+                                  'active') ||
+                                ''
+                              }
+                              key={`li-${item['@id']}`}
+                            >
+                              {flattenToAppURL(this.props.pathname).includes(
+                                flattenToAppURL(item['@id']),
+                              ) && (
+                                <span className="menuExpandedIndicator">▶</span>
+                              )}
+                              <Link
+                                key={item['@id']}
+                                to={
+                                  item.items && item.items.length
+                                    ? flattenToAppURL(item.items[0]['@id'])
+                                    : flattenToAppURL(item['@id'])
+                                }
+                              >
+                                {item.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       ) : (
                         ''
                       )}
@@ -342,10 +406,18 @@ class PageNavigation extends Component {
 
 export default compose(
   injectIntl,
+  asyncConnect([
+    {
+      key: 'localnavigation',
+      promise: ({ location, store: { content, dispatch } }) =>
+        dispatch(getLocalnavigation(getBaseUrl(location.pathname))),
+    },
+  ]),
   connect(
-    state => ({
+    (state, props) => ({
+      localnavigation: state.localnavigation.items,
       items: state.navigation.items,
     }),
-    { getNavigation },
+    { getNavigation, getLocalnavigation },
   ),
 )(PageNavigation);

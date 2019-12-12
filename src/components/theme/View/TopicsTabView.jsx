@@ -87,7 +87,6 @@ class DefaultView extends Component {
   // }
 
   componentDidUpdate(prevProps, prevState) {
-
     if (!prevProps.parent && this.props.parent && this.props.parent.id) {
       this.computeFolderTabs();
     }
@@ -99,7 +98,6 @@ class DefaultView extends Component {
     if (prevProps.parent && prevProps.parent.id !== this.props.parent.id) {
       this.computeFolderTabs();
     }
-    
   }
 
   computeFolderTabs = () => {
