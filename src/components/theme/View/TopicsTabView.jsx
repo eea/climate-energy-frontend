@@ -39,6 +39,9 @@ class DefaultView extends Component {
   constructor(props) {
     super(props);
     // this.renderTabs = this.renderTabs.bind(this);
+    this.state = {
+      tabs: null,
+    };
   }
 
   static defaultProps = {
@@ -83,21 +86,27 @@ class DefaultView extends Component {
   //   }
   // }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
+
     if (!prevProps.parent && this.props.parent && this.props.parent.id) {
+      this.computeFolderTabs();
+    }
+
+    if (!prevState.tabs && this.props.parent && this.props.parent.id) {
       this.computeFolderTabs();
     }
 
     if (prevProps.parent && prevProps.parent.id !== this.props.parent.id) {
       this.computeFolderTabs();
     }
+    
   }
 
   computeFolderTabs = () => {
     const pathArr = this.props.location.pathname.split('/');
     pathArr.length = 4;
     const path = pathArr.join('/');
-    console.log('computing folder tabs', this.props.parent)
+    console.log('computing folder tabs', this.props.parent);
     const tabsItems = this.props.parent.items.map(i => {
       return {
         url: flattenToAppURL(i['@id']),
@@ -106,6 +115,7 @@ class DefaultView extends Component {
       };
     });
     this.props.setFolderTabs(tabsItems);
+    this.setState({ tabs: tabsItems });
   };
 
   render() {
@@ -116,9 +126,9 @@ class DefaultView extends Component {
     return (
       hasBlocksData(content) && (
         <div id="page-document" className="ui wrapper">
-          {this.props.tabs && this.props.tabs.length ? (
+          {this.state.tabs && this.state.tabs.length ? (
             <nav className="tabs">
-              {this.props.tabs.map((tab, index) => (
+              {this.state.tabs.map((tab, index) => (
                 <Link
                   key={`localtab-${tab.url}`}
                   className={`tabs__item${(tab.url ===
