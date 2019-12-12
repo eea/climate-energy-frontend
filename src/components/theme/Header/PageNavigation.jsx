@@ -142,7 +142,6 @@ class PageNavigation extends Component {
   }
 
   render() {
-    if (!__CLIENT__) return '';
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
@@ -217,7 +216,7 @@ class PageNavigation extends Component {
                     <div className="menuExpanded" id="menuExpanded">
                       {item.items.find(
                         i =>
-                          window &&
+                          __CLIENT__ && window &&
                           window.location.href.includes(i.url) &&
                           window.location.href.includes('topics'),
                       ) ? (
@@ -230,20 +229,20 @@ class PageNavigation extends Component {
                           to={
                             item.items.find(
                               i =>
-                                window && window.location.href.includes(i.url),
+                              __CLIENT__ &&window && window.location.href.includes(i.url),
                             ).url
                           }
                           key={
                             item.items.find(
                               i =>
-                                window && window.location.href.includes(i.url),
+                              __CLIENT__ &&window && window.location.href.includes(i.url),
                             ).url
                           }
                         >
                           {
                             item.items.find(
                               i =>
-                                window && window.location.href.includes(i.url),
+                              __CLIENT__ &&window && window.location.href.includes(i.url),
                             ).title
                           }
                         </Link>

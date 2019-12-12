@@ -228,7 +228,7 @@ class Navigation extends Component {
                     </a>
                   </React.Fragment>
                 ) : (
-                  <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                  <Link to={item.url} key={item.url}>
                     {item.title}
                   </Link>
                 )}
@@ -268,7 +268,7 @@ class Navigation extends Component {
                       {item.title}
                     </a>
                   ) : (
-                    <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                    <Link to={item.url} key={item.url}>
                       {item.title}
                     </Link>
                   )}

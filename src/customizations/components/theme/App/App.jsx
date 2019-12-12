@@ -17,6 +17,11 @@ import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
 import { Grid } from 'semantic-ui-react';
+import { Portal } from 'react-portal';
+import { getLocalnavigation } from '~/actions';
+import { settings, blocks } from '~/config';
+import { flattenToAppURL } from '@plone/volto/helpers';
+import { Link } from 'react-router-dom';
 
 import Error from '@plone/volto/error';
 
@@ -49,6 +54,7 @@ class App extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
+    getLocalnavigation: PropTypes.func.isRequired,
   };
 
   state = {
@@ -69,8 +75,18 @@ class App extends Component {
     if (__CLIENT__ && process.env.SENTRY_DSN) {
       Raven.config(process.env.SENTRY_DSN).install();
     }
-  }
+    const url = this.props.content['@id']
+      .replace(settings.apiPath, '')
+      .replace(settings.internalApiPath, '');
 
+    this.props.getLocalnavigation(url);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.pathname !== this.props.pathname) {
+      const url = this.props.pathname;
+      this.props.getLocalnavigation(url);
+    }
+  }
   /**
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -119,7 +135,13 @@ class App extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const hideMenu = this.checkProps(this.props);
-    console.log('----------- rendering app', this.props.pathname)
+    const localNavigation =
+      (this.props.localNavigation.items &&
+        this.props.localNavigation.items.filter(
+          item => item.title !== 'Home',
+        )) ||
+      [];
+    console.log('----------- rendering app', this.props.pathname);
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
@@ -156,6 +178,38 @@ class App extends Component {
           </React.Fragment>
         ) : (
           <div className="content-page">
+            <Portal
+              node={__CLIENT__ && document.getElementById('menuExpanded')}
+            >
+              <ul className="localNavigation">
+                {localNavigation.map(item => (
+                  <li
+                    className={
+                      (flattenToAppURL(this.props.content['@id']).includes(
+                        flattenToAppURL(item['@id']),
+                      ) &&
+                        'active') ||
+                      ''
+                    }
+                    key={`li-${item['@id']}`}
+                  >
+                    {flattenToAppURL(this.props.content['@id']).includes(
+                      flattenToAppURL(item['@id']),
+                    ) && <span className="menuExpandedIndicator">▶</span>}
+                    <Link
+                      key={item['@id']}
+                      to={
+                        item.items && item.items.length
+                          ? flattenToAppURL(item.items[0]['@id'])
+                          : flattenToAppURL(item['@id'])
+                      }
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Portal>
             <PageHeader />
             <Grid columns={3} divided>
               <Grid.Row>
@@ -232,6 +286,11 @@ export const __test__ = connect(
 export default compose(
   asyncConnect([
     {
+      key: 'localnavigation',
+      promise: ({ location, store: { content, dispatch } }) =>
+        dispatch(getLocalnavigation(getBaseUrl(location.pathname))),
+    },
+    {
       key: 'breadcrumbs',
       promise: ({ location, store: { dispatch } }) =>
         dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
@@ -258,7 +317,10 @@ export default compose(
     },
   ]),
   connect(
-    (state, props) => ({ pathname: props.location.pathname }),
-    { purgeMessages },
+    (state, props) => ({
+      pathname: props.location.pathname,
+      localNavigation: state.localnavigation.items,
+    }),
+    { purgeMessages, getLocalnavigation },
   ),
 )(App);

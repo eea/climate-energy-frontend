@@ -48,7 +48,7 @@ export function getLocalnavigation(folder) {
     type: GET_LOCALNAVIGATION,
     request: {
       op: 'get',
-      path: `${folder}/@localnavigation`,
+      path: `${folder}/@localnavigation?expand.navigation.depth=2`,
     },
   };
 }
