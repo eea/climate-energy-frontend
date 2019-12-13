@@ -166,20 +166,20 @@ class Navigation extends Component {
             aria-label={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                    type: this.props.type,
-                  })
+                  type: this.props.type,
+                })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                    type: this.props.type,
-                  })
+                  type: this.props.type,
+                })
             }
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                    type: this.props.type,
-                  })
+                  type: this.props.type,
+                })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                    type: this.props.type,
-                  })
+                  type: this.props.type,
+                })
             }
             type="button"
             onClick={this.toggleMobileMenu}
@@ -207,31 +207,28 @@ class Navigation extends Component {
                 }
               >
                 {item.items && item.items.length ? (
-                  <React.Fragment>
-                    <a
-                      href="#"
-                      role="button"
-                      onClick={ev =>
-                        this.setSubmenu(item.title, item.items, ev)
-                      }
-                      onKeyPress={() => {}}
-                    >
-                      {this.state.subMenu.type === item.title && (
-                        <Icon
-                          className="menu-indicator"
-                          name={rightKey}
-                          size="30px"
-                        />
-                      )}
+                  <a
+                    role="button"
+                    onClick={ev =>
+                      this.setSubmenu(item.title, item.items, ev)
+                    }
+                    onKeyPress={() => { }}
+                  >
+                    {this.state.subMenu.type === item.title && (
+                      <Icon
+                        className="menu-indicator"
+                        name={rightKey}
+                        size="30px"
+                      />
+                    )}
 
-                      {item.title}
-                    </a>
-                  </React.Fragment>
+                    {item.title}
+                  </a>
                 ) : (
                   <Link to={item.url} key={item.url}>
                     {item.title}
                   </Link>
-                )}
+                  )}
               </div>
             ))}
           </div>
@@ -251,12 +248,11 @@ class Navigation extends Component {
                 >
                   {item.items && item.items.length ? (
                     <a
-                      href="#"
                       role="button"
                       onClick={ev =>
                         this.setSubtopics(item.title, item.items, ev)
                       }
-                      onKeyPress={() => {}}
+                      onKeyPress={() => { }}
                     >
                       {this.state.subTopics.type === item.title && (
                         <Icon
@@ -268,16 +264,16 @@ class Navigation extends Component {
                       {item.title}
                     </a>
                   ) : (
-                    <Link to={item.url} key={item.url}>
-                      {item.title}
-                    </Link>
-                  )}
+                      <Link to={item.url} key={item.url}>
+                        {item.title}
+                      </Link>
+                    )}
                 </div>
               ))}
             </div>
           ) : (
-            <div />
-          )}
+              <div />
+            )}
           {this.state.subTopics.items && this.state.subTopics.items.length ? (
             <div className="third-level">
               <Icon
@@ -308,8 +304,8 @@ class Navigation extends Component {
               ))}
             </div>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </div>
       </div>
     );

@@ -161,9 +161,11 @@ class PageNavigation extends Component {
     const localnavigation =
       (this.props.localnavigation.items &&
         this.props.localnavigation.items.length &&
-        this.props.localnavigation.items.filter(item => item.title !== 'Home')) ||
+        this.props.localnavigation.items.filter(
+          item => item.title !== 'Home',
+        )) ||
       [];
-      console.log('------- pathname', this.props.pathname)
+    console.log('navigation', this.props.items);
     console.log('localnav', localnavigation, this.props.localnavigation);
     return (
       <React.Fragment>
@@ -216,10 +218,9 @@ class PageNavigation extends Component {
                   this.isActive(item.url) ? 'menu-item active' : 'menu-item'
                 }
               >
-                {this.isActive(item.url) && item.items && item.items.length ? (
+                {item.items && item.items.length ? (
                   <React.Fragment>
                     <a
-                      href="#"
                       role="button"
                       onClick={ev =>
                         this.setSubmenu(item.title, item.items, ev)
@@ -236,84 +237,88 @@ class PageNavigation extends Component {
 
                       {item.title}
                     </a>
-                    <div className="menuExpanded" id="menuExpanded">
-                      {item.items.find(
-                        i =>
-                          __CLIENT__ &&
-                          window &&
-                          window.location.href.includes(i.url) &&
-                          window.location.href.includes('topics'),
-                      ) ? (
-                        <Link
-                          style={{
-                            fontSize: '1.2rem',
-                            textTransform: 'initial',
-                            borderBottom: '1px solid #eee',
-                          }}
-                          to={
-                            item.items.find(
-                              i =>
-                                __CLIENT__ &&
-                                window &&
-                                window.location.href.includes(i.url),
-                            ).url
-                          }
-                          key={
-                            item.items.find(
-                              i =>
-                                __CLIENT__ &&
-                                window &&
-                                window.location.href.includes(i.url),
-                            ).url
-                          }
-                        >
-                          {
-                            item.items.find(
-                              i =>
-                                __CLIENT__ &&
-                                window &&
-                                window.location.href.includes(i.url),
-                            ).title
-                          }
-                        </Link>
-                      ) : (
-                        ''
-                      )}
-                      {localnavigation && localnavigation.length ? (
-                        <ul className="localnavigation">
-                          {localnavigation.map(item => (
-                            <li
-                              className={
-                                (flattenToAppURL(
-                                  this.props.pathname,
-                                ).includes(flattenToAppURL(item['@id'])) &&
-                                  'active') ||
-                                ''
-                              }
-                              key={`li-${item['@id']}`}
-                            >
-                              {flattenToAppURL(this.props.pathname).includes(
-                                flattenToAppURL(item['@id']),
-                              ) && (
-                                <span className="menuExpandedIndicator">▶</span>
-                              )}
-                              <Link
-                                key={item['@id']}
-                                to={
-                                  item.items && item.items.length
-                                    ? flattenToAppURL(item.items[0]['@id'])
-                                    : flattenToAppURL(item['@id'])
+                    {this.isActive(item.url) && (
+                      <div className="menuExpanded" id="menuExpanded">
+                        {item.items.find(
+                          i =>
+                            __CLIENT__ &&
+                            window &&
+                            window.location.href.includes(i.url) &&
+                            window.location.href.includes('topics'),
+                        ) ? (
+                          <Link
+                            style={{
+                              fontSize: '1.2rem',
+                              textTransform: 'initial',
+                              borderBottom: '1px solid #eee',
+                            }}
+                            to={
+                              item.items.find(
+                                i =>
+                                  __CLIENT__ &&
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                            key={
+                              item.items.find(
+                                i =>
+                                  __CLIENT__ &&
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).url
+                            }
+                          >
+                            {
+                              item.items.find(
+                                i =>
+                                  __CLIENT__ &&
+                                  window &&
+                                  window.location.href.includes(i.url),
+                              ).title
+                            }
+                          </Link>
+                        ) : (
+                          ''
+                        )}
+                        {localnavigation && localnavigation.length ? (
+                          <ul className="localnavigation">
+                            {localnavigation.map(item => (
+                              <li
+                                className={
+                                  (flattenToAppURL(
+                                    this.props.pathname,
+                                  ).includes(flattenToAppURL(item['@id'])) &&
+                                    'active') ||
+                                  ''
                                 }
+                                key={`li-${item['@id']}`}
                               >
-                                {item.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        ''
-                      )}
-                    </div>
+                                {flattenToAppURL(this.props.pathname).includes(
+                                  flattenToAppURL(item['@id']),
+                                ) && (
+                                  <span className="menuExpandedIndicator">
+                                    ▶
+                                  </span>
+                                )}
+                                <Link
+                                  key={item['@id']}
+                                  to={
+                                    item.items && item.items.length
+                                      ? flattenToAppURL(item.items[0]['@id'])
+                                      : flattenToAppURL(item['@id'])
+                                  }
+                                >
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    )}
                   </React.Fragment>
                 ) : (
                   <Link to={item.url === '' ? '/' : item.url} key={item.url}>
@@ -339,7 +344,6 @@ class PageNavigation extends Component {
                 >
                   {item.items && item.items.length ? (
                     <a
-                      href="#"
                       role="button"
                       onClick={ev =>
                         this.setSubtopics(item.title, item.items, ev)

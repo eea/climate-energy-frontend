@@ -16,6 +16,7 @@
 
     a {
       position: relative;
+      cursor: pointer;
     }
 
     &.active {
