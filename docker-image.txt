@@ -1,1 +1,1 @@
-tiberiuichim/energy-union-frontend:5.2-0.30
+tiberiuichim/energy-union-frontend:5.2-0.34
