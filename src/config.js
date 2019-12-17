@@ -47,3 +47,5 @@ export const viewlets = [...(config.viewlets || [])];
 export const portlets = {
   ...config.portlets,
 };
+
+console.log('config', config);
