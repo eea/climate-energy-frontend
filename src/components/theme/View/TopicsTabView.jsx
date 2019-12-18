@@ -6,15 +6,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
-import { defineMessages } from 'react-intl';
-import { Portal } from 'react-portal';
+import { compose } from 'redux';
+import { defineMessages, injectIntl } from 'react-intl';
 
-import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { settings, blocks } from '~/config';
+import { blocks } from '~/config';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
@@ -138,8 +137,12 @@ class DefaultView extends Component {
   }
 }
 
-export default connect(
-  (state, props) => ({
-    pathname: props.location.pathname,
-  })
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      pathname: props.location.pathname,
+    })
+  ),
 )(DefaultView);
+
