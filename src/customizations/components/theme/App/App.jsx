@@ -184,6 +184,7 @@ class App extends Component {
                 >
                   <main className="content-page">
                     <Messages />
+                    <div className="editor-toolbar-wrapper" />
                     {this.state.hasError ? (
                       <Error
                         message={this.state.error.message}
