@@ -16,12 +16,6 @@ import { Link } from 'react-router-dom';
 
 import { settings, blocks } from '~/config';
 import {
-  setFolderTabs,
-  getParentFolderData,
-  getLocalnavigation,
-} from '~/actions';
-
-import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
@@ -56,28 +50,9 @@ class DefaultView extends Component {
         data: PropTypes.string,
       }),
     }).isRequired,
-    getParentFolderData: PropTypes.func.isRequired,
-    setFolderTabs: PropTypes.func.isRequired,
     localNavigation: PropTypes.any,
   };
 
-  componentDidMount() {
-    const pathArr = this.props.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      console.log('didmount', 'getParentFolderData', this.props.location.pathname)
-      this.props.getParentFolderData(path);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      const pathArr = nextProps.location.pathname.split('/');
-      pathArr.length = 4;
-      const path = pathArr.join('/');
-      console.log('didmount', 'getParentFolderData', nextProps.location.pathname)
-      this.props.getParentFolderData(path);
-    }
-  }
 
 
   // componentWillReceiveProps(nextProps) {
@@ -98,35 +73,14 @@ class DefaultView extends Component {
   //   }
   // }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevProps.parent && this.props.parent && this.props.parent.id) {
-      this.computeFolderTabs();
-    }
-
-    if (!prevState.tabs && this.props.parent && this.props.parent.id) {
-      this.computeFolderTabs();
-    }
-
-    if (prevProps.parent && prevProps.parent.id !== this.props.parent.id) {
-      this.computeFolderTabs();
-    }
-  }
-
-  computeFolderTabs = () => {
-    console.log('patharr', this.props.location.pathname)
-    const pathArr = this.props.location.pathname.split('/');
-    pathArr.length = 4;
-    const path = pathArr.join('/');
-    console.log('computing folder tabs', this.props.parent);
-    const tabsItems = this.props.parent.items.map(i => {
+  computeFolderTabs = (siblings) => {
+    const tabsItems = siblings.items.map(i => {
       return {
-        url: flattenToAppURL(i['@id']),
-        title: i.title,
-        '@type': i['@type'],
+        url: flattenToAppURL(i.url),
+        title: i.name
       };
     });
-    this.props.setFolderTabs(tabsItems);
-    this.setState({ tabs: tabsItems });
+    return tabsItems
   };
 
   render() {
@@ -134,12 +88,13 @@ class DefaultView extends Component {
     const intl = this.props.intl;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+    const tabs = this.computeFolderTabs(content['@components'].siblings)
     return (
       hasBlocksData(content) && (
         <div id="page-document" className="ui wrapper">
-          {this.state.tabs && this.state.tabs.length ? (
+          {tabs && tabs.length ? (
             <nav className="tabs">
-              {this.state.tabs.map((tab, index) => (
+              {tabs.map((tab) => (
                 <Link
                   key={`localtab-${tab.url}`}
                   className={`tabs__item${(tab.url ===
@@ -147,7 +102,7 @@ class DefaultView extends Component {
                     ' tabs__item_active') ||
                     ''}`}
                   to={tab.url}
-                  title={tab['@type']}
+                  title={tab.title}
                 >
                   {tab.title}
                 </Link>
@@ -186,8 +141,5 @@ class DefaultView extends Component {
 export default connect(
   (state, props) => ({
     pathname: props.location.pathname,
-    tabs: state.folder_tabs.items,
-    parent: state.parent_folder_data.items,
-  }),
-  { setFolderTabs, getParentFolderData },
+  })
 )(DefaultView);
