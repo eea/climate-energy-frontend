@@ -60,24 +60,11 @@ const Footer = (props) => (
                 </li>
               )}
               <li>
-                <Link className="item" to="/legal_notice">
+                <Link className="item" to="/contact">
                   <FormattedMessage
-                    id="legal_notice"
-                    defaultMessage="Legal notice"
+                    id="contact"
+                    defaultMessage="Contact"
                   />
-                </Link>
-              </li>
-              <li>
-                <Link className="item" to="/privacy_policy">
-                  <FormattedMessage
-                    id="privacy_policy"
-                    defaultMessage="Privacy policy"
-                  />
-                </Link>
-              </li>
-              <li>
-                <Link className="item" to="/credits">
-                  <FormattedMessage id="Credits" defaultMessage="Credis" />
                 </Link>
               </li>
             </ul>

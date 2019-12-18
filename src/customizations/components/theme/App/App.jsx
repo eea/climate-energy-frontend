@@ -204,8 +204,6 @@ class App extends Component {
                 )}
               </Grid.Row>
             </Grid>
-
-            <Footer />
           </div>
         )}
         <ToastContainer
@@ -221,6 +219,7 @@ class App extends Component {
             />
           }
         />
+        <Footer />
       </Fragment>
     );
   }
