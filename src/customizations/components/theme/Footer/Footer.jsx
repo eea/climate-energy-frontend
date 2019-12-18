@@ -34,17 +34,24 @@ const Footer = (props) => (
     textAlign="center"
     className="footer"
   >
-    <Container fluid>
-      <Grid columns={3}>
-        <Grid.Row>
+    {/* <Container fluid> */}
+    <Grid tablet={0}
+      computer={3}
+      largeScreen={3}>
+      <Grid.Column width={3}></Grid.Column>
+      <Grid.Column tablet={12}
+        computer={6}
+        largeScreen={6}>
+        <Grid columns={2}>
           <Grid.Column
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'left',
-              flexDirection: 'column',
-            }}
+            // style={{
+            //   display: 'flex',
+            //   justifyContent: 'center',
+            //   alignItems: 'center',
+            //   textAlign: 'left',
+            //   flexDirection: 'column',
+            // }}
+            style={{ textAlign: 'left', padding: '2rem'}}
             tablet={12}
             computer={6}
             largeScreen={6}
@@ -69,8 +76,7 @@ const Footer = (props) => (
               </li>
             </ul>
           </Grid.Column>
-          <Grid.Column tablet={12} computer={2} largeScreen={2} />
-          <Grid.Column tablet={12} computer={4} largeScreen={4}>
+          <Grid.Column tablet={12} computer={6} largeScreen={6}>
             <div className="footerLogoWrapper">
               <img
                 style={{ width: '120px', marginRight: '2rem' }}
@@ -86,9 +92,16 @@ const Footer = (props) => (
               />
             </div>
           </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
+        </Grid>
+      </Grid.Column>
+      <Grid.Column 
+        tablet={0}
+        computer={3}
+        largeScreen={3}
+      ></Grid.Column>
+
+    </Grid>
+    {/* </Container> */}
   </Segment>
 );
 
