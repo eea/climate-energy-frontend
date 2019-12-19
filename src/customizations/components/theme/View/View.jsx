@@ -19,6 +19,7 @@ import {
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
+import Scrollspy from 'react-scrollspy'
 
 /**
  * View container class.
@@ -276,13 +277,15 @@ class View extends Component {
                 <h5>
                   <b>In page navigation</b>
                 </h5>
-                <ul className="headings_navigation_list">
+                <Scrollspy 
+                  className="scrollspy headings_navigation_list" items={ this.makeHeadings().map(({id}) => id)} 
+                  currentClassName="isCurrent">
                   {this.makeHeadings().map(({ id, text }) => (
                     <li key={id}>
                       <a href={`#${id}`}>{text}</a>
                     </li>
                   ))}
-                </ul>
+                </Scrollspy>
               </div>
             </Portal>
           )}

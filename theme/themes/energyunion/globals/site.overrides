@@ -207,13 +207,16 @@ nav.tabs {
             margin-top: 1rem;
 
             li {
+                &.isCurrent {
+                    a {
+                        color: #444;
+                        font-weight: bold;
+                        font-size: 1.3rem;
+                    }
+                }
                 cursor: pointer;
                 margin-bottom: 1rem;
                 color: #4a4a4a;
-
-                &:hover {
-                    color: #007bff;
-                }
             }
         }
     }
