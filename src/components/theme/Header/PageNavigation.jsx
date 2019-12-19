@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { getBaseUrl } from '@plone/volto/helpers';
-import {} from 'semantic-ui-react';
 import { getNavigation } from '@plone/volto/actions';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import { Icon } from '@plone/volto/components';
@@ -20,6 +19,7 @@ import backIcon from '@plone/volto/icons/back.svg';
 import { getLocalnavigation } from '~/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings, blocks } from '~/config';
+import rightCircle from '@plone/volto/icons/circle-right.svg'
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -299,9 +299,13 @@ class PageNavigation extends Component {
                                   flattenToAppURL(item['@id']),
                                 ) && (
                                   <span className="menuExpandedIndicator">
-                                    ▶
+                                    <Icon
+                                      name={rightCircle}
+                                      size="20px"
+                                    />
                                   </span>
                                 )}
+                               
                                 <Link
                                   key={item['@id']}
                                   to={
