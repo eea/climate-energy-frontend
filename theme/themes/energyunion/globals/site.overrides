@@ -583,3 +583,11 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     font-weight: bold;
     color: black;
 }
+
+
+.remove-all-border-radius {
+    border-radius: 0!important;
+    * {
+        border-radius: 0!important;
+    }
+}
