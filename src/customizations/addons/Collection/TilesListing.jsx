@@ -13,11 +13,12 @@ class TilesListing extends Component {
   }
 
   render() {
-    const { items } = this.props;
-
+    // const { items } = this.props;
+    const searchItems = this.props.items?.sort((a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate))
+    
     return (
-            items.length
-              ? items.map(item => (
+      searchItems.length
+              ? searchItems.map(item => (
                     <Item
                       className="search-item"
                       key={item['@id']}

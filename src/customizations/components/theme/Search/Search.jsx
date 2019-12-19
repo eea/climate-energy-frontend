@@ -145,7 +145,7 @@ class Search extends Component {
   }
 
   render() {
-    const searchItems = this.props.items?.sort((a, b) => new Date(a.ModificationDate) < new Date(b.ModificationDate))
+    const searchItems = this.props.items?.sort((a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate))
     return (
       <Container
         id="page-search"
