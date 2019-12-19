@@ -1,3 +1,100 @@
 /*******************************
          Theme Overrides
 *******************************/
+.search-item {
+    .description {
+        display: flex;
+        .searchMetadata {
+            // min-width: 200px;
+            width: 40%;
+            display: inline-block;
+            padding-left: .75rem;
+        }
+        .descriptionBody {
+            width: 60%;
+            display: inline-block;
+            padding-right: .75rem;
+            border-right: 1px solid #eee;
+        }
+    }
+    padding: 1rem 2rem!important;
+    &:nth-child(even) {
+        background: #fafafa!important;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+
+    }
+}
+.search-listing {
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+
+.searchWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-top: -2rem;
+    
+    .ui.input {
+        flex-grow: 1;
+
+        >input {
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: none;
+            margin: 0 2rem;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+        }
+    }
+
+    .searchIcon {
+        padding: 10px;
+        position: absolute;
+        right: 1rem;
+        cursor: pointer;
+    }
+}
+
+
+// Search
+
+.item-listing {
+    // margin-top: 2rem;
+}
+
+.item-listing .ui.breadcrumb .divider {
+    margin: 0 0.3rem;
+}
+
+.item-listing .ui.items>.item {
+    margin-bottom: 2rem;
+}
+
+.item-listing .tile-title {
+    margin-bottom: 0.5em;
+}
+
+.item-listing .ui.items>.item .extra {
+    color: inherit;
+    font-size: 14px;
+}
+
+.item-listing .item-breadcrumb {
+    margin-top: 0.6em;
+}
+
+.item-listing .muted {
+    color: #aaa;
+}
+
+.item-listing .ui.items .header>a {
+    color: inherit;
+}

@@ -1,55 +1,55 @@
 // root
 body,
 html {
-    font-size  : 16px;
+    font-size: 16px;
     line-height: 2em;
 }
 
 
 // Header
 .page-header {
-    height  : 300px;
+    height: 300px;
     overflow: hidden;
     position: relative;
 
 
     .header-bg {
-        position       : absolute;
-        width          : 100%;
-        height         : 100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
         background-size: cover;
-        top            : 0
+        top: 0
     }
 
     .header-bg-overlay {
         background: rgba(0, 0, 0, 0.45);
-        position  : absolute;
-        top       : 0;
-        left      : 0;
-        bottom    : 0;
-        right     : 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
     }
 
     .logo-wrapper {
         display: inline-block;
-        width  : 100%;
+        width: 100%;
 
         @media(max-width: 991px) {
             display: none;
         }
 
         .page-logo {
-            width    : 100%;
-            padding  : 1rem;
+            width: 100%;
+            padding: 1rem;
             max-width: 890px;
         }
     }
 
     .searchbar {
-        top     : 0;
+        top: 0;
         position: absolute;
-        right   : .5rem;
-        z-index : 3;
+        right: .5rem;
+        z-index: 3;
 
         @media (max-width:991px) {
             top: 3rem;
@@ -57,22 +57,23 @@ html {
     }
 
     .ui.breadcrumb {
-        color        : white;
-        position     : relative;
-        font-size    : 1rem;
-        padding      : .5rem;
+        color: white;
+        position: relative;
+        font-size: 1rem;
+        padding: .5rem;
         /* margin-top: -4rem; */
-        z-index      : 3;
-        width        : 100%;
-        background   : white;
-        padding-left : 1rem;
-        color        : white;
+        z-index: 3;
+        width: 100%;
+        background: white;
+        padding-left: 1rem;
+        color: white;
         border-bottom: 1px solid #000;
-        box-shadow   : 0px 3px 8px 2px rgba(0, 0, 0, 0.45);
-        background   : #152529;
+        box-shadow: 0px 3px 8px 2px rgba(0, 0, 0, 0.45);
+        background: #152529;
 
         a {
             color: white;
+
             @media(max-width: 825px) {
                 &:not(:nth-last-child(-n+3)) {
                     white-space: nowrap;
@@ -82,6 +83,7 @@ html {
                 }
             }
         }
+
         @media(max-width: 825px) {
             .divider {
                 margin: 0;
@@ -95,10 +97,12 @@ html {
 // footer
 .footer {
     border-top: 1px solid #eee !important;
+
     .tools {
         display: inline-flex;
+
         .item:last-of-type {
-            display: none!important;
+            display: none !important;
         }
     }
 }
@@ -107,19 +111,19 @@ html {
 // main
 main {
     &.content-page {
-        min-height  : calc(100vh - 430px);
-        margin-top  : -5rem;
-        background  : white;
-        margin-left : -1rem;
+        min-height: calc(100vh - 430px);
+        margin-top: -5rem;
+        background: white;
+        margin-left: -1rem;
         margin-right: -1rem;
-        padding     : 2rem;
-        position    : relative;
+        padding: 2rem;
+        position: relative;
 
         h1.documentFirstHeading {
-            font-size     : 2.5rem;
-            border-bottom : 1px solid #ddd;
+            font-size: 2.5rem;
+            border-bottom: 1px solid #ddd;
             padding-bottom: .5rem;
-            margin-top    : 1.5rem;
+            margin-top: 1.5rem;
 
             &:before {
                 display: none;
@@ -133,30 +137,30 @@ main {
 
 //tabs
 nav.tabs {
-    display : flex !important;
+    display: flex !important;
     position: absolute;
-    left    : 0;
-    right   : 0;
-    bottom  : 100%;
+    left: 0;
+    right: 0;
+    bottom: 100%;
 
     a {
-        background    : none;
-        font-family   : @headerFont;
-        font-size     : 1.5rem;
-        display       : block;
-        border        : none;
-        padding       : .5rem 1rem;
-        font-weight   : 200;
+        background: none;
+        font-family: @headerFont;
+        font-size: 1.5rem;
+        display: block;
+        border: none;
+        padding: .5rem 1rem;
+        font-weight: 200;
         text-transform: uppercase;
-        border-bottom : 5px solid transparent;
-        color         : white;
-        width         : @100ValuePercentage;
-        outline       : none;
-        text-align    : center;
-        transition    : border-bottom-color 300ms ease-in-out;
+        border-bottom: 5px solid transparent;
+        color: white;
+        width: @100ValuePercentage;
+        outline: none;
+        text-align: center;
+        transition: border-bottom-color 300ms ease-in-out;
 
         &.tabs__item_active {
-            font-weight        : bold;
+            font-weight: bold;
             border-bottom-color: #fff;
         }
 
@@ -177,35 +181,35 @@ nav.tabs {
 //   in page navigation
 .inPageNavigation {
     .headings_navigation {
-        padding    : 1rem;
-        margin     : 1rem;
-        background : #eee;
-        color      : #444;
-        margin-top : 2rem;
+        padding: 1rem;
+        margin: 1rem;
+        background: #eee;
+        color: #444;
+        margin-top: 2rem;
         font-weight: 400;
-        position   : sticky;
-        top        : 0;
+        position: sticky;
+        top: 0;
 
         @media (max-width: 900px) {
             margin-bottom: 2rem;
-            margin-left  : 0rem;
+            margin-left: 0rem;
         }
 
         .headings_navigation_list {
-            padding-left   : 0;
+            padding-left: 0;
             list-style-type: none;
-            background     : @white;
-            margin         : -1rem;
-            border         : 1px solid #eee;
-            overflow       : hidden;
-            padding        : 1rem;
-            font-size      : 1rem;
-            margin-top     : 1rem;
+            background: @white;
+            margin: -1rem;
+            border: 1px solid #eee;
+            overflow: hidden;
+            padding: 1rem;
+            font-size: 1rem;
+            margin-top: 1rem;
 
             li {
-                cursor       : pointer;
+                cursor: pointer;
                 margin-bottom: 1rem;
-                color        : #4a4a4a;
+                color: #4a4a4a;
 
                 &:hover {
                     color: #007bff;
@@ -245,16 +249,16 @@ body.homepage {
         position: relative;
     }
 
-   
+
 
     .content-area {
-        display        : flex;
-        height         : 100vh;
-        width          : 100vw;
-        margin         : 0;
-        padding        : 0;
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
         justify-content: center;
-        align-items    : center;
+        align-items: center;
 
         main {
 
@@ -269,22 +273,22 @@ body.homepage {
                 color: white;
             }
 
-            position  : absolute;
-            top       : 150px;
-            left      : 22%;
-            width     : 66%;
+            position : absolute;
+            top : 150px;
+            left : 22%;
+            width : 66%;
             background: rgba(255, 255, 255, 0.1);
-            padding   : 20px;
+            padding : 20px;
 
             @media(max-width: 1330px) {
-                left : unset;
+                left: unset;
                 right: 0;
             }
 
             h1 {
-                color        : @white;
+                color: @white;
                 border-bottom: none;
-                font-size    : @h1documentFirstHeading;
+                font-size: @h1documentFirstHeading;
 
                 &:before {
                     border-bottom: none;
@@ -301,22 +305,22 @@ body.homepage {
 
             //Mobile to Tablet Media Queries
             @media (max-width: 991px) {
-                top     : @mainContentTopPosition;
-                width   : @mainContentWidth;
-                height  : @mainContentHeight;
+                top: @mainContentTopPosition;
+                width: @mainContentWidth;
+                height: @mainContentHeight;
                 overflow: @autoValue;
-                left    : 2.5rem;
-                right   : 1rem;
+                left: 2.5rem;
+                right: 1rem;
             }
 
             //Tablet to Laptop
             @media only screen and (min-width: 900px) and (max-width: 1300px) {
-                height  : @mainContentHeight;
+                height: @mainContentHeight;
                 overflow: @autoValue;
             }
 
             @media (max-width: 768px) {
-                left : 0;
+                left: 0;
                 right: 0;
                 width: 100%;
             }
@@ -329,36 +333,36 @@ body.homepage {
         main::-webkit-scrollbar-track {
             // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
             // border-radius     : 10px;
-            background-color     : @grayBgColor;
+            background-color: @grayBgColor;
         }
 
         main::-webkit-scrollbar-thumb {
             // border-radius     : 10px;
             // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-            background-color     : rgba(245, 245, 245, .5);
+            background-color: rgba(245, 245, 245, .5);
         }
     }
 
     .homepageHeader {
-        position       : absolute;
-        width          : @100ValuePercentage;
-        height         : 115px;
-        display        : flex;
+        position: absolute;
+        width: @100ValuePercentage;
+        height: 115px;
+        display: flex;
         justify-content: space-between;
-        top            : 0;
-        align-items    : center;
-        padding-right  : 6rem;
+        top: 0;
+        align-items: center;
+        padding-right: 6rem;
 
         a {
             pointer-events: none;
         }
 
         .ui.form .searchbox.field {
-            border-left    : none;
-            top            : -1rem;
+            border-left: none;
+            top: -1rem;
             // margin-right: -5rem;
-            position       : relative;
-            z-index        : 1;
+            position: relative;
+            z-index: 1;
 
             input {
                 color: @white;
@@ -371,27 +375,27 @@ body.homepage {
             //Mobile Media Queries
             @media (max-width: 360px) {
                 position: @absolutePosition;
-                left    : @zeroValuePosition;
-                top     : @searchBoxTopPositionHomepage;
+                left: @zeroValuePosition;
+                top: @searchBoxTopPositionHomepage;
             }
 
             //Tablet Media Queries
             @media only screen and (min-width: 360px) and (max-width: 991px) {
-                top     : @searchBoxTopPositionHomepage;
+                top: @searchBoxTopPositionHomepage;
                 position: @absolutePosition;
-                left    : @zeroValuePosition;
+                left: @zeroValuePosition;
             }
         }
 
         img {
-            z-index : 1;
+            z-index: 1;
             position: relative;
-            left    : -6px;
+            left: -6px;
 
             //mobile + tablet queries
             @media (max-width: 900px) {
                 width: 500px;
-                left : 50px;
+                left: 50px;
             }
         }
 
@@ -406,9 +410,9 @@ body.homepage {
     #menu-underlay,
     .header-wrapper {
         background-size: cover;
-        width          : @100ValuePercentage;
-        height         : @100ValuePercentage;
-        position       : absolute;
+        width: @100ValuePercentage;
+        height: @100ValuePercentage;
+        position: absolute;
     }
 
     #menu-background-overlay {
@@ -431,8 +435,8 @@ body.homepage {
     //  Props clases
     .absolute {
         position: absolute;
-        top     : 0;
-        left    : 0;
+        top: 0;
+        left: 0;
     }
 
     .relative {
@@ -460,19 +464,19 @@ body.homepage {
     }
 
     .background-countries {
-        background-image     : url('/images/background/countries.png');
-        background-size      : contain !important;
-        background-repeat    : no-repeat;
+        background-image: url('/images/background/countries.png');
+        background-size: contain !important;
+        background-repeat: no-repeat;
         background-position-x: 50%;
-        mix-blend-mode       : multiply;
+        mix-blend-mode: multiply;
     }
 
     #app-menu,
     #app-menu-content {
         font-family: @headerFont;
-        width      : @100ValuePercentage;
-        height     : @100ValuePercentage;
-        min-height : max-content;
+        width: @100ValuePercentage;
+        height: @100ValuePercentage;
+        min-height: max-content;
         font-weight: 100;
     }
 
@@ -497,40 +501,6 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 }
 
 
-// Search
-
-.item-listing {
-    margin-top: 2rem;
-}
-
-.item-listing .ui.breadcrumb .divider {
-    margin: 0 0.3rem;
-}
-
-.item-listing .ui.items>.item {
-    margin-bottom: 2rem;
-}
-
-.item-listing .tile-title {
-    margin-bottom: 0.5em;
-}
-
-.item-listing .ui.items>.item .extra {
-    color    : inherit;
-    font-size: 14px;
-}
-
-.item-listing .item-breadcrumb {
-    margin-top: 0.6em;
-}
-
-.item-listing .muted {
-    color: #aaa;
-}
-
-.item-listing .ui.items .header>a {
-    color: inherit;
-}
 
 
 // responsive homepage
@@ -544,15 +514,15 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 
         .searchbox {
             right: 5rem;
-            top  : 0.5rem !important;
-            left : unset !important;
+            top: 0.5rem !important;
+            left: unset !important;
         }
 
         .logo-wrapper {
             img {
                 width: 300px !important;
-                left : 0 !important;
-                top  : -1rem;
+                left: 0 !important;
+                top: -1rem;
             }
         }
     }
@@ -562,19 +532,19 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     .homepage {
         .homepageHeader {
             padding-right: 0 !important;
-            display      : block;
+            display: block;
 
             .logo-wrapper {
-                width     : 100%;
-                display   : block;
+                width: 100%;
+                display: block;
                 max-height: 110px;
 
                 img {
-                    max-width    : 400px;
-                    margin-top   : -4rem;
-                    min-width    : 300px;
+                    max-width: 400px;
+                    margin-top: -4rem;
+                    min-width: 300px;
                     padding-right: 3rem !important;
-                    margin-left  : -2rem;
+                    margin-left: -2rem;
                 }
             }
         }
@@ -586,16 +556,16 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 
         .searchbox {
             position: absolute !important;
-            right   : unset;
-            left    : 0 !important;
-            top     : 7rem !important;
+            right: unset;
+            left: 0 !important;
+            top: 7rem !important;
         }
 
         .logo-wrapper {
             img {
                 width: 100% !important;
-                left : 0 !important;
-                top  : 0 !important;
+                left: 0 !important;
+                top: 0 !important;
             }
         }
     }
@@ -603,7 +573,13 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 
 
 .editor-toolbar-wrapper {
-  position: sticky;
-  top     : 0;
-  z-index : 2;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+
+.black {
+    font-weight: bold;
+    color: black;
 }

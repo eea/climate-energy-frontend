@@ -12,16 +12,20 @@ import { Helmet } from '@plone/volto/helpers';;
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { Portal } from 'react-portal';
-import { Container, Breadcrumb, Item } from 'semantic-ui-react';
+import { Container, Breadcrumb, Item, Input } from 'semantic-ui-react';
 import qs from 'query-string';
 import { settings } from '~/config';
 
 import { searchContent } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components'
+import zoomIcon from '@plone/volto/icons/zoom.svg'
+
 
 import { Toolbar } from '@plone/volto/components'; // SearchTags,
 
 // import { FormattedMessage } from 'react-intl';
 // import { Placeholder } from 'semantic-ui-react';
+
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {
@@ -135,41 +139,43 @@ class Search extends Component {
   }
 
   getPath(url) {
-  return url
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '');
+    return url
+      .replace(settings.apiPath, '')
+      .replace(settings.internalApiPath, '');
   }
 
   render() {
-    console.log('props in search', this.props.items);
+    const searchItems = this.props.items?.sort((a, b) => new Date(a.ModificationDate) < new Date(b.ModificationDate))
     return (
       <Container
         id="page-search"
         className="catalogue-body full-width-catalogue"
       >
         <Helmet title="Search" />
-        <div className="container">
           <article id="content">
             <div className="catalogue-header">
-              <div style={{ position: 'relative' }}>
-                <input
+              <div className="searchWrapper">
+                <Input
                   type="text"
                   value={this.state.value}
                   onChange={this.handleChange}
                   placeholder="eg: Renewable energy"
+                  onKeyPress={(event) => { if (event.key === 'Enter') this.doSearch(this.state.value) }}
                 />
-                <i
-                  aria-hidden="true"
+                <Icon
+                  className="searchIcon"
                   onClick={() => this.doSearch(this.state.value)}
-                  className="fa fa-search"
-                />
+                  name={zoomIcon} size="40px" />
               </div>
             </div>
             <div id="content-core">
-              <div className="item-listing">
+              <div className="search-listing item-listing">
                 <Item.Group>
-                  {this.props.items.map(item => (
-                    <Item key={item['@id']}>
+                  {searchItems.map(item => (
+                    <Item
+                      className="search-item"
+                      key={item['@id']}
+                    >
                       <Item.Content>
                         <Item.Header>
                           <Link to={this.getPath(item['@id'])}>
@@ -189,13 +195,13 @@ class Search extends Component {
                                       </Link>
                                       <Breadcrumb.Divider
                                         key={`divider-${item.url}`}
-                                        />
+                                      />
                                     </Breadcrumb.Section>
                                   ) : (
-                                    <Breadcrumb.Section key={item['@id']}>
-                                      <Link to={this.getPath(item['@id'])}>{item.title}</Link>
-                                    </Breadcrumb.Section>
-                                  ),
+                                      <Breadcrumb.Section key={item['@id']}>
+                                        <Link to={this.getPath(item['@id'])}>{item.title}</Link>
+                                      </Breadcrumb.Section>
+                                    ),
                                 ],
                               )}
                             </Breadcrumb>
@@ -203,23 +209,26 @@ class Search extends Component {
                         )}
 
                         <Item.Description>
-                          {item.description && <span>{item.description}</span>}
+                          {item.description && <div className="descriptionBody">{item.description}</div>}
+                          <div
+                          className="searchMetadata">
+                            {item.topics &&
+                              <div>
+                                <span className="searchLabel black">Topic:</span>{' '}
+                                {item.topics?.join(', ')}
+                              </div>}
+                            <div>
+                              <span className="searchLabel black">Content type:</span>{' '}
+                              {item['@type']}
+                            </div>
+                            <div>
+                              <span className="searchLabel black">Modified:</span>{' '}
+                              {moment(item.ModificationDate).calendar()}
+                            </div>
+                          </div>
                         </Item.Description>
 
-                        <Item.Extra>
-                          <span>
-                            <span className="muted">Content type:</span>{' '}
-                              {item['@type']}
-                          </span>
-                          <span>
-                            <span className="muted">Topic:</span>{' '}
-                              Energy efficiency
-                          </span>
-                          <span>
-                            <span className="muted">Date:</span>{' '}
-                              {moment(item.ModificationDate).calendar()}
-                          </span>
-                        </Item.Extra>
+
                       </Item.Content>
                     </Item>
                   ))}
@@ -227,7 +236,6 @@ class Search extends Component {
               </div>
             </div>
           </article>
-        </div>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}

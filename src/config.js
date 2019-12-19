@@ -48,4 +48,4 @@ export const portlets = {
   ...config.portlets,
 };
 
-console.log('config', config);
+// console.log('config', config);
