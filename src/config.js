@@ -4,6 +4,7 @@ import {
   applyConfig as addonsConfig,
   installFolderListing,
   installCustomAddonGroup,
+  installTableau,
 } from 'volto-addons/config';
 import { applyConfig as ckeditorConfig } from 'volto-ckeditor/config';
 import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
@@ -16,6 +17,7 @@ const config = [
   installCustomAddonGroup,
   addonsConfig,
   installFolderListing,
+  installTableau,
   plotlyConfig,
   ckeditorConfig,
   mosaicConfig,
