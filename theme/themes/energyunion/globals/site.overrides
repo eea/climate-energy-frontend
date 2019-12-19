@@ -591,3 +591,10 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
         border-radius: 0!important;
     }
 }
+
+#page-edit {
+
+    .block .block:not(.inner)::before {
+        z-index: 0;
+    }
+}
