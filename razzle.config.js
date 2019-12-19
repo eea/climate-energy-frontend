@@ -26,7 +26,7 @@ const projectRootPath = path.resolve('.');
 
 addonsPaths = Object.values(pathsConfig).map(value => `${jsConfig.baseUrl}/${value[0]}/`)
 
-razzleModify.addonCustomizationPaths = ['src/addons/customizations/'];
+razzleModify.addonCustomizationPaths = ['src/customizations/addons/'];
 function customizeAddons(addonCustomizationPaths, addonPath) {
   const addonCustomizations = {}
   addonCustomizationPaths.forEach(customizationPath => {
