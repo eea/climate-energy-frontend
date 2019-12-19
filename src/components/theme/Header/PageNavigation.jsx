@@ -86,6 +86,7 @@ class PageNavigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
+      this.closeMobileMenu()
       this.setSubmenu(this.state.subMenu.type, []);
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
       this.props.getLocalnavigation(getBaseUrl(nextProps.pathname));

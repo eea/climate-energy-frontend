@@ -75,6 +75,7 @@ class Navigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
+      this.closeMobileMenu()
       this.props.getNavigation(getBaseUrl(nextProps.pathname), 3);
     }
   }
