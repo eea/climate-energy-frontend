@@ -18,7 +18,6 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import { Grid } from 'semantic-ui-react';
 
-
 import Error from '@plone/volto/error';
 
 import { Footer, Header, Icon, Messages } from '@plone/volto/components';
@@ -33,7 +32,7 @@ import {
 } from '@plone/volto/actions';
 
 import PageHeader from '~/components/theme/Header/PageHeader';
-import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
+// import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 /**
