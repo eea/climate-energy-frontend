@@ -33,7 +33,7 @@ const CollectionView = ({ content }) => {
       <section id="content-core">
         <div className="search-listing item-listing">
             <Item.Group>
-                <h1 style={{marginTop: '0', marginLeft: '2rem'}} className="documentFirstHeading">
+                <h1 style={{marginTop: '0', marginLeft: '2rem', marginRight: '2rem'}} className="documentFirstHeading">
                 {content.title}
                 {content.subtitle && ` - ${content.subtitle}`}
                 </h1>
