@@ -137,7 +137,7 @@ class PageNavigation extends Component {
         items: items,
       },
     });
-    ev.preventDefault();
+    ev && ev.preventDefault();
   }
 
   isActive(url) {

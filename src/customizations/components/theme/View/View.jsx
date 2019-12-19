@@ -184,9 +184,7 @@ class View extends Component {
 
   makeHeadings() {
     return Array.from(
-      document.querySelectorAll(
-        '.content-page h1, .content-page h2, .content-page h3',
-      ),
+      document.querySelectorAll('.content-page h2'),
     ).map((el, index) => {
       const id = `${index}`;
       el.setAttribute('id', id);

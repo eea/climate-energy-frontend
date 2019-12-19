@@ -99,6 +99,7 @@
     padding-right: 2rem;
     padding-left: 4rem;
     padding-top : 300px;
+  
 
     .menu-item {
       a {
@@ -120,7 +121,7 @@
     padding-left  : 4rem;
     padding-right:  2rem;
     // padding-top: 260px;
-    padding-top   : 181px;
+    padding-top: 175px;
     color         : #4d4d4d;
 
     .menu-item {
@@ -143,9 +144,20 @@
     }
   }
 }
+@media(max-width: 991px) {
+  .main-menu.menu-open {
+    .menuExpanded {
+      display: none;
+    }
+  }
+}
 // open menu
 .menu-open-contentpage,
 .menu-open-homepage {
+  .menuExpanded {
+    display: none;
+  }
+
   .main-menu {
     position: fixed;
     display : flex;
@@ -189,6 +201,10 @@
       width       : 300px;
       padding-left: 5rem;
       padding-top : 300px;
+      @media(max-width: 991px) {
+        padding-top: 300px;
+      }
+  
       position    : sticky;
       top         : 300px;
 
@@ -220,8 +236,9 @@
     .first-level {
       text-transform: uppercase;
       padding-left  : 4rem;
-      padding-top   : 200px;
-
+      padding-top   : 300px;
+     
+  
       // transition: all 300ms;
       .menu-item {
         a {
@@ -243,7 +260,7 @@
       width       : 360px;
       padding-left: 4rem;
       padding-right: 2rem;
-      padding-top : 200px;
+      padding-top : 300px;
 
       .menu-item {
         a {
@@ -265,7 +282,7 @@
       padding-right: 2rem;
       padding-left  : 4rem;
       // padding-top: 260px;
-      padding-top   : 40px;
+      padding-top   : 171px;
       color         : #4d4d4d;
 
       .menu-item {
@@ -313,7 +330,7 @@
         display     : inline-block;
         width       : 300px;
         padding-left: 5rem;
-        padding-top : 200px;
+        padding-top : 300px;
         position    : sticky;
 
         .menu-item {
@@ -346,7 +363,7 @@
     }
     .main-menu {
       .first-level {
-        padding-top: 200px;
+        padding-top: 300px;
         a {
           color: white!important;
         }
@@ -408,5 +425,20 @@
     .third-level {
       padding-top: 200px !important;
     }
+  }
+}
+
+@media(min-width: 991px) {
+  body:not(.menu-open-contentpage) .content-page {
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+    }
+  }
+}
+
+.third-level {
+  .mobile-back-button {
+    color: #444!important;
   }
 }
