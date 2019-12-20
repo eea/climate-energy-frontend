@@ -595,9 +595,9 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     }
 }
 
-#page-edit {
+// #page-edit {
 
-    .block .block:not(.inner)::before {
-        z-index: 0;
-    }
-}
+//     .block .block:not(.inner)::before {
+//         z-index: 0;
+//     }
+// }
