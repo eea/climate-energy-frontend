@@ -235,27 +235,27 @@ export default compose(
     {
       key: 'breadcrumbs',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+      __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getContent(getBaseUrl(location.pathname))),
+      __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
+      __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
     },
     {
       key: 'types',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getTypes(getBaseUrl(location.pathname))),
+      __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
       key: 'workflow',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getWorkflow(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
   connect(

@@ -274,7 +274,7 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(
+      __SERVER__ && dispatch(
           searchContent(
             '',
             toSearchOptions(
