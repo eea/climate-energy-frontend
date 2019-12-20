@@ -38,7 +38,7 @@ const CollectionView = ({ content }) => {
                 {content.subtitle && ` - ${content.subtitle}`}
                 </h1>
                 {content.description && (
-                <p className="documentDescription">{content.description}</p>
+                <p style={{ marginLeft: '2rem', marginRight: '2rem'}} className="documentDescription">{content.description}</p>
                 )}
                 <BlockView
                 data={{
