@@ -24,48 +24,46 @@ const razzleModify = config.modify;
 
 const projectRootPath = path.resolve('.');
 
-addonsPaths = Object.values(pathsConfig).map(value => `${jsConfig.baseUrl}/${value[0]}/`)
-
-razzleModify.addonCustomizationPaths = ['src/customizations/addons/'];
-function customizeAddons(addonCustomizationPaths, addonPath) {
-  const addonCustomizations = {}
-  addonCustomizationPaths.forEach(customizationPath => {
-    map(
-      glob(
-        `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
-      ),
-      filename => {
-        const targetPath = filename.replace(
-          customizationPath,
-          addonPath,
-        );
-        if (fs.existsSync(targetPath)) {
-          addonCustomizations[
-            filename
-              .replace(customizationPath, path.join(projectRootPath, addonPath))
-              .replace(/\.(js|jsx)$/, '')
-          ] = path.resolve(filename);
-        } else {
-          console.log(
-            `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
-          );
-        }
-      },
-    );
-  });
-  return addonCustomizations
-}
-razzleModify.customizeAddons = customizeAddons
-razzleModify.addonCustomizations = []
-addonsPaths.forEach(addonPath => {
-  razzleModify.addonCustomizations = [...razzleModify.addonCustomizations, razzleModify.customizeAddons(razzleModify.addonCustomizationPaths, addonPath)]
-})
-
 module.exports = {
   modify: (config, { target, dev }, webpack) => {
     const vc = razzleModify(config, { target, dev }, webpack);
 
-    razzleModify.addonCustomizations.forEach(cust => {
+    const addonsPaths = Object.values(pathsConfig).map(value => `${jsConfig.baseUrl}/${value[0]}/`)
+    const addonCustomizationPaths = ['src/customizations/addons/'];
+    function customizeAddons(addonCustomizationPaths, addonPath) {
+      const addonCustomizations = {}
+      addonCustomizationPaths.forEach(customizationPath => {
+        map(
+          glob(
+            `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
+          ),
+          filename => {
+            const targetPath = filename.replace(
+              customizationPath,
+              addonPath,
+            );
+            if (fs.existsSync(targetPath)) {
+              addonCustomizations[
+                filename
+                  .replace(customizationPath, path.join(projectRootPath, addonPath))
+                  .replace(/\.(js|jsx)$/, '')
+              ] = path.resolve(filename);
+            } else {
+              console.log(
+                `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+              );
+            }
+          },
+        );
+      });
+      return addonCustomizations
+    }
+    addonCustomizations = []
+    addonsPaths.forEach(addonPath => {
+      addonCustomizations = [...addonCustomizations, customizeAddons(addonCustomizationPaths, addonPath)]
+    })
+    
+    addonCustomizations.forEach(cust => {
       if(Object.keys(cust).length) {
         vc.resolve.alias = {
           ...vc.resolve.alias,
