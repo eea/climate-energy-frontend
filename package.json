@@ -66,6 +66,7 @@
     "@ckeditor/ckeditor5-heading": "^11.0.5",
     "@ckeditor/ckeditor5-paragraph": "^11.0.5",
     "@ckeditor/ckeditor5-react": "^1.1.3",
+    "@n8tb1t/use-scroll-position": "^1.0.43",
     "@plone/volto": "github:tiberiuichim/volto#kitchen_sink",
     "draft-js-alignment-plugin": "^2.0.6",
     "draftjs-to-html": "^0.8.4",

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react';
+import React, { Component, useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
@@ -20,6 +20,9 @@ import { getLocalnavigation } from '~/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings, blocks } from '~/config';
 import rightCircle from '@plone/volto/icons/circle-right.svg'
+import MenuPosition from './MenuPosition'
+
+
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -102,6 +105,10 @@ class PageNavigation extends Component {
   //   }
   // }
 
+
+
+
+
   setSubmenu(title, items, ev) {
     const body = document.querySelector('body');
 
@@ -166,8 +173,10 @@ class PageNavigation extends Component {
           item => item.title !== 'Home',
         )) ||
       [];
-    console.log('navigation', this.props.items);
-    console.log('localnav', localnavigation, this.props.localnavigation);
+
+
+
+
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
@@ -210,8 +219,8 @@ class PageNavigation extends Component {
             onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
             className="menu-underlay"
           />
-
-          <div className="first-level">
+          <MenuPosition>
+          <div className="first-level"> 
             {this.props.items.map((item, index) => (
               <div
                 key={item.url}
@@ -333,6 +342,7 @@ class PageNavigation extends Component {
               </div>
             ))}
           </div>
+          </MenuPosition>
           {this.state.subMenu.items && this.state.subMenu.items.length ? (
             <div className="second-level">
               <Icon
