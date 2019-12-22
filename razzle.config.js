@@ -3,7 +3,7 @@
  * @module razzle.config
  */
 
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const jsConfig = require('./jsconfig').compilerOptions;
 const path = require('path');
 const fs = require('fs');
@@ -18,7 +18,6 @@ Object.keys(pathsConfig).forEach(pkg => {
   }
 });
 
-
 let config = require(`${voltoPath}/razzle.config`);
 const razzleModify = config.modify;
 
@@ -28,24 +27,26 @@ module.exports = {
   modify: (config, { target, dev }, webpack) => {
     const vc = razzleModify(config, { target, dev }, webpack);
 
-    const addonsPaths = Object.values(pathsConfig).map(value => `${jsConfig.baseUrl}/${value[0]}/`)
+    const addonsPaths = Object.values(pathsConfig).map(
+      value => `${jsConfig.baseUrl}/${value[0]}/`,
+    );
     const addonCustomizationPaths = ['src/customizations/addons/'];
     function customizeAddons(addonCustomizationPaths, addonPath) {
-      const addonCustomizations = {}
+      const _addonCustomizations = {};
       addonCustomizationPaths.forEach(customizationPath => {
         map(
           glob(
             `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
           ),
           filename => {
-            const targetPath = filename.replace(
-              customizationPath,
-              addonPath,
-            );
+            const targetPath = filename.replace(customizationPath, addonPath);
             if (fs.existsSync(targetPath)) {
-              addonCustomizations[
+              _addonCustomizations[
                 filename
-                  .replace(customizationPath, path.join(projectRootPath, addonPath))
+                  .replace(
+                    customizationPath,
+                    path.join(projectRootPath, addonPath),
+                  )
                   .replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
@@ -56,21 +57,24 @@ module.exports = {
           },
         );
       });
-      return addonCustomizations
+      return _addonCustomizations;
     }
-    addonCustomizations = []
+    let addonCustomizations = [];
     addonsPaths.forEach(addonPath => {
-      addonCustomizations = [...addonCustomizations, customizeAddons(addonCustomizationPaths, addonPath)]
-    })
-    
+      addonCustomizations = [
+        ...addonCustomizations,
+        customizeAddons(addonCustomizationPaths, addonPath),
+      ];
+    });
+
     addonCustomizations.forEach(cust => {
-      if(Object.keys(cust).length) {
+      if (Object.keys(cust).length) {
         vc.resolve.alias = {
           ...vc.resolve.alias,
-          ...cust
+          ...cust,
         };
       }
-    })
+    });
     // vc.module.rules.forEach((rule, i) => {
     //   console.log('rule', i, '-----');
     //   console.log(rule);
