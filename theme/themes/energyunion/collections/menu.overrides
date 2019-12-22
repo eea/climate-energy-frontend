@@ -7,10 +7,10 @@
 
   .first-level {
     .menu-indicator {
-      right: 0!important;
+      right: 0 !important;
     }
   }
-  
+
   .menu-item {
     position: relative;
 
@@ -26,10 +26,10 @@
     }
 
     .menu-indicator {
-      position : absolute;
-      right    : -2rem;
-      top      : 50%;
-      color    : white;
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      color: white;
       transform: translateY(-50%);
     }
 
@@ -38,32 +38,33 @@
 
       h5 {
         padding-bottom: 15px;
-        border-bottom : 1px solid #eee;
-        font-size     : 1.2rem;
-        margin-top    : -1rem;
+        border-bottom: 1px solid #eee;
+        font-size: 1.2rem;
+        margin-top: -1rem;
       }
 
       ul {
-        padding-left   : 5px;
+        padding-left: 5px;
         list-style-type: none;
-        padding-left   : 0;
+        padding-left: 0;
 
         li {
           padding-bottom: 10px;
 
           a {
-            color    : #444 !important;
+            color: #444 !important;
             font-size: 1rem;
-            padding  : 0;
+            padding: 0;
             text-transform: initial;
-            font-weight: 200!important;
+            font-weight: 200 !important;
           }
 
           &.active {
             font-weight: bold;
-            color      : #444;
+            color: #444;
+
             a {
-              font-weight: bold!important;
+              font-weight: bold !important;
             }
           }
         }
@@ -75,62 +76,62 @@
   // transition: all 300ms;
   .first-level {
     text-transform: uppercase;
-    padding-left  : 4rem;
-    padding-top   : 1px;
+    padding-left: 4rem;
+    padding-top: 1px;
 
     // transition: all 300ms;
     .menu-item {
       a {
-        color      : #444;
-        font-size  : 2rem;
+        color: #444;
+        font-size: 2rem;
         font-weight: 100;
-        padding    : 1rem 0;
-        display    : block;
+        padding: 1rem 0;
+        display: block;
       }
     }
   }
 
   .second-level {
-    position    : relative;
-    background  : rgba(0, 134, 117, 0.95);
-    height      : 100%;
-    display     : inline-block;
-    width       : 360px;
+    position: relative;
+    background: rgba(0, 134, 117, 0.95);
+    height: 100%;
+    display: inline-block;
+    width: 360px;
     padding-right: 2rem;
     padding-left: 4rem;
-    padding-top : 300px;
-  
+    padding-top: 300px;
+
 
     .menu-item {
       a {
-        color      : white;
-        font-size  : 1.2rem;
+        color: white;
+        font-size: 1.2rem;
         font-weight: 100;
-        padding    : 1rem 0;
-        display    : block;
+        padding: 1rem 0;
+        display: block;
       }
     }
   }
 
   .third-level {
-    position      : relative;
-    background    : #d7d7d7;
-    height        : 100%;
-    display       : inline-block;
-    width         : 360px;
-    padding-left  : 4rem;
-    padding-right:  2rem;
+    position: relative;
+    background: #d7d7d7;
+    height: 100%;
+    display: inline-block;
+    width: 360px;
+    padding-left: 4rem;
+    padding-right: 2rem;
     // padding-top: 260px;
     padding-top: 175px;
-    color         : #4d4d4d;
+    color: #4d4d4d;
 
     .menu-item {
       a {
-        color      : #4d4d4d;
-        font-size  : 1.2rem;
+        color: #4d4d4d;
+        font-size: 1.2rem;
         font-weight: 100;
-        padding    : 1rem 0;
-        display    : block;
+        padding: 1rem 0;
+        display: block;
       }
     }
   }
@@ -145,6 +146,7 @@
     }
   }
 }
+
 @media(max-width: 991px) {
   .main-menu.menu-open {
     .menuExpanded {
@@ -152,6 +154,7 @@
     }
   }
 }
+
 // open menu
 .menu-open-contentpage,
 .menu-open-homepage {
@@ -161,12 +164,12 @@
 
   .main-menu {
     position: fixed;
-    display : flex;
-    top     : 0;
-    left    : 0;
-    bottom  : 0;
-    right   : 0;
-    z-index : 2;
+    display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
 
     .menuExpanded {
       color: @white  !important;
@@ -174,40 +177,43 @@
       ul li a {
         color: @white  !important;
       }
+
       li {
         position: relative;
       }
+
       .active {
         .menuExpandedIndicator {
           color: white;
           position: absolute;
-           left: -20px;
+          left: -20px;
         }
       }
     }
 
     .menu-underlay {
       position: fixed;
-      top     : 0;
-      left    : 0;
-      right   : 0;
-      bottom  : 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
 
     .first-level {
-      position    : relative;
-      background  : rgba(0, 134, 117, 0.9);
-      height      : 100%;
-      display     : inline-block;
-      width       : 300px;
+      position: relative;
+      background: rgba(0, 134, 117, 0.9);
+      height: 100%;
+      display: inline-block;
+      width: 300px;
       padding-left: 5rem;
-      padding-top : 300px;
+      padding-top: 300px;
+
       @media(max-width: 991px) {
         padding-top: 300px;
       }
-  
-      position    : sticky;
-      top         : 300px;
+
+      position : sticky;
+      top : 300px;
 
       .menu-item {
         a {
@@ -236,63 +242,63 @@
     // transition: all 300ms;
     .first-level {
       text-transform: uppercase;
-      padding-left  : 4rem;
-      padding-top   : 300px;
-     
-  
+      padding-left: 4rem;
+      padding-top: 300px;
+
+
       // transition: all 300ms;
       .menu-item {
         a {
-          color        : white;
-          font-size    : 2rem;
-          font-weight  : 100;
-          padding      : 1rem 0;
-          display      : block;
+          color: white;
+          font-size: 2rem;
+          font-weight: 100;
+          padding: 1rem 0;
+          display: block;
           margin-bottom: .5rem;
         }
       }
     }
 
     .second-level {
-      position    : relative;
-      background  : rgba(0, 134, 117, 0.95);
-      height      : 100%;
-      display     : inline-block;
-      width       : 360px;
+      position: relative;
+      background: rgba(0, 134, 117, 0.95);
+      height: 100%;
+      display: inline-block;
+      width: 360px;
       padding-left: 4rem;
       padding-right: 2rem;
-      padding-top : 300px;
+      padding-top: 300px;
 
       .menu-item {
         a {
-          color      : white;
-          font-size  : 1.2rem;
+          color: white;
+          font-size: 1.2rem;
           font-weight: 100;
-          padding    : 1rem 0;
-          display    : block;
+          padding: 1rem 0;
+          display: block;
         }
       }
     }
 
     .third-level {
-      position      : relative;
-      background    : #d7d7d7;
-      height        : 100%;
-      display       : inline-block;
-      width         : 360px;
+      position: relative;
+      background: #d7d7d7;
+      height: 100%;
+      display: inline-block;
+      width: 360px;
       padding-right: 2rem;
-      padding-left  : 4rem;
+      padding-left: 4rem;
       // padding-top: 260px;
-      padding-top   : 171px;
-      color         : #4d4d4d;
+      padding-top: 171px;
+      color: #4d4d4d;
 
       .menu-item {
         a {
-          color      : #4d4d4d;
-          font-size  : 1.2rem;
+          color: #4d4d4d;
+          font-size: 1.2rem;
           font-weight: 100;
-          padding    : 1rem 0;
-          display    : block;
+          padding: 1rem 0;
+          display: block;
         }
       }
     }
@@ -309,30 +315,30 @@
 
     .main-menu {
       position: fixed;
-      display : flex;
-      top     : 0;
-      left    : 0;
-      bottom  : 0;
-      right   : 0;
-      z-index : 1;
+      display: flex;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
 
       .menu-underlay {
         position: fixed;
-        top     : 0;
-        left    : 0;
-        right   : 0;
-        bottom  : 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
 
       .first-level {
-        position    : relative;
-        background  : rgba(0, 134, 117, 0.9);
-        height      : 100%;
-        display     : inline-block;
-        width       : 300px;
+        position: relative;
+        background: rgba(0, 134, 117, 0.9);
+        height: 100%;
+        display: inline-block;
+        width: 300px;
         padding-left: 5rem;
-        padding-top : 300px;
-        position    : sticky;
+        padding-top: 300px;
+        position: sticky;
 
         .menu-item {
           a {
@@ -350,9 +356,11 @@
   display: none;
 }
 
+// tablet + mobile
+
 @media(max-width: 991px) {
   .hamburger {
-    z-index : 100;
+    z-index: 100;
     position: relative;
   }
 
@@ -362,11 +370,13 @@
       top: -15.9rem;
       left: 1rem;
     }
+
     .main-menu {
       .first-level {
         padding-top: 300px;
+
         a {
-          color: white!important;
+          color: white !important;
         }
       }
     }
@@ -378,18 +388,18 @@
   }
 
   .main-menu {
-    display: none!important;
+    display: none !important;
 
     &.menu-open {
-      display: block!important;
+      display: block !important;
     }
 
-    position  : fixed;
-    top       : 0;
-    left      : 0;
-    bottom    : 0;
-    right     : 0;
-    z-index   : 1;
+    position : fixed;
+    top : 0;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    z-index : 1;
     background: rgba(0, 134, 117, 1);
   }
 
@@ -407,7 +417,7 @@
     .first-level,
     .second-level,
     .third-level {
-      width: 100%!important;
+      width: 100% !important;
     }
 
     .second-level,
@@ -427,6 +437,35 @@
       padding-top: 200px !important;
     }
   }
+
+
+
+
+
+
+
+  .menu-open {
+
+    .first-level {
+      padding-top: 300px !important;
+    }
+
+    .second-level {
+      padding-top: 300px !important;
+    }
+
+    .third-level {
+      padding-top: 171px !important;
+    }
+  }
+
+
+
+
+
+
+
+
 }
 
 @media(min-width: 991px) {
@@ -440,6 +479,10 @@
 
 .third-level {
   .mobile-back-button {
-    color: #444!important;
+    color: #444 !important;
   }
+}
+
+body.menu-open-contentpage {
+  overflow: hidden;
 }

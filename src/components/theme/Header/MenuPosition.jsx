@@ -1,29 +1,50 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 
-function MenuPosition(Props) {
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
 
-  const [elementPosition, setElementPosition] = useState({ x: 20, y: 150 })
+function shouldPaddingUpdate (expanded, current, y, setTopDistance) {
+  if(current == undefined || y == undefined) {
+    return 0
+  } 
+  // console.log('prev', y)
+  if(expanded && current === y) {
+    return current
+  }
+  if(expanded && current !== y) {
+    return y
+  }
+  if(!expanded && current !== y) {
+    setTopDistance(current)
+  }
+}
+
+function MenuPosition(props) {
+
+  const [elementPosition, setElementPosition] = useState({ x: 0, y: 0 })
   const firstLevel = useRef()
 
-  // Element scroll position
   useScrollPosition(
     ({ currPos }) => {
       setElementPosition(currPos)
     }, [], firstLevel
   )
 
-  console.log({ elementPosition })
-
   return (
     <div
       ref={firstLevel}
-      className="menuWrapper"
-      style={{top: elementPosition.y}}
+      className={props.className}
+      style={{paddingTop: shouldPaddingUpdate(props.expanded, elementPosition.y, props.topDistance, props.setTopDistance)}}
     >
-      {Props.children}
+      {props.children}
     </div>
   )
 };

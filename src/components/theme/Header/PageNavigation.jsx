@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-
+import ReactDOM from 'react-dom'
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -55,6 +55,7 @@ class PageNavigation extends Component {
     this.setSubmenu = this.setSubmenu.bind(this);
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.setSubtopics = this.setSubtopics.bind(this);
+    this.setTopDistance = this.setTopDistance.bind(this);
     this.state = {
       isMobileMenuOpen: false,
       subMenu: {
@@ -66,26 +67,24 @@ class PageNavigation extends Component {
         items: [],
       },
       //, isMobile: false
+      topDistance: 0,
     };
+    this.menuWrapperRef = React.createRef()
   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.pathname !== this.props.pathname) {
-  //     const url = this.props.pathname;
-  //     this.props.getLocalnavigation(url);
-  //   }
-  // }
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
     this.props.getLocalnavigation(getBaseUrl(this.props.pathname));
   }
+  componentDidMount() {
+    console.log('ref', this.menuWrapperRef)
+    this.menuWrapperRef && this.getDistanceFromTop(this.menuWrapperRef.current)
+  }
+  
 
-  // componentDidMount() {
-  //   const url = this.props.content['@id']
-  //     .replace(settings.apiPath, '')
-  //     .replace(settings.internalApiPath, '');
-
-  //   this.props.getLocalnavigation(url);
-  // }
+  setTopDistance(distance) {
+    console.log('setting top distance', distance)
+    this.setState({topDistance: distance})
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -96,18 +95,22 @@ class PageNavigation extends Component {
     }
   }
 
-  // isMobile() {
-  //   if(window.matchMedia("(max-width: 900px)").matches) {
-  //     this.setState({isMobile: !this.state.isMobile})
-  //   }
-  //   else{
-  //     this.setState({isMobile: this.state.isMobile})
-  //   }
-  // }
+   getDistanceFromTop = (element) => {
+     if(!element) return
+    var xPosition = 0;
+    var yPosition = 0;
 
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
 
-
-
+    // return { x: xPosition, y: yPosition };
+    console.log('getdistancefromtop', element, yPosition)
+    this.setTopDistance(yPosition)
+    return yPosition
+}
 
   setSubmenu(title, items, ev) {
     const body = document.querySelector('body');
@@ -165,6 +168,8 @@ class PageNavigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
+
+  
   render() {
     const localnavigation =
       (this.props.localnavigation.items &&
@@ -219,8 +224,14 @@ class PageNavigation extends Component {
             onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
             className="menu-underlay"
           />
-          <MenuPosition>
-          <div className="first-level"> 
+          <div 
+          ref={this.menuWrapperRef}
+          className="first-level-wrapper">
+
+          <MenuPosition 
+            className="first-level"
+            expanded={this.state.subMenu.items && this.state.subMenu.items.length} setTopDistance={this.setTopDistance} topDistance={this.state.topDistance}
+          >
             {this.props.items.map((item, index) => (
               <div
                 key={item.url}
@@ -341,10 +352,11 @@ class PageNavigation extends Component {
                 )}
               </div>
             ))}
-          </div>
           </MenuPosition>
+          </div>
+
           {this.state.subMenu.items && this.state.subMenu.items.length ? (
-            <div className="second-level">
+            <div className="second-level" style={{paddingTop: this.state.topDistance}}>
               <Icon
                 name={backIcon}
                 onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
@@ -386,18 +398,18 @@ class PageNavigation extends Component {
             <div />
           )}
           {this.state.subTopics.items && this.state.subTopics.items.length ? (
-            <div className="third-level">
+            <div className="third-level" style={{paddingTop: this.state.topDistance}}>
               <Icon
                 name={backIcon}
                 onClick={() => this.setSubtopics(null, [])}
                 className="mobile-back-button"
               />
-              <h2 style={{ fontWeight: 600 }}>
+              {/* <h2 style={{ fontWeight: 600 }}>
                 <i>{this.state.subTopics.type}</i>
               </h2>
               <p style={{ fontWeight: 100 }} className="mb-5">
                 Subtopics
-              </p>
+              </p> */}
               {this.state.subTopics.items.map(item => (
                 <div
                   key={item.url}
