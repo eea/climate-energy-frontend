@@ -19,7 +19,7 @@ import {
   getBaseUrl,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
-import Scrollspy from 'react-scrollspy'
+import Scrollspy from 'react-scrollspy';
 
 /**
  * View container class.
@@ -107,6 +107,7 @@ class View extends Component {
 
   state = {
     hasObjectButtons: null,
+    headings: [],
   };
 
   /**
@@ -120,6 +121,46 @@ class View extends Component {
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
+  }
+
+  componentDidMount() {
+    if (
+      __CLIENT__ &&
+      this.props.content &&
+      this.props.content.table_of_contents &&
+      document.querySelector('.inPageNavigation')
+    ) {
+      this.makeHeadings();
+    }
+  }
+
+  compareTwoArraysOfHeadings = (arr1, arr2) => {
+    // returns true if any object in arr1 can't be found in arr2
+    return arr1.some(
+      arr1Item =>
+        !arr2.find(
+          arr2Item =>
+            arr1Item.id === arr2Item.id && arr1Item.text === arr2Item.text,
+        ),
+    );
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    // path comparison here doesn't work, because the path will update before the content
+    if (
+      this.props.content?.table_of_contents &&
+      prevProps.content.id !== this.props.content.id &&
+      !this.compareTwoArraysOfHeadings(prevState.headings, this.state.headings)
+    ) {
+      if (
+        __CLIENT__ &&
+        this.props.content &&
+        this.props.content.table_of_contents &&
+        document.querySelector('.inPageNavigation')
+      ) {
+        this.makeHeadings();
+      }
+    }
   }
 
   /**
@@ -184,7 +225,7 @@ class View extends Component {
       .toLowerCase();
 
   makeHeadings() {
-    return Array.from(
+    const headings = Array.from(
       document.querySelectorAll('.content-page h2'),
     ).map((el, index) => {
       const id = `${index}`;
@@ -193,6 +234,10 @@ class View extends Component {
       // console.log(text)
       return { id, text };
     });
+    // if(headings && headings.lenght) {
+    // return headings
+    // }
+    this.setState({ headings });
   }
 
   render() {
@@ -269,7 +314,9 @@ class View extends Component {
         {this.props.content &&
           this.props.content.table_of_contents &&
           __CLIENT__ &&
-          document.querySelector('.inPageNavigation') && (
+          document.querySelector('.inPageNavigation') &&
+          this.state.headings &&
+          this.state.headings.length && (
             <Portal
               node={__CLIENT__ && document.querySelector('.inPageNavigation')}
             >
@@ -277,10 +324,12 @@ class View extends Component {
                 <h5>
                   <b>In page navigation</b>
                 </h5>
-                <Scrollspy 
-                  className="scrollspy headings_navigation_list" items={ this.makeHeadings().map(({id}) => id)} 
-                  currentClassName="isCurrent">
-                  {this.makeHeadings().map(({ id, text }) => (
+                <Scrollspy
+                  className="scrollspy headings_navigation_list"
+                  items={this.state.headings.map(({ id }) => id)}
+                  currentClassName="isCurrent"
+                >
+                  {this.state.headings.map(({ id, text }) => (
                     <li key={id}>
                       <a href={`#${id}`}>{text}</a>
                     </li>
