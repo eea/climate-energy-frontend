@@ -76,13 +76,11 @@ class PageNavigation extends Component {
     this.props.getLocalnavigation(getBaseUrl(this.props.pathname));
   }
   componentDidMount() {
-    console.log('ref', this.menuWrapperRef)
     this.menuWrapperRef && this.getDistanceFromTop(this.menuWrapperRef.current)
   }
   
 
   setTopDistance(distance) {
-    console.log('setting top distance', distance)
     this.setState({topDistance: distance})
   }
 
@@ -106,8 +104,6 @@ class PageNavigation extends Component {
         element = element.offsetParent;
     }
 
-    // return { x: xPosition, y: yPosition };
-    console.log('getdistancefromtop', element, yPosition)
     this.setTopDistance(yPosition)
     return yPosition
 }
