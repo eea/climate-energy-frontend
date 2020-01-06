@@ -22,6 +22,9 @@
     },
     "volto-plotlycharts": {
       "url": "https://github.com/eea/volto-plotlycharts.git"
+    },
+    "volto-sidebar" : {
+      "url": "https://github.com/eea/volto-sidebar"
     }
 }
 
