@@ -27,5 +27,16 @@
                 "addons/volto-plotlycharts/src"
             ]
         }
-    }
+    },
+    "addons": [
+        "volto-addons",
+        "volto-blocks",
+        "volto-ckeditor",
+        "volto-corsproxy",
+        "volto-datablocks",
+        "volto-drafteditor",
+        "volto-mosaic",
+        "volto-plotlycharts",
+        "volto-sidebar"
+      ]
 }

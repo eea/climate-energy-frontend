@@ -90,7 +90,7 @@
     "prettier-stylelint": "0.4.2"
   },
   "customizationPaths": [
-    "src/customizations/",
-    "src/addons/volto-addons/src/customizations/"
-  ]
+    "src/customizations/volto/"
+  ],
+  "addonsCustomizationPath": "src/customizations"
 }
