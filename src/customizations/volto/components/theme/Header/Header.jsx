@@ -44,13 +44,13 @@ class Header extends Component {
 
                 <div style={{marginRight: '2rem'}} className="footerLogoWrapper">
                 <img
-                style={{ width: '100px' , marginRight: '2rem' }}
+                style={{ width: '150px' , marginRight: '2rem' }}
                 className="footerLogo"
                 src={ecLogo}
                 alt=""
               />
                 <img
-                style={{ width: '100px' }}
+                style={{ width: '110px' }}
                 className="footerLogo"
                 src={eeaLogo}
                 alt=""
