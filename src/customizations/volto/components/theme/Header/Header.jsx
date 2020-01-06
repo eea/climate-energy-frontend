@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { BodyClass } from '@plone/volto/helpers';
 
+import ecLogo from './ec_white_negative_color.png';
+import eeaLogo from './eea_white.png';
+
 import {
   Logo,
   Navigation,
@@ -37,6 +40,25 @@ class Header extends Component {
             <div className="headerTop">
               <div className="homepageHeader">
                 <Logo isHomepage={this.props.actualPathName === '/' || false} />
+
+
+                <div style={{marginRight: '2rem'}} className="footerLogoWrapper">
+                <img
+                style={{ width: '100px' , marginRight: '2rem' }}
+                className="footerLogo"
+                src={ecLogo}
+                alt=""
+              />
+                <img
+                style={{ width: '100px' }}
+                className="footerLogo"
+                src={eeaLogo}
+                alt=""
+              />
+            
+     
+            </div>
+
                 <div className="searchbar">
                   <SearchWidget pathname={this.props.pathname} />
                 </div>

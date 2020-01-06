@@ -250,6 +250,7 @@ body.homepage {
 
         z-index : 2;
         position: relative;
+        flex-grow: 1;
     }
 
 
@@ -362,10 +363,10 @@ body.homepage {
 
         .ui.form .searchbox.field {
             border-left: none;
-            top: -1rem;
-            // margin-right: -5rem;
+            top: -2px;
             position: relative;
             z-index: 1;
+            border-bottom: 1px solid #ffffff78!important;
 
             input {
                 color: @white;
