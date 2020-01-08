@@ -472,8 +472,12 @@
   body:not(.menu-open-contentpage) .content-page {
     .header-wrapper {
       position: sticky;
-      top: 0;
+      top: 1px;
     }
+  }
+  .left-menu-wrapper {
+    min-height: 800px;
+    
   }
 }
 
@@ -486,3 +490,5 @@
 body.menu-open-contentpage {
   overflow: hidden;
 }
+
+

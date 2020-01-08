@@ -165,7 +165,7 @@ class App extends Component {
                     tablet={12}
                     computer={3}
                     largeScreen={3}
-                    className="menu-hamburger"
+                    className="menu-hamburger left-menu-wrapper"
                   >
                     <Header
                       noBreadcrumbs={true}
@@ -235,22 +235,22 @@ export default compose(
     {
       key: 'breadcrumbs',
       promise: ({ location, store: { dispatch } }) =>
-      __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
-      __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-      __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
+        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
     },
     {
       key: 'types',
       promise: ({ location, store: { dispatch } }) =>
-      __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
       key: 'workflow',
