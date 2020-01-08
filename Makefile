@@ -20,7 +20,7 @@ activate:		## Activate an addon package for development
 			echo "Running npm install in src/addons/${pkg}";\
 			cd "src/addons/$${pkg}";\
 			npm install;\
-			cd ../..;\
+			cd -;\
 			echo "Cleaning up after npm install";\
 			export VOLTO_ADDONS=`./pkg_helper.py list`;\
 			read -ra ADDR <<< "$${VOLTO_ADDONS}"; \
