@@ -286,15 +286,13 @@ class PageNavigation extends Component {
                               {localnavigation.map(item => (
                                 <li
                                   className={
-                                    (flattenToAppURL(this.props.pathname) ===
-                                      flattenToAppURL(item['@id']) &&
+                                    (flattenToAppURL(this.props.pathname).includes(flattenToAppURL(item['@id'])) &&
                                       'active') ||
                                     ''
                                   }
                                   key={`li-${item['@id']}`}
                                 >
-                                  {flattenToAppURL(this.props.pathname) ===
-                                    flattenToAppURL(item['@id']) && (
+                                  {flattenToAppURL(this.props.pathname).includes(flattenToAppURL(item['@id'])) && (
                                     <span className="menuExpandedIndicator">
                                       <Icon name={rightCircle} size="20px" />
                                     </span>
