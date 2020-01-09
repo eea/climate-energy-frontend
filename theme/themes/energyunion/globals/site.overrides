@@ -214,6 +214,7 @@ nav.tabs {
                         font-size: 1.3rem;
                     }
                 }
+
                 cursor: pointer;
                 margin-bottom: 1rem;
                 color: #4a4a4a;
@@ -366,7 +367,7 @@ body.homepage {
             top: -2px;
             position: relative;
             z-index: 1;
-            border-bottom: 1px solid #ffffff78!important;
+            border-bottom: 1px solid #ffffff78 !important;
 
             input {
                 color: @white;
@@ -590,9 +591,10 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
 
 
 .remove-all-border-radius {
-    border-radius: 0!important;
+    border-radius: 0 !important;
+
     * {
-        border-radius: 0!important;
+        border-radius: 0 !important;
     }
 }
 
