@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Helmet } from '@plone/volto/helpers';;
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { Portal } from 'react-portal';
@@ -17,15 +17,13 @@ import qs from 'query-string';
 import { settings } from '~/config';
 
 import { searchContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components'
-import zoomIcon from '@plone/volto/icons/zoom.svg'
-
+import { Icon } from '@plone/volto/components';
+import zoomIcon from '@plone/volto/icons/zoom.svg';
 
 import { Toolbar } from '@plone/volto/components'; // SearchTags,
 
 // import { FormattedMessage } from 'react-intl';
 // import { Placeholder } from 'semantic-ui-react';
-
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {
@@ -145,97 +143,108 @@ class Search extends Component {
   }
 
   render() {
-    const searchItems = this.props.items?.sort((a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate))
+    const searchItems = this.props.items?.sort(
+      (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate),
+    );
     return (
       <Container
         id="page-search"
         className="catalogue-body full-width-catalogue"
       >
         <Helmet title="Search" />
-          <article id="content">
-            <div className="catalogue-header">
-              <div className="searchWrapper">
-                <Input
-                  type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                  placeholder="eg: Renewable energy"
-                  onKeyPress={(event) => { if (event.key === 'Enter') this.doSearch(this.state.value) }}
-                />
-                <Icon
-                  className="searchIcon"
-                  onClick={() => this.doSearch(this.state.value)}
-                  name={zoomIcon} size="40px" />
-              </div>
+        <article id="content">
+          <div className="catalogue-header">
+            <div className="searchWrapper">
+              <Input
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+                placeholder="eg: Renewable energy"
+                onKeyPress={event => {
+                  if (event.key === 'Enter') this.doSearch(this.state.value);
+                }}
+              />
+              <Icon
+                className="searchIcon"
+                onClick={() => this.doSearch(this.state.value)}
+                name={zoomIcon}
+                size="40px"
+              />
             </div>
-            <div id="content-core">
-              <div className="search-listing item-listing">
-                <Item.Group>
-                  {searchItems.map(item => (
-                    <Item
-                      className="search-item"
-                      key={item['@id']}
-                    >
-                      <Item.Content>
-                        <Item.Header>
-                          <Link to={this.getPath(item['@id'])}>
-                            <h3 className="item-title">{item.Title || item.title}</h3>
-                          </Link>
-                        </Item.Header>
+          </div>
+          <div id="content-core">
+            <div className="search-listing item-listing">
+              <Item.Group>
+                {searchItems.map(item => (
+                  <Item className="search-item" key={item['@id']}>
+                    <Item.Content>
+                      <Item.Header>
+                        <Link to={this.getPath(item['@id'])}>
+                          <h3 className="item-title">
+                            {item.Title || item.title}
+                          </h3>
+                        </Link>
+                      </Item.Header>
 
-                        {item['@components'] && item['@components'].breadcrumbs && (
-                          <div className="item-breadcrumb">
-                            <Breadcrumb>
-                              {item['@components'].breadcrumbs.items.map(
-                                (item, index, items) => [
-                                  index < items.length - 1 ? (
-                                    <Breadcrumb.Section key={item['@id']}>
-                                      <Link to={this.getPath(item['@id'])}>
-                                        {item.title}
-                                      </Link>
-                                      <Breadcrumb.Divider
-                                        key={`divider-${item.url}`}
-                                      />
-                                    </Breadcrumb.Section>
-                                  ) : (
-                                      <Breadcrumb.Section key={item['@id']}>
-                                        <Link to={this.getPath(item['@id'])}>{item.title}</Link>
-                                      </Breadcrumb.Section>
-                                    ),
-                                ],
-                              )}
-                            </Breadcrumb>
+                      {item['@components'] && item['@components'].breadcrumbs && (
+                        <div className="item-breadcrumb">
+                          <Breadcrumb>
+                            {item['@components'].breadcrumbs.items.map(
+                              (item, index, items) => [
+                                index < items.length - 1 ? (
+                                  <Breadcrumb.Section key={item['@id']}>
+                                    <Link to={this.getPath(item['@id'])}>
+                                      {item.title}
+                                    </Link>
+                                    <Breadcrumb.Divider
+                                      key={`divider-${item.url}`}
+                                    />
+                                  </Breadcrumb.Section>
+                                ) : (
+                                  <Breadcrumb.Section key={item['@id']}>
+                                    <Link to={this.getPath(item['@id'])}>
+                                      {item.title}
+                                    </Link>
+                                  </Breadcrumb.Section>
+                                ),
+                              ],
+                            )}
+                          </Breadcrumb>
+                        </div>
+                      )}
+
+                      <Item.Description>
+                        {item.description && (
+                          <div className="descriptionBody">
+                            {item.description}
                           </div>
                         )}
-
-                        <Item.Description>
-                          {item.description && <div className="descriptionBody">{item.description}</div>}
-                          <div
-                          className="searchMetadata">
-                            {item.topics &&
-                              <div>
-                                <span className="searchLabel black">Topic:</span>{' '}
-                                {item.topics?.join(', ')}
-                              </div>}
+                        <div className="searchMetadata">
+                          {item.topics && (
                             <div>
-                              <span className="searchLabel black">Content type:</span>{' '}
-                              {item['@type']}
+                              <span className="searchLabel black">Topic:</span>{' '}
+                              {item.topics?.join(', ')}
                             </div>
-                            <div>
-                              <span className="searchLabel black">Modified:</span>{' '}
-                              {moment(item.ModificationDate).calendar()}
-                            </div>
+                          )}
+                          <div>
+                            <span className="searchLabel black">
+                              Content type:
+                            </span>{' '}
+                            {item['@type']}
                           </div>
-                        </Item.Description>
-
-
-                      </Item.Content>
-                    </Item>
-                  ))}
-                </Item.Group>
-              </div>
+                          <div>
+                            <span className="searchLabel black">Modified:</span>{' '}
+                            {moment(item.ModificationDate).calendar()}
+                          </div>
+                        </div>
+                      </Item.Description>
+                    </Item.Content>
+                  </Item>
+                ))}
+              </Item.Group>
             </div>
-          </article>
+          </div>
+        </article>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
@@ -274,7 +283,8 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
-      __SERVER__ && dispatch(
+        __SERVER__ &&
+        dispatch(
           searchContent(
             '',
             toSearchOptions(
