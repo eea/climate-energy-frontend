@@ -98,3 +98,9 @@
 .item-listing .ui.items .header>a {
     color: inherit;
 }
+
+.noResults {
+    font-weight: bold;
+    padding: 2rem;
+    font-size: 1.2rem;
+}

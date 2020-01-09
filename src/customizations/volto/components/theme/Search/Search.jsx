@@ -146,6 +146,9 @@ class Search extends Component {
     const searchItems = this.props.items?.sort(
       (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate),
     );
+
+    console.log('searchItems', searchItems);
+
     return (
       <Container
         id="page-search"
@@ -175,72 +178,79 @@ class Search extends Component {
           <div id="content-core">
             <div className="search-listing item-listing">
               <Item.Group>
-                {searchItems.map(item => (
-                  <Item className="search-item" key={item['@id']}>
-                    <Item.Content>
-                      <Item.Header>
-                        <Link to={this.getPath(item['@id'])}>
-                          <h3 className="item-title">
-                            {item.Title || item.title}
-                          </h3>
-                        </Link>
-                      </Item.Header>
-
-                      {item['@components'] && item['@components'].breadcrumbs && (
-                        <div className="item-breadcrumb">
-                          <Breadcrumb>
-                            {item['@components'].breadcrumbs.items.map(
-                              (item, index, items) => [
-                                index < items.length - 1 ? (
-                                  <Breadcrumb.Section key={item['@id']}>
-                                    <Link to={this.getPath(item['@id'])}>
-                                      {item.title}
-                                    </Link>
-                                    <Breadcrumb.Divider
-                                      key={`divider-${item.url}`}
-                                    />
-                                  </Breadcrumb.Section>
-                                ) : (
-                                  <Breadcrumb.Section key={item['@id']}>
-                                    <Link to={this.getPath(item['@id'])}>
-                                      {item.title}
-                                    </Link>
-                                  </Breadcrumb.Section>
-                                ),
-                              ],
-                            )}
-                          </Breadcrumb>
-                        </div>
+                {!searchItems || !searchItems.length ? (
+                  <span className="noResults">
+                    'Your search returned no results'
+                  </span>
+                ) : (
+                  searchItems.map(item => (
+                    <Item className="search-item" key={item['@id']}>
+                      {item.lead_image ? (
+                        <Item.Image
+                          size="tiny"
+                          src={`${item['@id']
+                            .replace(settings.apiPath, '')
+                            .replace(
+                              settings.internalApiPath,
+                              '',
+                            )}/@@images/image/thumb`}
+                        />
+                      ) : (
+                        ''
                       )}
+                      <Item.Content>
+                        <Item.Header>
+                          <Link to={this.getPath(item['@id'])}>
+                            <h3 className="item-title">
+                              {item.Title || item.title}
+                            </h3>
+                          </Link>
+                        </Item.Header>
 
-                      <Item.Description>
-                        {item.description && (
-                          <div className="descriptionBody">
-                            {item.description}
-                          </div>
-                        )}
-                        <div className="searchMetadata">
-                          {item.topics && (
-                            <div>
-                              <span className="searchLabel black">Topic:</span>{' '}
-                              {item.topics?.join(', ')}
+                        {item['@components'] &&
+                          item['@components'].breadcrumbs && (
+                            <div className="item-breadcrumb">
+                              <Breadcrumb>
+                                {item['@components'].breadcrumbs.items.map(
+                                  (item, index, items) => [
+                                    index < items.length - 1 ? (
+                                      <Breadcrumb.Section key={item['@id']}>
+                                        <Link to={this.getPath(item['@id'])}>
+                                          {item.title}
+                                        </Link>
+                                        <Breadcrumb.Divider
+                                          key={`divider-${item.url}`}
+                                        />
+                                      </Breadcrumb.Section>
+                                    ) : (
+                                      <Breadcrumb.Section key={item['@id']}>
+                                        <Link to={this.getPath(item['@id'])}>
+                                          {item.title}
+                                        </Link>
+                                      </Breadcrumb.Section>
+                                    ),
+                                  ],
+                                )}
+                              </Breadcrumb>
                             </div>
                           )}
-                          <div>
-                            <span className="searchLabel black">
-                              Content type:
-                            </span>{' '}
-                            {item['@type']}
+                        <Item.Description>
+                          <div className="descriptionBody">
+                            {item.description && item.description}
                           </div>
-                          <div>
-                            <span className="searchLabel black">Modified:</span>{' '}
-                            {moment(item.ModificationDate).calendar()}
+                          <div className="searchMetadata">
+                            <div>
+                              <span className="searchLabel black">
+                                Modified:
+                              </span>{' '}
+                              {moment(item.ModificationDate).calendar()}
+                            </div>
                           </div>
-                        </div>
-                      </Item.Description>
-                    </Item.Content>
-                  </Item>
-                ))}
+                        </Item.Description>
+                      </Item.Content>
+                    </Item>
+                  ))
+                )}
               </Item.Group>
             </div>
           </div>
