@@ -142,6 +142,10 @@ nav.tabs {
     left: 0;
     right: 0;
     bottom: 100%;
+    
+    @media (max-width: 1200px) {
+        justify-content: space-between;
+    }
 
     a {
         background: none;
@@ -166,10 +170,8 @@ nav.tabs {
 
     }
 
-    @media (max-width: 1250px) {
-        a {
-            min-width: 130px;
-        }
+    @media (max-width: 1200px) {
+        width: unset!important;
 
         overflow: auto;
     }
