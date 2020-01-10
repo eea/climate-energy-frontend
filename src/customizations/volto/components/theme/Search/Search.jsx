@@ -180,7 +180,7 @@ class Search extends Component {
               <Item.Group>
                 {!searchItems || !searchItems.length ? (
                   <span className="noResults">
-                    'Your search returned no results'
+                    Your search returned no results
                   </span>
                 ) : (
                   searchItems.map(item => (
