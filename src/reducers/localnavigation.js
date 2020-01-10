@@ -24,6 +24,8 @@ export default function localnavigation(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_LOCALNAVIGATION}_SUCCESS`:
+      console.log('----------', action.result)
+
       return {
         ...state,
         error: null,

@@ -8,16 +8,14 @@ function shouldPaddingUpdate(
   setCurrentTop,
   currentTopDistance,
 ) {
-  console.log(
-    'expanded',
-    expanded,
-    'current',
-    current,
-    'initial',
-    initial,
-    // 'setCurrentTop',
-    // setCurrentTop,
-  );
+  // console.log(
+  //   'expanded',
+  //   expanded,
+  //   'current',
+  //   current,
+  //   'initial',
+  //   initial,
+  // );
 
   if (expanded && current === null && initial === 300) {
     return initial;

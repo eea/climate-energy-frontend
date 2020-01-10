@@ -16,9 +16,8 @@ import { getNavigation } from '@plone/volto/actions';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import { Icon } from '@plone/volto/components';
 import backIcon from '@plone/volto/icons/back.svg';
-import { getLocalnavigation } from '~/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings, blocks } from '~/config';
+import { settings } from '~/config';
 import rightCircle from '@plone/volto/icons/circle-right.svg';
 import MenuPosition from './MenuPosition';
 
@@ -33,10 +32,15 @@ const messages = defineMessages({
   },
 });
 
+function getPath(url) {
+  if (!url) return '';
+  return url
+    .replace(settings.apiPath, '')
+    .replace(settings.internalApiPath, '');
+}
+
 class PageNavigation extends Component {
   static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
-    getLocalnavigation: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -70,10 +74,10 @@ class PageNavigation extends Component {
     };
     this.menuWrapperRef = React.createRef();
   }
-  componentWillMount() {
-    this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
-    this.props.getLocalnavigation(getBaseUrl(this.props.pathname));
-  }
+  // componentWillMount() {
+  //   // this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
+  //   // this.props.getLocalnavigation(getBaseUrl(this.props.pathname));
+  // }
   componentDidMount() {
     this.setState({ topDistance: 300, currentTopDistance: 300 });
   }
@@ -90,10 +94,11 @@ class PageNavigation extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       this.closeMobileMenu();
       this.setSubmenu(this.state.subMenu.type, []);
-      this.props.getNavigation(getBaseUrl(nextProps.pathname));
-      this.props.getLocalnavigation(getBaseUrl(nextProps.pathname));
+      // this.props.getNavigation(getBaseUrl(nextProps.pathname));
+      // this.props.getLocalnavigation(getBaseUrl(nextProps.pathname));
     }
   }
+
   setSubmenu(title, items, ev) {
     const body = document.querySelector('body');
 
@@ -133,6 +138,7 @@ class PageNavigation extends Component {
   }
 
   isActive(url) {
+    if (!url) return;
     return (
       (url === '' && this.props.pathname === '/') ||
       (url !== '' && isMatch(this.props.pathname.split('/'), url.split('/')))
@@ -152,13 +158,14 @@ class PageNavigation extends Component {
 
   render() {
     const localnavigation =
-      (this.props.localnavigation.items &&
-        this.props.localnavigation.items.length &&
-        this.props.localnavigation.items.filter(
+      (this.props.localnavigation &&
+        this.props.localnavigation.length &&
+        this.props.localnavigation.filter(
           item => item.title !== 'Home',
         )) ||
       [];
-
+    console.log('localnavigation', this.props.localnavigation);
+    if (!this.props.items || !this.props.items.length) return '';
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
@@ -213,9 +220,11 @@ class PageNavigation extends Component {
             >
               {this.props.items.map((item, index) => (
                 <div
-                  key={item.url}
+                  key={getPath(item['@id'])}
                   className={
-                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                    this.isActive(getPath(item['@id']))
+                      ? 'menu-item active'
+                      : 'menu-item'
                   }
                 >
                   {item.items && item.items.length ? (
@@ -237,13 +246,15 @@ class PageNavigation extends Component {
 
                         {item.title}
                       </a>
-                      {this.isActive(item.url) && (
+                      {this.isActive(getPath(item['@id'])) && (
                         <div className="menuExpanded" id="menuExpanded">
                           {item.items.find(
                             i =>
                               __CLIENT__ &&
                               window &&
-                              window.location.href.includes(i.url) &&
+                              window.location.href.includes(
+                                getPath(i['@id']),
+                              ) &&
                               window.location.href.includes('topics'),
                           ) ? (
                             <Link
@@ -252,29 +263,35 @@ class PageNavigation extends Component {
                                 textTransform: 'initial',
                                 borderBottom: '1px solid #eee',
                               }}
-                              to={
+                              to={getPath(
                                 item.items.find(
                                   i =>
                                     __CLIENT__ &&
                                     window &&
-                                    window.location.href.includes(i.url),
-                                ).url
-                              }
-                              key={
+                                    window.location.href.includes(
+                                      getPath(i['@id']),
+                                    ),
+                                )['@id'],
+                              )}
+                              key={getPath(
                                 item.items.find(
                                   i =>
                                     __CLIENT__ &&
                                     window &&
-                                    window.location.href.includes(i.url),
-                                ).url
-                              }
+                                    window.location.href.includes(
+                                      getPath(i['@id']),
+                                    ),
+                                )['@id'],
+                              )}
                             >
                               {
                                 item.items.find(
                                   i =>
                                     __CLIENT__ &&
                                     window &&
-                                    window.location.href.includes(i.url),
+                                    window.location.href.includes(
+                                      getPath(i['@id']),
+                                    ),
                                 ).title
                               }
                             </Link>
@@ -286,13 +303,17 @@ class PageNavigation extends Component {
                               {localnavigation.map(item => (
                                 <li
                                   className={
-                                    (flattenToAppURL(this.props.pathname).includes(flattenToAppURL(item['@id'])) &&
+                                    (flattenToAppURL(
+                                      this.props.pathname,
+                                    ).includes(flattenToAppURL(item['@id'])) &&
                                       'active') ||
                                     ''
                                   }
                                   key={`li-${item['@id']}`}
                                 >
-                                  {flattenToAppURL(this.props.pathname).includes(flattenToAppURL(item['@id'])) && (
+                                  {flattenToAppURL(
+                                    this.props.pathname,
+                                  ).includes(flattenToAppURL(item['@id'])) && (
                                     <span className="menuExpandedIndicator">
                                       <Icon name={rightCircle} size="20px" />
                                     </span>
@@ -318,7 +339,12 @@ class PageNavigation extends Component {
                       )}
                     </React.Fragment>
                   ) : (
-                    <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                    <Link
+                      to={
+                        getPath(item['@id']) === '' ? '/' : getPath(item['@id'])
+                      }
+                      key={getPath(item['@id'])}
+                    >
                       {item.title}
                     </Link>
                   )}
@@ -339,9 +365,11 @@ class PageNavigation extends Component {
               />
               {this.state.subMenu.items.map(item => (
                 <div
-                  key={item.url}
+                  key={getPath(item['@id'])}
                   className={
-                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                    this.isActive(getPath(item['@id']))
+                      ? 'menu-item active'
+                      : 'menu-item'
                   }
                 >
                   {item.items && item.items.length ? (
@@ -362,7 +390,12 @@ class PageNavigation extends Component {
                       {item.title}
                     </a>
                   ) : (
-                    <Link to={item.url === '' ? '/' : item.url} key={item.url}>
+                    <Link
+                      to={
+                        getPath(item['@id']) === '' ? '/' : getPath(item['@id'])
+                      }
+                      key={getPath(item['@id'])}
+                    >
                       {item.title}
                     </Link>
                   )}
@@ -391,14 +424,20 @@ class PageNavigation extends Component {
               </p> */}
               {this.state.subTopics.items.map(item => (
                 <div
-                  key={item.url}
+                  key={getPath(item['@id'])}
                   className={
-                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                    this.isActive(getPath(item['@id']))
+                      ? 'menu-item active'
+                      : 'menu-item'
                   }
                 >
                   <Link
-                    to={(item.url = item.items ? item.items[0].url : item.url)}
-                    key={item.url}
+                    to={
+                      item.items
+                        ? getPath(item.items[0]['@id'])
+                        : getPath(item['@id'])
+                    }
+                    key={getPath(item['@id'])}
                   >
                     {item.title}
                   </Link>
@@ -416,19 +455,15 @@ class PageNavigation extends Component {
 
 export default compose(
   injectIntl,
-  asyncConnect([
-    {
-      key: 'localnavigation',
-      promise: ({ location, store: { content, dispatch } }) =>
-        __SERVER__ &&
-        dispatch(getLocalnavigation(getBaseUrl(location.pathname))),
-    },
-  ]),
   connect(
     (state, props) => ({
-      localnavigation: state.localnavigation.items,
-      items: state.navigation.items,
+      localnavigation:
+        state.content.data &&
+        state.content.data['@components'].localnavigation.items,
+      items:
+        state.content.data &&
+        state.content.data['@components'].navigation.items,
     }),
-    { getNavigation, getLocalnavigation },
+    {},
   ),
 )(PageNavigation);

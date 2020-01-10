@@ -15,8 +15,7 @@ import { BodyClass } from '@plone/volto/helpers';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import backIcon from '@plone/volto/icons/back.svg';
 import { Icon } from '@plone/volto/components';
-
-import { getNavigation } from '@plone/volto/actions';
+import { settings } from '~/config';
 
 import bgimage from './home.jpg';
 
@@ -31,9 +30,15 @@ const messages = defineMessages({
   },
 });
 
+function getPath(url) {
+  if (!url) return '';
+  return url
+    .replace(settings.apiPath, '')
+    .replace(settings.internalApiPath, '');
+}
+
 class Navigation extends Component {
   static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -64,10 +69,6 @@ class Navigation extends Component {
     };
   }
 
-  componentWillMount() {
-    this.props.getNavigation(getBaseUrl(this.props.pathname), 3);
-  }
-
   componentDidMount() {
     document.addEventListener('resize', this.isMobile);
     this.isMobile();
@@ -75,8 +76,7 @@ class Navigation extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.closeMobileMenu()
-      this.props.getNavigation(getBaseUrl(nextProps.pathname), 3);
+      this.closeMobileMenu();
     }
   }
 
@@ -167,20 +167,20 @@ class Navigation extends Component {
             aria-label={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
                 : this.props.intl.formatMessage(messages.openMobileMenu, {
-                  type: this.props.type,
-                })
+                    type: this.props.type,
+                  })
             }
             type="button"
             onClick={this.toggleMobileMenu}
@@ -202,18 +202,18 @@ class Navigation extends Component {
           <div className="first-level">
             {this.props.items.map((item, index) => (
               <div
-                key={item.url}
+                key={getPath(item['@id'])}
                 className={
-                  this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                  this.isActive(getPath(item['@id']))
+                    ? 'menu-item active'
+                    : 'menu-item'
                 }
               >
                 {item.items && item.items.length ? (
                   <a
                     role="button"
-                    onClick={ev =>
-                      this.setSubmenu(item.title, item.items, ev)
-                    }
-                    onKeyPress={() => { }}
+                    onClick={ev => this.setSubmenu(item.title, item.items, ev)}
+                    onKeyPress={() => {}}
                   >
                     {this.state.subMenu.type === item.title && (
                       <Icon
@@ -226,10 +226,10 @@ class Navigation extends Component {
                     {item.title}
                   </a>
                 ) : (
-                  <Link to={item.url} key={item.url}>
+                  <Link to={getPath(item['@id'])} key={getPath(item['@id'])}>
                     {item.title}
                   </Link>
-                  )}
+                )}
               </div>
             ))}
           </div>
@@ -242,9 +242,11 @@ class Navigation extends Component {
               />
               {this.state.subMenu.items.map(item => (
                 <div
-                  key={item.url}
+                  key={getPath(item['@id'])}
                   className={
-                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                    this.isActive(getPath(item['@id']))
+                      ? 'menu-item active'
+                      : 'menu-item'
                   }
                 >
                   {item.items && item.items.length ? (
@@ -253,7 +255,7 @@ class Navigation extends Component {
                       onClick={ev =>
                         this.setSubtopics(item.title, item.items, ev)
                       }
-                      onKeyPress={() => { }}
+                      onKeyPress={() => {}}
                     >
                       {this.state.subTopics.type === item.title && (
                         <Icon
@@ -265,16 +267,16 @@ class Navigation extends Component {
                       {item.title}
                     </a>
                   ) : (
-                      <Link to={item.url} key={item.url}>
-                        {item.title}
-                      </Link>
-                    )}
+                    <Link to={getPath(item['@id'])} key={getPath(item['@id'])}>
+                      {item.title}
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
           ) : (
-              <div />
-            )}
+            <div />
+          )}
           {this.state.subTopics.items && this.state.subTopics.items.length ? (
             <div className="third-level">
               <Icon
@@ -290,14 +292,20 @@ class Navigation extends Component {
               </p>
               {this.state.subTopics.items.map(item => (
                 <div
-                  key={item.url}
+                  key={getPath(item['@id'])}
                   className={
-                    this.isActive(item.url) ? 'menu-item active' : 'menu-item'
+                    this.isActive(getPath(item['@id']))
+                      ? 'menu-item active'
+                      : 'menu-item'
                   }
                 >
                   <Link
-                    to={(item.url = item.items ? item.items[0].url : item.url)}
-                    key={item.url}
+                    to={
+                      item.items
+                        ? getPath(item.items[0]['@id'])
+                        : getPath(item['@id'])
+                    }
+                    key={getPath(item['@id'])}
                   >
                     {item.title}
                   </Link>
@@ -305,8 +313,8 @@ class Navigation extends Component {
               ))}
             </div>
           ) : (
-              ''
-            )}
+            ''
+          )}
         </div>
       </div>
     );
@@ -316,8 +324,10 @@ export default compose(
   injectIntl,
   connect(
     state => ({
-      items: state.navigation.items,
+      items:
+        state.content.data &&
+        state.content.data['@components'].navigation.items,
     }),
-    { getNavigation },
+    {},
   ),
 )(Navigation);

@@ -32,7 +32,17 @@ const config = [
 
 export const settings = {
   ...config.settings,
-  contentExpand: [...config.settings.contentExpand.filter(content => content !== 'navigation'), ...['siblings', 'navigation', '&expand.navigation.depth=4']]
+  contentExpand: [
+    ...config.settings.contentExpand.filter(
+      content => content !== 'navigation',
+    ),
+    ...[
+      'localnavigation',
+      'siblings',
+      'navigation',
+      '&expand.navigation.depth=4',
+    ],
+  ],
 };
 
 export const views = {
