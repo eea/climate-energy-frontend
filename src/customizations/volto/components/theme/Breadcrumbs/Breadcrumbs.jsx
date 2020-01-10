@@ -12,7 +12,6 @@ import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -36,7 +35,6 @@ class Breadcrumbs extends Component {
    * @static
    */
   static propTypes = {
-    getBreadcrumbs: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -45,27 +43,6 @@ class Breadcrumbs extends Component {
       }),
     ).isRequired,
   };
-
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  componentWillMount() {
-    this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
-    }
-  }
 
   /**
    * Render method.
@@ -108,8 +85,10 @@ export default compose(
   injectIntl,
   connect(
     state => ({
-      items: state.breadcrumbs.items,
+      items:
+        state.content.data &&
+        state.content.data['@components'].breadcrumbs.items,
     }),
-    { getBreadcrumbs },
+    {},
   ),
 )(Breadcrumbs);
