@@ -128,9 +128,13 @@ function customizeAddonByPackage(addon, customizationPath, aliases) {
   return customizations;
 }
 
+// razzleModify.plugins = ['']
+
+
 // const projectRootPath = path.resolve('.');
 
 module.exports = {
+  plugins: ['bundle-analyzer'],
   modify: (config, { target, dev }, webpack) => {
     const vc = razzleModify(config, { target, dev }, webpack);
 
@@ -211,10 +215,10 @@ module.exports = {
     jsxRule.exclude = [/src\/addons\/.+\/node_modules/];
     vc.module.rules[jsxIndex] = jsxRule;
 
-    console.log('aliases', vc.resolve.alias);
+    console.log('plugins', vc.plugins);
     console.log('----');
-    console.log('rules', vc.module.rules);
-
+    // console.log('rules', vc.module.rules);
+      
     // vc.module.rules.forEach((rule, i) => {
     //   console.log('rule', i, '-----');
     //   console.log(rule);
@@ -222,7 +226,6 @@ module.exports = {
     //   console.log(rule.use && rule.use[0].options);
     // });
     // const hardSource = new HardSourceWebpackPlugin();
-    // vc.plugins.push(hardSource);
     return vc;
   },
 };
