@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { BodyClass } from '@plone/volto/helpers';
 
-import ecLogo from './ec_white_negative_color.png';
-import eeaLogo from './eea_white.png';
-
 import {
   Logo,
   Navigation,
@@ -15,6 +12,22 @@ import {
   Breadcrumbs,
 } from '@plone/volto/components';
 import PageNavigation from '~/components/theme/Header/PageNavigation';
+
+import Loadable from 'react-loadable';
+
+const ecLogo = Loadable({
+  loader: () => import('./ec_white_negative_color.png'),
+  loading() {
+    return <div>Loading...</div>;
+  },
+});
+
+const eeaLogo = Loadable({
+  loader: () => import('./eea_white.png'),
+  loading() {
+    return <div>Loading...</div>;
+  },
+});
 
 class Header extends Component {
   static propTypes = {

@@ -8,8 +8,21 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 
-import LogoImage from './Logo.svg';
-import LogoImagePage from './logo-page.svg';
+import Loadable from 'react-loadable';
+
+const LogoImage = Loadable({
+  loader: () => import('./Logo.svg'),
+  loading() {
+    return <div>Loading...</div>;
+  },
+});
+
+const LogoImagePage = Loadable({
+  loader: () => import('./logo-page.svg'),
+  loading() {
+    return <div>Loading...</div>;
+  },
+});
 
 const messages = defineMessages({
   site: {

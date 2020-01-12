@@ -1,8 +1,17 @@
 import React from 'react';
 
 import { Logo, SearchWidget, Breadcrumbs } from '@plone/volto/components';
-import headerImg from './topic-bg.jpg';
 import { connect } from 'react-redux';
+
+import Loadable from 'react-loadable';
+
+const headerImg = Loadable({
+  loader: () => import('./topic-bg.jpg'),
+  loading() {
+    return <div>Loading...</div>;
+  },
+});
+
 
 function PageHeader(props) {
   console.log(props);
