@@ -72,6 +72,7 @@
     "draftjs-to-html": "^0.8.4",
     "mgr-pdf-viewer-react": "^1.0.3",
     "mr-developer": "1.4.0",
+    "react-loadable": "^5.5.0",
     "react-scrollspy": "^3.4.2"
   },
   "devDependencies": {
