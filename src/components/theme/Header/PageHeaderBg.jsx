@@ -4,16 +4,7 @@
  */
 
 import React from 'react';
-
-import Loadable from 'react-loadable';
-
-const headerBg = Loadable({
-  loader: () => import('./topic-bg.jpg'),
-  loading() {
-    return <div>Loading...</div>;
-  },
-});
-
+import headerBg from './topic-bg.jpg';
 
 const PageHeaderBg = () => (
   <div className="page-header">
