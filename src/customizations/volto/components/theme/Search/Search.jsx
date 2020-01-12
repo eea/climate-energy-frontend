@@ -15,6 +15,7 @@ import { Portal } from 'react-portal';
 import { Container, Breadcrumb, Item, Input } from 'semantic-ui-react';
 import qs from 'query-string';
 import { settings } from '~/config';
+import { withRouter } from 'react-router-dom';
 
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
@@ -97,6 +98,14 @@ class Search extends Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      if (this.props.location.state && this.props.location.state.text) {
+        this.setState({ value: this.props.location.state.text });
+      }
+    }
+  }
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -147,8 +156,6 @@ class Search extends Component {
       (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate),
     );
 
-    console.log('searchItems', searchItems);
-
     return (
       <Container
         id="page-search"
@@ -163,13 +170,34 @@ class Search extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
                 placeholder="eg: Renewable energy"
+                defaultValue={this.props.searchableText}
                 onKeyPress={event => {
-                  if (event.key === 'Enter') this.doSearch(this.state.value);
+                  if (event.key === 'Enter') {
+                    this.props.history.push({
+                      pathname: '/search',
+                      search: this.props.location.search,
+                      state: {
+                        text: this.state.value,
+                        section: this.props.location.state.section,
+                      },
+                    });
+                    this.doSearch(this.state.value);
+                  }
                 }}
               />
               <Icon
                 className="searchIcon"
-                onClick={() => this.doSearch(this.state.value)}
+                onClick={() => {
+                  this.props.history.push({
+                    pathname: '/search',
+                    search: this.props.location.search,
+                    state: {
+                      text: this.state.value,
+                      section: this.props.location.state.section,
+                    },
+                  });
+                  this.doSearch(this.state.value);
+                }}
                 name={zoomIcon}
                 size="40px"
               />
@@ -306,4 +334,5 @@ export default compose(
         ),
     },
   ]),
+  withRouter,
 )(Search);
