@@ -35,6 +35,7 @@ import PageHeader from '~/components/theme/Header/PageHeader';
 // import PageHeaderBg from '~/components/theme/Header/PageHeaderBg';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+
 /**
  * @export
  * @class App
@@ -120,7 +121,6 @@ class App extends Component {
     const action = getView(this.props.pathname);
     const hideMenu = this.checkProps(this.props);
 
-    console.log('----------- rendering app', this.props.pathname);
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />

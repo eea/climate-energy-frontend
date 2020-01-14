@@ -59,23 +59,25 @@ class Breadcrumbs extends Component {
         >
           <Icon name={homeSVG} size="18px" />
         </Link>
-        {this.props.items && this.props.items.length && this.props.items.map((item, index, items) => [
-          <Breadcrumb.Divider key={`divider-${item.url}`} />,
-          index < items.length - 1 ? (
-            <Link
-              key={item.url}
-              title={item.title}
-              to={item.url}
-              className="section"
-            >
-              {item.title}
-            </Link>
-          ) : (
-            <Breadcrumb.Section key={item.url} active>
-              {item.title}
-            </Breadcrumb.Section>
-          ),
-        ])}
+        {this.props.items &&
+          this.props.items.length &&
+          this.props.items.map((item, index, items) => [
+            <Breadcrumb.Divider key={`divider-${index}-${item.url}`} />,
+            index < items.length - 1 ? (
+              <Link
+                key={item.url}
+                title={item.title}
+                to={item.url}
+                className="section"
+              >
+                {item.title}
+              </Link>
+            ) : (
+              <Breadcrumb.Section key={item.url} active>
+                {item.title}
+              </Breadcrumb.Section>
+            ),
+          ])}
       </Breadcrumb>
     );
   }

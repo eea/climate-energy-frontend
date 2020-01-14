@@ -6,7 +6,7 @@
 import { App } from '@plone/volto/components';
 import { defaultRoutes } from '@plone/volto/routes';
 // import EditSlider from '~/components/manage/Slider/Edit';
-// import HomepageView from '~/components/theme/HomepageView/HomepageView'
+import HomepageView from '~/components/theme/HomepageView/HomepageView';
 
 import { addonRoutes } from '~/config';
 
@@ -36,6 +36,11 @@ const routes = [
       // },
 
       // addon routes have a higher priority then default routes
+      // {
+      //   path: '/',
+      //   component: HomepageView,
+      //   exact: true,
+      // },
       ...(addonRoutes || []),
 
       ...defaultRoutes,

@@ -27,6 +27,39 @@ const messages = defineMessages({
   },
 });
 
+function getLocation(href) {
+  var match = href.match(
+    /^(https?:)\/\/(([^:/?#]*)(?::([0-9]+))?)([/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/,
+  );
+  return (
+    match && {
+      href: href,
+      protocol: match[1],
+      host: match[2],
+      hostname: match[3],
+      port: match[4],
+      pathname: match[5],
+      search: match[6],
+      hash: match[7],
+    }
+  );
+}
+
+function samePath(url, path) {
+  // returns true if the router path is equal to the given url path
+  const parsed = getLocation(url);
+  const clean = url
+    .replace(settings.apiPath, '')
+    .replace(settings.internalApiPath, '')
+    .replace(parsed.hash, '')
+    .replace(parsed.search, '');
+
+  // console.log('cleaned path from url', clean, path, url, getLocation(url));
+  // console.log(clean, url, path, clean === path);
+
+  return clean === path;
+}
+
 /**
  * Component to display the default view.
  * @function DefaultView
@@ -34,21 +67,38 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 class DefaultView extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps.loading);
-    if (nextProps.loading?.get?.loading) {
-      console.log('not yet');
-      return false;
-    }
-    return true;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextProps.loading);
+  //   if (nextProps.loading?.get?.loading) {
+  //     console.log('not yet');
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   render() {
-    console.log('im default view');
+    // console.log('im default view');
     const { content, intl } = this.props;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
+    const currentUrl = this.props.content?.['@id'];
+    const shouldRenderRoutes =
+      typeof currentUrl !== 'undefined' &&
+      samePath(currentUrl, this.props.pathname)
+        ? true
+        : false;
+
+    // console.log(
+    //   'should',
+    //   shouldRenderRoutes,
+    //   this.props.pathname,
+    //   this.props.contentId,
+    // );
+
+    if (shouldRenderRoutes === false) return '';
+
+    // {this.props.contentId} - {this.props.pathname}
     return hasBlocksData(content) ? (
       <div id="page-document" className="ui container">
         <Helmet title={content.title} />
@@ -139,5 +189,7 @@ DefaultView.propTypes = {
 };
 
 export default connect((state, props) => ({
+  pathname: state.router.location.pathname, //props.location.pathname,
+  contentId: state.content.data?.['@id'] || 'no-id',
   loading: state.content,
 }))(injectIntl(DefaultView));
