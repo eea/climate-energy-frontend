@@ -265,6 +265,13 @@ class View extends Component {
     }
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
+    const hasTocAndHeadings =
+      this.props.content &&
+      this.props.content.table_of_contents &&
+      __CLIENT__ &&
+      document.querySelector('.inPageNavigation') &&
+      this.state.headings &&
+      this.state.headings.length;
 
     return (
       <div id="view">
@@ -311,33 +318,30 @@ class View extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
-        {this.props.content &&
-          this.props.content.table_of_contents &&
-          __CLIENT__ &&
-          document.querySelector('.inPageNavigation') &&
-          this.state.headings &&
-          this.state.headings.length && (
-            <Portal
-              node={__CLIENT__ && document.querySelector('.inPageNavigation')}
-            >
-              <div className="headings_navigation">
-                <h5>
-                  <b>In page navigation</b>
-                </h5>
-                <Scrollspy
-                  className="scrollspy headings_navigation_list"
-                  items={this.state.headings.map(({ id }) => id)}
-                  currentClassName="isCurrent"
-                >
-                  {this.state.headings.map(({ id, text }) => (
-                    <li key={id}>
-                      <a href={`#${id}`}>{text}</a>
-                    </li>
-                  ))}
-                </Scrollspy>
-              </div>
-            </Portal>
-          )}
+        {hasTocAndHeadings ? (
+          <Portal
+            node={__CLIENT__ && document.querySelector('.inPageNavigation')}
+          >
+            <div className="headings_navigation">
+              <h5>
+                <b>In page navigation</b>
+              </h5>
+              <Scrollspy
+                className="scrollspy headings_navigation_list"
+                items={this.state.headings.map(({ id }) => id)}
+                currentClassName="isCurrent"
+              >
+                {this.state.headings.map(({ id, text }) => (
+                  <li key={id}>
+                    <a href={`#${id}`}>{text}</a>
+                  </li>
+                ))}
+              </Scrollspy>
+            </div>
+          </Portal>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
