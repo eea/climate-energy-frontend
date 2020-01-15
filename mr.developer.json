@@ -9,7 +9,8 @@
       "url": "https://github.com/eea/volto-blocks.git"
     },
     "volto-addons": {
-      "url": "https://github.com/eea/volto-addons.git"
+      "url": "https://github.com/eea/volto-addons.git",
+      "branch": "fix_energy"
     },
     "volto-ckeditor": {
       "url": "https://github.com/eea/volto-ckeditor.git"
