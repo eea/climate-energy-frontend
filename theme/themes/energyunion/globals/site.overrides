@@ -275,9 +275,23 @@ body.homepage {
             h3,
             h4,
             h5,
-            h6 {
+            h6,
+            ul,
+            ol,
+            li,
+            {
 
                 color: white;
+            }
+
+            tr,
+            td,
+            th { 
+                p {
+
+                    color: #444;
+                }
+                color: #444;
             }
 
             position : absolute;
