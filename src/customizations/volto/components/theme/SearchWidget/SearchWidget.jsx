@@ -83,7 +83,7 @@ class SearchWidget extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.location.state?.text !== this.props.location.state?.text) {
+    if (prevProps?.location?.state?.text !== this.props?.location?.state?.text) {
       this.setState(
         {
           text: this.props.location.state.text,
