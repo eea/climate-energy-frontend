@@ -20,6 +20,7 @@ import {
   hasBlocksData,
 } from '@plone/volto/helpers';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { getLocation, samePath } from 'volto-mosaic/helpers';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -52,8 +53,6 @@ class DefaultView extends Component {
     localNavigation: PropTypes.any,
   };
 
-
-
   // componentWillReceiveProps(nextProps) {
   //   console.log('herere', nextProps.parent, this.props.parent);
   //   if (nextProps.parent && nextProps.parent.id !== this.props.parent?.id) {
@@ -72,14 +71,14 @@ class DefaultView extends Component {
   //   }
   // }
 
-  computeFolderTabs = (siblings) => {
+  computeFolderTabs = siblings => {
     const tabsItems = siblings.items.map(i => {
       return {
         url: flattenToAppURL(i.url),
-        title: i.name
+        title: i.name,
       };
     });
-    return tabsItems
+    return tabsItems;
   };
 
   render() {
@@ -87,13 +86,39 @@ class DefaultView extends Component {
     const intl = this.props.intl;
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-    const tabs = this.computeFolderTabs(content['@components'].siblings)
+    const tabs = this.computeFolderTabs(content['@components'].siblings);
+
+    const currentUrl = this.props.content?.['@id'];
+    const shouldRenderRoutes =
+      typeof currentUrl !== 'undefined' &&
+      samePath(currentUrl, this.props.pathname)
+        ? true
+        : false;
+
+    if (shouldRenderRoutes === false)
+      return (
+        <div className="lds-default">
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
+
     return (
       hasBlocksData(content) && (
         <div id="page-document" className="ui wrapper">
           {tabs && tabs.length ? (
             <nav className="tabs">
-              {tabs.map((tab) => (
+              {tabs.map(tab => (
                 <Link
                   key={`localtab-${tab.url}`}
                   className={`tabs__item${(tab.url ===
@@ -139,10 +164,7 @@ class DefaultView extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    (state, props) => ({
-      pathname: props.location.pathname,
-    })
-  ),
+  connect((state, props) => ({
+    pathname: props.location.pathname,
+  })),
 )(DefaultView);
-
