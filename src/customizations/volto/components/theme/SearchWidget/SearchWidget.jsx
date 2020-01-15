@@ -9,9 +9,15 @@ import { Form, Input } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 
 import { Icon } from '@plone/volto/components';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
+
+import { quickResetSearchContent, quickSearchContent } from '~/actions';
+
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const messages = defineMessages({
   search: {
@@ -30,43 +36,59 @@ const messages = defineMessages({
  * @extends Component
  */
 class SearchWidget extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
+    quickResetSearchContent: PropTypes.func.isRequired,
+    quickSearchContent: PropTypes.func.isRequired,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
   constructor(props) {
     super(props);
-    this.onChangeText = this.onChangeText.bind(this);
     this.onChangeSection = this.onChangeSection.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
     this.state = {
       text: '',
       section: false,
+      active: false,
     };
+    this.linkFormContainer = React.createRef();
   }
 
-  /**
-   * On change text
-   * @method onChangeText
-   * @param {object} event Event object.
-   * @param {string} value Text value.
-   * @returns {undefined}
-   */
-  onChangeText(event, { value }) {
-    this.setState({
-      text: value,
-    });
+  componentDidMount() {
+    this.props.quickResetSearchContent();
+    document.addEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  handleClickOutside = e => {
+    console.log('handleclickoutside');
+    if (
+      this.linkFormContainer.current &&
+      doesNodeContainClick(this.linkFormContainer.current, e)
+    ) {
+      this.setState({ active: true });
+    } else {
+      this.setState({ active: false });
+    }
+  };
+
+  onChange(event, { value }) {
+    // if (this.state.isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(value))) {
+    //   nextState.isInvalid = false;
+    // }
+    if (value && value !== '') {
+      this.props.quickSearchContent('', {
+        Title: `*${value}*`,
+      });
+    } else {
+      this.props.quickResetSearchContent();
+    }
+    this.setState({ text: value });
   }
 
   /**
@@ -83,25 +105,25 @@ class SearchWidget extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps?.location?.state?.text !== this.props?.location?.state?.text
-    ) {
-      this.setState(
-        {
-          text: this.props?.location?.state?.text,
-        },
-        () => {
-          const section = this.state.section
-            ? `&path=${this.props.pathname}`
-            : '';
+    if (prevProps.location?.state?.text && this.props?.location?.state?.text) {
+      if (prevProps.location.state.text !== this.props.location.state.text) {
+        this.setState(
+          {
+            text: this.props?.location?.state?.text,
+          },
+          () => {
+            const section = this.state.section
+              ? `&path=${this.props.pathname}`
+              : '';
 
-          this.props.history.push({
-            pathname: '/search',
-            search: `?SearchableText=${this.state.text}${section}`,
-            state: { text: this.state.text, section: section },
-          });
-        },
-      );
+            this.props.history.push({
+              pathname: '/search',
+              search: `?SearchableText=${this.state.text}${section}`,
+              state: { text: this.state.text, section: section },
+            });
+          },
+        );
+      }
     }
   }
 
@@ -112,6 +134,7 @@ class SearchWidget extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
+    console.log('onsubmit');
     const section = this.state.section ? `&path=${this.props.pathname}` : '';
     this.props.history.push({
       pathname: '/search',
@@ -121,34 +144,70 @@ class SearchWidget extends Component {
     event.preventDefault();
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
+  onSelectItem = item => {
+    this.setState({
+      text: item.title,
+    });
+    this.onClose();
+  };
+
+  onClose = () => {
+    this.props.quickResetSearchContent();
+    this.setState({ active: false });
+  };
+
   render() {
     return (
-      <Form action="/search" onSubmit={this.onSubmit}>
-        <Form.Field className="searchbox">
-          <Input
-            aria-label={this.props.intl.formatMessage(messages.search)}
-            onChange={this.onChangeText}
-            name="SearchableText"
-            value={this.state.text}
-            transparent
-            placeholder={this.props.intl.formatMessage(messages.searchSite)}
-            title={this.props.intl.formatMessage(messages.search)}
-          />
-          <button aria-label={this.props.intl.formatMessage(messages.search)}>
-            <Icon name={zoomSVG} size="18px" />
-          </button>
-        </Form.Field>
-      </Form>
+      <div ref={this.linkFormContainer}>
+        <Form action="/search" onSubmit={this.onSubmit}>
+          <Form.Field className="searchbox">
+            <Input
+              aria-label={this.props.intl.formatMessage(messages.search)}
+              onChange={this.onChange}
+              name="SearchableText"
+              value={this.state.text}
+              transparent
+              placeholder={this.props.intl.formatMessage(messages.searchSite)}
+              title={this.props.intl.formatMessage(messages.search)}
+            />
+            <button aria-label={this.props.intl.formatMessage(messages.search)}>
+              <Icon name={zoomSVG} size="18px" />
+            </button>
+          </Form.Field>
+          {this.state.active &&
+          this.props.search &&
+          this.props.search.length ? (
+            <ul className="floating_search_results">
+              {this.props.search.map(item => (
+                <li
+                  onClick={() => this.onSelectItem(item)}
+                  stylixe={{ padding: '5px' }}
+                >
+                  {item.title}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            ''
+          )}
+        </Form>
+      </div>
     );
   }
 }
 
+// export default compose(
+//   withRouter,
+//   injectIntl,
+// )(SearchWidget);
+
 export default compose(
   withRouter,
   injectIntl,
+  connect(
+    state => ({
+      search: state.quicksearch.items,
+    }),
+    { quickResetSearchContent, quickSearchContent },
+  ),
 )(SearchWidget);
