@@ -10,6 +10,7 @@ import folder_tabs from '~/reducers/folder_tabs';
 import parent_folder_data from '~/reducers/parent_folder_data';
 import localnavigation from '~/reducers/localnavigation';
 import { addonReducers } from '~/config';
+import quicksearch from '~/reducers/quicksearch';
 
 const reducers = {
   ...defaultReducers,
@@ -18,6 +19,7 @@ const reducers = {
   parent_folder_data,
   folder_tabs,
   localnavigation,
+  quicksearch,
 };
 
 export default reducers;
