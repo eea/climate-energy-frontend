@@ -217,14 +217,14 @@ module.exports = {
       module => module.test && module.test.toString() == /\.less$/, // eslint-disable-line
     );
     const index = vc.module.rules.indexOf(lessRule);
-    lessRule.include.push(/src\/addons\/@plone\/volto\/theme/);
+    lessRule.include.push(/src\/develop\/volto\/theme/);
     vc.module.rules[index] = lessRule;
 
     const jsxRule = vc.module.rules.find(
       module => module.test && module.test.toString() == /\.(js|jsx|mjs)$/, // eslint-disable-line
     );
     const jsxIndex = vc.module.rules.indexOf(jsxRule);
-    jsxRule.exclude = [/src\/addons\/.+\/node_modules/];
+    jsxRule.exclude = [/src\/develop\/.+\/node_modules/];
     vc.module.rules[jsxIndex] = jsxRule;
 
     console.log('aliases', vc.resolve.alias);
