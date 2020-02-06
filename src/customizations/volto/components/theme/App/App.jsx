@@ -120,7 +120,6 @@ class App extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const hideMenu = this.checkProps(this.props);
-
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
@@ -140,6 +139,7 @@ class App extends Component {
               actualPathName={this.props.pathname}
               homepage={true}
               pathname={path}
+              navigationItems={this.props.navigation}
             />
             <Segment className="content-area">
               <main>
@@ -172,6 +172,7 @@ class App extends Component {
                       actualPathName={this.props.pathname}
                       pathname={path}
                       homepage={false}
+                      navigationItems={this.props.navigation}
                     />
                   </Grid.Column>
                 )}
@@ -245,7 +246,7 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname), 3)),
+        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname), 4)),
     },
     {
       key: 'types',

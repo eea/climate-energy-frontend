@@ -1,4 +1,5 @@
 // customized to include animation wrapper from PR
+
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
@@ -9,8 +10,7 @@ import routes from '~/routes';
 import '~/theme';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken } from '@plone/volto/helpers';
-import { AnimationWrapper } from '~/helpers';
+import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 export const history = createBrowserHistory();
 
@@ -23,9 +23,9 @@ export default () => {
   hydrate(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <AnimationWrapper>
+        <ScrollToTop>
           <ReduxAsyncConnect routes={routes} helpers={api} />
-        </AnimationWrapper>
+        </ScrollToTop>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('main'),

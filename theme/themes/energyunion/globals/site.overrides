@@ -705,3 +705,7 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
     }
   }
   
+
+  .homepage #main {
+      display: block;
+  }

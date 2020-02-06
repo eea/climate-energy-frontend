@@ -39,8 +39,8 @@ export const settings = {
     ...[
       'localnavigation',
       'siblings',
-      'navigation',
-      '&expand.navigation.depth=4',
+      // 'navigation',
+      // '&expand.navigation.depth=4',
     ],
   ],
 };

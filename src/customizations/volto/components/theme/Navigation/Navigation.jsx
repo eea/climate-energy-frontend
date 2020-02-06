@@ -4,18 +4,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
-import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '@plone/volto/helpers';
 import { BodyClass } from '@plone/volto/helpers';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import backIcon from '@plone/volto/icons/back.svg';
 import { Icon } from '@plone/volto/components';
 import { settings } from '~/config';
+import { getBasePath } from '~/helpers';
 
 import bgimage from './home.jpg';
 
@@ -40,12 +38,12 @@ function getPath(url) {
 class Navigation extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ).isRequired,
+    // items: PropTypes.arrayOf(
+    //   PropTypes.shape({
+    //     title: PropTypes.string,
+    //     url: PropTypes.string,
+    //   }),
+    // ).isRequired,
   };
 
   constructor(props) {
@@ -145,7 +143,18 @@ class Navigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
+  formatNavUrl = nav => {
+    return nav.map(navItem => ({
+      ...navItem,
+      url: navItem.url ? getBasePath(navItem.url) : '',
+      items: navItem.items ? this.formatNavUrl(navItem.items) : false,
+    }));
+  };
+
   render() {
+    console.log('------------', this.props.navigation);
+    const navigation = this.formatNavUrl(this.props.navigation.items);
+
     return (
       <div id="app-menu-content">
         <BodyClass className="homepage" />
@@ -200,7 +209,7 @@ class Navigation extends Component {
             className="menu-underlay"
           />
           <div className="first-level">
-            {this.props.items.map((item, index) => (
+            {navigation.map((item, index) => (
               <div
                 key={getPath(item['@id'])}
                 className={
@@ -320,14 +329,16 @@ class Navigation extends Component {
     );
   }
 }
-export default compose(
-  injectIntl,
-  connect(
-    state => ({
-      items:
-        state.content.data &&
-        state.content.data['@components'].navigation.items,
-    }),
-    {},
-  ),
-)(Navigation);
+// export default compose(
+//   injectIntl,
+//   connect(
+//     state => ({
+//       items:
+//         state.content.data &&
+//         state.content.data['@components'].navigation.items,
+//     }),
+//     {},
+//   ),
+// )(Navigation);
+
+export default compose(injectIntl)(Navigation);

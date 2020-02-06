@@ -5,14 +5,10 @@ import React, { Component, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
-import { asyncConnect } from 'redux-connect';
-import ReactDOM from 'react-dom';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { getNavigation } from '@plone/volto/actions';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import { Icon } from '@plone/volto/components';
 import backIcon from '@plone/volto/icons/back.svg';
@@ -20,6 +16,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 import rightCircle from '@plone/volto/icons/circle-right.svg';
 import MenuPosition from './MenuPosition';
+import { getBasePath } from '~/helpers';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -42,12 +39,6 @@ function getPath(url) {
 class PageNavigation extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ).isRequired,
   };
 
   constructor(props) {
@@ -155,17 +146,22 @@ class PageNavigation extends Component {
     }
     this.setState({ isMobileMenuOpen: false });
   }
-
+  formatNavUrl = nav => {
+    return nav.map(navItem => ({
+      ...navItem,
+      url: navItem.url ? getBasePath(navItem.url) : '',
+      items: navItem.items ? this.formatNavUrl(navItem.items) : false,
+    }));
+  };
   render() {
     const localnavigation =
       (this.props.localnavigation &&
         this.props.localnavigation.length &&
-        this.props.localnavigation.filter(
-          item => item.title !== 'Home',
-        )) ||
+        this.props.localnavigation.filter(item => item.title !== 'Home')) ||
       [];
+    const navigation = this.formatNavUrl(this.props.navigation.items);
+
     console.log('localnavigation', this.props.localnavigation);
-    if (!this.props.items || !this.props.items.length) return '';
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
@@ -218,7 +214,7 @@ class PageNavigation extends Component {
               topDistance={this.state.topDistance}
               currentTopDistance={this.state.currentTopDistance}
             >
-              {this.props.items.map((item, index) => (
+              {navigation.map((item, index) => (
                 <div
                   key={getPath(item['@id'])}
                   className={
@@ -460,9 +456,9 @@ export default compose(
       localnavigation:
         state.content.data &&
         state.content.data['@components'].localnavigation.items,
-      items:
-        state.content.data &&
-        state.content.data['@components'].navigation.items,
+      // items:
+      //   state.content.data &&
+      //   state.content.data['@components'].navigation.items,
     }),
     {},
   ),
