@@ -13,5 +13,6 @@ build
 
 data
 *~
+src/develop
 src/addons
 npm-cache
