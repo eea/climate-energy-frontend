@@ -75,7 +75,8 @@
     "mgr-pdf-viewer-react": "^1.0.3",
     "react-loadable": "^5.5.0",
     "react-scrollspy": "^3.4.2",
-    "react-sizeme": "2.6.12"
+    "react-sizeme": "2.6.12",
+    "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
