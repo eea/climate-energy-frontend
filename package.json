@@ -78,6 +78,7 @@
     "react-sizeme": "2.6.12"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "7.8.4",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-do-expressions": "^7.8.3",
@@ -91,6 +92,7 @@
     "@babel/plugin-proposal-throw-expressions": "^7.8.3",
     "@babel/plugin-syntax-import-meta": "^7.8.3",
     "@babel/preset-env": "7.8.4",
+    "babel-plugin-react-intl": "^5.1.18",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "eslint-plugin-prettier": "3.0.1",
     "hard-source-webpack-plugin": "^0.13.1",
@@ -118,6 +120,7 @@
     "prepend-http",
     "normalize-url",
     "cidr-regex",
-    "url-regex"
+    "url-regex",
+    "lodash-es"
   ]
 }

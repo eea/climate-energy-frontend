@@ -10,7 +10,7 @@ import { applyConfig as ckeditorConfig } from 'volto-ckeditor/config';
 import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
 import { applyConfig as blocksConfig } from 'volto-blocks/config';
 import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
-import { applyConfig as plotlyConfig } from 'volto-plotlycharts/config';
+// import { applyConfig as plotlyConfig } from 'volto-plotlycharts/config';
 import { applyConfig as installEnergyFrontend } from './localconfig';
 import { applyConfig as installSidebar } from 'volto-sidebar/config';
 
@@ -20,7 +20,7 @@ const config = [
   installSidebar,
   installFolderListing,
   installTableau,
-  plotlyConfig,
+  // plotlyConfig,
   ckeditorConfig,
   mosaicConfig,
   blocksConfig,
