@@ -5,11 +5,12 @@
   "version": "3.1.0",
   "scripts": {
     "start": "razzle start",
+		"prebuild": "./scripts/prebuild-fix-modules.sh",
     "build": "razzle build",
     "test": "razzle test --env=jsdom --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
-    "develop": "mrdeveloper --config=jsconfig.json --no-config --output=addons"
+    "develop": "missdev"
   },
   "jest": {
     "snapshotSerializers": [
@@ -71,7 +72,6 @@
     "draft-js-alignment-plugin": "^2.0.6",
     "draftjs-to-html": "^0.8.4",
     "mgr-pdf-viewer-react": "^1.0.3",
-    "mr-developer": "1.4.0",
     "react-loadable": "^5.5.0",
     "react-scrollspy": "^3.4.2"
   },
@@ -82,8 +82,26 @@
     "prettier": "1.17.0",
     "prettier-stylelint": "0.4.2"
   },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
+  "resolutions": {
+    "browserslist": "4.8.3"
+  },
   "customizationPaths": [
     "src/customizations/volto/"
   ],
-  "addonsCustomizationPath": "src/customizations"
+  "addonsCustomizationPath": "src/customizations",
+  "optimizeLiftPackages": [
+    "immutable"
+  ],
+  "manuallyTranspile": [
+    "prepend-http",
+    "normalize-url",
+    "cidr-regex",
+    "url-regex"
+  ]
 }

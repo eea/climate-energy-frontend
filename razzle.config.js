@@ -12,9 +12,11 @@ const jsConfig = require('./jsconfig');
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob').sync;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const FILES_GLOB = '**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)';
 
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 const pathsConfig = jsConfig.compilerOptions.paths;
 let voltoPath = './node_modules/@plone/volto';
 Object.keys(pathsConfig).forEach(pkg => {
@@ -128,13 +130,23 @@ function customizeAddonByPackage(addon, customizationPath, aliases) {
   return customizations;
 }
 
-// razzleModify.plugins = ['']
-
-
 // const projectRootPath = path.resolve('.');
+// const voltoConfig = require(`${voltoPath}/razzle.config`);
 
 module.exports = {
-  plugins: ['bundle-analyzer'],
+  plugins: [
+    {
+      name: 'bundle-analyzer',
+      options: {
+        analyzerHost: '0.0.0.0',
+        analyzerMode: 'static',
+        generateStatsFile: true,
+        statsFilename: 'stats.json',
+        reportFilename: 'reports.html',
+        openAnalyzer: false,
+      },
+    },
+  ],
   modify: (config, { target, dev }, webpack) => {
     const vc = razzleModify(config, { target, dev }, webpack);
 
@@ -215,10 +227,12 @@ module.exports = {
     jsxRule.exclude = [/src\/addons\/.+\/node_modules/];
     vc.module.rules[jsxIndex] = jsxRule;
 
-    console.log('plugins', vc.plugins);
+    console.log('aliases', vc.resolve.alias);
     console.log('----');
-    // console.log('rules', vc.module.rules);
-      
+    console.log('rules', vc.module.rules);
+
+    vc.plugins.push(new CompressionPlugin());
+
     // vc.module.rules.forEach((rule, i) => {
     //   console.log('rule', i, '-----');
     //   console.log(rule);
@@ -226,6 +240,10 @@ module.exports = {
     //   console.log(rule.use && rule.use[0].options);
     // });
     // const hardSource = new HardSourceWebpackPlugin();
+    // vc.plugins.push(hardSource);
+
+    console.log('config', vc);
+
     return vc;
   },
 };
