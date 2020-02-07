@@ -162,7 +162,13 @@ class SearchWidget extends Component {
   render() {
     return (
       <div ref={this.linkFormContainer}>
-        <Form action="/search" onSubmit={this.onSubmit}>
+        <Form autocomplete="off" action="/search" onSubmit={this.onSubmit}>
+          <input
+            autocomplete="false"
+            name="hidden"
+            type="text"
+            style={{ display: 'none' }}
+          />
           <Form.Field className="searchbox">
             <Input
               aria-label={this.props.intl.formatMessage(messages.search)}
