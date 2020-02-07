@@ -713,3 +713,7 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
   p:empty {
     margin-bottom: 1em;
   }
+
+  #page-document p {
+      padding-bottom: 1px;
+  }
