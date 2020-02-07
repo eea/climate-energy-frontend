@@ -41,13 +41,13 @@ const View = ({ data, detached }) => (
               alt={data.alt || ''}
             />
           );
-          console.log('data in image', data);
+          // console.log('data in image', data);
 
           if (data.href) {
             const isReallyExternal =
               (data.href.startsWith('http') || data.href.startsWith('https')) &&
               !data.href.includes(settings.apiPath);
-            console.log('data external', isReallyExternal);
+            // console.log('data external', isReallyExternal);
             if (isReallyExternal) {
               return (
                 <a
