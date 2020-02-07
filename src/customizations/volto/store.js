@@ -54,7 +54,7 @@ const precacheContentStart = ({ dispatch, getState }) => next => action => {
     case '@@router/LOCATION_CHANGE':
       if (action.payload?.location?.state?.isFromLogin) return next(action);
 
-      // console.log('action', action.type);
+      console.log('action', action.type);
       if (!action.payload?.prefetched) {
         const path = action.payload.location.pathname;
         // TODO: use getBaseUrl based matching
@@ -92,7 +92,7 @@ const precacheContentEnd = ({ dispatch, getState }) => next => action => {
   const type = `${PREFETCH_ROUTER_LOCATION_CHANGE}_SUCCESS`;
 
   if (action.type === type) {
-    // console.debug('prefetch action end', action);
+    console.debug('prefetch action end', action);
     return dispatch({
       ...action.originalAction,
       payload: {
@@ -173,7 +173,7 @@ const configureStore = (initialState, history, apiHelper) => {
       thunk,
       api(apiHelper),
       precacheContentEnd,
-    //   trackMatomo,
+      //   trackMatomo,
     ),
   );
 

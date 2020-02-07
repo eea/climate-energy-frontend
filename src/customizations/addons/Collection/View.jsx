@@ -25,20 +25,29 @@ const CollectionView = ({ content }) => {
   url = getBaseUrl(url);
   console.log('content url', url);
   return (
-    <Container
-      id="page-search"
-      className="catalogue-body full-width-catalogue"
-    >
+    <Container id="page-search" className="catalogue-body full-width-catalogue">
       <Helmet title={content.title} />
       <section id="content-core">
         <div className="search-listing item-listing">
           <Item.Group>
-            <h1 style={{ marginTop: '0', marginLeft: '2rem', marginRight: '2rem' }} className="documentFirstHeading">
+            <h1
+              style={{
+                marginTop: '0',
+                marginLeft: '2rem',
+                marginRight: '2rem',
+              }}
+              className="documentFirstHeading"
+            >
               {content.title}
               {content.subtitle && ` - ${content.subtitle}`}
             </h1>
             {content.description && (
-              <p style={{ marginLeft: '2rem', marginRight: '2rem' }} className="documentDescription">{content.description}</p>
+              <p
+                style={{ marginLeft: '2rem', marginRight: '2rem' }}
+                className="documentDescription"
+              >
+                {content.description}
+              </p>
             )}
             <BlockView
               data={{
