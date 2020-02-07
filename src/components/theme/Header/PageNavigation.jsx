@@ -454,8 +454,10 @@ export default compose(
   connect(
     (state, props) => ({
       localnavigation:
-        state.content.data &&
-        state.content.data['@components'].localnavigation.items,
+        state.prefetch?.[props.pathname]?.['@components'].localnavigation
+          .items ||
+        (state.content.data &&
+          state.content.data['@components'].localnavigation.items),
       // items:
       //   state.content.data &&
       //   state.content.data['@components'].navigation.items,
