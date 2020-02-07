@@ -88,30 +88,30 @@ class DefaultView extends Component {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
     const tabs = this.computeFolderTabs(content['@components'].siblings);
 
-    const currentUrl = this.props.content?.['@id'];
-    const shouldRenderRoutes =
-      typeof currentUrl !== 'undefined' &&
-      samePath(currentUrl, this.props.pathname)
-        ? true
-        : false;
-
-    if (shouldRenderRoutes === false)
-      return (
-        <div className="lds-default">
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      );
+    // const currentUrl = this.props.content?.['@id'];
+    // const shouldRenderRoutes =
+    //   typeof currentUrl !== 'undefined' &&
+    //   samePath(currentUrl, this.props.pathname)
+    //     ? true
+    //     : false;
+    //
+    // if (shouldRenderRoutes === false)
+    //   return (
+    //     <div className="lds-default">
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //       <div />
+    //     </div>
+    //   );
 
     return (
       hasBlocksData(content) && (
@@ -166,5 +166,7 @@ export default compose(
   injectIntl,
   connect((state, props) => ({
     pathname: props.location.pathname,
+    content:
+      state.prefetch?.[state.router.location.pathname] || state.content.data,
   })),
 )(DefaultView);
