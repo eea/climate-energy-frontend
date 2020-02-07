@@ -28,7 +28,6 @@ const RouterLink = ({ item }) => {
   const url = (item.url || item['@id'])
     .replace(settings.apiPath, '')
     .replace(settings.internalApiPath, '');
-  console.log('routerlink', url);
   return (
     <Link title={item.title} to={url} className="section">
       {item.title}
@@ -96,7 +95,6 @@ export default compose(
     state => {
       const content =
         state.prefetch?.[state.router.location.pathname] || state.content.data;
-      console.log('breadcrumb content', content);
       return {
         items: content?.['@components']?.breadcrumbs?.items || [],
       };
