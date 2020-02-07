@@ -8,7 +8,7 @@ Below is a list of commands you will probably find useful.
 
 ### `yarn start`
 
-Runs the project in development mode.  
+Runs the project in development mode.
 You can view your application at `http://localhost:3000`
 
 The page will reload if you make edits.
@@ -50,3 +50,25 @@ mrdeveloper --config=jsconfig.json
 
 Volto's latest razzle config will pay attention to your jsconfig.json file
 for any customizations.
+
+## Production
+
+We use [Docker](https://www.docker.com/), [Rancher](https://rancher.com/) and [Jenkins](https://jenkins.io/) to deploy this application in production.
+
+### Deploy
+
+* Within `Rancher > Catalog > EEA` deploy [Volto - Energy Union](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union)
+
+### Release
+
+* Create a new release of this code via `git tag` command or [Draft new release](https://github.com/eea/energy_union_frontend/releases/new) on Github.
+  * A new Docker image is built and released automatically on [DockerHub](https://hub.docker.com/r/eeacms/energy-union-frontend) based on this tag.
+  * A new entry is automatically added to [Volto - Energy Union](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union) `EEA Rancher Catalog`
+
+### Upgrade
+
+* Within your Rancher environment click on the `Upgrade available` yellow button next to your stack.
+
+* Confirm the upgrade
+
+* Or roll-back if something went wrong and abort the upgrade procedure.
