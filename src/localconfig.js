@@ -1,7 +1,12 @@
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
+import chartIcon from '@plone/volto/icons/world.svg';
 
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
+
+// import CollectionBlockView from '~/components/theme/Collection/BlockView';
+// import CollectionBlockEdit from '~/components/theme/Collection/BlockEdit';
+import CollectionView from '~/components/theme/Collection/View';
 
 export function applyConfig(config) {
   const env_destinations = (process.env.ALLOWED_CORS_DESTINATIONS || '')
@@ -26,6 +31,18 @@ export function applyConfig(config) {
       topic_tab_view: TopicsTabView,
     },
   };
+
+  config.views.contentTypesViews.Collection = CollectionView;
+
+  // config.blocks.blocksConfig.collection_block = {
+  //   id: 'collection_block',
+  //   title: 'Collection Listing',
+  //   view: CollectionBlockView,
+  //   edit: CollectionBlockEdit,
+  //   icon: chartIcon,
+  //   group: 'custom_addons',
+  // };
+
   config.widgets = {
     ...config.widgets,
     vocabulary: {

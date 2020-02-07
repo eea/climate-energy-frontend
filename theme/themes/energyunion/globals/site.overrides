@@ -709,3 +709,7 @@ body:not(.has-toolbar-collapsed):not(.anonymous) {
   .homepage #main {
       display: block;
   }
+
+  p:empty {
+    margin-bottom: 1em;
+  }

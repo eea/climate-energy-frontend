@@ -7,7 +7,7 @@ import React from 'react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container, Image, Item } from 'semantic-ui-react';
-import BlockView from 'volto-addons/Collection/BlockView';
+import BlockView from './BlockView';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { settings } from '~/config';
 

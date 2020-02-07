@@ -1,0 +1,39 @@
+.tile-listing {
+  margin-bottom: 3rem;
+}
+
+.tile-listing .ui.breadcrumb .divider {
+  margin: 0 0.3rem;
+}
+
+.tile-listing .ui.items > .item {
+  margin-bottom: 2.5rem;
+}
+
+.tile-listing .tile-title {
+  margin-bottom: 0.5em;
+}
+
+.tile-listing .ui.items > .item .extra {
+  color: inherit;
+  font-size: 14px;
+}
+
+.tile-listing .muted {
+  color: #aaa;
+}
+
+.tile-listing-pagination .ui.secondary.attached.menu {
+  border: none;
+}
+
+
+/* Filter  */
+.headings_navigation .ui.vertical.menu .active.item,
+.headings_navigation .ui.vertical.menu .item:hover,
+.headings_navigation .ui.vertical.menu .active.item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.headings_navigation .ui.vertical.menu .active.item {
+  font-weight: bold;
+}

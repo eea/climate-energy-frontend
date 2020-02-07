@@ -91,7 +91,7 @@
     "@babel/plugin-proposal-numeric-separator": "^7.8.3",
     "@babel/plugin-proposal-pipeline-operator": "^7.8.3",
     "@babel/plugin-proposal-throw-expressions": "^7.8.3",
-    "@babel/plugin-syntax-import-meta": "^7.8.3",
+  "@babel/plugin-syntax-import-meta": "^7.8.3",
     "@babel/preset-env": "7.8.4",
     "babel-plugin-react-intl": "^5.1.18",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
@@ -115,7 +115,6 @@
   "customizationPaths": [
     "src/customizations/volto/"
   ],
-  "addonsCustomizationPath": "src/customizations",
   "optimizeLiftPackages": [
     "immutable"
   ],
