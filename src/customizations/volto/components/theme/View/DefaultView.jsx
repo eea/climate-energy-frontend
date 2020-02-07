@@ -27,38 +27,38 @@ const messages = defineMessages({
   },
 });
 
-function getLocation(href) {
-  var match = href.match(
-    /^(https?:)\/\/(([^:/?#]*)(?::([0-9]+))?)([/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/,
-  );
-  return (
-    match && {
-      href: href,
-      protocol: match[1],
-      host: match[2],
-      hostname: match[3],
-      port: match[4],
-      pathname: match[5],
-      search: match[6],
-      hash: match[7],
-    }
-  );
-}
-
-function samePath(url, path) {
-  // returns true if the router path is equal to the given url path
-  const parsed = getLocation(url);
-  const clean = url
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '')
-    .replace(parsed.hash, '')
-    .replace(parsed.search, '');
-
-  // console.log('cleaned path from url', clean, path, url, getLocation(url));
-  // console.log(clean, url, path, clean === path);
-
-  return clean === path;
-}
+// function getLocation(href) {
+//   var match = href.match(
+//     /^(https?:)\/\/(([^:/?#]*)(?::([0-9]+))?)([/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/,
+//   );
+//   return (
+//     match && {
+//       href: href,
+//       protocol: match[1],
+//       host: match[2],
+//       hostname: match[3],
+//       port: match[4],
+//       pathname: match[5],
+//       search: match[6],
+//       hash: match[7],
+//     }
+//   );
+// }
+//
+// function samePath(url, path) {
+//   // returns true if the router path is equal to the given url path
+//   const parsed = getLocation(url);
+//   const clean = url
+//     .replace(settings.apiPath, '')
+//     .replace(settings.internalApiPath, '')
+//     .replace(parsed.hash, '')
+//     .replace(parsed.search, '');
+//
+//   // console.log('cleaned path from url', clean, path, url, getLocation(url));
+//   // console.log(clean, url, path, clean === path);
+//
+//   return clean === path;
+// }
 
 /**
  * Component to display the default view.
@@ -82,12 +82,12 @@ class DefaultView extends Component {
     const blocksFieldname = getBlocksFieldname(content);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
-    const currentUrl = this.props.content?.['@id'];
-    const shouldRenderRoutes =
-      typeof currentUrl !== 'undefined' &&
-      samePath(currentUrl, this.props.pathname)
-        ? true
-        : false;
+    // const currentUrl = this.props.content?.['@id'];
+    // const shouldRenderRoutes =
+    //   typeof currentUrl !== 'undefined' &&
+    //   samePath(currentUrl, this.props.pathname)
+    //     ? true
+    //     : false;
 
     // console.log(
     //   'should',
@@ -96,7 +96,7 @@ class DefaultView extends Component {
     //   this.props.contentId,
     // );
 
-    if (shouldRenderRoutes === false) return '';
+    // if (shouldRenderRoutes === false) return '';
 
     // {this.props.contentId} - {this.props.pathname}
     return hasBlocksData(content) ? (
@@ -190,6 +190,9 @@ DefaultView.propTypes = {
 
 export default connect((state, props) => ({
   pathname: state.router.location.pathname, //props.location.pathname,
-  contentId: state.content.data?.['@id'] || 'no-id',
+  content:
+    state.prefetch?.[state.router.location.pathname] || state.content.data,
   loading: state.content,
 }))(injectIntl(DefaultView));
+
+// contentId: state.content.data?.['@id'] || 'no-id',
