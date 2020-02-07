@@ -141,13 +141,16 @@ class SearchWidget extends Component {
       search: `?SearchableText=${this.state.text}${section}`,
       state: { text: this.state.text, section: section },
     });
-    event.preventDefault();
+    event && event.preventDefault();
   }
 
   onSelectItem = item => {
-    this.setState({
-      text: item.title,
-    });
+    this.setState(
+      {
+        text: item.title,
+      },
+      () => this.onSubmit(),
+    );
     this.onClose();
   };
 
