@@ -253,22 +253,12 @@ class PageNavigation extends Component {
                               ) &&
                               window.location.href.includes('topics'),
                           ) ? (
-                            <Link
+                            <div
                               style={{
                                 fontSize: '1.2rem',
                                 textTransform: 'initial',
                                 borderBottom: '1px solid #eee',
                               }}
-                              to={getPath(
-                                item.items.find(
-                                  i =>
-                                    __CLIENT__ &&
-                                    window &&
-                                    window.location.href.includes(
-                                      getPath(i['@id']),
-                                    ),
-                                )['@id'],
-                              )}
                               key={getPath(
                                 item.items.find(
                                   i =>
@@ -290,7 +280,7 @@ class PageNavigation extends Component {
                                     ),
                                 ).title
                               }
-                            </Link>
+                            </div>
                           ) : (
                             ''
                           )}
