@@ -54,6 +54,7 @@ class Breadcrumbs extends Component {
       <Breadcrumb>
         <Link
           to="/"
+          key="home-section-/"
           className="section"
           title={this.props.intl.formatMessage(messages.home)}
         >
@@ -73,7 +74,7 @@ class Breadcrumbs extends Component {
                 {item.title}
               </Link>
             ) : (
-              <Breadcrumb.Section key={item.url} active>
+              <Breadcrumb.Section key={`section-${item.url}`} active>
                 {item.title}
               </Breadcrumb.Section>
             ),

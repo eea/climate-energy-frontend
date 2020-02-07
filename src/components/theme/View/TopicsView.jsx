@@ -99,7 +99,7 @@ class TopicsView extends Component {
     if (this.state.redirect) {
       return <Redirect to={{ pathname: this.state.redirect }} />;
     } else {
-      return ''
+      return '';
     }
     const content = this.props.content;
     // const localNavigation =

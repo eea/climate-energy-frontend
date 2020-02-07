@@ -13,7 +13,7 @@ import qs from 'query-string';
 import { views } from '~/config';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
+// import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
@@ -38,11 +38,11 @@ class View extends Component {
       object_buttons: PropTypes.arrayOf(PropTypes.object),
       user: PropTypes.arrayOf(PropTypes.object),
     }),
-    listActions: PropTypes.func.isRequired,
+    // listActions: PropTypes.func.isRequired,
     /**
      * Action to get the content
      */
-    getContent: PropTypes.func.isRequired,
+    // getContent: PropTypes.func.isRequired,
     /**
      * Pathname of the object
      */
@@ -116,11 +116,11 @@ class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
-    this.props.getContent(
-      getBaseUrl(this.props.pathname),
-      this.props.versionId,
-    );
+    // this.props.listActions(getBaseUrl(this.props.pathname));
+    // this.props.getContent(
+    //   getBaseUrl(this.props.pathname),
+    //   this.props.versionId,
+    // );
   }
 
   componentDidMount() {
@@ -169,22 +169,22 @@ class View extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
-      this.props.getContent(
-        getBaseUrl(nextProps.pathname),
-        this.props.versionId,
-      );
-    }
-
-    if (nextProps.actions.object_buttons) {
-      const objectButtons = nextProps.actions.object_buttons;
-      this.setState({
-        hasObjectButtons: !!objectButtons.length,
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.pathname !== this.props.pathname) {
+  //     this.props.listActions(getBaseUrl(nextProps.pathname));
+  //     this.props.getContent(
+  //       getBaseUrl(nextProps.pathname),
+  //       this.props.versionId,
+  //     );
+  //   }
+  //
+  //   if (nextProps.actions.object_buttons) {
+  //     const objectButtons = nextProps.actions.object_buttons;
+  //     this.setState({
+  //       hasObjectButtons: !!objectButtons.length,
+  //     });
+  //   }
+  // }
 
   /**
    * Default fallback view
@@ -351,9 +351,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      actions: state.actions.actions,
+      actions:
+        state.prefetch?.[props.location.pathname]?.['@components']?.actions,
       token: state.userSession.token,
-      content: state.content.data,
+      content: state.prefetch?.[props.location.pathname] || state.content.data,
       error: state.content.get.error,
       pathname: props.location.pathname,
       versionId:
@@ -361,8 +362,8 @@ export default compose(
         qs.parse(props.location.search).version_id,
     }),
     {
-      listActions,
-      getContent,
+      // listActions,
+      // getContent,
     },
   ),
 )(View);
