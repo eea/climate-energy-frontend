@@ -92,7 +92,7 @@ const precacheContentEnd = ({ dispatch, getState }) => next => action => {
   const type = `${PREFETCH_ROUTER_LOCATION_CHANGE}_SUCCESS`;
 
   if (action.type === type) {
-    console.debug('prefetch action end', action);
+    console.log('prefetch action end', action);
     return dispatch({
       ...action.originalAction,
       payload: {

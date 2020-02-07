@@ -26,7 +26,7 @@ const messages = defineMessages({
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component
  */
-const Footer = (props) => (
+const Footer = props => (
   <Segment
     role="contentinfo"
     vertical
@@ -35,13 +35,9 @@ const Footer = (props) => (
     className="footer"
   >
     {/* <Container fluid> */}
-    <Grid tablet={0}
-      computer={3}
-      largeScreen={3}>
-      <Grid.Column width={3}></Grid.Column>
-      <Grid.Column tablet={12}
-        computer={6}
-        largeScreen={6}>
+    <Grid>
+      <Grid.Column width={3} />
+      <Grid.Column tablet={12} computer={6} largeScreen={6}>
         <Grid columns={2}>
           <Grid.Column
             // style={{
@@ -51,7 +47,7 @@ const Footer = (props) => (
             //   textAlign: 'left',
             //   flexDirection: 'column',
             // }}
-            style={{ textAlign: 'left', padding: '2rem'}}
+            style={{ textAlign: 'left', padding: '2rem' }}
             tablet={12}
             computer={6}
             largeScreen={6}
@@ -68,10 +64,7 @@ const Footer = (props) => (
               )}
               <li>
                 <Link className="item" to="/contact">
-                  <FormattedMessage
-                    id="contact"
-                    defaultMessage="Contact"
-                  />
+                  <FormattedMessage id="contact" defaultMessage="Contact" />
                 </Link>
               </li>
             </ul>
@@ -94,12 +87,7 @@ const Footer = (props) => (
           </Grid.Column>
         </Grid>
       </Grid.Column>
-      <Grid.Column 
-        tablet={0}
-        computer={3}
-        largeScreen={3}
-      ></Grid.Column>
-
+      <Grid.Column tablet={1} computer={3} largeScreen={3} />
     </Grid>
     {/* </Container> */}
   </Segment>

@@ -46,7 +46,7 @@ class View extends Component {
     /**
      * Pathname of the object
      */
-    pathname: PropTypes.string.isRequired,
+    // pathname: PropTypes.string.isRequired,
     location: PropTypes.shape({
       search: PropTypes.string,
       pathname: PropTypes.string,
@@ -352,11 +352,13 @@ export default compose(
   connect(
     (state, props) => ({
       actions:
-        state.prefetch?.[props.location.pathname]?.['@components']?.actions,
+        state.prefetch?.[state.router.location.pathname]?.['@components']
+          ?.actions,
       token: state.userSession.token,
-      content: state.prefetch?.[props.location.pathname] || state.content.data,
+      content:
+        state.prefetch?.[state.router.location.pathname] || state.content.data,
       error: state.content.get.error,
-      pathname: props.location.pathname,
+      pathname: state.router.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
         qs.parse(props.location.search).version_id,
