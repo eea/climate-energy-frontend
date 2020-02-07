@@ -152,7 +152,7 @@ class Navigation extends Component {
   };
 
   render() {
-    console.log('------------', this.props.navigation);
+    // console.log('------------', this.props.navigation);
     const navigation = this.formatNavUrl(this.props.navigation.items);
 
     return (

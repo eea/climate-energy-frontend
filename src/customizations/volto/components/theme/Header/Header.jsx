@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Portal } from 'react-portal';
 import { BodyClass } from '@plone/volto/helpers';
 
 import ecLogo from './ec_white_negative_color.png';
@@ -16,6 +14,9 @@ import {
 } from '@plone/volto/components';
 import PageNavigation from '~/components/theme/Header/PageNavigation';
 
+// import { Container, Segment } from 'semantic-ui-react';
+// import { Portal } from 'react-portal';
+
 class Header extends Component {
   static propTypes = {
     token: PropTypes.string,
@@ -27,7 +28,7 @@ class Header extends Component {
   };
 
   render() {
-    console.log('-------------', this.props.navigationItems)
+    // console.log('-------------', this.props.navigationItems)
     return (
       <div className="header-wrapper" role="banner">
         {!this.props.token && <BodyClass className="anonymous" />}

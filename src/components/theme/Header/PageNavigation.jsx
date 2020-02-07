@@ -161,7 +161,7 @@ class PageNavigation extends Component {
       [];
     const navigation = this.formatNavUrl(this.props.navigation.items);
 
-    console.log('localnavigation', this.props.localnavigation);
+    // console.log('localnavigation', this.props.localnavigation);
     return (
       <React.Fragment>
         <div className="hamburger-wrapper tablet mobile only">
