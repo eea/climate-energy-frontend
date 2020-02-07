@@ -117,6 +117,7 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    //
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const hideMenu = this.checkProps(this.props);
@@ -261,7 +262,7 @@ export default compose(
   ]),
   connect(
     (state, props) => ({
-      pathname: props.location.pathname,
+      pathname: state.router.location.pathname, //props.location.pathname,
     }),
     { purgeMessages },
   ),
