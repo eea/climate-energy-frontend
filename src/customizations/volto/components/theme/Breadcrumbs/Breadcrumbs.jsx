@@ -13,6 +13,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
+import { settings } from '~/config';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -22,6 +23,18 @@ const messages = defineMessages({
     defaultMessage: 'Home',
   },
 });
+
+const RouterLink = ({ item }) => {
+  const url = (item.url || item['@id'])
+    .replace(settings.apiPath, '')
+    .replace(settings.internalApiPath, '');
+  console.log('routerlink', url);
+  return (
+    <Link title={item.title} to={url} className="section">
+      {item.title}
+    </Link>
+  );
+};
 
 /**
  * Breadcrumbs container class.
@@ -65,14 +78,7 @@ class Breadcrumbs extends Component {
           this.props.items.map((item, index, items) => [
             <Breadcrumb.Divider key={`divider-${index}-${item.url}`} />,
             index < items.length - 1 ? (
-              <Link
-                key={item.url}
-                title={item.title}
-                to={item.url}
-                className="section"
-              >
-                {item.title}
-              </Link>
+              <RouterLink item={item} key={index} />
             ) : (
               <Breadcrumb.Section key={`section-${item.url}`} active>
                 {item.title}
@@ -87,11 +93,14 @@ class Breadcrumbs extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
-      items:
-        state.content.data &&
-        state.content.data['@components'].breadcrumbs.items,
-    }),
+    state => {
+      const content =
+        state.prefetch?.[state.router.location.pathname] || state.content.data;
+      console.log('breadcrumb content', content);
+      return {
+        items: content?.['@components']?.breadcrumbs?.items || [],
+      };
+    },
     {},
   ),
 )(Breadcrumbs);
