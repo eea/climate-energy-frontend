@@ -50,6 +50,10 @@
                         "./src/develop/volto-drafteditor/src"
                     ], 
                     [
+                        "volto-base", 
+                        "./src/develop/volto-base/src"
+                    ], 
+                    [
                         "volto-plotlycharts", 
                         "./src/develop/volto-plotlycharts/src"
                     ], 

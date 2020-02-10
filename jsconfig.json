@@ -1,50 +1,50 @@
 {
     "addons": [
-        "volto-addons",
-        "volto-blocks",
-        "volto-ckeditor",
-        "volto-corsproxy",
-        "volto-datablocks",
-        "volto-drafteditor",
-        "volto-mosaic",
-        "volto-plotlycharts",
+        "volto-addons", 
+        "volto-blocks", 
+        "volto-ckeditor", 
+        "volto-corsproxy", 
+        "volto-datablocks", 
+        "volto-drafteditor", 
+        "volto-mosaic", 
+        "volto-plotlycharts", 
         "volto-sidebar"
-    ],
+    ], 
     "compilerOptions": {
-        "baseUrl": "src/develop",
+        "baseUrl": "src", 
         "paths": {
-            "volto-mosaic": [
-                "volto-mosaic"
-            ],
-            "volto-datablocks": [
-                "volto-datablocks"
-            ],
-            "volto-blocks": [
-                "volto-blocks"
-            ],
             "volto-addons": [
-                "volto-addons"
-            ],
-            "volto-ckeditor": [
-                "volto-ckeditor"
-            ],
-            "volto-drafteditor": [
-                "volto-drafteditor"
-            ],
-            "volto-plotlycharts": [
-                "volto-plotlycharts"
-            ],
-            "volto-corsproxy": [
-                "volto-corsproxy"
-            ],
-            "volto-sidebar": [
-                "volto-sidebar"
-            ],
+                "develop/volto-addons/src"
+            ], 
             "volto-base": [
-                "volto-base"
-            ],
+                "develop/volto-base/src"
+            ], 
+            "volto-blocks": [
+                "develop/volto-blocks/src"
+            ], 
+            "volto-ckeditor": [
+                "develop/volto-ckeditor/src"
+            ], 
+            "volto-corsproxy": [
+                "develop/volto-corsproxy/src"
+            ], 
+            "volto-datablocks": [
+                "develop/volto-datablocks/src"
+            ], 
+            "volto-drafteditor": [
+                "develop/volto-drafteditor/src"
+            ], 
             "volto-embed": [
-                "volto-embed"
+                "develop/volto-embed/src"
+            ], 
+            "volto-mosaic": [
+                "develop/volto-mosaic/src"
+            ], 
+            "volto-plotlycharts": [
+                "develop/volto-plotlycharts/src"
+            ], 
+            "volto-sidebar": [
+                "develop/volto-sidebar/src"
             ]
         }
     }
