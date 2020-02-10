@@ -27,10 +27,6 @@
     "url": "https://github.com/eea/volto-plotlycharts.git",
     "path": "src"
   },
-  "volto-corsproxy": {
-    "url": "https://github.com/eea/volto-corsproxy.git",
-    "path": "src"
-  },
   "volto-sidebar": {
     "url": "https://github.com/eea/volto-sidebar.git",
     "path": "src"
