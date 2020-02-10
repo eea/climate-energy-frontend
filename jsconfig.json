@@ -11,40 +11,40 @@
         "volto-sidebar"
     ],
     "compilerOptions": {
-        "baseUrl": "src",
+        "baseUrl": "src/develop",
         "paths": {
             "volto-mosaic": [
-                "develop/volto-mosaic"
+                "volto-mosaic"
             ],
             "volto-datablocks": [
-                "develop/volto-datablocks"
+                "volto-datablocks"
             ],
             "volto-blocks": [
-                "develop/volto-blocks"
+                "volto-blocks"
             ],
             "volto-addons": [
-                "develop/volto-addons"
+                "volto-addons"
             ],
             "volto-ckeditor": [
-                "develop/volto-ckeditor"
+                "volto-ckeditor"
             ],
             "volto-drafteditor": [
-                "develop/volto-drafteditor"
+                "volto-drafteditor"
             ],
             "volto-plotlycharts": [
-                "develop/volto-plotlycharts"
+                "volto-plotlycharts"
             ],
             "volto-corsproxy": [
-                "develop/volto-corsproxy"
+                "volto-corsproxy"
             ],
             "volto-sidebar": [
-                "develop/volto-sidebar"
+                "volto-sidebar"
             ],
             "volto-base": [
-                "develop/volto-base"
+                "volto-base"
             ],
             "volto-embed": [
-                "develop/volto-embed"
+                "volto-embed"
             ]
         }
     }
