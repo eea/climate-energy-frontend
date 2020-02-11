@@ -64,6 +64,7 @@ We use [Docker](https://www.docker.com/), [Rancher](https://rancher.com/) and [J
 * Create a new release of this code via `git tag` command or [Draft new release](https://github.com/eea/energy_union_frontend/releases/new) on Github.
   * A new Docker image is built and released automatically on [DockerHub](https://hub.docker.com/r/eeacms/energy-union-frontend) based on this tag.
   * A new entry is automatically added to [Volto - Energy Union](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union) `EEA Rancher Catalog`
+  * The [Jenkins job](https://ci.eionet.europa.eu/blue/organizations/jenkins/energy-union%2Fenergy_union_frontend/)
 
 ### Upgrade
 
