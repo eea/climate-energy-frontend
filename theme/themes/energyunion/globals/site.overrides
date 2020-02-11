@@ -119,6 +119,12 @@ main {
         padding: 2rem;
         position: relative;
 
+        #page-document {
+            img {
+                max-width: 100%;
+            }
+        }
+
         h1.documentFirstHeading {
             font-size: 2.5rem;
             border-bottom: 1px solid #ddd;
@@ -300,6 +306,7 @@ body.homepage {
             width : 66%;
             background: rgba(255, 255, 255, 0.1);
             padding : 20px;
+            max-height: calc(100vh - 152px)!important;
 
             @media(max-width: 1330px) {
                 left: unset;

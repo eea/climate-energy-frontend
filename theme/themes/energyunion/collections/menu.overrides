@@ -244,7 +244,7 @@
       text-transform: uppercase;
       padding-left: 4rem;
       padding-top: 300px;
-
+      max-height: 100vh;
 
       // transition: all 300ms;
       .menu-item {
