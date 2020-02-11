@@ -17,6 +17,7 @@ import { settings } from '~/config';
 import rightCircle from '@plone/volto/icons/circle-right.svg';
 import MenuPosition from './MenuPosition';
 import { getBasePath } from '~/helpers';
+import { BodyClass } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -91,10 +92,8 @@ class PageNavigation extends Component {
   }
 
   setSubmenu(title, items, ev) {
-    const body = document.querySelector('body');
 
     if (this.state.subMenu.type === title) {
-      body.classList.remove('menu-open-contentpage');
       this.setState({
         subMenu: {
           type: null,
@@ -106,8 +105,6 @@ class PageNavigation extends Component {
         },
       });
     } else {
-      body.classList.add('menu-open-contentpage');
-
       this.setState({
         subMenu: {
           type: title,
@@ -164,6 +161,14 @@ class PageNavigation extends Component {
     // console.log('localnavigation', this.props.localnavigation);
     return (
       <React.Fragment>
+        <BodyClass
+          className={
+            this.state.subMenu.items && this.state.subMenu.items.length
+              ? 'contentpage menu-open-contentpage'
+              : 'contentpage'
+          }
+        />
+
         <div className="hamburger-wrapper tablet mobile only">
           <button
             className={cx('hamburger hamburger--collapse', {

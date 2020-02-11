@@ -88,9 +88,9 @@ class Navigation extends Component {
   }
 
   setSubmenu(title, items) {
-    const body = document.querySelector('body');
+    // const body = document.querySelector('body');
     if (this.state.subMenu.type === title) {
-      body.classList.remove('menu-open-homepage');
+      // body.classList.remove('menu-open-homepage');
       this.setState({
         subMenu: {
           type: null,
@@ -102,7 +102,7 @@ class Navigation extends Component {
         },
       });
     } else {
-      body.classList.add('menu-open-homepage');
+      // body.classList.add('menu-open-homepage');
       this.setState({
         subMenu: {
           type: title,
@@ -157,7 +157,13 @@ class Navigation extends Component {
 
     return (
       <div id="app-menu-content">
-        <BodyClass className="homepage" />
+        <BodyClass
+          className={
+            this.state.subMenu.items && this.state.subMenu.items.length
+              ? 'homepage menu-open-homepage'
+              : 'homepage'
+          }
+        />
 
         <div
           id="menu-background"
