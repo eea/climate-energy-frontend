@@ -252,6 +252,10 @@ nav.tabs {
 // HOMEPAGE
 
 body.homepage {
+    #main {
+        position: relative;
+    }
+    min-height: 652px;
     .homepageHeader .logo-wrapper {
         img {
             width: 550px;
@@ -266,7 +270,8 @@ body.homepage {
 
     .content-area {
         display: flex;
-        height: 100vh;
+        // height: 100vh;
+        height: 100%;
         width: 100vw;
         margin: 0;
         padding: 0;
@@ -306,7 +311,8 @@ body.homepage {
             width : 66%;
             background: rgba(255, 255, 255, 0.1);
             padding : 20px;
-            max-height: calc(100vh - 152px)!important;
+            // max-height: calc(100vh - 152px)!important;
+            max-height: 100%;
 
             @media(max-width: 1330px) {
                 left: unset;
