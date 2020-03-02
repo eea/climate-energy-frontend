@@ -1,4 +1,8 @@
-## Documentation
+## Energy Union: Volto Frontend
+
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=energy-union%2Fenergy_union_frontend%2Fmaster&subject=pipeline)](https://ci.eionet.europa.eu/view/Github/job/energy-union/job/energy_union_frontend/job/master/display/redirect)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/eea/energy_union_frontend?sort=semver)](https://github.com/eea/energy_union_frontend/releases)
+
 
 A frontend component for the Energy Union website.
 
