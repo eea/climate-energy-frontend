@@ -1,3 +1,4 @@
+.vscode/
 logs
 *.log
 npm-debug.log*
@@ -12,8 +13,4 @@ build
 .env.production.local
 
 data
-*~
-src/develop
-src/addons
-npm-cache
 omelette

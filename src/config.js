@@ -1,4 +1,12 @@
 import * as voltoConfig from '@plone/volto/config';
+import {
+  settings as defaultSettings,
+  views as defaultViews,
+  widgets as defaultWidgets,
+  blocks as defaultBlocks,
+  addonReducers as defaultAddonReducers,
+  addonRoutes as defaultAddonRoutes,
+} from '@plone/volto/config';
 
 import {
   applyConfig as addonsConfig,
@@ -28,12 +36,10 @@ const config = [
   installEnergyFrontend,
 ].reduce((acc, apply) => apply(acc), voltoConfig);
 
-// config.settings.contentExpand=[breadcrumbs,actions,workflow]
-
 export const settings = {
-  ...config.settings,
+  ...defaultSettings,
   contentExpand: [
-    ...config.settings.contentExpand,
+    ...defaultSettings.contentExpand,
     'localnavigation',
     'siblings',
     '&expand.localnavigation.depth=2',
@@ -41,27 +47,21 @@ export const settings = {
 };
 
 export const views = {
-  ...config.views,
+  ...defaultViews,
 };
 
 export const widgets = {
-  ...config.widgets,
+  ...defaultWidgets,
+  vocabulary: {
+    ...defaultWidgets.vocabulary,
+    'energy.resource_type': TokenWidget,
+    'energy.topics': TokenWidget,
+  },
 };
 
 export const blocks = {
-  ...config.blocks,
+  ...defaultBlocks,
 };
 
-export const addonReducers = { ...config.addonReducers };
-export const addonRoutes = [...(config.addonRoutes || [])];
-export const viewlets = [...(config.viewlets || [])];
-
-export const portlets = {
-  ...config.portlets,
-};
-
-export const editForms = {
-  ...config.editForms,
-};
-
-// console.log('config', config);
+export const addonRoutes = [...defaultAddonRoutes];
+export const addonReducers = { ...defaultAddonReducers };
