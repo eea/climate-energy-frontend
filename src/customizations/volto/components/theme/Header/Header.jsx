@@ -68,14 +68,12 @@ class Header extends Component {
             </div>
             <Navigation
               isHomepage={this.props.homepage}
-              navigation={this.props.navigationItems}
               pathname={this.props.pathname}
             />
           </React.Fragment>
         ) : (
           <PageNavigation
             isHomepage={this.props.homepage}
-            navigation={this.props.navigationItems}
             pathname={this.props.pathname}
           />
         )}

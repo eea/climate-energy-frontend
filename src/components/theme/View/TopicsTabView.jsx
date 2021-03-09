@@ -20,7 +20,6 @@ import {
   hasBlocksData,
 } from '@plone/volto/helpers';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { getLocation, samePath } from 'volto-mosaic/helpers';
 
 const messages = defineMessages({
   unknownBlock: {

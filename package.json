@@ -18,17 +18,7 @@
   "workspaces": [
     "src/addons/*"
   ],
-  "addons": [
-    "volto-addons",
-    "volto-blocks",
-    "volto-ckeditor",
-    "volto-corsproxy",
-    "volto-datablocks",
-    "volto-drafteditor",
-    "volto-mosaic",
-    "volto-plotlycharts",
-    "volto-sidebar"
-  ],
+  "addons": [],
   "jest": {
     "modulePathIgnorePatterns": [
       "api"
@@ -119,20 +109,11 @@
     "draft-js-alignment-plugin": "^2.0.6",
     "draftjs-to-html": "^0.8.4",
     "mgr-pdf-viewer-react": "^1.0.3",
+    "react-component-queries": "2.3.0",
     "react-loadable": "^5.5.0",
     "react-scrollspy": "^3.4.2",
     "react-sizeme": "2.6.12",
     "react-visibility-sensor": "^5.1.1",
-    "volto-addons": "https://github.com/eea/volto-addons.git",
-    "volto-base": "https://github.com/eea/volto-base.git",
-    "volto-blocks": "https://github.com/eea/volto-blocks.git",
-    "volto-ckeditor": "https://github.com/eea/volto-ckeditor.git",
-    "volto-datablocks": "https://github.com/eea/volto-datablocks.git",
-    "volto-drafteditor": "https://github.com/eea/volto-drafteditor.git",
-    "volto-embed": "https://github.com/eea/volto-embed.git",
-    "volto-mosaic": "https://github.com/eea/volto-mosaic.git",
-    "volto-plotlycharts": "https://github.com/eea/volto-plotlycharts.git",
-    "volto-sidebar": "https://github.com/eea/volto-sidebar.git",
     "volto-slate": "^2.1.0"
   },
   "devDependencies": {

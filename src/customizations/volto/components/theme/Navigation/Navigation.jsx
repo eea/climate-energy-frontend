@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
@@ -12,8 +13,10 @@ import { BodyClass } from '@plone/volto/helpers';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import backIcon from '@plone/volto/icons/back.svg';
 import { Icon } from '@plone/volto/components';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import { getBasePath } from '~/helpers';
+
+import { getNavigation } from '@plone/volto/actions';
 
 import bgimage from './home.jpg';
 
@@ -31,19 +34,21 @@ const messages = defineMessages({
 function getPath(url) {
   if (!url) return '';
   return url
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '');
+    .replace(config.settings.apiPath, '')
+    .replace(config.settings.internalApiPath, '');
 }
 
 class Navigation extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    // items: PropTypes.arrayOf(
-    //   PropTypes.shape({
-    //     title: PropTypes.string,
-    //     url: PropTypes.string,
-    //   }),
-    // ).isRequired,
+    getNavigation: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+      }),
+    ).isRequired,
+    lang: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -68,13 +73,29 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
+    const { settings } = config;
+    this.props.getNavigation(
+      getBaseUrl(this.props.pathname),
+      settings.navDepth,
+    );
     document.addEventListener('resize', this.isMobile);
     this.isMobile();
   }
 
-  componentWillReceiveProps(nextProps) {
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { settings } = config;
     if (nextProps.pathname !== this.props.pathname) {
       this.closeMobileMenu();
+      this.props.getNavigation(
+        getBaseUrl(nextProps.pathname),
+        settings.navDepth,
+      );
     }
   }
 
@@ -153,7 +174,7 @@ class Navigation extends Component {
 
   render() {
     // console.log('------------', this.props.navigation);
-    const navigation = this.formatNavUrl(this.props.navigation.items);
+    const navigation = this.formatNavUrl(this.props.items);
 
     return (
       <div id="app-menu-content">
@@ -335,16 +356,14 @@ class Navigation extends Component {
     );
   }
 }
-// export default compose(
-//   injectIntl,
-//   connect(
-//     state => ({
-//       items:
-//         state.content.data &&
-//         state.content.data['@components'].navigation.items,
-//     }),
-//     {},
-//   ),
-// )(Navigation);
 
-export default compose(injectIntl)(Navigation);
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      items: state.navigation.items,
+      lang: state.intl.locale,
+    }),
+    { getNavigation },
+  ),
+)(Navigation);
