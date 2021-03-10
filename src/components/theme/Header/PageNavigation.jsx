@@ -143,11 +143,11 @@ class PageNavigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
-  formatNavUrl = nav => {
+  formatNavUrl = (nav = []) => {
     return nav.map(navItem => ({
       ...navItem,
-      url: navItem.url ? getBasePath(navItem.url) : '',
-      items: navItem.items ? this.formatNavUrl(navItem.items) : false,
+      url: navItem?.url ? getBasePath(navItem?.url) : '',
+      items: navItem?.items ? this.formatNavUrl(navItem?.items) : false,
     }));
   };
 
