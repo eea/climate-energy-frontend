@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
+import { getBaseUrl } from '@plone/volto/helpers';
 import { BodyClass } from '@plone/volto/helpers';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import backIcon from '@plone/volto/icons/back.svg';

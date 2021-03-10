@@ -92,7 +92,6 @@ class PageNavigation extends Component {
   }
 
   setSubmenu(title, items, ev) {
-
     if (this.state.subMenu.type === title) {
       this.setState({
         subMenu: {
@@ -143,6 +142,7 @@ class PageNavigation extends Component {
     }
     this.setState({ isMobileMenuOpen: false });
   }
+
   formatNavUrl = nav => {
     return nav.map(navItem => ({
       ...navItem,
@@ -150,13 +150,14 @@ class PageNavigation extends Component {
       items: navItem.items ? this.formatNavUrl(navItem.items) : false,
     }));
   };
+
   render() {
     const localnavigation =
       (this.props.localnavigation &&
         this.props.localnavigation.length &&
         this.props.localnavigation.filter(item => item.title !== 'Home')) ||
       [];
-    const navigation = this.formatNavUrl(this.props.navigation.items);
+    const navigation = this.formatNavUrl(this.props.localnavigation?.items);
 
     // console.log('localnavigation', this.props.localnavigation);
     return (
