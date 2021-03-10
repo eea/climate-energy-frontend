@@ -18,7 +18,11 @@
   "workspaces": [
     "src/addons/*"
   ],
-  "addons": [],
+  "addons": [
+    "volto-ckeditor",
+    "volto-datablocks",
+    "volto-plotlycharts"
+  ],
   "jest": {
     "modulePathIgnorePatterns": [
       "api"

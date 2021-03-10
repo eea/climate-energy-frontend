@@ -1,4 +1,4 @@
-//import * as voltoConfig from '@plone/volto/config';
+import * as voltoConfig from '@plone/volto/config';
 import {
   settings as defaultSettings,
   views as defaultViews,
@@ -15,8 +15,8 @@ import chartIcon from '@plone/volto/icons/world.svg';
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 
-// import CollectionBlockView from '~/components/theme/Collection/BlockView';
-// import CollectionBlockEdit from '~/components/theme/Collection/BlockEdit';
+import CollectionBlockView from '~/components/theme/Collection/BlockView';
+import CollectionBlockEdit from '~/components/theme/Collection/BlockEdit';
 
 // import {
 //   applyConfig as addonsConfig,
@@ -27,9 +27,7 @@ import TopicsTabView from '~/components/theme/View/TopicsTabView';
 // import { applyConfig as ckeditorConfig } from 'volto-ckeditor/config';
 // import { applyConfig as dataBlocksConfig } from 'volto-datablocks/config';
 // import { applyConfig as blocksConfig } from 'volto-blocks/config';
-// import { applyConfig as mosaicConfig } from 'volto-mosaic/config';
 // // import { applyConfig as plotlyConfig } from 'volto-plotlycharts/config';
-// import { applyConfig as installEnergyFrontend } from './localconfig';
 // import { applyConfig as installSidebar } from 'volto-sidebar/config';
 
 // const config = [
@@ -40,10 +38,8 @@ import TopicsTabView from '~/components/theme/View/TopicsTabView';
 //   installTableau,
 //   // plotlyConfig,
 //   ckeditorConfig,
-//   mosaicConfig,
 //   blocksConfig,
 //   dataBlocksConfig,
-//   installEnergyFrontend,
 // ].reduce((acc, apply) => apply(acc), voltoConfig);
 
 const env_destinations = (process.env.ALLOWED_CORS_DESTINATIONS || '')
