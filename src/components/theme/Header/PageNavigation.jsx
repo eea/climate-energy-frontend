@@ -153,10 +153,10 @@ class PageNavigation extends Component {
 
   render() {
     const localnavigation =
-      (this.props.localnavigation?.length &&
-        this.props.localnavigation?.filter(item => item.title !== 'Home')) ||
+      (this.props.items?.length > 0 &&
+        this.props.items?.filter(item => item.title !== 'Home')) ||
       [];
-    const navigation = this.formatNavUrl(this.props.localnavigation?.items);
+    const navigation = this.formatNavUrl(this.props.localnavigation);
 
     // console.log('localnavigation', this.props.localnavigation);
     return (
@@ -448,14 +448,12 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      localnavigation:
-        state.prefetch?.[state.router.location.pathname]?.['@components']
-          ?.localnavigation?.items ||
-        (state.content.data &&
-          state.content.data['@components'].localnavigation.items),
-      // items:
-      //   state.content.data &&
-      //   state.content.data['@components'].navigation.items,
+      // localnavigation:
+      //   state.prefetch?.[state.router.location.pathname]?.['@components']
+      //     ?.localnavigation?.items ||
+      //   (state.content.data &&
+      //     state.content.data['@components'].localnavigation.items),
+      items: state.navigation.items,
     }),
     {},
   ),

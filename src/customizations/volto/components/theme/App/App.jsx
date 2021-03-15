@@ -147,13 +147,13 @@ class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
-        <SkipLinks />
         {this.props.pathname === '/' ? (
           <React.Fragment>
             <Header
               actualPathName={this.props.pathname}
               homepage={true}
               pathname={path}
+              navigationItems={this.props.navigation}
             />
             <MultilingualRedirector pathname={this.props.pathname}>
               <Segment basic className="content-area">

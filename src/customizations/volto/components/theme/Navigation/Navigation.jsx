@@ -239,9 +239,9 @@ class Navigation extends Component {
           <div className="first-level">
             {navigation.map((item, index) => (
               <div
-                key={getPath(item['@id'])}
+                key={getPath(item.url)}
                 className={
-                  this.isActive(getPath(item['@id']))
+                  this.isActive(getPath(item.url))
                     ? 'menu-item active'
                     : 'menu-item'
                 }
@@ -263,14 +263,15 @@ class Navigation extends Component {
                     {item.title}
                   </a>
                 ) : (
-                  <Link to={getPath(item['@id'])} key={getPath(item['@id'])}>
+                  <Link to={getPath(item.url)} key={getPath(item.url)}>
                     {item.title}
                   </Link>
                 )}
               </div>
             ))}
           </div>
-          {this.state.subMenu.items && this.state.subMenu.items.length ? (
+          {console.log(this.state.subMenu.items)}
+          {this.state.subMenu.items && this.state.subMenu.items.length > 0 ? (
             <div className="second-level">
               <Icon
                 name={backIcon}
@@ -311,10 +312,10 @@ class Navigation extends Component {
                 </div>
               ))}
             </div>
-          ) : (
-            <div />
-          )}
-          {this.state.subTopics.items && this.state.subTopics.items.length ? (
+          ) : null}
+          {console.log('sunto', this.state.subTopics.items)}
+          {this.state.subTopics.items &&
+          this.state.subTopics.items.length > 0 ? (
             <div className="third-level">
               <Icon
                 name={backIcon}
@@ -349,9 +350,7 @@ class Navigation extends Component {
                 </div>
               ))}
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </div>
       </div>
     );
