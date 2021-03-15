@@ -153,9 +153,8 @@ class PageNavigation extends Component {
 
   render() {
     const localnavigation =
-      (this.props.localnavigation &&
-        this.props.localnavigation.length &&
-        this.props.localnavigation.filter(item => item.title !== 'Home')) ||
+      (this.props.localnavigation?.length &&
+        this.props.localnavigation?.filter(item => item.title !== 'Home')) ||
       [];
     const navigation = this.formatNavUrl(this.props.localnavigation?.items);
 

@@ -74,6 +74,7 @@ class Header extends Component {
         ) : (
           <PageNavigation
             isHomepage={this.props.homepage}
+            navigation={this.props.navigationItems}
             pathname={this.props.pathname}
           />
         )}

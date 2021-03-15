@@ -148,52 +148,32 @@ class App extends Component {
           })}
         />
         <SkipLinks />
-        <Header
-          actualPathName={this.props.pathname}
-          homepage={true}
-          pathname={path}
-          navigationItems={this.props.navigation}
-        />
-        <MultilingualRedirector pathname={this.props.pathname}>
-          <Segment basic className="content-area">
-            <main>
-              <OutdatedBrowser />
-              {this.props.connectionRefused ? (
-                <ConnectionRefusedView />
-              ) : this.state.hasError ? (
-                <Error
-                  message={this.state.error.message}
-                  stackTrace={this.state.errorInfo.componentStack}
-                />
-              ) : (
-                renderRoutes(this.props.route.routes, {
-                  staticContext: this.props.staticContext,
-                })
-              )}
-            </main>
-          </Segment>
-        </MultilingualRedirector>
-        <Footer />
-        {/* {this.props.pathname === '/' ? (
+        {this.props.pathname === '/' ? (
           <React.Fragment>
             <Header
               actualPathName={this.props.pathname}
               homepage={true}
               pathname={path}
-              navigationItems={this.props.navigation}
             />
-            <Segment className="content-area">
-              <main>
-                {this.state.hasError ? (
-                  <Error
-                    message={this.state.error.message}
-                    stackTrace={this.state.errorInfo.componentStack}
-                  />
-                ) : (
-                  renderRoutes(this.props.route.routes)
-                )}
-              </main>
-            </Segment>
+            <MultilingualRedirector pathname={this.props.pathname}>
+              <Segment basic className="content-area">
+                <main>
+                  <OutdatedBrowser />
+                  {this.props.connectionRefused ? (
+                    <ConnectionRefusedView />
+                  ) : this.state.hasError ? (
+                    <Error
+                      message={this.state.error.message}
+                      stackTrace={this.state.errorInfo.componentStack}
+                    />
+                  ) : (
+                    renderRoutes(this.props.route.routes, {
+                      staticContext: this.props.staticContext,
+                    })
+                  )}
+                </main>
+              </Segment>
+            </MultilingualRedirector>
           </React.Fragment>
         ) : (
           <div className="content-page">
@@ -245,7 +225,7 @@ class App extends Component {
               </Grid.Row>
             </Grid>
           </div>
-        )} */}
+        )}
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
@@ -259,6 +239,7 @@ class App extends Component {
             />
           }
         />
+        <Footer />
         <AppExtras {...this.props} />
       </Fragment>
     );
