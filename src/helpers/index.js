@@ -4,11 +4,11 @@
  * @example
  * export { Api } from './Api/Api';
  */
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 export function getBasePath(url) {
   return getBaseUrl(url)
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '');
+    .replace(config.settings.apiPath, '')
+    .replace(config.settings.internalApiPath, '');
 }

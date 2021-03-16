@@ -12,6 +12,7 @@
  */
 
 import {
+  GET_INDEX_VALUES,
   SET_FOLDER_HEADER,
   SET_FOLDER_TABS,
   GET_PARENT_FOLDER_DATA,
@@ -78,7 +79,7 @@ export function getParentFolderData(url) {
 }
 
 export function quickSearchContent(url, options, subrequest = null) {
-  console.log('in action - quicksearch')
+  console.log('in action - quicksearch');
 
   let queryArray = [];
   const arrayOptions = pickBy(options, item => isArray(item));
@@ -127,5 +128,16 @@ export function quickResetSearchContent(subrequest = null) {
   return {
     type: QUICK_RESET_SEARCH_CONTENT,
     subrequest,
+  };
+}
+
+export function getIndexValues(name) {
+  return {
+    type: GET_INDEX_VALUES,
+    request: {
+      op: 'post',
+      path: '/@index-values',
+      data: { name },
+    },
   };
 }

@@ -92,7 +92,6 @@ class PageNavigation extends Component {
   }
 
   setSubmenu(title, items, ev) {
-
     if (this.state.subMenu.type === title) {
       this.setState({
         subMenu: {
@@ -143,20 +142,21 @@ class PageNavigation extends Component {
     }
     this.setState({ isMobileMenuOpen: false });
   }
-  formatNavUrl = nav => {
+
+  formatNavUrl = (nav = []) => {
     return nav.map(navItem => ({
       ...navItem,
-      url: navItem.url ? getBasePath(navItem.url) : '',
-      items: navItem.items ? this.formatNavUrl(navItem.items) : false,
+      url: navItem?.url ? getBasePath(navItem?.url) : '',
+      items: navItem?.items ? this.formatNavUrl(navItem?.items) : false,
     }));
   };
+
   render() {
     const localnavigation =
-      (this.props.localnavigation &&
-        this.props.localnavigation.length &&
-        this.props.localnavigation.filter(item => item.title !== 'Home')) ||
+      (this.props.items?.length > 0 &&
+        this.props.items?.filter(item => item.title !== 'Home')) ||
       [];
-    const navigation = this.formatNavUrl(this.props.navigation.items);
+    const navigation = this.formatNavUrl(localnavigation);
 
     // console.log('localnavigation', this.props.localnavigation);
     return (
@@ -289,7 +289,7 @@ class PageNavigation extends Component {
                           ) : (
                             ''
                           )}
-                          {localnavigation && localnavigation.length ? (
+                          {localnavigation?.length > 0 ? (
                             <ul className="localnavigation">
                               {localnavigation.map(item => (
                                 <li
@@ -331,10 +331,8 @@ class PageNavigation extends Component {
                     </React.Fragment>
                   ) : (
                     <Link
-                      to={
-                        getPath(item['@id']) === '' ? '/' : getPath(item['@id'])
-                      }
-                      key={getPath(item['@id'])}
+                      to={getPath(item.url) === '' ? '/' : getPath(item.url)}
+                      key={getPath(item.url)}
                     >
                       {item.title}
                     </Link>
@@ -448,14 +446,12 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      localnavigation:
-        state.prefetch?.[state.router.location.pathname]?.['@components']
-          ?.localnavigation?.items ||
-        (state.content.data &&
-          state.content.data['@components'].localnavigation.items),
-      // items:
-      //   state.content.data &&
-      //   state.content.data['@components'].navigation.items,
+      // localnavigation:
+      //   state.prefetch?.[state.router.location.pathname]?.['@components']
+      //     ?.localnavigation?.items ||
+      //   (state.content.data &&
+      //     state.content.data['@components'].localnavigation.items),
+      items: state.navigation.items,
     }),
     {},
   ),

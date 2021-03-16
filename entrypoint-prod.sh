@@ -27,7 +27,7 @@ if [ -z "$TIMEOUT" ]; then
 fi
 
 if [ -z "$RAZZLE_API_PATH" ]; then
-  RAZZLE_API_PATH="http://plone:8080/Plone"
+  RAZZLE_API_PATH="http://plone:8080/energy"
 fi
 
 if [ -z "$CYPRESS_API_PATH" ]; then

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import TilesListing from './TilesListing';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { Pagination } from '@plone/volto/components';
-import { getContentWithData } from 'volto-addons/actions';
+//import { getContentWithData } from 'volto-addons/actions';
 import { searchContent } from '@plone/volto/actions';
 import Filter from './Filter';
 
@@ -189,7 +189,6 @@ export default connect(
     contentSubrequests: state.content.subrequests,
   }),
   {
-    getContentWithData,
     searchContent,
   },
 )(BlockView);

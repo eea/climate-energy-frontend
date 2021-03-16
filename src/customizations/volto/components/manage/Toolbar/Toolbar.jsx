@@ -232,9 +232,9 @@ class Toolbar extends Component {
               className="pusher-puller"
               ref={node => (this.pusher = node)}
               style={{
-                transform: this.toolbarWindow.current
+                transform: this.toolbarWindow?.current
                   ? `translateX(-${(this.state.loadedComponents.length - 1) *
-                      this.toolbarWindow.current.getBoundingClientRect()
+                      this.toolbarWindow?.current.getBoundingClientRect()
                         .width}px)`
                   : null,
               }}
