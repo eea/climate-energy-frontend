@@ -156,7 +156,7 @@ class PageNavigation extends Component {
       (this.props.items?.length > 0 &&
         this.props.items?.filter(item => item.title !== 'Home')) ||
       [];
-    const navigation = this.formatNavUrl(this.props.localnavigation);
+    const navigation = this.formatNavUrl(localnavigation);
 
     // console.log('localnavigation', this.props.localnavigation);
     return (
@@ -289,7 +289,7 @@ class PageNavigation extends Component {
                           ) : (
                             ''
                           )}
-                          {localnavigation && localnavigation.length ? (
+                          {localnavigation?.length > 0 ? (
                             <ul className="localnavigation">
                               {localnavigation.map(item => (
                                 <li
@@ -331,10 +331,8 @@ class PageNavigation extends Component {
                     </React.Fragment>
                   ) : (
                     <Link
-                      to={
-                        getPath(item['@id']) === '' ? '/' : getPath(item['@id'])
-                      }
-                      key={getPath(item['@id'])}
+                      to={getPath(item.url) === '' ? '/' : getPath(item.url)}
+                      key={getPath(item.url)}
                     >
                       {item.title}
                     </Link>
