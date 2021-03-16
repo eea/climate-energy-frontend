@@ -7,8 +7,8 @@ import React from 'react';
 import { Container, List, Segment, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import eeaLogo from './ec.svg.png';
-import ecLogo from './eea.png';
+import eeaLogo from '~/components/theme/Footer/ec.svg.png';
+import ecLogo from '~/components/theme/Footer/eea.png';
 import { connect } from 'react-redux';
 
 import { Anontools } from '@plone/volto/components';

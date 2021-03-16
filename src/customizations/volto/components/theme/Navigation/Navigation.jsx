@@ -19,7 +19,7 @@ import { getBasePath } from '~/helpers';
 
 import { getNavigation } from '@plone/volto/actions';
 
-import bgimage from './home.jpg';
+import bgimage from '~/components/theme/Navigation/home.jpg';
 
 const messages = defineMessages({
   closeMobileMenu: {
