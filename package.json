@@ -18,10 +18,7 @@
   "workspaces": [
     "src/addons/*"
   ],
-  "addons": [
-    "volto-datablocks",
-    "volto-plotlycharts"
-  ],
+  "addons": [],
   "jest": {
     "modulePathIgnorePatterns": [
       "api"
