@@ -1,6 +1,6 @@
 # Based on https://github.com/plone/volto/blob/master/entrypoint.sh
 
-FROM node:10-jessie as build
+FROM node:12-stretch-slim as build
 
 ARG NPM_CONFIG_REGISTRY
 ARG MAX_OLD_SPACE_SIZE=8192
@@ -44,7 +44,7 @@ RUN NPM_CONFIG_REGISTRY=$NPM_CONFIG_REGISTRY npm install
 RUN RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn build
 
 # Second stage build
-FROM node:10-jessie
+FROM node:12-stretch-slim
 
 RUN apt-get update -y \
  && apt-get install -y git bsdmainutils vim-nox mc \
@@ -56,7 +56,6 @@ COPY entrypoint-prod.sh /opt/frontend/entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 COPY package.json .
-COPY package-lock.json .
 
 COPY --from=build /opt/frontend/public ./public
 COPY --from=build /opt/frontend/build ./build
