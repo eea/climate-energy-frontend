@@ -19,7 +19,6 @@
     "src/addons/*"
   ],
   "addons": [
-    "volto-ckeditor",
     "volto-datablocks",
     "volto-plotlycharts"
   ],
