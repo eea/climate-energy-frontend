@@ -15,7 +15,6 @@ RUN npm i -g mrs-developer
 
 WORKDIR /opt/frontend/
 
-COPY docker-image.txt /
 COPY . .
 # RUN chmod +x optimize_node_modules.sh
 
@@ -69,8 +68,7 @@ USER node
 RUN rm -rf package-lock.json
 RUN NPM_CONFIG_REGISTRY=$NPM_CONFIG_REGISTRY npm install --production
 
-ENTRYPOINT ["/opt/frontend/entrypoint.sh"]
-
 EXPOSE 3000 3001 4000 4001
 
-CMD yarn start:prod
+ENTRYPOINT ["/opt/frontend/entrypoint-prod.sh"]
+CMD ["yarn", "start:prod"]
