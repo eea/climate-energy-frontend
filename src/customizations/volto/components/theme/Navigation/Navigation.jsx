@@ -190,7 +190,7 @@ class Navigation extends Component {
         <div
           id="menu-background"
           className="background-img"
-          style={{ backgroundImage: `url(${bgimage})`, height: '500%' }}
+          style={{ backgroundImage: `url(${bgimage})` }}
         />
         <div
           id="menu-background-overlay"
