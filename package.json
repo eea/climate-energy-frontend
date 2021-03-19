@@ -20,7 +20,8 @@
   ],
   "addons": [
     "volto-slate",
-    "@eeacms/volto-columns-block"
+    "@eeacms/volto-columns-block",
+    "@eeacms/volto-corsproxy"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -98,6 +99,7 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
+    "@eeacms/volto-corsproxy": "2.1.0",
     "@eeacms/volto-columns-block": "^3.0.0",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@plone/volto": "12.2.0",
