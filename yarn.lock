@@ -1308,12 +1308,24 @@
     react-pdf-js "^5.1.0"
     redraft "^0.10.2"
 
+"@eeacms/volto-block-style@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-2.2.0.tgz#8d302b388b3bed8435c3f9599c2c6b7550e4154f"
+  integrity sha512-Eqn3akUseuzUenVqW2qYYDSZB1YzPhFnzlzDsSwqkmjHQdy4OukrvmNcOFrWgGEVB5Zp0VjLvYezUdcAIlWXqQ==
+  dependencies:
+    react-color "~2.18.1"
+
 "@eeacms/volto-columns-block@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-3.0.0.tgz#aa3c0a409b0ef05029b4c1707a336be99396db3b"
   integrity sha512-ua44gtrIpacPva3BbwG4dMXAXBGP+5oE5ERaa6XuEr2qPjnjELuF2UZI68NWRZqEJFM7+KNf/nNW+EBTgfoc+A==
   dependencies:
     react-color "~2.18.1"
+
+"@eeacms/volto-corsproxy@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.0.tgz#b43aa299575e6b14a5d3f6ff2123d06eee64bdfc"
+  integrity sha512-/z75TjK4ZwC1eIZJk6yaftrWqHsvuYgP2k/gEju+cz1O0CGvP13oo1RJg5dXWxFReGpuKrT6ROjSRDL4zUtcWA==
 
 "@eeacms/volto-object-widget@^2.0.0":
   version "2.1.0"
