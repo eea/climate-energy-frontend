@@ -22,7 +22,8 @@
     "volto-slate",
     "@eeacms/volto-columns-block",
     "@eeacms/volto-corsproxy",
-    "@eeacms/volto-block-style"
+    "@eeacms/volto-block-style",
+    "@eeacms/volto-collection-block"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -101,6 +102,7 @@
   },
   "dependencies": {
     "@eeacms/volto-corsproxy": "2.1.0",
+    "@eeacms/volto-collection-block": "0.1.0",
     "@eeacms/volto-block-style": "2.2.0",
     "@eeacms/volto-columns-block": "^3.0.0",
     "@n8tb1t/use-scroll-position": "^1.0.43",
