@@ -1,4 +1,3 @@
-import * as voltoConfig from '@plone/volto/config';
 import {
   settings as defaultSettings,
   views as defaultViews,
