@@ -22,7 +22,8 @@
     "volto-slate",
     "@eeacms/volto-columns-block",
     "@eeacms/volto-corsproxy",
-    "@eeacms/volto-block-style"
+    "@eeacms/volto-block-style",
+    "@eeacms/volto-sentry-rancher-config"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -103,6 +104,7 @@
     "@eeacms/volto-corsproxy": "2.1.0",
     "@eeacms/volto-block-style": "2.2.0",
     "@eeacms/volto-columns-block": "^3.0.0",
+    "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@plone/volto": "12.2.0",
     "mgr-pdf-viewer-react": "^1.0.3",
