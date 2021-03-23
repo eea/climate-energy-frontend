@@ -1332,6 +1332,11 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-2.1.0.tgz#3116a9fd2016d0c85959830a7ae719a6ad0afb06"
   integrity sha512-hu6jO6CRPmR6X2h9iMqsW3LQYCcraUi6fMrp2j4kijFQHkFcw0iWe2Bq72BT3PC9kyrII96LSMTJqkvZx/EHRw==
 
+"@eeacms/volto-sentry-rancher-config@^2.0.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-sentry-rancher-config/-/volto-sentry-rancher-config-2.1.0.tgz#c52c9d3392faf2fad462ac3875d5f19bb493f5bf"
+  integrity sha512-o2NiBM37Uz+F5HInH/Be3eBxF2rj6jKopUR5fj0+Sejkt4L6HJ0zytrLCuTo1yEPp3098kMnrcVDgKr6dw4n4A==
+
 "@emotion/babel-plugin@^11.0.0":
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.2.0.tgz#f25c6df8ec045dad5ae6ca63df0791673b98c920"
