@@ -23,11 +23,8 @@
     "@eeacms/volto-columns-block",
     "@eeacms/volto-corsproxy",
     "@eeacms/volto-block-style",
-<<<<<<< HEAD
-    "@eeacms/volto-collection-block"
-=======
+    "@eeacms/volto-collection-block",
     "@eeacms/volto-sentry-rancher-config"
->>>>>>> origin/master
   ],
   "jest": {
     "modulePathIgnorePatterns": [
