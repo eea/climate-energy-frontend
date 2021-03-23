@@ -23,7 +23,11 @@
     "@eeacms/volto-columns-block",
     "@eeacms/volto-corsproxy",
     "@eeacms/volto-block-style",
+<<<<<<< HEAD
     "@eeacms/volto-collection-block"
+=======
+    "@eeacms/volto-sentry-rancher-config"
+>>>>>>> origin/master
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -105,6 +109,7 @@
     "@eeacms/volto-collection-block": "0.1.0",
     "@eeacms/volto-block-style": "2.2.0",
     "@eeacms/volto-columns-block": "^3.0.0",
+    "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@plone/volto": "12.2.0",
     "mgr-pdf-viewer-react": "^1.0.3",

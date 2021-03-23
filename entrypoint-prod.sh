@@ -44,5 +44,7 @@ if [[ "$1" == "cypress"* ]]; then
   exit 0
 fi
 
+./create-sentry-release.sh
+
 echo "Starting Volto"
 exec "$@"
