@@ -103,7 +103,7 @@
   },
   "dependencies": {
     "@eeacms/volto-corsproxy": "2.1.0",
-    "@eeacms/volto-collection-block": "0.1.0",
+    "@eeacms/volto-collection-block": "github:eea/volto-collection-block",
     "@eeacms/volto-block-style": "2.2.0",
     "@eeacms/volto-columns-block": "^3.0.0",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
