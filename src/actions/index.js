@@ -12,7 +12,6 @@
  */
 
 import {
-  GET_INDEX_VALUES,
   SET_FOLDER_HEADER,
   SET_FOLDER_TABS,
   GET_PARENT_FOLDER_DATA,
@@ -82,13 +81,13 @@ export function quickSearchContent(url, options, subrequest = null) {
   console.log('in action - quicksearch');
 
   let queryArray = [];
-  const arrayOptions = pickBy(options, item => isArray(item));
+  const arrayOptions = pickBy(options, (item) => isArray(item));
 
   queryArray = concat(
     queryArray,
     options
       ? join(
-          map(toPairs(pickBy(options, item => !isArray(item))), item => {
+          map(toPairs(pickBy(options, (item) => !isArray(item))), (item) => {
             if (item[0] === 'SearchableText') {
               // Adds the wildcard to the SearchableText param
               item[1] = `${item[1]}*`;
@@ -105,7 +104,10 @@ export function quickSearchContent(url, options, subrequest = null) {
     arrayOptions
       ? join(
           map(pickBy(arrayOptions), (item, key) =>
-            join(item.map(value => `${key}:list=${value}`), '&'),
+            join(
+              item.map((value) => `${key}:list=${value}`),
+              '&',
+            ),
           ),
           '&',
         )
@@ -128,16 +130,5 @@ export function quickResetSearchContent(subrequest = null) {
   return {
     type: QUICK_RESET_SEARCH_CONTENT,
     subrequest,
-  };
-}
-
-export function getIndexValues(name) {
-  return {
-    type: GET_INDEX_VALUES,
-    request: {
-      op: 'post',
-      path: '/@index-values',
-      data: { name },
-    },
   };
 }
