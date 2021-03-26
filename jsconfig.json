@@ -2,7 +2,8 @@
   "compilerOptions": {
     "jsx": "react",
     "paths": {
-      "volto-addons": ["addons/volto-addons/src"]
+      "volto-addons": ["addons/volto-addons/src"],
+      "@eeacms/volto-tabs-block": ["addons/volto-tabs-block/src"]
     },
     "baseUrl": "src"
   }
