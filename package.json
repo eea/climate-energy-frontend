@@ -20,6 +20,9 @@
   ],
   "addons": [
     "volto-slate",
+    "volto-plotlycharts",
+    "volto-embed",
+    "volto-datablocks",
     "@eeacms/volto-columns-block",
     "@eeacms/volto-corsproxy",
     "@eeacms/volto-block-style",
@@ -111,7 +114,8 @@
     "@plone/volto": "12.2.0",
     "mgr-pdf-viewer-react": "^1.0.3",
     "react-scrollspy": "^3.4.2",
-    "volto-slate": "^2.1.0"
+    "volto-slate": "^2.1.0",
+    "volto-addons": "github:eea/volto-addons"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
