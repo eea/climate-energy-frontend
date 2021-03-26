@@ -2,7 +2,8 @@
   "compilerOptions": {
     "jsx": "react",
     "paths": {
-      "volto-addons": ["addons/volto-addons/src"]
+      "volto-addons": ["addons/volto-addons/src"],
+      "volto-plotlycharts": ["addons/volto-plotlycharts/src"]
     },
     "baseUrl": "src"
   }
