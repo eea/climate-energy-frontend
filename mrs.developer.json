@@ -9,7 +9,7 @@
     "path": "src",
     "package": "@eeacms/volto-tabs-block",
     "branch": "master",
-    "develop": true
+    "develop": false
   },
   "volto-embed": {
     "url": "https://github.com/eea/volto-embed.git",
@@ -19,11 +19,11 @@
   "volto-datablocks": {
     "url": "https://github.com/eea/volto-datablocks.git",
     "path": "src",
-    "develop": true
+    "develop": false
   },
   "volto-plotlycharts": {
     "url": "https://github.com/eea/volto-plotlycharts.git",
     "path": "src",
-    "develop": true
+    "develop": false
   }
 }
