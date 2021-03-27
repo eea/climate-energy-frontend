@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "paths": {},
+    "paths": {
+      "volto-addons": ["addons/volto-addons/src"]
+    },
     "baseUrl": "src"
   }
 }
