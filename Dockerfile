@@ -8,9 +8,13 @@ RUN runDeps="openssl ca-certificates patch" \
 
 COPY . /opt/frontend/
 RUN chown -R node /opt/frontend/
+RUN rm -rf /opt/frontend/src/addons/*
 
 WORKDIR /opt/frontend/
+RUN npm install -g mrs-developer
 USER node
+
+RUN yarn develop
 
 RUN RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn \
  && RAZZLE_API_PATH=VOLTO_API_PATH RAZZLE_INTERNAL_API_PATH=VOLTO_INTERNAL_API_PATH yarn build \

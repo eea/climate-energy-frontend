@@ -1,1 +1,29 @@
-{}
+{
+  "volto-addons": {
+    "url": "https://github.com/eea/volto-addons.git",
+    "path": "src",
+    "develop": false
+  },
+  "volto-tabs-block": {
+    "url": "https://github.com/eea/volto-tabs-block.git",
+    "path": "src",
+    "package": "@eeacms/volto-tabs-block",
+    "branch": "master",
+    "develop": true
+  },
+  "volto-embed": {
+    "url": "https://github.com/eea/volto-embed.git",
+    "path": "src",
+    "develop": false
+  },
+  "volto-datablocks": {
+    "url": "https://github.com/eea/volto-datablocks.git",
+    "path": "src",
+    "develop": true
+  },
+  "volto-plotlycharts": {
+    "url": "https://github.com/eea/volto-plotlycharts.git",
+    "path": "src",
+    "develop": true
+  }
+}
