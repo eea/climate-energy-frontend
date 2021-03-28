@@ -1,23 +1,13 @@
 {
-    "compilerOptions": {
-        "jsx": "react",
-        "paths": {
-            "volto-addons": [
-                "addons/volto-addons/src"
-            ],
-            "volto-plotlycharts": [
-                "addons/volto-plotlycharts/src"
-            ],
-            "volto-datablocks": [
-                "addons/volto-datablocks/src"
-            ],
-            "@eeacms/volto-tabs-block": [
-                "addons/volto-tabs-block/src"
-            ],
-            "volto-embed": [
-                "addons/volto-embed/src"
-            ]
-        },
-        "baseUrl": "src"
-    }
+  "compilerOptions": {
+    "jsx": "react",
+    "paths": {
+      "volto-addons": ["addons/volto-addons/src"],
+      "volto-plotlycharts": ["addons/volto-plotlycharts/src"],
+      "volto-datablocks": ["addons/volto-datablocks/src"],
+      "@eeacms/volto-tabs-block": ["addons/volto-tabs-block/src"],
+      "volto-embed": ["addons/volto-embed/src"]
+    },
+    "baseUrl": "src"
+  }
 }

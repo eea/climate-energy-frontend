@@ -2,7 +2,7 @@
   "volto-addons": {
     "url": "https://github.com/eea/volto-addons.git",
     "path": "src",
-    "develop": false
+    "develop": true
   },
   "volto-tabs-block": {
     "url": "https://github.com/eea/volto-tabs-block.git",
