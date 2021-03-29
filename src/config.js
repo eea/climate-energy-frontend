@@ -24,9 +24,6 @@ import AlignBlockWidget from 'volto-addons/Widgets/Align';
 import AttachedImageWidget from 'volto-addons/Widgets/AttachedImage';
 import TemplatingToolbarWidget from 'volto-addons/Widgets/TemplatingToolbar';
 
-import PDFBlockView from 'volto-addons/PDFViewer/BlockView';
-import PDFBlockEdit from 'volto-addons/PDFViewer/BlockEdit';
-
 import MapView from 'volto-addons/Map/View';
 
 import WebMapBlockView from 'volto-addons/WebMap/BlockView';
@@ -186,15 +183,6 @@ blocks.blocksConfig.connected_control = {
   edit: ConnectedControl,
   icon: chartIcon,
   group: 'custom_addons',
-};
-blocks.blocksConfig.pdf_viewer = {
-  id: 'pdf_viewer',
-  title: 'PDF Viewer',
-  view: PDFBlockView,
-  edit: PDFBlockEdit,
-  icon: chartIcon,
-  group: 'custom_addons',
-  sidebarTab: 1,
 };
 
 blocks.blocksConfig.web_map = {
