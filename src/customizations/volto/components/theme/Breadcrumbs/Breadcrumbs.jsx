@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Breadcrumb } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import { getBaseUrl } from '@plone/volto/helpers';
+
 import { settings } from '~/config';
 
 import homeSVG from '@plone/volto/icons/home.svg';
@@ -91,14 +91,9 @@ class Breadcrumbs extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    state => {
-      const content =
-        state.prefetch?.[state.router.location.pathname] || state.content.data;
-      return {
-        items: content?.['@components']?.breadcrumbs?.items || [],
-      };
-    },
-    {},
-  ),
+  connect((state) => {
+    return {
+      items: state.breadcrumbs?.items || [],
+    };
+  }, {}),
 )(Breadcrumbs);

@@ -165,8 +165,8 @@ class Navigation extends Component {
     this.setState({ isMobileMenuOpen: false });
   }
 
-  formatNavUrl = nav => {
-    return nav.map(navItem => ({
+  formatNavUrl = (nav) => {
+    return nav.map((navItem) => ({
       ...navItem,
       url: navItem.url ? getBasePath(navItem.url) : '',
       items: navItem.items ? this.formatNavUrl(navItem.items) : false,
@@ -249,7 +249,9 @@ class Navigation extends Component {
                 {item.items && item.items.length ? (
                   <a
                     role="button"
-                    onClick={ev => this.setSubmenu(item.title, item.items, ev)}
+                    onClick={(ev) =>
+                      this.setSubmenu(item.title, item.items, ev)
+                    }
                     onKeyPress={() => {}}
                   >
                     {this.state.subMenu.type === item.title && (
@@ -270,7 +272,7 @@ class Navigation extends Component {
               </div>
             ))}
           </div>
-          {console.log(this.state.subMenu.items)}
+
           {this.state.subMenu.items && this.state.subMenu.items.length > 0 ? (
             <div className="second-level">
               <Icon
@@ -278,7 +280,7 @@ class Navigation extends Component {
                 onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
                 className="mobile-back-button"
               />
-              {this.state.subMenu.items.map(item => (
+              {this.state.subMenu.items.map((item) => (
                 <div
                   key={getPath(item['@id'])}
                   className={
@@ -290,7 +292,7 @@ class Navigation extends Component {
                   {item.items && item.items.length ? (
                     <a
                       role="button"
-                      onClick={ev =>
+                      onClick={(ev) =>
                         this.setSubtopics(item.title, item.items, ev)
                       }
                       onKeyPress={() => {}}
@@ -313,7 +315,6 @@ class Navigation extends Component {
               ))}
             </div>
           ) : null}
-          {console.log('sunto', this.state.subTopics.items)}
           {this.state.subTopics.items &&
           this.state.subTopics.items.length > 0 ? (
             <div className="third-level">
@@ -328,7 +329,7 @@ class Navigation extends Component {
               <p style={{ fontWeight: 100 }} className="mb-5">
                 Subtopics
               </p>
-              {this.state.subTopics.items.map(item => (
+              {this.state.subTopics.items.map((item) => (
                 <div
                   key={getPath(item['@id'])}
                   className={
@@ -360,7 +361,7 @@ class Navigation extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
     }),
