@@ -19,6 +19,7 @@
     "src/addons/*"
   ],
   "addons": [
+    "volto-slate",
     "volto-plotlycharts",
     "volto-embed",
     "volto-datablocks",
@@ -28,7 +29,6 @@
     "@eeacms/volto-block-style",
     "@eeacms/volto-collection-block",
     "@eeacms/volto-sentry-rancher-config",
-    "volto-slate:asDefault",
     "@eeacms/volto-tabs-block"
   ],
   "jest": {
@@ -122,7 +122,7 @@
     "volto-datablocks": "github:eea/volto-datablocks",
     "volto-embed": "github:eea/volto-embed",
     "volto-plotlycharts": "github:eea/volto-plotlycharts",
-    "volto-slate": "*"
+    "volto-slate": "2.4.0"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",

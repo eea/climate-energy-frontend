@@ -20144,10 +20144,10 @@ volto-datablocks@eea/volto-datablocks#master, "volto-datablocks@github:eea/volto
     react-visibility-sensor "^5.1.1"
     volto-datablocks eea/volto-datablocks#master
 
-volto-slate@*:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.3.1.tgz#b273e6aeb17cd9357e0f28b8938d81f43b5a6a81"
-  integrity sha512-qQQnFpT8krDYonC5S+GO5bkoTeWzF4raaZy521paUJgiYrg5ej0RPMrVn/iorVAYgRyP4dy9kVn+yJumltOWCw==
+volto-slate@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.4.0.tgz#ab72216787fde91ce5face81b4a99a4dab0a8778"
+  integrity sha512-A5RTnINtBBqlYlWsW4ECIoeD0tPgpolKTNDXd7+InlvAbqbgr9Vpb5rZEl971xmWNQsQ2YNIlXOik4QWZ6NawQ==
   dependencies:
     "@eeacms/volto-object-widget" "^2.0.0"
     classnames "2.2.6"
