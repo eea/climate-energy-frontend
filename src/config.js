@@ -33,8 +33,8 @@ import ConnectedMapView from 'volto-addons/ConnectedMap/BlockView';
 import ConnectedMapEdit from 'volto-addons/ConnectedMap/BlockEdit';
 
 import ConnectedControl from 'volto-addons/ConnectedControl/ConnectedControl';
-import SearchEdit from 'volto-addons/SearchBlock/Edit';
-import SearchView from 'volto-addons/SearchBlock/View';
+// import SearchEdit from 'volto-addons/SearchBlock/Edit';
+// import SearchView from 'volto-addons/SearchBlock/View';
 
 import TableEdit from 'volto-addons/TableBlock/Edit';
 import TableView from 'volto-addons/TableBlock/View';
@@ -141,14 +141,15 @@ blocks.blocksConfig.folder_contents_block = {
   group: 'custom_addons',
 };
 
-blocks.blocksConfig.search_block = {
-  id: 'search_block',
-  title: 'Search block',
-  view: SearchView,
-  edit: SearchEdit,
-  icon: chartIcon,
-  group: 'custom_addons',
-};
+//Custom Search block
+// blocks.blocksConfig.search_block = {
+//   id: 'search_block',
+//   title: 'Search block',
+//   view: SearchView,
+//   edit: SearchEdit,
+//   icon: chartIcon,
+//   group: 'custom_addons',
+// };
 
 blocks.blocksConfig.table_block = {
   id: 'table_block',

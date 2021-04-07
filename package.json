@@ -19,8 +19,6 @@
     "src/addons/*"
   ],
   "addons": [
-    "volto-slate",
-    "@eeacms/volto-tabs-block",
     "volto-plotlycharts",
     "volto-embed",
     "volto-datablocks",
@@ -29,7 +27,9 @@
     "@eeacms/volto-corsproxy",
     "@eeacms/volto-block-style",
     "@eeacms/volto-collection-block",
-    "@eeacms/volto-sentry-rancher-config"
+    "@eeacms/volto-sentry-rancher-config",
+    "volto-slate:asDefault",
+    "@eeacms/volto-tabs-block"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -107,22 +107,22 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-corsproxy": "2.1.0",
-    "volto-plotlycharts": "github:eea/volto-plotlycharts",
-    "volto-embed": "github:eea/volto-embed",
-    "volto-datablocks": "github:eea/volto-datablocks",
-    "@eeacms/volto-tabs-block": "github:eea/volto-tabs-block",
-    "@eeacms/volto-collection-block": "github:eea/volto-collection-block",
-    "@eeacms/volto-pdf-block": "github:eea/volto-pdf-block",
     "@eeacms/volto-block-style": "2.2.0",
+    "@eeacms/volto-collection-block": "github:eea/volto-collection-block",
     "@eeacms/volto-columns-block": "^3.0.0",
+    "@eeacms/volto-corsproxy": "2.1.0",
+    "@eeacms/volto-pdf-block": "github:eea/volto-pdf-block",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
+    "@eeacms/volto-tabs-block": "github:eea/volto-tabs-block",
     "@n8tb1t/use-scroll-position": "^1.0.43",
-    "@plone/volto": "12.4.0",
+    "@plone/volto": "12.7.0",
     "mgr-pdf-viewer-react": "^1.0.3",
     "react-scrollspy": "^3.4.2",
-    "volto-slate": "^2.1.0",
-    "volto-addons": "github:eea/volto-addons"
+    "volto-addons": "github:eea/volto-addons",
+    "volto-datablocks": "github:eea/volto-datablocks",
+    "volto-embed": "github:eea/volto-embed",
+    "volto-plotlycharts": "github:eea/volto-plotlycharts",
+    "volto-slate": "*"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
