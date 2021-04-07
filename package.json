@@ -107,9 +107,9 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-block-style": "2.2.0",
+    "@eeacms/volto-block-style": "3.0.0",
     "@eeacms/volto-collection-block": "github:eea/volto-collection-block",
-    "@eeacms/volto-columns-block": "^3.0.0",
+    "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.0",
     "@eeacms/volto-pdf-block": "github:eea/volto-pdf-block",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",

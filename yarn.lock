@@ -1130,10 +1130,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@eeacms/volto-block-style@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-2.2.0.tgz#8d302b388b3bed8435c3f9599c2c6b7550e4154f"
-  integrity sha512-Eqn3akUseuzUenVqW2qYYDSZB1YzPhFnzlzDsSwqkmjHQdy4OukrvmNcOFrWgGEVB5Zp0VjLvYezUdcAIlWXqQ==
+"@eeacms/volto-block-style@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.0.0.tgz#6d730320106f3760244968ceba508a154918ab8b"
+  integrity sha512-vdybYTpsG/dvqmMG8DoFP/U/icIGdpWS7Sas4nO7IFfmRWymhzIEFjfAR0b5ONvRmrbZRAicRWWiPc/Km8gPuw==
   dependencies:
     react-color "~2.18.1"
 
@@ -1148,10 +1148,10 @@
   version "0.1.0"
   resolved "https://codeload.github.com/eea/volto-collection-block/tar.gz/07e48b01b5ba123671ea8e9bf7d3911e8e9dc89a"
 
-"@eeacms/volto-columns-block@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-3.0.0.tgz#aa3c0a409b0ef05029b4c1707a336be99396db3b"
-  integrity sha512-ua44gtrIpacPva3BbwG4dMXAXBGP+5oE5ERaa6XuEr2qPjnjELuF2UZI68NWRZqEJFM7+KNf/nNW+EBTgfoc+A==
+"@eeacms/volto-columns-block@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.3.0.tgz#30e24ab28caa05b0864826fb81ed31446bd663cf"
+  integrity sha512-gwyD1IiaF6yqY6La54uzJcZjRJ/sTI2rFvzQwEf/AYkHf/yOzaPvhP8P6xDfVwcrxsYtX3XVdwOZHUzJ+jm8Cg==
   dependencies:
     react-color "~2.18.1"
 
@@ -1178,7 +1178,7 @@
 
 "@eeacms/volto-tabs-block@github:eea/volto-tabs-block":
   version "1.2.0"
-  resolved "https://codeload.github.com/eea/volto-tabs-block/tar.gz/b160ab63119b25dd16b181f69372e22a02911b70"
+  resolved "https://codeload.github.com/eea/volto-tabs-block/tar.gz/99e7584de1509d8ad1db2e73656f2c61ac330fa9"
   dependencies:
     "@eeacms/volto-block-style" "^2.5.1"
     react-slick "^0.24.0"
@@ -20763,9 +20763,9 @@ xtend@^2.1.2:
   integrity sha1-7vax8ZjByN6vrYsXZaBNrUoBxak=
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.2.tgz#c504495ba9b59230dd60226d1dd89c3c0a1b745e"
-  integrity sha512-DnBDwcL54b5xWMM/7RfFg4xs5amYxq2ot49aUfLjQSAracXkGvlZq0txzqr3Pa6Q0ayuCxBcwTzrPUScKY0O8w==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.3.tgz#b5f259c82cd6e336921efd7bfd8bf560de9eeedf"
+  integrity sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==
 
 yaassertion@^1.0.0:
   version "1.0.2"
