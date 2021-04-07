@@ -19,7 +19,7 @@
     "src/addons/*"
   ],
   "addons": [
-    "volto-slate",
+    "volto-slate:asDefault",
     "volto-plotlycharts",
     "volto-embed",
     "volto-datablocks",
