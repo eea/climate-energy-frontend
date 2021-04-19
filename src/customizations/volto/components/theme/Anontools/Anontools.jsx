@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getBasePath } from '~/helpers';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import user from '@plone/volto/icons/user.svg';
 
 // import { List, Popup } from 'semantic-ui-react';
@@ -49,21 +49,23 @@ class Anontools extends Component {
   render() {
     return (
       !this.props.token && (
-        <li className="footer-login">
-          <Icon name={user} size="20px" />
-          <Link
-            style={{ marginLeft: '.5rem' }}
-            to={`/login${
-              this.props.content
-                ? `?return_url=${getBasePath(this.props.content['@id'])
-                    .replace(settings.apiPath, '')
-                    .replace(settings.internalApiPath, '')}`
-                : ''
-            }`}
-          >
-            <FormattedMessage id="Log in" defaultMessage="Log in" />
-          </Link>
-        </li>
+        <ul>
+          <li className="footer-login">
+            <Icon name={user} size="20px" />
+            <Link
+              style={{ marginLeft: '.5rem' }}
+              to={`/login${
+                this.props.content
+                  ? `?return_url=${getBasePath(this.props.content['@id'])
+                      .replace(config.settings.apiPath, '')
+                      .replace(config.settings.internalApiPath, '')}`
+                  : ''
+              }`}
+            >
+              <FormattedMessage id="Log in" defaultMessage="Log in" />
+            </Link>
+          </li>
+        </ul>
       )
     );
   }

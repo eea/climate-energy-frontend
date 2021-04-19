@@ -13,7 +13,7 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
@@ -70,8 +70,8 @@ class DefaultView extends Component {
   //   }
   // }
 
-  computeFolderTabs = siblings => {
-    const tabsItems = siblings?.items?.map(i => {
+  computeFolderTabs = (siblings) => {
+    const tabsItems = siblings?.items?.map((i) => {
       return {
         url: flattenToAppURL(i.url),
         title: i.name,
@@ -117,13 +117,14 @@ class DefaultView extends Component {
         <div id="page-document" className="ui wrapper">
           {tabs && tabs.length ? (
             <nav className="tabs">
-              {tabs.map(tab => (
+              {tabs.map((tab) => (
                 <Link
                   key={`localtab-${tab.url}`}
-                  className={`tabs__item${(tab.url ===
-                    this.props.location.pathname &&
-                    ' tabs__item_active') ||
-                    ''}`}
+                  className={`tabs__item${
+                    (tab.url === this.props.location.pathname &&
+                      ' tabs__item_active') ||
+                    ''
+                  }`}
                   to={tab.url}
                   title={tab.title}
                 >
@@ -135,10 +136,10 @@ class DefaultView extends Component {
             ''
           )}
           <Helmet title={content.title} />
-          {map(content[blocksLayoutFieldname].items, block => {
+          {map(content[blocksLayoutFieldname].items, (block) => {
             const Block =
-              blocks.blocksConfig[
-                (content[blocksFieldname]?.[block]?.['@type'])
+              config.blocks.blocksConfig[
+                content[blocksFieldname]?.[block]?.['@type']
               ]?.['view'] || null;
             return Block !== null ? (
               <Block

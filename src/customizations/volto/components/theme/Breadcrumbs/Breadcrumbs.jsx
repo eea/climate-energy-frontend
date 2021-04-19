@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -26,8 +26,8 @@ const messages = defineMessages({
 
 const RouterLink = ({ item }) => {
   const url = (item.url || item['@id'])
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '');
+    .replace(config.settings.apiPath, '')
+    .replace(config.settings.internalApiPath, '');
   return (
     <Link title={item.title} to={url} className="section">
       {item.title}

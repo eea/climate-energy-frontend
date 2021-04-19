@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component, useState, useRef } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
@@ -13,7 +13,7 @@ import rightKey from '@plone/volto/icons/right-key.svg';
 import { Icon } from '@plone/volto/components';
 import backIcon from '@plone/volto/icons/back.svg';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import rightCircle from '@plone/volto/icons/circle-right.svg';
 import MenuPosition from './MenuPosition';
 import { getBasePath } from '~/helpers';
@@ -33,8 +33,8 @@ const messages = defineMessages({
 function getPath(url) {
   if (!url) return '';
   return url
-    .replace(settings.apiPath, '')
-    .replace(settings.internalApiPath, '');
+    .replace(config.settings.apiPath, '')
+    .replace(config.settings.internalApiPath, '');
 }
 
 class PageNavigation extends Component {
@@ -144,7 +144,7 @@ class PageNavigation extends Component {
   }
 
   formatNavUrl = (nav = []) => {
-    return nav.map(navItem => ({
+    return nav.map((navItem) => ({
       ...navItem,
       url: navItem?.url ? getBasePath(navItem?.url) : '',
       items: navItem?.items ? this.formatNavUrl(navItem?.items) : false,
@@ -154,7 +154,7 @@ class PageNavigation extends Component {
   render() {
     const localnavigation =
       (this.props.items?.length > 0 &&
-        this.props.items?.filter(item => item.title !== 'Home')) ||
+        this.props.items?.filter((item) => item.title !== 'Home')) ||
       [];
     const navigation = this.formatNavUrl(localnavigation);
 
@@ -232,7 +232,7 @@ class PageNavigation extends Component {
                     <React.Fragment>
                       <a
                         role="button"
-                        onClick={ev =>
+                        onClick={(ev) =>
                           this.setSubmenu(item.title, item.items, ev)
                         }
                         onKeyPress={() => {}}
@@ -250,7 +250,7 @@ class PageNavigation extends Component {
                       {this.isActive(getPath(item['@id'])) && (
                         <div className="menuExpanded" id="menuExpanded">
                           {item.items.find(
-                            i =>
+                            (i) =>
                               __CLIENT__ &&
                               window &&
                               window.location.href.includes(
@@ -266,7 +266,7 @@ class PageNavigation extends Component {
                               }}
                               key={getPath(
                                 item.items.find(
-                                  i =>
+                                  (i) =>
                                     __CLIENT__ &&
                                     window &&
                                     window.location.href.includes(
@@ -277,7 +277,7 @@ class PageNavigation extends Component {
                             >
                               {
                                 item.items.find(
-                                  i =>
+                                  (i) =>
                                     __CLIENT__ &&
                                     window &&
                                     window.location.href.includes(
@@ -291,7 +291,7 @@ class PageNavigation extends Component {
                           )}
                           {localnavigation?.length > 0 ? (
                             <ul className="localnavigation">
-                              {localnavigation.map(item => (
+                              {localnavigation.map((item) => (
                                 <li
                                   className={
                                     (flattenToAppURL(
@@ -352,7 +352,7 @@ class PageNavigation extends Component {
                 onClick={() => this.setSubmenu(this.state.subMenu.type, [])}
                 className="mobile-back-button"
               />
-              {this.state.subMenu.items.map(item => (
+              {this.state.subMenu.items.map((item) => (
                 <div
                   key={getPath(item['@id'])}
                   className={
@@ -364,7 +364,7 @@ class PageNavigation extends Component {
                   {item.items && item.items.length ? (
                     <a
                       role="button"
-                      onClick={ev =>
+                      onClick={(ev) =>
                         this.setSubtopics(item.title, item.items, ev)
                       }
                       onKeyPress={() => {}}
@@ -411,7 +411,7 @@ class PageNavigation extends Component {
               <p style={{ fontWeight: 100 }} className="mb-5">
                 Subtopics
               </p> */}
-              {this.state.subTopics.items.map(item => (
+              {this.state.subTopics.items.map((item) => (
                 <div
                   key={getPath(item['@id'])}
                   className={

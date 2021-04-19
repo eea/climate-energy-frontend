@@ -14,7 +14,7 @@ import { asyncConnect } from 'redux-connect';
 import { Portal } from 'react-portal';
 import { Container, Breadcrumb, Item, Input } from 'semantic-ui-react';
 import qs from 'query-string';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 import { withRouter } from 'react-router-dom';
 
 import { searchContent } from '@plone/volto/actions';
@@ -112,7 +112,7 @@ class Search extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = (nextProps) => {
     if (
       nextProps.searchableText !== this.props.searchableText ||
       nextProps.subject !== this.props.subject
@@ -147,8 +147,8 @@ class Search extends Component {
 
   getPath(url) {
     return url
-      .replace(settings.apiPath, '')
-      .replace(settings.internalApiPath, '');
+      .replace(config.settings.apiPath, '')
+      .replace(config.settings.internalApiPath, '');
   }
 
   render() {
@@ -171,7 +171,7 @@ class Search extends Component {
                 onChange={this.handleChange}
                 placeholder="eg: Renewable energy"
                 defaultValue={this.props.searchableText}
-                onKeyPress={event => {
+                onKeyPress={(event) => {
                   if (event.key === 'Enter') {
                     this.props.history.push({
                       pathname: '/search',
@@ -211,15 +211,15 @@ class Search extends Component {
                     Your search returned no results
                   </span>
                 ) : (
-                  searchItems.map(item => (
+                  searchItems.map((item) => (
                     <Item className="search-item" key={item['@id']}>
                       {item.lead_image ? (
                         <Item.Image
                           size="tiny"
                           src={`${item['@id']
-                            .replace(settings.apiPath, '')
+                            .replace(config.settings.apiPath, '')
                             .replace(
-                              settings.internalApiPath,
+                              config.settings.internalApiPath,
                               '',
                             )}/@@images/image/thumb`}
                         />
