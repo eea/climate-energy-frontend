@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl, intlShape } from 'react-intl';
 import qs from 'query-string';
-import { views } from '~/config';
+import config from '@plone/volto/registry';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
 // import { listActions, getContent } from '@plone/volto/actions';
@@ -137,9 +137,9 @@ class View extends Component {
   compareTwoArraysOfHeadings = (arr1, arr2) => {
     // returns true if any object in arr1 can't be found in arr2
     return arr1.some(
-      arr1Item =>
+      (arr1Item) =>
         !arr2.find(
-          arr2Item =>
+          (arr2Item) =>
             arr1Item.id === arr2Item.id && arr1Item.text === arr2Item.text,
         ),
     );
@@ -191,7 +191,7 @@ class View extends Component {
    * @method getViewDefault
    * @returns {string} Markup for component.
    */
-  getViewDefault = () => views.defaultView;
+  getViewDefault = () => config.views.defaultView;
 
   /**
    * Get view by content type
@@ -199,7 +199,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByType = () =>
-    views.contentTypesViews[this.props.content['@type']] || null;
+    config.views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property
@@ -207,7 +207,7 @@ class View extends Component {
    * @returns {string} Markup for component.
    */
   getViewByLayout = () =>
-    views.layoutViews[
+    config.views.layoutViews[
       this.props.content[getLayoutFieldname(this.props.content)]
     ] || null;
 
@@ -218,11 +218,8 @@ class View extends Component {
    * @param  {string} dirtyDisplayName The displayName
    * @returns {string} Clean displayName (no Connect(...)).
    */
-  cleanViewName = dirtyDisplayName =>
-    dirtyDisplayName
-      .replace('Connect(', '')
-      .replace(')', '')
-      .toLowerCase();
+  cleanViewName = (dirtyDisplayName) =>
+    dirtyDisplayName.replace('Connect(', '').replace(')', '').toLowerCase();
 
   makeHeadings() {
     const headings = Array.from(
@@ -247,12 +244,12 @@ class View extends Component {
         // For some reason, while development and if CORS is in place and the
         // requested resource is 404, it returns undefined as status, then the
         // next statement will fail
-        FoundView = views.errorViews['404'];
+        FoundView = config.views.errorViews['404'];
       } else {
-        FoundView = views.errorViews[this.props.error.status.toString()];
+        FoundView = config.views.errorViews[this.props.error.status.toString()];
       }
       if (!FoundView) {
-        FoundView = views.errorViews['404']; // default to 404
+        FoundView = config.views.errorViews['404']; // default to 404
       }
       return (
         <div id="view">

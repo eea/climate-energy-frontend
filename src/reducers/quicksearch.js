@@ -4,7 +4,7 @@
  */
 
 import { map, omit } from 'lodash';
-import { settings } from '~/config';
+import config from '@plone/volto/registry';
 
 import {
   QUICK_RESET_SEARCH_CONTENT,
@@ -55,7 +55,7 @@ export default function search(state = initialState, action = {}) {
             loaded: false,
           };
     case `${QUICK_SEARCH_CONTENT}_SUCCESS`:
-      console.log('in reducer - quicksearch')
+      console.log('in reducer - quicksearch');
       return action.subrequest
         ? {
             ...state,
@@ -63,9 +63,9 @@ export default function search(state = initialState, action = {}) {
               ...state.subrequests,
               [action.subrequest]: {
                 error: null,
-                items: map(action.result.items, item => ({
+                items: map(action.result.items, (item) => ({
                   ...item,
-                  '@id': item['@id'].replace(settings.apiPath, ''),
+                  '@id': item['@id'].replace(config.settings.apiPath, ''),
                 })),
                 total: action.result.items_total,
                 loaded: true,
@@ -77,9 +77,9 @@ export default function search(state = initialState, action = {}) {
         : {
             ...state,
             error: null,
-            items: map(action.result.items, item => ({
+            items: map(action.result.items, (item) => ({
               ...item,
-              '@id': item['@id'].replace(settings.apiPath, ''),
+              '@id': item['@id'].replace(config.settings.apiPath, ''),
             })),
             total: action.result.items_total,
             loaded: true,
