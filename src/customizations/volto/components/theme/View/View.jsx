@@ -13,7 +13,7 @@ import qs from 'query-string';
 import config from '@plone/volto/registry';
 
 import { Comments, Tags, Toolbar } from '@plone/volto/components';
-// import { listActions, getContent } from '@plone/volto/actions';
+import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
@@ -116,11 +116,11 @@ class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    // this.props.listActions(getBaseUrl(this.props.pathname));
-    // this.props.getContent(
-    //   getBaseUrl(this.props.pathname),
-    //   this.props.versionId,
-    // );
+    this.props.listActions(getBaseUrl(this.props.pathname));
+    this.props.getContent(
+      getBaseUrl(this.props.pathname),
+      this.props.versionId,
+    );
   }
 
   componentDidMount() {
@@ -361,8 +361,8 @@ export default compose(
         qs.parse(props.location.search).version_id,
     }),
     {
-      // listActions,
-      // getContent,
+      listActions,
+      getContent,
     },
   ),
 )(View);
