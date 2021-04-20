@@ -282,9 +282,9 @@ class Navigation extends Component {
               />
               {this.state.subMenu.items.map((item) => (
                 <div
-                  key={getPath(item['@id'])}
+                  key={getPath(item['@id'] || item.url)}
                   className={
-                    this.isActive(getPath(item['@id']))
+                    this.isActive(getPath(item['@id'] || item.url))
                       ? 'menu-item active'
                       : 'menu-item'
                   }
@@ -307,7 +307,10 @@ class Navigation extends Component {
                       {item.title}
                     </a>
                   ) : (
-                    <Link to={getPath(item['@id'])} key={getPath(item['@id'])}>
+                    <Link
+                      to={getPath(item['@id'] || item.url)}
+                      key={getPath(item['@id'] || item.url)}
+                    >
                       {item.title}
                     </Link>
                   )}
@@ -331,9 +334,9 @@ class Navigation extends Component {
               </p>
               {this.state.subTopics.items.map((item) => (
                 <div
-                  key={getPath(item['@id'])}
+                  key={getPath(item['@id'] || item.url)}
                   className={
-                    this.isActive(getPath(item['@id']))
+                    this.isActive(getPath(item['@id'] || item.url))
                       ? 'menu-item active'
                       : 'menu-item'
                   }
@@ -341,10 +344,10 @@ class Navigation extends Component {
                   <Link
                     to={
                       item.items
-                        ? getPath(item.items[0]['@id'])
-                        : getPath(item['@id'])
+                        ? getPath(item.items[0]['@id'] || item.items[0].url)
+                        : getPath(item['@id'] || item.url)
                     }
-                    key={getPath(item['@id'])}
+                    key={getPath(item['@id'] || item.url)}
                   >
                     {item.title}
                   </Link>
