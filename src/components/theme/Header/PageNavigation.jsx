@@ -221,9 +221,9 @@ class PageNavigation extends Component {
             >
               {navigation.map((item, index) => (
                 <div
-                  key={getPath(item['@id'])}
+                  key={getPath(item['@id'] || item.url)}
                   className={
-                    this.isActive(getPath(item['@id']))
+                    this.isActive(getPath(item['@id'] || item.url))
                       ? 'menu-item active'
                       : 'menu-item'
                   }
@@ -247,14 +247,14 @@ class PageNavigation extends Component {
 
                         {item.title}
                       </a>
-                      {this.isActive(getPath(item['@id'])) && (
+                      {this.isActive(getPath(item['@id'] || item.url)) && (
                         <div className="menuExpanded" id="menuExpanded">
                           {item.items.find(
                             (i) =>
                               __CLIENT__ &&
                               window &&
                               window.location.href.includes(
-                                getPath(i['@id']),
+                                getPath(i['@id'] || i.url),
                               ) &&
                               window.location.href.includes('topics'),
                           ) ? (
@@ -270,9 +270,17 @@ class PageNavigation extends Component {
                                     __CLIENT__ &&
                                     window &&
                                     window.location.href.includes(
-                                      getPath(i['@id']),
+                                      getPath(i['@id'] || i.url),
                                     ),
-                                )['@id'],
+                                )['@id'] ||
+                                  item.items.find(
+                                    (i) =>
+                                      __CLIENT__ &&
+                                      window &&
+                                      window.location.href.includes(
+                                        getPath(i['@id'] || i.url),
+                                      ),
+                                  ).url,
                               )}
                             >
                               {
@@ -281,7 +289,7 @@ class PageNavigation extends Component {
                                     __CLIENT__ &&
                                     window &&
                                     window.location.href.includes(
-                                      getPath(i['@id']),
+                                      getPath(i['@id'] || i.url),
                                     ),
                                 ).title
                               }
@@ -296,26 +304,35 @@ class PageNavigation extends Component {
                                   className={
                                     (flattenToAppURL(
                                       this.props.pathname,
-                                    ).includes(flattenToAppURL(item['@id'])) &&
+                                    ).includes(
+                                      flattenToAppURL(item['@id'] || item.url),
+                                    ) &&
                                       'active') ||
                                     ''
                                   }
-                                  key={`li-${item['@id']}`}
+                                  key={`li-${item['@id'] || item.url}`}
                                 >
                                   {flattenToAppURL(
                                     this.props.pathname,
-                                  ).includes(flattenToAppURL(item['@id'])) && (
+                                  ).includes(
+                                    flattenToAppURL(item['@id'] || item.url),
+                                  ) && (
                                     <span className="menuExpandedIndicator">
                                       <Icon name={rightCircle} size="20px" />
                                     </span>
                                   )}
 
                                   <Link
-                                    key={item['@id']}
+                                    key={item['@id'] || item.url}
                                     to={
                                       item.items && item.items.length
-                                        ? flattenToAppURL(item.items[0]['@id'])
-                                        : flattenToAppURL(item['@id'])
+                                        ? flattenToAppURL(
+                                            item.items[0]['@id'] ||
+                                              item.items[0].url,
+                                          )
+                                        : flattenToAppURL(
+                                            item['@id'] || item.url,
+                                          )
                                     }
                                   >
                                     {item.title}
@@ -354,9 +371,9 @@ class PageNavigation extends Component {
               />
               {this.state.subMenu.items.map((item) => (
                 <div
-                  key={getPath(item['@id'])}
+                  key={getPath(item['@id'] || item.url)}
                   className={
-                    this.isActive(getPath(item['@id']))
+                    this.isActive(getPath(item['@id'] || item.url))
                       ? 'menu-item active'
                       : 'menu-item'
                   }
@@ -381,9 +398,11 @@ class PageNavigation extends Component {
                   ) : (
                     <Link
                       to={
-                        getPath(item['@id']) === '' ? '/' : getPath(item['@id'])
+                        getPath(item['@id'] || item.url) === ''
+                          ? '/'
+                          : getPath(item['@id'] || item.url)
                       }
-                      key={getPath(item['@id'])}
+                      key={getPath(item['@id'] || item.url)}
                     >
                       {item.title}
                     </Link>
@@ -413,9 +432,9 @@ class PageNavigation extends Component {
               </p> */}
               {this.state.subTopics.items.map((item) => (
                 <div
-                  key={getPath(item['@id'])}
+                  key={getPath(item['@id'] || item.url)}
                   className={
-                    this.isActive(getPath(item['@id']))
+                    this.isActive(getPath(item['@id'] || item.url))
                       ? 'menu-item active'
                       : 'menu-item'
                   }
@@ -423,10 +442,10 @@ class PageNavigation extends Component {
                   <Link
                     to={
                       item.items
-                        ? getPath(item.items[0]['@id'])
-                        : getPath(item['@id'])
+                        ? getPath(item.items[0]['@id'] || item.items[0].url)
+                        : getPath(item['@id'] || item.url)
                     }
-                    key={getPath(item['@id'])}
+                    key={getPath(item['@id'] || item.url)}
                   >
                     {item.title}
                   </Link>
