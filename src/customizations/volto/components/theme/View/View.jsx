@@ -115,15 +115,13 @@ class View extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
-  }
 
-  componentDidMount() {
     if (
       __CLIENT__ &&
       this.props.content &&
@@ -161,6 +159,13 @@ class View extends Component {
         this.makeHeadings();
       }
     }
+    if (this.props.pathname !== prevProps.pathname) {
+      this.props.listActions(getBaseUrl(this.props.pathname));
+      this.props.getContent(
+        getBaseUrl(this.props.pathname),
+        this.props.versionId,
+      );
+    }
   }
 
   /**
@@ -177,7 +182,7 @@ class View extends Component {
   //       this.props.versionId,
   //     );
   //   }
-  //
+
   //   if (nextProps.actions.object_buttons) {
   //     const objectButtons = nextProps.actions.object_buttons;
   //     this.setState({
