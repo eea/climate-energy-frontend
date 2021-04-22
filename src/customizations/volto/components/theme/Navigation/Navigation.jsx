@@ -237,40 +237,41 @@ class Navigation extends Component {
             className="menu-underlay"
           />
           <div className="first-level">
-            {navigation.map((item, index) => (
-              <div
-                key={getPath(item.url)}
-                className={
-                  this.isActive(getPath(item.url))
-                    ? 'menu-item active'
-                    : 'menu-item'
-                }
-              >
-                {item.items && item.items.length ? (
-                  <a
-                    role="button"
-                    onClick={(ev) =>
-                      this.setSubmenu(item.title, item.items, ev)
-                    }
-                    onKeyPress={() => {}}
-                  >
-                    {this.state.subMenu.type === item.title && (
-                      <Icon
-                        className="menu-indicator"
-                        name={rightKey}
-                        size="30px"
-                      />
-                    )}
+            {navigation.length &&
+              navigation.map((item, index) => (
+                <div
+                  key={getPath(item.url)}
+                  className={
+                    this.isActive(getPath(item.url))
+                      ? 'menu-item active'
+                      : 'menu-item'
+                  }
+                >
+                  {item.items && item.items.length ? (
+                    <a
+                      role="button"
+                      onClick={(ev) =>
+                        this.setSubmenu(item.title, item.items, ev)
+                      }
+                      onKeyPress={() => {}}
+                    >
+                      {this.state.subMenu.type === item.title && (
+                        <Icon
+                          className="menu-indicator"
+                          name={rightKey}
+                          size="30px"
+                        />
+                      )}
 
-                    {item.title}
-                  </a>
-                ) : (
-                  <Link to={getPath(item.url)} key={getPath(item.url)}>
-                    {item.title}
-                  </Link>
-                )}
-              </div>
-            ))}
+                      {item.title}
+                    </a>
+                  ) : (
+                    <Link to={getPath(item.url)} key={getPath(item.url)}>
+                      {item.title}
+                    </Link>
+                  )}
+                </div>
+              ))}
           </div>
 
           {this.state.subMenu.items && this.state.subMenu.items.length > 0 ? (

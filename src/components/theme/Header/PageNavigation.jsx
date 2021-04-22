@@ -219,60 +219,53 @@ class PageNavigation extends Component {
               topDistance={this.state.topDistance}
               currentTopDistance={this.state.currentTopDistance}
             >
-              {navigation.map((item, index) => (
-                <div
-                  key={getPath(item['@id'] || item.url)}
-                  className={
-                    this.isActive(getPath(item['@id'] || item.url))
-                      ? 'menu-item active'
-                      : 'menu-item'
-                  }
-                >
-                  {item.items && item.items.length ? (
-                    <React.Fragment>
-                      <a
-                        role="button"
-                        onClick={(ev) =>
-                          this.setSubmenu(item.title, item.items, ev)
-                        }
-                        onKeyPress={() => {}}
-                      >
-                        {this.state.subMenu.type === item.title && (
-                          <Icon
-                            className="menu-indicator"
-                            name={rightKey}
-                            size="30px"
-                          />
-                        )}
+              {navigation.length &&
+                navigation.map((item, index) => (
+                  <div
+                    key={getPath(item['@id'] || item.url)}
+                    className={
+                      this.isActive(getPath(item['@id'] || item.url))
+                        ? 'menu-item active'
+                        : 'menu-item'
+                    }
+                  >
+                    {item.items && item.items.length ? (
+                      <React.Fragment>
+                        <a
+                          role="button"
+                          onClick={(ev) =>
+                            this.setSubmenu(item.title, item.items, ev)
+                          }
+                          onKeyPress={() => {}}
+                        >
+                          {this.state.subMenu.type === item.title && (
+                            <Icon
+                              className="menu-indicator"
+                              name={rightKey}
+                              size="30px"
+                            />
+                          )}
 
-                        {item.title}
-                      </a>
-                      {this.isActive(getPath(item['@id'] || item.url)) && (
-                        <div className="menuExpanded" id="menuExpanded">
-                          {item.items.find(
-                            (i) =>
-                              __CLIENT__ &&
-                              window &&
-                              window.location.href.includes(
-                                getPath(i['@id'] || i.url),
-                              ) &&
-                              window.location.href.includes('topics'),
-                          ) ? (
-                            <div
-                              style={{
-                                fontSize: '1.2rem',
-                                textTransform: 'initial',
-                                borderBottom: '1px solid #eee',
-                              }}
-                              key={getPath(
-                                item.items.find(
-                                  (i) =>
-                                    __CLIENT__ &&
-                                    window &&
-                                    window.location.href.includes(
-                                      getPath(i['@id'] || i.url),
-                                    ),
-                                )['@id'] ||
+                          {item.title}
+                        </a>
+                        {this.isActive(getPath(item['@id'] || item.url)) && (
+                          <div className="menuExpanded" id="menuExpanded">
+                            {item.items.find(
+                              (i) =>
+                                __CLIENT__ &&
+                                window &&
+                                window.location.href.includes(
+                                  getPath(i['@id'] || i.url),
+                                ) &&
+                                window.location.href.includes('topics'),
+                            ) ? (
+                              <div
+                                style={{
+                                  fontSize: '1.2rem',
+                                  textTransform: 'initial',
+                                  borderBottom: '1px solid #eee',
+                                }}
+                                key={getPath(
                                   item.items.find(
                                     (i) =>
                                       __CLIENT__ &&
@@ -280,82 +273,92 @@ class PageNavigation extends Component {
                                       window.location.href.includes(
                                         getPath(i['@id'] || i.url),
                                       ),
-                                  ).url,
-                              )}
-                            >
-                              {
-                                item.items.find(
-                                  (i) =>
-                                    __CLIENT__ &&
-                                    window &&
-                                    window.location.href.includes(
-                                      getPath(i['@id'] || i.url),
-                                    ),
-                                ).title
-                              }
-                            </div>
-                          ) : (
-                            ''
-                          )}
-                          {localnavigation?.length > 0 ? (
-                            <ul className="localnavigation">
-                              {localnavigation.map((item) => (
-                                <li
-                                  className={
-                                    (flattenToAppURL(
+                                  )['@id'] ||
+                                    item.items.find(
+                                      (i) =>
+                                        __CLIENT__ &&
+                                        window &&
+                                        window.location.href.includes(
+                                          getPath(i['@id'] || i.url),
+                                        ),
+                                    ).url,
+                                )}
+                              >
+                                {
+                                  item.items.find(
+                                    (i) =>
+                                      __CLIENT__ &&
+                                      window &&
+                                      window.location.href.includes(
+                                        getPath(i['@id'] || i.url),
+                                      ),
+                                  ).title
+                                }
+                              </div>
+                            ) : (
+                              ''
+                            )}
+                            {localnavigation?.length > 0 ? (
+                              <ul className="localnavigation">
+                                {localnavigation.map((item) => (
+                                  <li
+                                    className={
+                                      (flattenToAppURL(
+                                        this.props.pathname,
+                                      ).includes(
+                                        flattenToAppURL(
+                                          item['@id'] || item.url,
+                                        ),
+                                      ) &&
+                                        'active') ||
+                                      ''
+                                    }
+                                    key={`li-${item['@id'] || item.url}`}
+                                  >
+                                    {flattenToAppURL(
                                       this.props.pathname,
                                     ).includes(
                                       flattenToAppURL(item['@id'] || item.url),
-                                    ) &&
-                                      'active') ||
-                                    ''
-                                  }
-                                  key={`li-${item['@id'] || item.url}`}
-                                >
-                                  {flattenToAppURL(
-                                    this.props.pathname,
-                                  ).includes(
-                                    flattenToAppURL(item['@id'] || item.url),
-                                  ) && (
-                                    <span className="menuExpandedIndicator">
-                                      <Icon name={rightCircle} size="20px" />
-                                    </span>
-                                  )}
+                                    ) && (
+                                      <span className="menuExpandedIndicator">
+                                        <Icon name={rightCircle} size="20px" />
+                                      </span>
+                                    )}
 
-                                  <Link
-                                    key={item['@id'] || item.url}
-                                    to={
-                                      item.items && item.items.length
-                                        ? flattenToAppURL(
-                                            item.items[0]['@id'] ||
-                                              item.items[0].url,
-                                          )
-                                        : flattenToAppURL(
-                                            item['@id'] || item.url,
-                                          )
-                                    }
-                                  >
-                                    {item.title}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            ''
-                          )}
-                        </div>
-                      )}
-                    </React.Fragment>
-                  ) : (
-                    <Link
-                      to={getPath(item.url) === '' ? '/' : getPath(item.url)}
-                      key={getPath(item.url)}
-                    >
-                      {item.title}
-                    </Link>
-                  )}
-                </div>
-              ))}
+                                    <Link
+                                      key={item['@id'] || item.url}
+                                      to={
+                                        item.items && item.items.length
+                                          ? flattenToAppURL(
+                                              item.items[0]['@id'] ||
+                                                item.items[0].url,
+                                            )
+                                          : flattenToAppURL(
+                                              item['@id'] || item.url,
+                                            )
+                                      }
+                                    >
+                                      {item.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              ''
+                            )}
+                          </div>
+                        )}
+                      </React.Fragment>
+                    ) : (
+                      <Link
+                        to={getPath(item.url) === '' ? '/' : getPath(item.url)}
+                        key={getPath(item.url)}
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </div>
+                ))}
             </MenuPosition>
           </div>
 
