@@ -16,6 +16,8 @@ import { Icon } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import homeSVG from '@plone/volto/icons/home.svg';
+import { getBreadcrumbs } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   home: {
@@ -57,6 +59,27 @@ class Breadcrumbs extends Component {
   };
 
   /**
+   *
+   *
+   * @memberof Breadcrumbs
+   */
+  componentDidMount() {
+    this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+  }
+
+  /**
+   *
+   *
+   * @param {*} prevProps
+   * @memberof Breadcrumbs
+   */
+  componentDidUpdate(prevProps) {
+    if (this.props.pathname !== prevProps.pathname) {
+      this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -73,7 +96,7 @@ class Breadcrumbs extends Component {
           <Icon name={homeSVG} size="18px" />
         </Link>
         {this.props.items &&
-          this.props.items.length &&
+          this.props.items.length > 0 &&
           this.props.items.map((item, index, items) => [
             <Breadcrumb.Divider key={`divider-${index}-${item.url}`} />,
             index < items.length - 1 ? (
@@ -91,9 +114,12 @@ class Breadcrumbs extends Component {
 
 export default compose(
   injectIntl,
-  connect((state) => {
-    return {
-      items: state.breadcrumbs?.items || [],
-    };
-  }, {}),
+  connect(
+    (state) => {
+      return {
+        items: state.breadcrumbs?.items || [],
+      };
+    },
+    { getBreadcrumbs },
+  ),
 )(Breadcrumbs);
