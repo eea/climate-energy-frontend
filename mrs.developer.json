@@ -25,5 +25,9 @@
     "url": "https://github.com/eea/volto-plotlycharts.git",
     "path": "src",
     "develop": false
+  },
+  "volto-tableau": {
+    "url": "https://github.com/eea/volto-tableau.git",
+    "path": "src"
   }
 }

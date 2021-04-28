@@ -4,8 +4,6 @@ import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
 import FolderListingBlockView from 'volto-addons/FolderListing/BlockView';
 import FolderListingBlockEdit from 'volto-addons/FolderListing/BlockEdit';
-import TableauBlockEdit from 'volto-addons/Tableau/Edit';
-import TableauBlockView from 'volto-addons/Tableau/View';
 
 import HiddenWidget from 'volto-addons/Widgets/Hidden';
 import CollectionYears from 'volto-addons/Widgets/CollectionYears';
@@ -143,15 +141,6 @@ export default function applyConfig(config) {
     title: 'Table block',
     view: TableView,
     edit: TableEdit,
-    icon: chartIcon,
-    group: 'custom_addons',
-  };
-
-  config.blocks.blocksConfig.tableau = {
-    id: 'tableau',
-    title: 'Tableau',
-    view: TableauBlockView,
-    edit: TableauBlockEdit,
     icon: chartIcon,
     group: 'custom_addons',
   };
