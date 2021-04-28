@@ -28,6 +28,7 @@
   },
   "volto-tableau": {
     "url": "https://github.com/eea/volto-tableau.git",
-    "path": "src"
+    "path": "src",
+    "develop": false
   }
 }
