@@ -6,7 +6,8 @@
       "volto-plotlycharts": ["addons/volto-plotlycharts/src"],
       "volto-datablocks": ["addons/volto-datablocks/src"],
       "@eeacms/volto-tabs-block": ["addons/volto-tabs-block/src"],
-      "volto-embed": ["addons/volto-embed/src"]
+      "volto-embed": ["addons/volto-embed/src"],
+      "@eeacms/volto-tableau": ["addons/volto-tableau/src"]
     },
     "baseUrl": "src"
   }

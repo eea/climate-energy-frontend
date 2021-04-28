@@ -140,10 +140,6 @@ main {
 
 // end main
 
-.chartWrapperView iframe {
-    width: 100% !important;
-}
-
 //tabs
 nav.tabs {
     display: flex !important;
