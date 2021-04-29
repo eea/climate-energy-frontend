@@ -1177,7 +1177,7 @@
 
 "@eeacms/volto-tableau@github:eea/volto-tableau":
   version "1.0.0"
-  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/6b392aeec6ef7a12bfed360b3b4838ed5c185933"
+  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/ce59344a153ec49d2e04a3f92c55a6ba0e18fd63"
 
 "@eeacms/volto-tabs-block@github:eea/volto-tabs-block":
   version "1.2.1"
