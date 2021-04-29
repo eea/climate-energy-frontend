@@ -298,50 +298,67 @@ class PageNavigation extends Component {
                             ) : (
                               ''
                             )}
-                            {localnavigation?.length > 0 ? (
+
+                            {item.items.length > 0 ? (
                               <ul className="localnavigation">
-                                {localnavigation.map((item) => (
-                                  <li
-                                    className={
-                                      (flattenToAppURL(
+                                {item.items
+                                  .find(
+                                    (it) =>
+                                      __CLIENT__ &&
+                                      window &&
+                                      window.location.href.includes(
+                                        getPath(it['@id'] || it.url),
+                                      ),
+                                  )
+                                  .items.map((navItem) => (
+                                    <li
+                                      className={
+                                        (flattenToAppURL(
+                                          this.props.pathname,
+                                        ).includes(
+                                          flattenToAppURL(
+                                            navItem['@id'] || navItem.url,
+                                          ),
+                                        ) &&
+                                          'active') ||
+                                        ''
+                                      }
+                                      key={`li-${
+                                        navItem['@id'] || navItem.url
+                                      }`}
+                                    >
+                                      {flattenToAppURL(
                                         this.props.pathname,
                                       ).includes(
                                         flattenToAppURL(
-                                          item['@id'] || item.url,
+                                          navItem['@id'] || navItem.url,
                                         ),
-                                      ) &&
-                                        'active') ||
-                                      ''
-                                    }
-                                    key={`li-${item['@id'] || item.url}`}
-                                  >
-                                    {flattenToAppURL(
-                                      this.props.pathname,
-                                    ).includes(
-                                      flattenToAppURL(item['@id'] || item.url),
-                                    ) && (
-                                      <span className="menuExpandedIndicator">
-                                        <Icon name={rightCircle} size="20px" />
-                                      </span>
-                                    )}
+                                      ) && (
+                                        <span className="menuExpandedIndicator">
+                                          <Icon
+                                            name={rightCircle}
+                                            size="20px"
+                                          />
+                                        </span>
+                                      )}
 
-                                    <Link
-                                      key={item['@id'] || item.url}
-                                      to={
-                                        item.items && item.items.length
-                                          ? flattenToAppURL(
-                                              item.items[0]['@id'] ||
-                                                item.items[0].url,
-                                            )
-                                          : flattenToAppURL(
-                                              item['@id'] || item.url,
-                                            )
-                                      }
-                                    >
-                                      {item.title}
-                                    </Link>
-                                  </li>
-                                ))}
+                                      <Link
+                                        key={navItem['@id'] || navItem.url}
+                                        to={
+                                          navItem.items && navItem.items.length
+                                            ? flattenToAppURL(
+                                                navItem.items[0]['@id'] ||
+                                                  navItem.items[0].url,
+                                              )
+                                            : flattenToAppURL(
+                                                navItem['@id'] || navItem.url,
+                                              )
+                                        }
+                                      >
+                                        {navItem.title}
+                                      </Link>
+                                    </li>
+                                  ))}
                               </ul>
                             ) : (
                               ''
