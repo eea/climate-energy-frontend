@@ -302,13 +302,10 @@ class PageNavigation extends Component {
                             {item.items.length > 0 ? (
                               <ul className="localnavigation">
                                 {item.items
-                                  .find(
-                                    (it) =>
-                                      __CLIENT__ &&
-                                      window &&
-                                      window.location.href.includes(
-                                        getPath(it['@id'] || it.url),
-                                      ),
+                                  .find((it) =>
+                                    this.props.pathname.includes(
+                                      getPath(it['@id'] || it.url),
+                                    ),
                                   )
                                   .items.map((navItem) => (
                                     <li
