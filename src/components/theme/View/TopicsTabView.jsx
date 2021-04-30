@@ -70,11 +70,16 @@ class DefaultView extends Component {
   //   }
   // }
 
+  validateTitle = (content) => {
+    const title = content.name || content.title;
+    return /[A-Za-z]/gi.test(title) ? title : content.id.toUpperCase();
+  };
+
   computeFolderTabs = (siblings) => {
     const tabsItems = siblings?.items?.map((i) => {
       return {
         url: flattenToAppURL(i.url),
-        title: i.name,
+        title: this.validateTitle(i),
       };
     });
     return tabsItems;
@@ -135,7 +140,7 @@ class DefaultView extends Component {
           ) : (
             ''
           )}
-          <Helmet title={content.title} />
+          <Helmet title={this.validateTitle(content)} />
           {map(content[blocksLayoutFieldname].items, (block) => {
             const Block =
               config.blocks.blocksConfig[
