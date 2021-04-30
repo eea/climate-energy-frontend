@@ -1,15 +1,6 @@
-export const GET_DEFAULT_HEADER_IMAGE = 'GET_DEFAULT_HEADER_IMAGE';
-
-export const SET_FOLDER_HEADER = 'SET_FOLDER_HEADER';
-
-export const SET_FOLDER_TABS = 'SET_FOLDER_TABS';
-
-export const GET_PARENT_FOLDER_DATA = 'GET_PARENT_FOLDER_DATA';
-
-export const GET_LOCALNAVIGATION = 'GET_LOCALNAVIGATION';
-
-export const QUICK_RESET_SEARCH_CONTENT = 'QUICK_RESET_SEARCH_CONTENT';
-
-export const QUICK_SEARCH_CONTENT = 'QUICK_SEARCH_CONTENT';
-
-export const GET_INDEX_VALUES = 'GET_INDEX_VALUES';
+/**
+ * Add your action types here.
+ * @module constants/ActionTypes
+ * @example
+ * export const UPDATE_CONTENT = 'UPDATE_CONTENT';
+ */
