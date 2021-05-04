@@ -74,6 +74,13 @@ export default function applyConfig(config) {
 
   config.settings = {
     ...config.settings,
+    apiExpanders: [
+      ...config.settings.apiExpanders,
+      {
+        match: '/',
+        GET_CONTENT: ['siblings', 'navigation', 'localnavigation'],
+      },
+    ],
     navDepth: 4,
     allowed_cors_destinations,
     tableauVersion: '2.3.0',
