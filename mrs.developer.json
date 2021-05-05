@@ -30,5 +30,15 @@
     "url": "https://github.com/eea/volto-tableau.git",
     "path": "src",
     "develop": false
+  },
+  "volto-pdf-block": {
+    "url": "hhttps://github.com/eea/volto-pdf-block.git",
+    "path": "src",
+    "develop": false
+  },
+  "volto-collection-block": {
+    "url": "https://github.com/eea/volto-collection-block.git",
+    "path": "src",
+    "develop": false
   }
 }
