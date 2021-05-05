@@ -47,7 +47,7 @@ class TopicsView extends Component {
 
   componentDidMount() {
     // this.props.getLocalnavigation(flattenToAppURL(this.props.content['@id']));
-    const mainItem = this.props.content.items[0];
+    const mainItem = this.props.content?.items[0];
     const mainUrl = mainItem && mainItem.url;
     console.log('mainitem,mainurl', mainItem, mainUrl);
     if (__CLIENT__ && mainUrl && window) {
