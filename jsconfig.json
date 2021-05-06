@@ -7,7 +7,9 @@
       "volto-datablocks": ["addons/volto-datablocks/src"],
       "@eeacms/volto-tabs-block": ["addons/volto-tabs-block/src"],
       "volto-embed": ["addons/volto-embed/src"],
-      "@eeacms/volto-tableau": ["addons/volto-tableau/src"]
+      "@eeacms/volto-tableau": ["addons/volto-tableau/src"],
+      "@eeacms/volto-collection-block": ["addons/volto-collection-block/src"],
+      "@eeacms/volto-pdf-block": ["addons/volto-pdf-block/src"]
     },
     "baseUrl": "src"
   }
