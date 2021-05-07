@@ -31,7 +31,7 @@
     "@eeacms/volto-collection-block",
     "@eeacms/volto-sentry-rancher-config",
     "@eeacms/volto-tabs-block",
-    "@eeacms/volto-energy-theme",
+    "@eeacms/volto-energy-theme"
   ],
   "jest": {
     "modulePathIgnorePatterns": [
@@ -113,16 +113,12 @@
     "@eeacms/volto-collection-block": "github:eea/volto-collection-block",
     "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.0",
+    "@eeacms/volto-energy-theme": "github:eea/volto-energy-theme#develop",
     "@eeacms/volto-pdf-block": "github:eea/volto-pdf-block",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
-    "@eeacms/volto-tabs-block": "github:eea/volto-tabs-block",
     "@eeacms/volto-tableau": "github:eea/volto-tableau",
-    "@eeacms/volto-energy-theme" : "github:eea/volto-energy-theme#develop",
-    "@n8tb1t/use-scroll-position": "^1.0.43",
+    "@eeacms/volto-tabs-block": "github:eea/volto-tabs-block",
     "@plone/volto": "12.10.1",
-    "mgr-pdf-viewer-react": "^1.0.3",
-    "react-scrollspy": "^3.4.2",
-    "volto-addons": "github:eea/volto-addons",
     "volto-datablocks": "github:eea/volto-datablocks",
     "volto-embed": "github:eea/volto-embed",
     "volto-plotlycharts": "github:eea/volto-plotlycharts",

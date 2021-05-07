@@ -30,5 +30,10 @@
     "url": "https://github.com/eea/volto-tableau.git",
     "path": "src",
     "develop": false
+  },
+  "volto-energy-theme": {
+    "url": "https://github.com/eea/volto-energy-theme.git",
+    "path": "src",
+    "develop": false
   }
 }
