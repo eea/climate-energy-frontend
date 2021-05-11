@@ -2,6 +2,7 @@ import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import chartIcon from '@plone/volto/icons/world.svg';
 import TopicsView from '~/components/theme/View/TopicsView';
 import TopicsTabView from '~/components/theme/View/TopicsTabView';
+import GridListingBlockTemplate from '~/components/manage/Blocks/Listing/GridTemplate';
 import FolderListingBlockView from 'volto-addons/FolderListing/BlockView';
 import FolderListingBlockEdit from 'volto-addons/FolderListing/BlockEdit';
 
@@ -131,6 +132,14 @@ export default function applyConfig(config) {
     edit: FolderListingBlockEdit,
     icon: chartIcon,
     group: 'custom_addons',
+  };
+
+  config.blocks.blocksConfig.listing = {
+    ...config.blocks.blocksConfig.listing,
+    templates: {
+      ...config.blocks.blocksConfig.listing.templates,
+      grid: { label: 'Grid', template: GridListingBlockTemplate },
+    },
   };
 
   //Custom Search block
