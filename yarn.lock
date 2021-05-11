@@ -1185,9 +1185,16 @@
   dependencies:
     react-color "~2.18.1"
 
+<<<<<<< HEAD
 "@eeacms/volto-collection-block@github:eea/volto-collection-block":
   version "0.1.1"
   resolved "https://codeload.github.com/eea/volto-collection-block/tar.gz/c675704329102b412f2a3cc8f3c854f00fef7f08"
+=======
+"@eeacms/volto-collection-block@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-collection-block/-/volto-collection-block-0.1.1.tgz#1c6b347d0711b43e1a432a980e71b4f5dbae4279"
+  integrity sha512-IHTHmqzaHziipP4J3jo4qmDLvDPRKYi/l7i9KaDdi5Q00jrk1Dzn8VEPI4PBgmAt/wl/foiVzByFmgSae2rubg==
+>>>>>>> origin/develop
 
 "@eeacms/volto-columns-block@^4.3.0":
   version "4.4.2"
@@ -1215,9 +1222,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-2.2.0.tgz#b03750559d50a48ef31ef2c525270a45b5819e7b"
   integrity sha512-lYRPSVLJfCWbrL/4fJyCfXOpLyJlDVXKh5EbHEBmHgFVdojtIimlfS+gLZ3/DtfhtleDoLuem7vlN06AKwhhcg==
 
-"@eeacms/volto-pdf-block@github:eea/volto-pdf-block":
+"@eeacms/volto-pdf-block@1.0.2":
   version "1.0.2"
-  resolved "https://codeload.github.com/eea/volto-pdf-block/tar.gz/1fe0e54bcab39f0a018c0eb6571732f9cf611d0f"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.2.tgz#ee70682021e67124ba859250a20065ab4084022b"
+  integrity sha512-lxZdsY+qfLJHHl+YwOnX1H0Gpq3Qk6mJJRphUtxRKAtUyKJjhTdV9/+z1Jhs3k6ncoQ/c7Fw4/Mc2lqlIDubLA==
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
