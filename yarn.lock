@@ -1185,16 +1185,10 @@
   dependencies:
     react-color "~2.18.1"
 
-<<<<<<< HEAD
-"@eeacms/volto-collection-block@github:eea/volto-collection-block":
-  version "0.1.1"
-  resolved "https://codeload.github.com/eea/volto-collection-block/tar.gz/c675704329102b412f2a3cc8f3c854f00fef7f08"
-=======
 "@eeacms/volto-collection-block@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-collection-block/-/volto-collection-block-0.1.1.tgz#1c6b347d0711b43e1a432a980e71b4f5dbae4279"
   integrity sha512-IHTHmqzaHziipP4J3jo4qmDLvDPRKYi/l7i9KaDdi5Q00jrk1Dzn8VEPI4PBgmAt/wl/foiVzByFmgSae2rubg==
->>>>>>> origin/develop
 
 "@eeacms/volto-columns-block@^4.3.0":
   version "4.4.2"
@@ -1931,10 +1925,10 @@
   dependencies:
     "@octokit/openapi-types" "^7.0.0"
 
-"@plone/volto@12.10.1":
-  version "12.10.1"
-  resolved "https://registry.yarnpkg.com/@plone/volto/-/volto-12.10.1.tgz#3ec8c6730f5efa0370903a4554b2979edacf7602"
-  integrity sha512-2z15Kgo6VuARNE9N2zkN6dgTAt2W1fStVuQQUQVmt6Qhcnh02vAqWfzyXouW3xdU1eO6ao4+ErwruEupp05ocQ==
+"@plone/volto@12.14.2":
+  version "12.14.2"
+  resolved "https://registry.yarnpkg.com/@plone/volto/-/volto-12.14.2.tgz#1a811cd105a18b4b691c864b23fa6bbcbc928aec"
+  integrity sha512-yoZX5Z6fPM0jG84nUE/voHk/QPfCQOZx0uBpl1dUdS+2yJDN7T1bMpQ+eTurqr888dIvR66LOrxlIkBrIrhnXg==
   dependencies:
     "@babel/plugin-proposal-export-default-from" "7.10.4"
     "@babel/plugin-proposal-export-namespace-from" "7.10.4"
@@ -2036,6 +2030,7 @@
     react-beautiful-dnd "13.0.0"
     react-cookie "1.0.5"
     react-dates "21.5.1"
+    react-detect-click-outside "1.1.1"
     react-dnd "5.0.0"
     react-dnd-html5-backend "5.0.1"
     react-dom "16.14.0"
@@ -16234,6 +16229,11 @@ react-day-picker@^7.4.8:
   integrity sha512-/QkK75qLKdyLmv0kcVzhL7HoJPazoZXS8a6HixbVoK6vWey1Od1WRLcxfyEiUsRfccAlIlf6oKHShqY2SM82rA==
   dependencies:
     prop-types "^15.6.2"
+
+react-detect-click-outside@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-detect-click-outside/-/react-detect-click-outside-1.1.1.tgz#3a3855639aeb19fb0d28524aac9f283e8ffd1542"
+  integrity sha512-1MqRw9+RaA3dF4zJePSngxBqXut/RgHajFLR91cTV7PRmQyCIrQAUtv979IhQoaoWhVM8rdSx9Eg4/vc/hcReQ==
 
 react-dev-utils@10.2.0:
   version "10.2.0"
