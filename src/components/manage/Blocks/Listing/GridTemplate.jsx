@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item, Grid } from 'semantic-ui-react';
+import { Item, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const GridTemplate = ({ items }) => {
   return (
-    <Grid columns={2}>
-      {items.map((item) => (
+    <Grid columns={2} celled="internally" textAlign="justified">
+      {items.map((item, index) => (
         <Grid.Column>
           <Item key={item['@id']}>
             <Item.Content>
               <Item.Header>
                 <Link style={{ color: '#666' }} to={item.url}>
-                  <h3 className="item-title">{item.title || item.Title}</h3>
+                  <h2 className="item-title">{item.title || item.Title}</h2>
                 </Link>
               </Item.Header>
-
               <Item.Description>
                 <div className="descriptionBody">
                   <Link style={{ color: '#444' }} to={item.url}>
@@ -75,6 +74,14 @@ const GridTemplate = ({ items }) => {
               </Item.Description>
             </Item.Content>
           </Item>
+          {index === 1 && (
+            <Divider
+              style={{
+                width: '600px',
+                transform: 'translateX(-320px) translateY(30px)',
+              }}
+            />
+          )}
         </Grid.Column>
       ))}
     </Grid>
