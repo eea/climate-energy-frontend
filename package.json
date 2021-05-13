@@ -28,7 +28,6 @@
     "@eeacms/volto-pdf-block",
     "@eeacms/volto-corsproxy",
     "@eeacms/volto-block-style",
-    "@eeacms/volto-collection-block",
     "@eeacms/volto-sentry-rancher-config",
     "@eeacms/volto-tabs-block",
     "@eeacms/volto-energy-theme"
@@ -110,7 +109,6 @@
   },
   "dependencies": {
     "@eeacms/volto-block-style": "3.2.2",
-    "@eeacms/volto-collection-block": "0.1.1",
     "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.0",
     "@eeacms/volto-energy-theme": "github:eea/volto-energy-theme#develop",
