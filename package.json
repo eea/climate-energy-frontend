@@ -114,13 +114,13 @@
     "@eeacms/volto-energy-theme": "github:eea/volto-energy-theme#develop",
     "@eeacms/volto-pdf-block": "1.0.2",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
+    "@eeacms/volto-tabs-block": "1.2.2",
     "@eeacms/volto-tableau": "github:eea/volto-tableau",
-    "@eeacms/volto-tabs-block": "github:eea/volto-tabs-block",
     "@plone/volto": "12.14.2",
     "volto-datablocks": "github:eea/volto-datablocks",
     "volto-embed": "github:eea/volto-embed",
     "volto-plotlycharts": "github:eea/volto-plotlycharts",
-    "volto-slate": "2.4.2"
+    "volto-slate": "2.4.3"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
