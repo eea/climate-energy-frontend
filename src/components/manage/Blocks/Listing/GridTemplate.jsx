@@ -1,36 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Item, Grid, Divider } from 'semantic-ui-react';
+import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 const GridTemplate = ({ items }) => {
   return (
-    <Grid columns={2} celled="internally" textAlign="justified">
+    <div className="catalogue-listing">
       {items.map((item, index) => (
-        <Grid.Column>
-          <Item key={item['@id']}>
-            <Item.Content>
-              <Item.Header>
-                <Link style={{ color: '#666' }} to={item.url}>
-                  <h2 className="item-title">{item.title || item.Title}</h2>
+        <Item className="catalogue-listItem" key={item['@id']}>
+          <Item.Content>
+            <Item.Header
+              className={cx({
+                'catalogue-right-header': index % 2 !== 0,
+              })}
+            >
+              <Link style={{ color: '#666' }} to={item.url}>
+                <h2 className="item-title">{item.title || item.Title}</h2>
+              </Link>
+            </Item.Header>
+            <Item.Description>
+              <div className="descriptionBody">
+                <Link style={{ color: '#444' }} to={item.url}>
+                  <p className="item-description">
+                    {item.description || item.title || item.Title}
+                  </p>
                 </Link>
-              </Item.Header>
-              <Item.Description>
-                <div className="descriptionBody">
-                  <Link style={{ color: '#444' }} to={item.url}>
-                    <p className="item-description">
-                      {item.description || item.title || item.Title}
-                    </p>
-                  </Link>
-                </div>
-                <div className="searchMetadata">
-                  {item.topics && (
-                    <div>
-                      <span className="searchLabel black">Topic:</span>{' '}
-                      {item.topics?.join(', ')}meri zinndagi kaa
-                    </div>
-                  )}
-                  {/* <div>
+              </div>
+              <div className="searchMetadata">
+                {item.topics && (
+                  <div>
+                    <span className="searchLabel black">Topic:</span>{' '}
+                    {item.topics?.join(', ')}
+                  </div>
+                )}
+                {/* <div>
                   <span className="searchLabel black">Updated:</span>{' '}
                   <FormattedDate
                     value={item.ModificationDate}
@@ -70,21 +74,12 @@ const GridTemplate = ({ items }) => {
                     </Breadcrumb>
                   )}
                 </div> */}
-                </div>
-              </Item.Description>
-            </Item.Content>
-          </Item>
-          {index === 1 && (
-            <Divider
-              style={{
-                width: '600px',
-                transform: 'translateX(-320px) translateY(30px)',
-              }}
-            />
-          )}
-        </Grid.Column>
+              </div>
+            </Item.Description>
+          </Item.Content>
+        </Item>
       ))}
-    </Grid>
+    </div>
   );
 };
 

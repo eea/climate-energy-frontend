@@ -244,6 +244,40 @@ nav.tabs {
 
 // end searchbox
 
+//Catalogue view
+
+.catalogue-listing {
+    display: grid;
+    grid-template-columns: auto auto;
+    border: none;
+    text-align: justify;
+
+    div.catalogue-listItem {
+    border: 1px solid #eee;
+    padding: 10px;
+}
+   div.catalogue-listItem:nth-child(2) {    
+    border-right: none;
+    border-top: none;
+}
+div.catalogue-listItem:nth-child(1) {
+    border-left: none;
+    border-top: none;
+}
+div.catalogue-listItem:nth-child(3) {    
+    border-bottom: none;
+    border-left: none;
+}
+div.catalogue-listItem:nth-child(4) {
+    border-bottom: none;
+    border-right: none;
+}
+.catalogue-right-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+}
 
 
 
