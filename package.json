@@ -124,7 +124,7 @@
     "volto-datablocks": "github:eea/volto-datablocks",
     "volto-embed": "github:eea/volto-embed",
     "volto-plotlycharts": "github:eea/volto-plotlycharts",
-    "volto-slate": "2.4.2"
+    "volto-slate": "2.4.3"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
