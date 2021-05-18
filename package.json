@@ -111,7 +111,7 @@
     "@eeacms/volto-block-style": "3.2.3",
     "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.1",
-    "@eeacms/volto-energy-theme": "1.0.3",
+    "@eeacms/volto-energy-theme": "1.0.4",
     "@eeacms/volto-pdf-block": "1.0.2",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@eeacms/volto-tabs-block": "1.2.2",
