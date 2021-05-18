@@ -1200,7 +1200,7 @@
 
 "@eeacms/volto-energy-theme@github:eea/volto-energy-theme#develop":
   version "1.0.3"
-  resolved "https://codeload.github.com/eea/volto-energy-theme/tar.gz/68f54eef89e70f4541cae03830263c697c50c67a"
+  resolved "https://codeload.github.com/eea/volto-energy-theme/tar.gz/b150335cea4c5c59d64f5ed985466175d040e37c"
   dependencies:
     "@n8tb1t/use-scroll-position" "^2.0.3"
     mgr-pdf-viewer-react "^1.0.3"
