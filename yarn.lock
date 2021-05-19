@@ -1200,7 +1200,7 @@
 
 "@eeacms/volto-energy-theme@github:eea/volto-energy-theme#develop":
   version "1.0.4"
-  resolved "https://codeload.github.com/eea/volto-energy-theme/tar.gz/59c5f58b8d36ad7c8f590ea6aca229b8fafe22a7"
+  resolved "https://codeload.github.com/eea/volto-energy-theme/tar.gz/cf529afde2446734079327d6b649b1aa20e35cdf"
   dependencies:
     "@eeacms/volto-corsproxy" "2.1.1"
     "@n8tb1t/use-scroll-position" "^2.0.3"
@@ -1214,8 +1214,8 @@
   integrity sha512-ekQuuUrNHNCgM3uVFExRcwxe336G7aH5/x2SNaVaBvlw+1jFbW9oMvUye/1Ya1LzeoMGLthAiLrxspxGMEDRnw==
 
 "@eeacms/volto-pdf-block@github:eea/volto-pdf-block#develop":
-  version "1.0.2"
-  resolved "https://codeload.github.com/eea/volto-pdf-block/tar.gz/6c9b7853ba56063b2b7b23e648ab8bed3eb4a53a"
+  version "1.0.3"
+  resolved "https://codeload.github.com/eea/volto-pdf-block/tar.gz/8f03d751d8d549e177a0b517506888999e3a8655"
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
@@ -1701,11 +1701,11 @@
     make-dir "^3.0.2"
 
 "@mapbox/geojson-rewind@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/geojson-rewind/-/geojson-rewind-0.5.0.tgz#91f0ad56008c120caa19414b644d741249f4f560"
-  integrity sha512-73l/qJQgj/T/zO1JXVfuVvvKDgikD/7D/rHAD28S9BG1OTstgmftrmqfCx4U+zQAmtsB6HcDA3a7ymdnJZAQgg==
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/geojson-rewind/-/geojson-rewind-0.5.1.tgz#adbe16dc683eb40e90934c51a5e28c7bbf44f4e1"
+  integrity sha512-eL7fMmfTBKjrb+VFHXCGv9Ot0zc3C0U+CwXo1IrP+EPwDczLoXv34Tgq3y+2mPSFNVUXgU42ILWJTC7145KPTA==
   dependencies:
-    concat-stream "~2.0.0"
+    get-stream "^6.0.1"
     minimist "^1.2.5"
 
 "@mapbox/geojson-types@^1.0.2":
@@ -5348,16 +5348,6 @@ concat-stream@^1.5.0, concat-stream@^1.5.2, concat-stream@^1.6.2:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concat-stream@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-2.0.0.tgz#414cf5af790a48c60ab9be4527d56d5e41133cb1"
-  integrity sha512-MWufYdFw53ccGjCA+Ol7XJYpAlW6/prSMzuPOTRnJGcGzuhLn4Scrz7qf6o8bROZ514ltazcIFJZevcfbo0x7A==
-  dependencies:
-    buffer-from "^1.0.0"
-    inherits "^2.0.3"
-    readable-stream "^3.0.2"
-    typedarray "^0.0.6"
-
 configstore@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/configstore/-/configstore-5.0.1.tgz#d365021b5df4b98cdd187d6a3b0e3f6a7cc5ed96"
@@ -8607,7 +8597,7 @@ get-stream@^5.0.0, get-stream@^5.1.0:
   dependencies:
     pump "^3.0.0"
 
-get-stream@^6.0.0:
+get-stream@^6.0.0, get-stream@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
   integrity sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==
@@ -16987,7 +16977,7 @@ read@1.0.x:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@^3.0.2, readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
+readable-stream@^3.0.6, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
   integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
