@@ -1213,10 +1213,9 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-2.2.1.tgz#0bc96ebdba9c5bb9b0850c44d70fea4049754684"
   integrity sha512-ekQuuUrNHNCgM3uVFExRcwxe336G7aH5/x2SNaVaBvlw+1jFbW9oMvUye/1Ya1LzeoMGLthAiLrxspxGMEDRnw==
 
-"@eeacms/volto-pdf-block@1.0.2":
+"@eeacms/volto-pdf-block@github:eea/volto-pdf-block#develop":
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.2.tgz#ee70682021e67124ba859250a20065ab4084022b"
-  integrity sha512-lxZdsY+qfLJHHl+YwOnX1H0Gpq3Qk6mJJRphUtxRKAtUyKJjhTdV9/+z1Jhs3k6ncoQ/c7Fw4/Mc2lqlIDubLA==
+  resolved "https://codeload.github.com/eea/volto-pdf-block/tar.gz/6c9b7853ba56063b2b7b23e648ab8bed3eb4a53a"
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
@@ -6994,9 +6993,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.341, electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.723:
-  version "1.3.731"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.731.tgz#9f17f7e16f798eaddb21409d80aa755b5b5053dc"
-  integrity sha512-dn1Nyd0DuFa3xhqZJr6/L9phyk+YXJpvrz6Vcu6mFxFqr5TQ9r/F3yvOYFUrEwY4Tbb1YBjN19TDKnSVCQvalA==
+  version "1.3.732"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.732.tgz#2a07a8d61f74f2084b6f6bf2a908605a7a0b2d8d"
+  integrity sha512-qKD5Pbq+QMk4nea4lMuncUMhpEiQwaJyCW7MrvissnRcBDENhVfDmAqQYRQ3X525oTzhar9Zh1cK0L2d1UKYcw==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -14315,7 +14314,7 @@ pause-stream@0.0.11:
   dependencies:
     through "~2.3"
 
-pbf@^3.0.5, pbf@^3.2.1:
+pbf@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/pbf/-/pbf-3.2.1.tgz#b4c1b9e72af966cd82c6531691115cc0409ffe2a"
   integrity sha512-ClrV7pNOn7rtmoQVF4TS1vyU0WhYRnP92fzbfF75jAIwpnzdJXf8iTd4CMEqO4yUenH6NDqLiwjqlh6QgZzgLQ==
@@ -20554,13 +20553,13 @@ volto-slate@2.4.3:
     weak-key "^1.0.2"
 
 vt-pbf@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/vt-pbf/-/vt-pbf-3.1.1.tgz#b0f627e39a10ce91d943b898ed2363d21899fb82"
-  integrity sha512-pHjWdrIoxurpmTcbfBWXaPwSmtPAHS105253P1qyEfSTV2HJddqjM+kIHquaT/L6lVJIk9ltTGc0IxR/G47hYA==
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vt-pbf/-/vt-pbf-3.1.2.tgz#0ba9c07b73d74024e56c6372837897f6630f040a"
+  integrity sha512-2+WbhabeHzcCfyw4KpxlB1DD1Kvg+aJRgNFBetGww3TnSX/YMfkvJBt8/+1cz9aF4mEgzcc8poeoMclK27xRjg==
   dependencies:
     "@mapbox/point-geometry" "0.1.0"
     "@mapbox/vector-tile" "^1.3.1"
-    pbf "^3.0.5"
+    pbf "^3.2.1"
 
 w3c-hr-time@^1.0.1, w3c-hr-time@^1.0.2:
   version "1.0.2"
