@@ -11,6 +11,9 @@ build
 .env.test.local
 .env.production.local
 
+# locales
+locales/*.json
+
 data
 *~
 src/develop
