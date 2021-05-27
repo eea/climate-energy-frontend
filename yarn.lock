@@ -1218,9 +1218,9 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-sentry-rancher-config/-/volto-sentry-rancher-config-2.1.1.tgz#c1b24fddc21ed9b47847da0fa60f5b46ecef8585"
   integrity sha512-q6JTHQ0Co1X4cOFMr/+c3/p25wXyfxyKFamrV4zhkpawk/ZKvj7e7BskZa6B67ivH9WTcfyjmc36dbklfnildg==
 
-"@eeacms/volto-tableau@github:eea/volto-tableau":
+"@eeacms/volto-tableau@github:eea/volto-tableau#develop":
   version "1.2.0"
-  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/73ce85b3c012f7be537541cad798a5bf5ed13205"
+  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/f6a5fcdfda01cf45e0061af78f2a9c3c6d268a32"
   dependencies:
     tableau-api-js "github:eea/tableau-api-js#1.1.0"
 
