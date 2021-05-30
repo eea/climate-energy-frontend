@@ -1220,7 +1220,7 @@
 
 "@eeacms/volto-tableau@github:eea/volto-tableau#develop":
   version "1.2.1"
-  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/e2232988e30b199b0cb12e97ae6161fff3f2a866"
+  resolved "https://codeload.github.com/eea/volto-tableau/tar.gz/b4e44ac6a1baa3d24d6ae130f4bf27f97b67120f"
   dependencies:
     tableau-api-js "github:eea/tableau-api-js#1.1.0"
 
