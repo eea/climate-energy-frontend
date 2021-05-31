@@ -108,19 +108,19 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-block-style": "3.2.4",
+    "@eeacms/volto-block-style": "3.2.5",
     "@eeacms/volto-columns-block": "^4.3.0",
-    "@eeacms/volto-corsproxy": "2.1.1",
+    "@eeacms/volto-corsproxy": "2.1.2",
     "@eeacms/volto-energy-theme": "1.0.5",
-    "@eeacms/volto-pdf-block": "1.0.3",
+    "@eeacms/volto-pdf-block": "1.0.5",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@eeacms/volto-tableau": "github:eea/volto-tableau",
-    "@eeacms/volto-tabs-block": "1.2.3",
+    "@eeacms/volto-tabs-block": "1.2.4",
     "@plone/volto": "13.1.1",
     "volto-datablocks": "github:eea/volto-datablocks",
     "volto-embed": "github:eea/volto-embed",
     "volto-plotlycharts": "github:eea/volto-plotlycharts",
-    "volto-slate": "2.4.3"
+    "volto-slate": "2.5.0"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
