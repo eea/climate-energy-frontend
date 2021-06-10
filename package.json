@@ -113,7 +113,7 @@
     "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.2",
     "@eeacms/volto-matomo": "2.0.1",
-    "@eeacms/volto-energy-theme": "1.0.8",
+    "@eeacms/volto-energy-theme": "1.0.9",
     "@eeacms/volto-pdf-block": "1.0.5",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@eeacms/volto-tableau": "1.2.2",
