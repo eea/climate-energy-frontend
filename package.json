@@ -109,7 +109,7 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-block-style": "3.3.0",
+    "@eeacms/volto-block-style": "3.3.1",
     "@eeacms/volto-columns-block": "^4.3.0",
     "@eeacms/volto-corsproxy": "2.1.2",
     "@eeacms/volto-matomo": "2.0.1",
