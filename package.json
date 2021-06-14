@@ -116,7 +116,7 @@
     "@eeacms/volto-energy-theme": "1.0.10",
     "@eeacms/volto-pdf-block": "1.0.5",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
-    "@eeacms/volto-tableau": "1.2.2",
+    "@eeacms/volto-tableau": "github:eea/volto-tableau#develop",
     "@eeacms/volto-tabs-block": "1.2.4",
     "@plone/volto": "13.1.1",
     "volto-datablocks": "github:eea/volto-datablocks",
