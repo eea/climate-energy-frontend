@@ -1184,11 +1184,12 @@
   dependencies:
     "@datapunt/matomo-tracker-js" "^0.3.1"
 
-"@eeacms/volto-block-style@3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.3.1.tgz#4053b34e859cde0bfa3b3447b285df635bf32bf3"
-  integrity sha512-2pNDpXWBSyu8OJnAwdIEm4SGYvmI70pBjRSUfpKAEcWYpTrWzGjkHoEAE2qoavf1s0nvZ9lLeGCKTevohZfq9w==
+"@eeacms/volto-block-style@3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.3.2.tgz#2d3ba16dd841fd9758e40579ce586f22d52e925a"
+  integrity sha512-fUH+QJwKVvw6vkxt/5h1T8xPx8mQf0sjSwwxM5PnixMesaWoXoa368r5RQxOOU/XUHZXGMcXLMGbkgNO8S0huA==
   dependencies:
+    "@eeacms/volto-resize-helper" ">=0.2.2"
     react-color "~2.18.1"
 
 "@eeacms/volto-block-style@^2.5.1":
@@ -1252,7 +1253,7 @@
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
-"@eeacms/volto-resize-helper@^0.2.2":
+"@eeacms/volto-resize-helper@>=0.2.2", "@eeacms/volto-resize-helper@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-resize-helper/-/volto-resize-helper-0.2.2.tgz#5fa899acc4116f2a31cc753bb3737b1ceb30238a"
   integrity sha512-MevcfCFta+A79esQbGq0dVwZHHp5zbkguQ3j8nORGtZEmnYOUCE+HTUoWVAGmQLDFbrfy7lttwmiwFXxC0COxw==
