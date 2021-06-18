@@ -1240,10 +1240,10 @@
   dependencies:
     "@datapunt/matomo-tracker-react" "0.3.1"
 
-"@eeacms/volto-object-widget@^2.0.0":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-2.2.1.tgz#0bc96ebdba9c5bb9b0850c44d70fea4049754684"
-  integrity sha512-ekQuuUrNHNCgM3uVFExRcwxe336G7aH5/x2SNaVaBvlw+1jFbW9oMvUye/1Ya1LzeoMGLthAiLrxspxGMEDRnw==
+"@eeacms/volto-object-widget@>=2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-2.2.3.tgz#38f3bff8d71486d97fa99f0ca5912ad4141a2033"
+  integrity sha512-u4xLyASXvSrsG2b0QTRitOjuIfNoXjMRuaAo0oNyJLETuLj73qyLR3TsSDG//2VmBIklB/ca/7Xl7ncHaaJF1A==
 
 "@eeacms/volto-pdf-block@1.0.5":
   version "1.0.5"
@@ -20076,12 +20076,12 @@ volto-datablocks@eea/volto-datablocks#master, "volto-datablocks@github:eea/volto
     react-visibility-sensor "^5.1.1"
     volto-datablocks eea/volto-datablocks#master
 
-volto-slate@2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.7.1.tgz#d82766cd0d33cc3954227741bd4979d4e0a26da7"
-  integrity sha512-Pwx2dpRbVT6keyTb3Lf0LEclR1MGSpc3CxfZ6QbAW15tUl3IJrUKNp+qR1ZQae5eeJzQcIKg0ZuoJxYU5+2xZg==
+volto-slate@2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.7.2.tgz#ed464af9369389f6c798cf5165b75711dd288d24"
+  integrity sha512-TaOF23KELXUQV93gcakhqS61pn4/YaUFY5NLctG6Qp0gHRRwutiXIT/7/cmZRQ/SlrSItwWjyqWO4bYYMcq9gg==
   dependencies:
-    "@eeacms/volto-object-widget" "^2.0.0"
+    "@eeacms/volto-object-widget" ">=2.2.3"
     classnames "2.2.6"
     image-extensions "1.1.0"
     is-url "1.2.4"
