@@ -2,10 +2,10 @@
   "compilerOptions": {
     "jsx": "react",
     "paths": {
-      "volto-plotlycharts": ["addons/volto-plotlycharts/src"],
-      "volto-datablocks": ["addons/volto-datablocks/src"],
+      "@eeacms/volto-plotlycharts": ["addons/volto-plotlycharts/src"],
+      "@eeacms/volto-datablocks": ["addons/volto-datablocks/src"],
       "@eeacms/volto-tabs-block": ["addons/volto-tabs-block/src"],
-      "volto-embed": ["addons/volto-embed/src"],
+      "@eeacms/volto-embed": ["addons/volto-embed/src"],
       "@eeacms/volto-tableau": ["addons/volto-tableau/src"],
       "@eeacms/volto-energy-theme": ["addons/volto-energy-theme/src"],
       "@eeacms/volto-pdf-block": ["addons/volto-pdf-block/src"]
