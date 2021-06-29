@@ -20,9 +20,9 @@
   ],
   "addons": [
     "volto-slate:asDefault",
-    "volto-plotlycharts",
-    "volto-embed",
-    "volto-datablocks",
+    "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-embed",
+    "@eeacms/volto-datablocks",
     "@eeacms/volto-tableau",
     "@eeacms/volto-columns-block",
     "@eeacms/volto-pdf-block",
@@ -119,9 +119,9 @@
     "@eeacms/volto-tableau": "1.2.3",
     "@eeacms/volto-tabs-block": "1.2.4",
     "@plone/volto": "13.1.1",
-    "volto-datablocks": "github:eea/volto-datablocks",
-    "volto-embed": "github:eea/volto-embed",
-    "volto-plotlycharts": "github:eea/volto-plotlycharts",
+    "@eeacms/volto-datablocks": "2.0.6",
+    "@eeacms/volto-embed": "2.0.1",
+    "@eeacms/volto-plotlycharts": "2.0.3",
     "volto-slate": "2.8.0"
   },
   "devDependencies": {
