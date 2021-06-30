@@ -1181,7 +1181,20 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.2.tgz#eb1b50a7382e4da9601128ee972d3249a29ce939"
   integrity sha512-5j2ETMD8XRUk8hs4qqpd6F9SSlmTw0eqwNKPlouF78cdql/vJ5Pc4cgdZDh1Qldum1CcFnqdLxGABzQkfE3SDQ==
 
-"@eeacms/volto-datablocks@2.0.6", "@eeacms/volto-datablocks@^2.0.2":
+"@eeacms/volto-datablocks@2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-2.0.9.tgz#977085fe1ea008b0d66d8a20a065e3c6d2173da4"
+  integrity sha512-73g2QebYTsIG5xGlKa/YvltNayZh2/Q4MFFrNdQzk8EzjVUkRt2YaHSgCDl9yT/JBiMHPl49kCNPgdMl2xBasw==
+  dependencies:
+    "@eeacms/volto-embed" "^2.0.1"
+    humanize-plus "^1.8.2"
+    performant-array-to-tree "^1.7.1"
+    plotly.js "1.57.0"
+    react-plotly.js "~2.5.0"
+    sanitize-html "^2.3.3"
+    slate "0.63.0"
+
+"@eeacms/volto-datablocks@^2.0.2":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-2.0.6.tgz#053d936907577dde46e17f3bc76986193a3edbde"
   integrity sha512-eIPK92SXLXnz11NzscVVFrBG7ZlBgS+CrpP7e1VPsMxJMZKAuuBc+L9GxfaStNAd3IHvA1JXnmLp7apgv95s3Q==
