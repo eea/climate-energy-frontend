@@ -20084,10 +20084,10 @@ vm-browserify@^1.0.1:
     react-sizeme "3.0.1"
     redraft "^0.10.2"
 
-volto-slate@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.8.0.tgz#a898677772f47c201446071092e815748b9258c4"
-  integrity sha512-dqdT849CNtNVSh4yajOKFwypeHyklI4Opl5NxYMnEw4O4guhkknRYoSMFTViNtJ0qWyyf/GNner/9/8y7K8Ueg==
+volto-slate@2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.8.1.tgz#039583acafaff31db6110c2621e7a3b82867da9d"
+  integrity sha512-IKMPG+jyizNY4n5DWSqmjhGP9RcaO7dd2exAbRFzkg8qH/e4GIGWvWycEOBkMZkkw2vxdVVRkbjuuUzChBGdTA==
   dependencies:
     "@eeacms/volto-object-widget" ">=2.2.3"
     classnames "2.2.6"
