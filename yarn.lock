@@ -1214,10 +1214,10 @@
   dependencies:
     react-visibility-sensor "5.1.1"
 
-"@eeacms/volto-energy-theme@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.10.tgz#d890bfa8826e2a0442915e95ed730cf8766c0769"
-  integrity sha512-++cGuXFcGJN6BXU9wOgfE91C6JhjXXMjPiroNxFjJPbdEGkq0hvNASCgsa/cplcHTDWeZpGKdoRQdbSi6sD4IA==
+"@eeacms/volto-energy-theme@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.11.tgz#8ccc47c3d4815a73426fc575934852fc3a6e3fe2"
+  integrity sha512-3VRWyNOKs0iXP6tWn74Pn3nZBKafVG1uT/xUxzAPAql1OMrZYnvobY5tqX+mOdCAGNWS7bRibXrnhbYMs0UxKQ==
   dependencies:
     "@eeacms/volto-corsproxy" "2.1.1"
     "@n8tb1t/use-scroll-position" "^2.0.3"
