@@ -1214,12 +1214,13 @@
   dependencies:
     react-visibility-sensor "5.1.1"
 
-"@eeacms/volto-energy-theme@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.10.tgz#d890bfa8826e2a0442915e95ed730cf8766c0769"
-  integrity sha512-++cGuXFcGJN6BXU9wOgfE91C6JhjXXMjPiroNxFjJPbdEGkq0hvNASCgsa/cplcHTDWeZpGKdoRQdbSi6sD4IA==
+"@eeacms/volto-energy-theme@1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.13.tgz#ad766a19d6ba6680ab9767e4a430d0d99b279b29"
+  integrity sha512-EXN7n1nqHaHh46kATkz2PEc/KEF4s8WAvU8kFCEh5naGtc8oJHsHMCpjRQ5HINX2RaiIw/etrH6WhozXoqCYfw==
   dependencies:
     "@eeacms/volto-corsproxy" "2.1.1"
+    "@eeacms/volto-plotlycharts" "*"
     "@n8tb1t/use-scroll-position" "^2.0.3"
     mgr-pdf-viewer-react "^1.0.3"
     react-scrollspy "^3.4.3"
@@ -1244,7 +1245,7 @@
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
-"@eeacms/volto-plotlycharts@2.0.5":
+"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-2.0.5.tgz#742876513b8c2df959bdf663bc3797e47779d896"
   integrity sha512-o6+p38GanKyNJIZW6amPCr+xzOoeqVWxvixWJMK6TPZoqG1X740DkE8uArrI8eD1kn3d1CBDOWTMAEYs4PWoZA==
