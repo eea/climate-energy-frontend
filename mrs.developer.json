@@ -14,13 +14,13 @@
   "volto-datablocks": {
     "url": "https://github.com/eea/volto-datablocks.git",
     "path": "src",
-    "develop": true,
+    "develop": false,
     "branch": "develop"
   },
   "volto-plotlycharts": {
     "url": "https://github.com/eea/volto-plotlycharts.git",
     "path": "src",
-    "develop": true,
+    "develop": false,
     "branch": "develop"
   },
   "volto-tableau": {
