@@ -1352,10 +1352,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.2.tgz#eb1b50a7382e4da9601128ee972d3249a29ce939"
   integrity sha512-5j2ETMD8XRUk8hs4qqpd6F9SSlmTw0eqwNKPlouF78cdql/vJ5Pc4cgdZDh1Qldum1CcFnqdLxGABzQkfE3SDQ==
 
-"@eeacms/volto-datablocks@2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-2.0.10.tgz#9a5e8dcf2b23c87f893aa80059ea24799628fed6"
-  integrity sha512-Y3nVwK6Yx4lxymT1xNKJja6nWCdtiJ+XNZfknl51iVUp55zIYVwreMpogyq6NgcZhYMLtEMVUT8e1DhqMShnrg==
+"@eeacms/volto-datablocks@2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-2.0.11.tgz#a6e03120601562bd5ae1277e6758da4837642e46"
+  integrity sha512-Z5cgoHp2Y2OFgPNGpCCRgPwNF2tQ9GPYXagRaw/iWlw1IWn1cPeI7YuBiwKJhCmzFqabPxcowVwmWjFucOnQmw==
   dependencies:
     "@eeacms/volto-embed" "^2.0.1"
     humanize-plus "^1.8.2"
