@@ -120,7 +120,7 @@
     "@eeacms/volto-plotlycharts": "2.0.5",
     "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@eeacms/volto-tableau": "1.2.3",
-    "@eeacms/volto-tabs-block": "1.2.4",
+    "@eeacms/volto-tabs-block": "1.2.5",
     "@plone/volto": "13.1.1",
     "volto-slate": "2.8.3"
   },

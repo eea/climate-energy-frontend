@@ -1278,10 +1278,10 @@
     "@eeacms/volto-resize-helper" "^0.2.2"
     tableau-api-js "github:eea/tableau-api-js#1.1.0"
 
-"@eeacms/volto-tabs-block@1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-tabs-block/-/volto-tabs-block-1.2.4.tgz#a0c219aaffa48379b1488ea4239317c7ce81e502"
-  integrity sha512-iwcX2DlkIT5s0NpjiEgnzWMUe4H7tiFqlkuzntwwWsEWwDXht1Awzzb/GHV/BLLHp575x5OBThT+/r8++HiKQA==
+"@eeacms/volto-tabs-block@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-tabs-block/-/volto-tabs-block-1.2.5.tgz#57e97bdd03ca9d39223c7011560c2b9d23e14a47"
+  integrity sha512-sYueJLjBzCEqcgt6JHu3ZRpuvMDA0d65jCD/HFYrP+Jjk2OVjeDRiV/lyC0a1EUUFb1Ze5iyHOOKI5Ryc6pjCg==
   dependencies:
     "@eeacms/volto-block-style" "^2.5.1"
     react-slick "^0.24.0"
