@@ -1207,7 +1207,16 @@
     sanitize-html "^2.3.3"
     slate "0.63.0"
 
-"@eeacms/volto-embed@2.0.1", "@eeacms/volto-embed@^2.0.1":
+"@eeacms/volto-embed@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.2.tgz#b63d735792d91554caace61bcacda6098cb59165"
+  integrity sha512-Fei7es6ZhANjPOASDbRtCsCkyzrap3/HVA925NF5savDn86Ml7jb49ToVmAyqMwDFJ4GZlWdVGv8FAAWjHkQFg==
+  dependencies:
+    "@eeacms/volto-corsproxy" "2.1.2"
+    react-visibility-sensor "5.1.1"
+    volto-slate "2.9.1"
+
+"@eeacms/volto-embed@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.1.tgz#997e1f29f7cd1aa650a1667e16ea8f4606b6d355"
   integrity sha512-qf6NBG/TKZzCHJDxRRdAZ5VNkQMVE0RD4npwrdQWafQzd5VSdmJ3pMK/adOuXN+GauXt2ERUaAakjpdk8R/Bew==
