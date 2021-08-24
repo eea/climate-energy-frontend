@@ -122,7 +122,7 @@
     "@eeacms/volto-tableau": "1.2.3",
     "@eeacms/volto-tabs-block": "1.2.5",
     "@plone/volto": "13.1.1",
-    "volto-slate": "2.9.1"
+    "volto-slate": "2.9.2"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
