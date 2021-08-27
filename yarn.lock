@@ -1149,19 +1149,20 @@
   dependencies:
     "@datapunt/matomo-tracker-js" "^0.3.1"
 
+"@eeacms/volto-block-style@*":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.4.4.tgz#982ff18803026f58bee306b8a181783146275ee1"
+  integrity sha512-GWVrzA8nf1vSA4/Il+jf0axzOk/dzMo0fQoxJcT52LmZf/cFPJjOmXxMRfV0wDssXvwC8eFsa1tMdvZ3nd1Mqg==
+  dependencies:
+    "@eeacms/volto-resize-helper" "*"
+    react-color "~2.18.1"
+
 "@eeacms/volto-block-style@3.4.3":
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.4.3.tgz#63277e4ef03984bac80f4c4fce7eddd8304043de"
   integrity sha512-XNGIDWN7kHP7KcX5iwYsaUhv60Sd2xC5UU8LXfiOtDsu77F9fxa3mEwVL/CX44rv2lCLQ/PUjNc6e8XBPrMT/Q==
   dependencies:
     "@eeacms/volto-resize-helper" "*"
-    react-color "~2.18.1"
-
-"@eeacms/volto-block-style@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-2.5.1.tgz#c16077800e7943f644c460918296022e81475be6"
-  integrity sha512-2wfbbM5IMIaf0177Hv39up553RyUXCKsWC3ajwnVYDWjxnocNVoYdfhwXmolNDda/xSaC4VsUBvEVlQ6uEliTA==
-  dependencies:
     react-color "~2.18.1"
 
 "@eeacms/volto-columns-block@^4.3.0":
@@ -1287,12 +1288,12 @@
     "@eeacms/volto-resize-helper" "^0.2.2"
     tableau-api-js "github:eea/tableau-api-js#1.1.0"
 
-"@eeacms/volto-tabs-block@1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-tabs-block/-/volto-tabs-block-1.2.5.tgz#57e97bdd03ca9d39223c7011560c2b9d23e14a47"
-  integrity sha512-sYueJLjBzCEqcgt6JHu3ZRpuvMDA0d65jCD/HFYrP+Jjk2OVjeDRiV/lyC0a1EUUFb1Ze5iyHOOKI5Ryc6pjCg==
+"@eeacms/volto-tabs-block@1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-tabs-block/-/volto-tabs-block-1.2.7.tgz#47c2ebf6c10b72e9bc03fe77ac15248f1492fbef"
+  integrity sha512-ZR7ygxUE0t1BEgTffns4RhQqkMXqZ/7BDI5kbYeE1e2zBeK5l38P/u/8yaHe7uM5MqMKg2rgqH0v7GADH8BsCA==
   dependencies:
-    "@eeacms/volto-block-style" "^2.5.1"
+    "@eeacms/volto-block-style" "*"
     react-slick "^0.24.0"
     slick-carousel "^1.8.1"
 
