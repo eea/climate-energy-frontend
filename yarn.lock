@@ -1149,10 +1149,18 @@
   dependencies:
     "@datapunt/matomo-tracker-js" "^0.3.1"
 
-"@eeacms/volto-block-style@*", "@eeacms/volto-block-style@3.4.4":
+"@eeacms/volto-block-style@*":
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.4.4.tgz#982ff18803026f58bee306b8a181783146275ee1"
   integrity sha512-GWVrzA8nf1vSA4/Il+jf0axzOk/dzMo0fQoxJcT52LmZf/cFPJjOmXxMRfV0wDssXvwC8eFsa1tMdvZ3nd1Mqg==
+  dependencies:
+    "@eeacms/volto-resize-helper" "*"
+    react-color "~2.18.1"
+
+"@eeacms/volto-block-style@3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.4.5.tgz#8f4dda1b42aea18fde745d2c85fcbf8cfc7cfebc"
+  integrity sha512-dnvMfNt1HnTA3CAAare1ftme6ozPbaA+JBGugvxH8BoXRtjHsJnEp7g5B6rXW7dmH2hlVg8TJ/IzS1ltvVfQtQ==
   dependencies:
     "@eeacms/volto-resize-helper" "*"
     react-color "~2.18.1"
