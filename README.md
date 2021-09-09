@@ -1,10 +1,9 @@
-## Energy Union: Volto Frontend
+## Climate Energy: Volto Frontend
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fenergy_union_frontend%2Fmaster&subject=pipeline)](https://ci.eionet.europa.eu/view/Github/job/volto/job/energy_union_frontend/job/master/display/redirect)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/eea/energy_union_frontend?sort=semver)](https://github.com/eea/energy_union_frontend/releases)
 
-
-A frontend component for the Energy Union website.
+A frontend component for the Climate Energy website.
 
 ## Quick Start
 
@@ -46,19 +45,19 @@ We use [Docker](https://www.docker.com/), [Rancher](https://rancher.com/) and [J
 
 ### Deploy
 
-* Within `Rancher > Catalog > EEA` deploy [Volto - Energy Union](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union)
+- Within `Rancher > Catalog > EEA` deploy [Volto - Climate Energy](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union)
 
 ### Release
 
-* Create a new release of this code via `git tag` command or [Draft new release](https://github.com/eea/energy_union_frontend/releases/new) on Github.
-  * A new Docker image is built and released automatically on [DockerHub](https://hub.docker.com/r/eeacms/energy-union-frontend) based on this tag.
-  * A new entry is automatically added to [Volto - Energy Union](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union) `EEA Rancher Catalog`
-  * The [Jenkins job](https://ci.eionet.europa.eu/blue/organizations/jenkins/energy-union%2Fenergy_union_frontend/)
+- Create a new release of this code via `git tag` command or [Draft new release](https://github.com/eea/energy_union_frontend/releases/new) on Github.
+  - A new Docker image is built and released automatically on [DockerHub](https://hub.docker.com/r/eeacms/energy-union-frontend) based on this tag.
+  - A new entry is automatically added to [Volto - Climate Energy](https://github.com/eea/eea.rancher.catalog/tree/master/templates/volto-energy-union) `EEA Rancher Catalog`
+  - The [Jenkins job](https://ci.eionet.europa.eu/blue/organizations/jenkins/energy-union%2Fenergy_union_frontend/)
 
 ### Upgrade
 
-* Within your Rancher environment click on the `Upgrade available` yellow button next to your stack.
+- Within your Rancher environment click on the `Upgrade available` yellow button next to your stack.
 
-* Confirm the upgrade
+- Confirm the upgrade
 
-* Or roll-back if something went wrong and abort the upgrade procedure.
+- Or roll-back if something went wrong and abort the upgrade procedure.
