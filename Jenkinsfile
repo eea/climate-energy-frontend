@@ -6,7 +6,7 @@ pipeline {
     RANCHER_ENVID = "1a332957"
     dockerImage = ''
     tagName = ''
-    GIT_NAME = "energy_union_frontend"
+    GIT_NAME = "climate-energy-frontend"
     SONARQUBE_TAG = "climate-energy.eea.europa.eu"
     }
 
@@ -41,9 +41,6 @@ pipeline {
             }
         }
     }
-
-
-
 
     stage('Build & Push') {
       steps{
@@ -80,8 +77,7 @@ pipeline {
         }
       }
     }
-    
-    
+
    stage('Upgrade demo') {
       when {
         buildingTag()
@@ -96,7 +92,7 @@ pipeline {
         }
       }
     }
-    
+
     stage('Update SonarQube Tags') {
       when {
         buildingTag()
