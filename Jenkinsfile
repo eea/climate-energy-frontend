@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "eeacms/energy-union-frontend"
+    registry = "eeacms/climate-energy-frontend"
     template = "templates/volto-energy-union"
     RANCHER_STACKID = "1st2026"
     RANCHER_ENVID = "1a332957"
