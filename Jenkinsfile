@@ -1,8 +1,8 @@
 pipeline {
   environment {
     registry = "eeacms/climate-energy-frontend"
-    template = "templates/volto-energy-union"
-    RANCHER_STACKID = "1st2026"
+    template = "templates/volto-climate-energy"
+    RANCHER_STACKID = "1st2306"
     RANCHER_ENVID = "1a332957"
     dockerImage = ''
     tagName = ''
