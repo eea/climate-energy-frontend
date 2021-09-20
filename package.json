@@ -25,7 +25,10 @@
     "test": "razzle test --env=jsdom --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
-    "develop": "missdev --config=jsconfig.json --output=addons"
+    "develop": "missdev --config=jsconfig.json --output=addons",
+    "release": "release-it",
+    "release-major-beta": "release-it major --preRelease=beta",
+    "release-beta": "release-it --preRelease=beta"
   },
   "jest": {
     "modulePathIgnorePatterns": [
