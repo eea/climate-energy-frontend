@@ -1,8 +1,21 @@
 {
-  "name": "energy-union-frontend",
+  "name": "climate-energy-frontend",
   "description": "Frontend component for the Climate Energy website.",
   "license": "MIT",
   "version": "2.2.1",
+  "private": true,
+  "workspaces": [
+    "src/addons/*"
+  ],
+  "addons": [
+    "@eeacms/volto-eea-kitkat",
+    "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-embed",
+    "@eeacms/volto-datablocks",
+    "@eeacms/volto-tableau",
+    "@eeacms/volto-pdf-block",
+    "@eeacms/volto-energy-theme"
+  ],
   "scripts": {
     "start": "razzle start",
     "postinstall": "yarn omelette && yarn patches",
@@ -14,25 +27,6 @@
     "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
     "develop": "missdev --config=jsconfig.json --output=addons"
   },
-  "private": true,
-  "workspaces": [
-    "src/addons/*"
-  ],
-  "addons": [
-    "volto-slate:asDefault",
-    "@eeacms/volto-plotlycharts",
-    "@eeacms/volto-embed",
-    "@eeacms/volto-datablocks",
-    "@eeacms/volto-tableau",
-    "@eeacms/volto-columns-block",
-    "@eeacms/volto-pdf-block",
-    "@eeacms/volto-matomo",
-    "@eeacms/volto-corsproxy",
-    "@eeacms/volto-block-style",
-    "@eeacms/volto-sentry-rancher-config",
-    "@eeacms/volto-tabs-block",
-    "@eeacms/volto-energy-theme"
-  ],
   "jest": {
     "modulePathIgnorePatterns": [
       "api"
@@ -109,20 +103,14 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-block-style": "3.4.5",
-    "@eeacms/volto-columns-block": "^4.3.0",
-    "@eeacms/volto-corsproxy": "2.1.2",
+    "@eeacms/volto-eea-kitkat": "2.0.2",
     "@eeacms/volto-datablocks": "2.0.12",
     "@eeacms/volto-embed": "2.0.3",
     "@eeacms/volto-energy-theme": "1.0.13",
-    "@eeacms/volto-matomo": "2.0.2",
     "@eeacms/volto-pdf-block": "1.0.5",
     "@eeacms/volto-plotlycharts": "2.0.5",
-    "@eeacms/volto-sentry-rancher-config": "^2.0.0",
     "@eeacms/volto-tableau": "1.2.3",
-    "@eeacms/volto-tabs-block": "1.2.7",
-    "@plone/volto": "13.15.0",
-    "volto-slate": "3.1.0"
+    "@plone/volto": "13.15.0"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
