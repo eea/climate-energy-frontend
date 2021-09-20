@@ -103,6 +103,7 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
+    "@eeacms/volto-eea-kitkat": "2.0.2",
     "@eeacms/volto-datablocks": "2.0.12",
     "@eeacms/volto-embed": "2.0.3",
     "@eeacms/volto-energy-theme": "1.0.13",
