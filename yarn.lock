@@ -19941,42 +19941,6 @@ vm-browserify@^1.0.1:
     react-sizeme "3.0.1"
     redraft "^0.10.2"
 
-volto-slate@2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.9.1.tgz#d4ed326470570a5b81c3dbd65e2aa9acf936184e"
-  integrity sha512-ZCqMnIv+qHOsMgespqLwDKvAqSbrflGXF1MFTABbCgpEAA7dw/9SGaCR1Sa5uZbYs8kb24PR7esBCKs2JszQkg==
-  dependencies:
-    "@eeacms/volto-object-widget" ">=2.2.3"
-    classnames "2.2.6"
-    image-extensions "1.1.0"
-    is-url "1.2.4"
-    jsdom "16.2.2"
-    react-intersection-observer "^8.32.0"
-    react-visibility-sensor "5.1.1"
-    slate "^0.62.0"
-    slate-history "^0.62.0"
-    slate-hyperscript "^0.62.0"
-    slate-react "^0.62.0"
-    weak-key "^1.0.2"
-
-volto-slate@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-3.1.0.tgz#2c5ca83ed882edc130607163b4e1327839d0bc09"
-  integrity sha512-kIWor1HxxYF/UpkbJZZzxvxJlK+KOhwgm4mo1LfUsQcOWxG+F9VIaxCsiUTPpkT1ZTB+Z25UNM2IxihjKw2A4A==
-  dependencies:
-    "@eeacms/volto-object-widget" "*"
-    classnames "2.2.6"
-    image-extensions "1.1.0"
-    is-url "1.2.4"
-    jsdom "16.2.2"
-    react-intersection-observer "^8.32.0"
-    react-visibility-sensor "5.1.1"
-    slate "^0.62.0"
-    slate-history "^0.62.0"
-    slate-hyperscript "^0.62.0"
-    slate-react "^0.62.0"
-    weak-key "^1.0.2"
-
 vt-pbf@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vt-pbf/-/vt-pbf-3.1.3.tgz#68fd150756465e2edae1cc5c048e063916dcfaac"
