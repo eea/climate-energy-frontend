@@ -17,6 +17,9 @@ pipeline {
    stage('Integration tests') {
       parallel {
         stage('Cypress') {
+          when {
+            environment name: 'CHANGE_ID', value: ''           
+          }
           steps {
             node(label: 'docker') {
               script {
