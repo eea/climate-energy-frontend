@@ -1266,10 +1266,10 @@
     react-visibility-sensor "5.1.1"
     volto-slate "2.9.1"
 
-"@eeacms/volto-energy-theme@1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.16.tgz#c9264981b1ec78c1de0df3c161d4f647caca3f63"
-  integrity sha512-kKMiD9MUgQZcNKpFq9Yp+49N22VqywrQ6VW9u75rpsnXqRcfR+bkv3ezvK9/4aSyonKJeog++4gdAE6nZNTfNw==
+"@eeacms/volto-energy-theme@1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.17.tgz#ae13f91076edb8d76b5fdd00d3639e7792445da7"
+  integrity sha512-GjOW/PWjK10NyKbtMei8aTPTpQMgiACVOmrtz4HqSPErbSxiIYrevYyRnGE/jTj64uSDTxJnHW7EYiYh1LfTTQ==
   dependencies:
     "@eeacms/volto-corsproxy" "2.1.1"
     "@eeacms/volto-plotlycharts" "*"
