@@ -1,7 +1,8 @@
 {
-    "compilerOptions": {
-        "paths": {
-        },
-        "baseUrl": "src"
-    }
+  "compilerOptions": {
+    "paths": {
+      "@eeacms/volto-energy-theme": ["addons/volto-energy-theme/src"]
+    },
+    "baseUrl": "src"
+  }
 }
