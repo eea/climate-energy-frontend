@@ -2,7 +2,7 @@
   "name": "climate-energy-frontend",
   "description": "Frontend component for the Climate Energy website.",
   "license": "MIT",
-  "version": "2.7.1-beta.0",
+  "version": "2.7.1-beta.1",
   "private": true,
   "workspaces": [
     "src/addons/*"
