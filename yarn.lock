@@ -1189,10 +1189,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-toc/-/volto-block-toc-2.2.2.tgz#ee05222aefada34c71a6c44d4efc9baf4f4570c1"
   integrity sha512-10XSDyDXXKWZd6+QaZLZ1KLnLCAVpu25IJScPkFaw/DqtUS1ZbmJrvZ6Dc+c4ya632ybyhu75lFlALSgD2X0zQ==
 
-"@eeacms/volto-columns-block@4.4.5":
-  version "4.4.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.4.5.tgz#f32b3e8b8b76d765e2ccec2cac9d141d74e61870"
-  integrity sha512-62PBqpUiO2Wxvz8Q4xlcJRtbq2tfesCL2NLywvIDpStqa1Zau7Y6X1t+T6qimo12P6/yrne0hUbkLVwcsloFfw==
+"@eeacms/volto-columns-block@4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.4.6.tgz#6d6b6a722b274931873124b4c691a91907d6a037"
+  integrity sha512-q63y/C5CMjzWWQDvM4umYj0ClZm/S4UL6TtKPsRxeziv+sfsolNwPR61LbgVwxaclSjwX04LL8e6cD4n32o1Mw==
   dependencies:
     react-color "~2.18.1"
 
@@ -1225,10 +1225,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-depiction/-/volto-depiction-0.1.2.tgz#59dc808f75dc24c0134bbdc90b0c59783f1b6339"
   integrity sha512-th4QKuoPyGPnwZbJMU97IsaEColqPju3RKZSTo3ssJgltSNWa7FVUiWN8aASRnHvVc/PloiEbn2sE9/nhGyxMA==
 
-"@eeacms/volto-eea-kitkat@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-eea-kitkat/-/volto-eea-kitkat-4.0.2.tgz#247224760da416bfbbe1a561544ec631af66cac6"
-  integrity sha512-lU4iZnDq5AFd3WkNyMusC7QG4Qse77hcGXCC9PhYfJXeAwWDuswrgMJaS6ly1KZFS0CghUN9+K9ojgKv2Iv/FQ==
+"@eeacms/volto-eea-kitkat@4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-eea-kitkat/-/volto-eea-kitkat-4.1.1.tgz#c1e4e8c97c8093ed1e6023b2791e8bbe86316c50"
+  integrity sha512-tTsDR256WHt847rSktg59ujeF/6x+1E4U39uBvOIlzwp2ffeWt1kp8qJI7ahJhpPykmY2gCfrxJ/ENSSEJ7H+Q==
   dependencies:
     "@eeacms/volto-accordion-block" "3.4.6"
     "@eeacms/volto-banner" "1.0.0"
@@ -1236,7 +1236,7 @@
     "@eeacms/volto-block-image-cards" "0.1.4"
     "@eeacms/volto-block-style" "3.5.0"
     "@eeacms/volto-block-toc" "2.2.2"
-    "@eeacms/volto-columns-block" "4.4.5"
+    "@eeacms/volto-columns-block" "4.4.6"
     "@eeacms/volto-corsproxy" "2.1.2"
     "@eeacms/volto-depiction" "0.1.2"
     "@eeacms/volto-group-block" "4.3.1"
@@ -1255,7 +1255,7 @@
     "@eeacms/volto-widget-temporal-coverage" "4.0.0"
     "@eeacms/volto-widget-toggle" "2.2.3"
     "@eeacms/volto-widgets-view" "3.0.0"
-    volto-slate "4.0.3"
+    volto-slate "4.2.1"
 
 "@eeacms/volto-embed@2.0.7", "@eeacms/volto-embed@^2.0.4":
   version "2.0.7"
@@ -1267,10 +1267,10 @@
     react-visibility-sensor "5.1.1"
     volto-slate "2.9.1"
 
-"@eeacms/volto-energy-theme@1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.19.tgz#82927e0dab0840477d27a74e2b50811c32fad11c"
-  integrity sha512-Rl6IiiJNmbYv2I/OEWUH7wIFKFUsDq7r9iRPoY9GDzHg2udNPcaXAqk1/2n5peqwT6O8QgWpy7CFSolYoeQyHw==
+"@eeacms/volto-energy-theme@1.0.21":
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.21.tgz#6ba87b285501cc4a21f87c130b34c3a4eb8e5d2e"
+  integrity sha512-w3/BkemHEPGmRS97pYYui7bAfhMDW25Aul5jT+JUdDCsmPEMjkBHVC8DLggjHLCsV+E+iUUQVEeYGK92H9bTaA==
   dependencies:
     "@eeacms/volto-corsproxy" "2.1.1"
     "@eeacms/volto-plotlycharts" "*"
@@ -20359,10 +20359,10 @@ vm-browserify@^1.0.1:
     react-sizeme "3.0.1"
     redraft "^0.10.2"
 
-volto-slate@*, volto-slate@4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-4.0.3.tgz#0edeccd1da03fbfd3540da49e73795ba2e42e644"
-  integrity sha512-z/CEvZ4Rn7s4TpdIXAiODlE17cSOmNASqO0fWcTWAdAg2B67ZHe5EAZgRmKUyZsSaaRU1ObLOD7oP44P+TiyJA==
+volto-slate@*, volto-slate@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-4.2.1.tgz#5c8a3b0701cce6ebeed7aae2e35f7b88cad26c3b"
+  integrity sha512-RPJhj0/SScLB6rI2d6bwxNXWpGHoG9sj5J9kjRMl3DmN2b+hM38mr9mQmbG5Dm53GVm3A6k/KRvqBkTHxtRS4A==
   dependencies:
     "@eeacms/volto-object-widget" "*"
     classnames "2.2.6"
