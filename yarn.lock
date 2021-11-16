@@ -1315,10 +1315,10 @@
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
-"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-2.0.8.tgz#a1d0fd556c01c6f778e30e1701005c3099e433ca"
-  integrity sha512-e9CUOe62KNk4XncrJzvIighZJRB9JneryxOFQovs9Ou+TUuZCgVnPu1mmcpANoHE6VV8+5VKIFBpBKwOO9dtrw==
+"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-2.0.10.tgz#2d77769db9857825ea1092280e2c93eb83a8c657"
+  integrity sha512-44wfoxMqni/Cahm0So98Jj8KxbU3esIBvo/i9A/9PQGY7qDzRrLmTyVXD2Ojv8tnm37FlLj7cgkw54LB8j/TIw==
   dependencies:
     "@eeacms/volto-datablocks" "^2.0.13"
     plotly.js "^2.5.1"
