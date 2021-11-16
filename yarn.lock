@@ -1257,15 +1257,15 @@
     "@eeacms/volto-widgets-view" "3.0.0"
     volto-slate "4.2.1"
 
-"@eeacms/volto-embed@2.0.7", "@eeacms/volto-embed@^2.0.4":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.7.tgz#549e1cedc575d1bdcc18b10a454e637ef4557160"
-  integrity sha512-btWamQFuM+dJyZ4eAzyahRXOyIHtniz1wALdr8FS6gOQ2cGlhkYAO9StTFgFf38McfntbRkOYZo31M6/83OyyA==
+"@eeacms/volto-embed@2.0.9", "@eeacms/volto-embed@^2.0.4":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.9.tgz#b9dfb778f9b4f09b5fc812dd38cab4d177a6bdf2"
+  integrity sha512-rFBsFya7qIhtvh91YTLiGKW42RYSFAR/M3W1JLUWaFw9z6F/1bD5nHKNix3htX9oDz87l/tiaQ8bx7xNE7lRww==
   dependencies:
-    "@eeacms/volto-corsproxy" "2.1.2"
+    "@eeacms/volto-corsproxy" "*"
     "@eeacms/volto-datablocks" "*"
     react-visibility-sensor "5.1.1"
-    volto-slate "2.9.1"
+    volto-slate "*"
 
 "@eeacms/volto-energy-theme@1.0.23":
   version "1.0.23"
@@ -1303,15 +1303,15 @@
   dependencies:
     "@eeacms/volto-widgets-view" "*"
 
-"@eeacms/volto-object-widget@*", "@eeacms/volto-object-widget@3.0.0", "@eeacms/volto-object-widget@>=2.2.3":
+"@eeacms/volto-object-widget@*", "@eeacms/volto-object-widget@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-3.0.0.tgz#caf99ec54bb39481a99937985f362f086c1c5fd5"
   integrity sha512-8ByONF12U35HKnsO6gKAxCxSe4xfSintAU7zE8zWEKgdtcIb+Jx78wpi6cy3p0C0YLUTnd2BGIXLqDSftKI+WA==
 
-"@eeacms/volto-pdf-block@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.5.tgz#a7e2f26a7fb04e507345fb4b4ddd00a8f1cbb8d5"
-  integrity sha512-wHIFiGGyxu/0BdClOZSLY5li9JKtzwSfAfFa0M1IWuPZHod7Rah4K8tI4FKn7J3sq7Nii/jjiv0MAvr2vkzb/w==
+"@eeacms/volto-pdf-block@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.6.tgz#649e7de4611f523ef445c92bf2358587589517e6"
+  integrity sha512-GyAmJzwqQHQ5H8oH4alOiONp6uI1GM7l/3k4I5H4ep72CwF/MJ5rOV+3FFT6GHrd2yqC/Wq3/zi+rdgFIUqbuQ==
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
@@ -20365,24 +20365,6 @@ volto-slate@*, volto-slate@4.2.1:
   integrity sha512-RPJhj0/SScLB6rI2d6bwxNXWpGHoG9sj5J9kjRMl3DmN2b+hM38mr9mQmbG5Dm53GVm3A6k/KRvqBkTHxtRS4A==
   dependencies:
     "@eeacms/volto-object-widget" "*"
-    classnames "2.2.6"
-    image-extensions "1.1.0"
-    is-url "1.2.4"
-    jsdom "16.2.2"
-    react-intersection-observer "^8.32.0"
-    react-visibility-sensor "5.1.1"
-    slate "^0.62.0"
-    slate-history "^0.62.0"
-    slate-hyperscript "^0.62.0"
-    slate-react "^0.62.0"
-    weak-key "^1.0.2"
-
-volto-slate@2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-2.9.1.tgz#d4ed326470570a5b81c3dbd65e2aa9acf936184e"
-  integrity sha512-ZCqMnIv+qHOsMgespqLwDKvAqSbrflGXF1MFTABbCgpEAA7dw/9SGaCR1Sa5uZbYs8kb24PR7esBCKs2JszQkg==
-  dependencies:
-    "@eeacms/volto-object-widget" ">=2.2.3"
     classnames "2.2.6"
     image-extensions "1.1.0"
     is-url "1.2.4"
