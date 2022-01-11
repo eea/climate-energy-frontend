@@ -1259,15 +1259,15 @@
     "@eeacms/volto-widgets-view" "3.0.4"
     volto-slate "5.3.3"
 
-"@eeacms/volto-embed@2.0.10", "@eeacms/volto-embed@^2.0.4":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.10.tgz#f3fd2b8f298099f9412c5e543a11cd36367449d4"
-  integrity sha512-3B3AG4knNG9KVEJssJ+i8EYO5y8k8v0x8NretysJf56KUSKJEVvROlZjzWVEkqkWsKte2H8TEZyjhu9Us4VKPw==
+"@eeacms/volto-embed@2.0.11", "@eeacms/volto-embed@^2.0.4":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.11.tgz#b933a4519587d22c6560758f079619030b6a7dd7"
+  integrity sha512-FzggUwZOUZqQRUEUje5JFgWJl9+u98Rnk7e99mSHsjyth+4oDTC/k2QNQ1WB0f8Zouuk4Z682PKCH+7u5EZAxQ==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
     "@eeacms/volto-datablocks" "*"
     react-visibility-sensor "5.1.1"
-    volto-slate "4.2.1"
+    volto-slate "*"
 
 "@eeacms/volto-energy-theme@1.0.24":
   version "1.0.24"
