@@ -1338,10 +1338,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-object-widget/-/volto-object-widget-3.0.3.tgz#1d12a769c3f0d9a1448f857e60be4dd6771a647b"
   integrity sha512-AZiWLwS4kXRN696BzJfSncfvbnHsnF11m7iCF+W38ROGIUau3fmiLV9KnXxgDJZg/AV/wI3AcdSXr2fnH3uOAA==
 
-"@eeacms/volto-pdf-block@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.7.tgz#6d6db88b75cf36202e0dd2a17b7258654fa90de4"
-  integrity sha512-Zc80lkhLTJoX6VpcX1cmooqAQHfXJkc/GNI+Pijbf/SzdmTIfd5cqr7wNC9KhQheZnvg7fD/aZq6MAx/J9nXhQ==
+"@eeacms/volto-pdf-block@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-pdf-block/-/volto-pdf-block-1.0.8.tgz#b87d8ef4b0ee4346ff731bd233d808121b7a05ae"
+  integrity sha512-74njQXGuP0ktvCCA890kOyoVIODXejADlj04UjaH7ZUU6kCT3gLIYnvINJCDHOB47Byw9u6ftDGCz3RkntSZ8A==
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
