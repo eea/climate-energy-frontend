@@ -111,7 +111,7 @@
   },
   "dependencies": {
     "@eeacms/volto-datablocks": "3.0.8",
-    "@eeacms/volto-eea-kitkat": "5.2.3",
+    "@eeacms/volto-eea-kitkat": "5.2.4",
     "@eeacms/volto-embed": "3.0.1",
     "@eeacms/volto-energy-theme": "1.0.27",
     "@eeacms/volto-pdf-block": "1.0.8",
