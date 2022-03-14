@@ -4,7 +4,10 @@
       "@eeacms/volto-energy-theme": ["addons/volto-energy-theme/src"],
       "@eeacms/volto-pdf-block": ["addons/volto-pdf-block/src"],
       "volto-slate": ["addons/volto-slate/src"],
-      "@eeacms/volto-corsproxy": ["addons/volto-corsproxy/src"]
+      "@eeacms/volto-corsproxy": ["addons/volto-corsproxy/src"],
+      "@eeacms/volto-plotlycharts": ["addons/volto-plotlycharts/src"],
+      "@eeacms/volto-datablocks": ["addons/volto-datablocks/src"],
+      "@eeacms/volto-eea-kitkat": ["addons/volto-eea-kitkat/src"]
     },
     "baseUrl": "src"
   }
