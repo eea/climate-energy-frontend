@@ -1181,15 +1181,15 @@
   dependencies:
     "@datapunt/matomo-tracker-js" "^0.3.1"
 
-"@eeacms/volto-accordion-block@3.4.13":
-  version "3.4.13"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-accordion-block/-/volto-accordion-block-3.4.13.tgz#7a61bbad1733be607ba65ee078212ad914c088d8"
-  integrity sha512-kn9mxMKEqk83/oXKDXFYdV/ZipClFyNN1VSxgF0qUI0PdeYon8R+bRjVyltLhcoPXd5oZSGmlezfVK9+L+JqGg==
+"@eeacms/volto-accordion-block@3.4.14":
+  version "3.4.14"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-accordion-block/-/volto-accordion-block-3.4.14.tgz#0775048a94b0fd46485e044bfdbd5e027cf2e7f9"
+  integrity sha512-nBVtqo9qiog5HcPOKiEPMR8EEognsNLCmgW5cr5Qh+rquuMdV6W01bA++QXED0nTO0651xPaxfq4OTxNVqCZWA==
 
-"@eeacms/volto-banner@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-banner/-/volto-banner-1.0.4.tgz#699a2c7d0de35801f4bf9f5b83a3d214569565c0"
-  integrity sha512-4o+U/7VLbYiG629TGdzqasvK1wbaIHrrjDT+ZaJ5lKXoD4TXm4Vt8PWbhN8Hb/B1a2T7FBfT+6rR7cysQvcOFQ==
+"@eeacms/volto-banner@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-banner/-/volto-banner-2.1.0.tgz#0228ef6a822c1ff1d7dd998d9f66148866be20a7"
+  integrity sha512-qFUCbfrYGCkx/P1IVe6msZ513EPftLAhJ+SQOPIo2TXm9M9aa8l/dALRMyd7cLUUWiggrTIhMzr1NeO6uGmoTA==
 
 "@eeacms/volto-block-divider@2.1.6":
   version "2.1.6"
@@ -1198,10 +1198,10 @@
   dependencies:
     react-color "~2.18.1"
 
-"@eeacms/volto-block-image-cards@0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-image-cards/-/volto-block-image-cards-0.1.11.tgz#93dab44924896347ccc0aa6102712847257d9223"
-  integrity sha512-Z0yquj1kngPCQfXMoDcGujZ132xZKKR+8rVb7vbFUU1x69Vc904ZUyX5wVmqbqKV0zjE6uiGL78o/4SSekUSzQ==
+"@eeacms/volto-block-image-cards@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-image-cards/-/volto-block-image-cards-0.2.0.tgz#84cc86984ff8545e5a2af384e3130e9d8ec6fc59"
+  integrity sha512-hBtGsswI3jS8kAC6VrgGCIEMPez6gu+oftbBqxk1HcMifopvDjGbRF/idYv//LlaTDGX1/9vUGXC3lf7/Ow9xQ==
   dependencies:
     "@eeacms/volto-block-style" "*"
     react-lazy-load-image-component "^1.4.0"
@@ -1210,10 +1210,10 @@
     slick-carousel "^1.8.1"
     volto-slate "*"
 
-"@eeacms/volto-block-style@*", "@eeacms/volto-block-style@3.5.15":
-  version "3.5.15"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.5.15.tgz#648e2746b5878da8e0120b337dc9125650db3b55"
-  integrity sha512-L3GeD+sQwp1mGAFE+9BIGQJKUiH1ApYcU0iyK8gTBPpMST80QAWpqft0C0DFysSyrrmuhX9I3ekciXdR901zLA==
+"@eeacms/volto-block-style@*", "@eeacms/volto-block-style@3.5.18":
+  version "3.5.18"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.5.18.tgz#c08508acd0dfae5a6ec9bff3a701b57400bcfe5d"
+  integrity sha512-c2qiltquVE/5smqs77UGsgXZcn0aACy2JiwEMEu8JI3t60KKsVB1p9cYaKqgtQuhd8nqe5G9p5n6+pRaadFDXw==
   dependencies:
     "@eeacms/volto-resize-helper" "*"
     react-color "~2.18.1"
@@ -1235,18 +1235,17 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-corsproxy/-/volto-corsproxy-2.1.5.tgz#e72c9277e3c950899f1abc07f48128fcca73c9c8"
   integrity sha512-2LqBkOBj2WhnihYc2brhBsMtSUnSHN8w6jupyNzmHdUjScrJWebkq35GxonnrBtWrpeWGVuQ4I3hIf4zwd8Mhw==
 
-"@eeacms/volto-datablocks@*", "@eeacms/volto-datablocks@2.0.21", "@eeacms/volto-datablocks@^2.0.13":
-  version "2.0.21"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-2.0.21.tgz#a8bf66d4871da9fe913212293f58699881e32157"
-  integrity sha512-5lwsF/zdi1kEgyMVNGvFRJVaSfYXP6/UNmWmVfvfMXC5mKoDWcR9cccQUUuZE7wuq509CPZpAdgsJOYJ7uAjcQ==
+"@eeacms/volto-datablocks@*", "@eeacms/volto-datablocks@3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-datablocks/-/volto-datablocks-3.0.9.tgz#68790f45231fa34abf679e6e05969694a2c4a53b"
+  integrity sha512-3RMGkshOku/8B5AKx2EIZ2PjWdycgy/0hJ/gjHDRwiFJsysk1no3/uQPrK6/jHzYyg3nvBhi1hQh/PDhOZNfgQ==
   dependencies:
     "@eeacms/volto-embed" "*"
     "@eeacms/volto-matomo" "*"
     d3 "7.1.1"
     humanize-plus "^1.8.2"
-    performant-array-to-tree "^1.7.1"
-    plotly.js "^2.5.1"
-    react-plotly.js "^2.5.1"
+    object-hash "2.2.0"
+    react-countup "6.1.1"
     sanitize-html "^2.3.3"
     slate "^0.62.0"
 
@@ -1255,24 +1254,24 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-depiction/-/volto-depiction-0.1.5.tgz#758467102fe8635601e32923244ea3a9c6279643"
   integrity sha512-wp5QMxwOp+xkcXNB3WiMkY3WkaeMuhIxYYz5fWhSWz8aZQdfANI6MKxOohuTjuVk+82Cm80qZnpzYhuwjCwGgg==
 
-"@eeacms/volto-eea-kitkat@5.1.5":
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-eea-kitkat/-/volto-eea-kitkat-5.1.5.tgz#7ca59a0533b73dc05f4a37b21017bf632def7c9a"
-  integrity sha512-M1qKFlXZf5PQCw6uAEeYe4DZv3pYW8RZsyeHXnaD5nzCbYyDmNEE1gQc7TaPQHqFY7JAk41AlfWEF2UMtRFeRg==
+"@eeacms/volto-eea-kitkat@5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-eea-kitkat/-/volto-eea-kitkat-5.2.5.tgz#ef70eb448d64e9ca6b572d2e842b8ebc185fe7b8"
+  integrity sha512-k63KXwMmjNcqc+R2ZGIP/q0x+/6pFzOZNt/2tDfuky6FHQzgKe34m7HdHlLDzh7My/ugiy9TIvO8X/+LLbT3HQ==
   dependencies:
-    "@eeacms/volto-accordion-block" "3.4.13"
-    "@eeacms/volto-banner" "1.0.4"
+    "@eeacms/volto-accordion-block" "3.4.14"
+    "@eeacms/volto-banner" "2.1.0"
     "@eeacms/volto-block-divider" "2.1.6"
-    "@eeacms/volto-block-image-cards" "0.1.11"
-    "@eeacms/volto-block-style" "3.5.15"
+    "@eeacms/volto-block-image-cards" "0.2.0"
+    "@eeacms/volto-block-style" "3.5.18"
     "@eeacms/volto-block-toc" "2.2.5"
     "@eeacms/volto-columns-block" "4.4.14"
     "@eeacms/volto-corsproxy" "2.1.5"
     "@eeacms/volto-depiction" "0.1.5"
     "@eeacms/volto-group-block" "4.3.5"
-    "@eeacms/volto-listing-block" "0.1.5"
+    "@eeacms/volto-listing-block" "0.3.0"
     "@eeacms/volto-matomo" "2.0.7"
-    "@eeacms/volto-metadata-block" "4.0.5"
+    "@eeacms/volto-metadata-block" "4.0.7"
     "@eeacms/volto-object-widget" "3.0.3"
     "@eeacms/volto-resize-helper" "0.2.8"
     "@eeacms/volto-sentry-rancher-config" "2.1.5"
@@ -1285,22 +1284,22 @@
     "@eeacms/volto-widget-temporal-coverage" "4.0.5"
     "@eeacms/volto-widget-toggle" "2.2.6"
     "@eeacms/volto-widgets-view" "3.0.4"
-    volto-slate "5.3.3"
+    volto-slate "5.3.5"
 
-"@eeacms/volto-embed@*", "@eeacms/volto-embed@2.0.11":
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-2.0.11.tgz#b933a4519587d22c6560758f079619030b6a7dd7"
-  integrity sha512-FzggUwZOUZqQRUEUje5JFgWJl9+u98Rnk7e99mSHsjyth+4oDTC/k2QNQ1WB0f8Zouuk4Z682PKCH+7u5EZAxQ==
+"@eeacms/volto-embed@*", "@eeacms/volto-embed@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-embed/-/volto-embed-3.0.1.tgz#263633210d8e7807822330eda7d09f408aff40dc"
+  integrity sha512-F/iNAZHwNdKijZOnfbMIIcdYav+HTd3Ytf+4I/se9rDakdjW0BSi6gztkH38Jm/gH4AzLh8qjN0solDE2bRmMg==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
     "@eeacms/volto-datablocks" "*"
     react-visibility-sensor "5.1.1"
     volto-slate "*"
 
-"@eeacms/volto-energy-theme@1.0.27":
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.27.tgz#96f98ed88a17ad7e9a7701a4497050f274c3a970"
-  integrity sha512-0e7nt4Kp3OO9ZpqepndGUlQMFafZSRYKh/W+SCQszbv/fs/AfRwOu8CDXdrHk0mns8OPiohAAC52UPcApTOP7Q==
+"@eeacms/volto-energy-theme@1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.28.tgz#4fb8cca370d2a699ea59b4575235974ce18875b7"
+  integrity sha512-7lQNUTJpdbdqe0EcahF8HyfkBLz1MguELVweXGj2JkG/SEU3SbrnxFC0Truno7EluNJClnc3/MM6l62jG9OZnQ==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
     "@eeacms/volto-plotlycharts" "*"
@@ -1314,10 +1313,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-group-block/-/volto-group-block-4.3.5.tgz#43e2413f9f03b9fa9c9541988ef4a351a410d338"
   integrity sha512-Takka/4kXVUCwpin7Gj8aNbWx1g7L35bTCM6AAUJIQYPgvNg2j04/S2jaZ+iWWOopasND5GaiBBQ4LqgF1U0zA==
 
-"@eeacms/volto-listing-block@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-listing-block/-/volto-listing-block-0.1.5.tgz#9bcd4d07eb8d00b4423ab78a98283b87f9ccc6aa"
-  integrity sha512-r51qkqCYTS4iOchjlH59gm69BPK/mNI9Vjv+ZtEvfb0+zowMgth7ARbnmcmLQ38nv6/+tAv62AVlGj95CTTlAg==
+"@eeacms/volto-listing-block@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-listing-block/-/volto-listing-block-0.3.0.tgz#a7d2a6a33c0a88ae62dca4939dcd3fd61a5407af"
+  integrity sha512-I2hmZtSGfWZui4mRKMdQ/+BAI1/bOEcaaGglSvpI2m5D8rj8teKjYNm044fY0YnfqKh6uRnVYKGSI6FwNC9h/Q==
 
 "@eeacms/volto-matomo@*", "@eeacms/volto-matomo@2.0.7":
   version "2.0.7"
@@ -1326,10 +1325,10 @@
   dependencies:
     "@datapunt/matomo-tracker-react" "0.3.1"
 
-"@eeacms/volto-metadata-block@4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-metadata-block/-/volto-metadata-block-4.0.5.tgz#1d3bbc93c28153fb55625871e044f933430c445e"
-  integrity sha512-O0UJIxdcjkR7X3xGBdEhMC2u+/CqJdInzWQAcMlpU3w2qZxUUndH/NAVMudJjonFtWwEWuWHbXuAjXnhokzEdw==
+"@eeacms/volto-metadata-block@4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-metadata-block/-/volto-metadata-block-4.0.7.tgz#3e562be7ef4a04bd25da43ecf19bcb1ed1639686"
+  integrity sha512-3iRdE6r4MFyplXXWkZ9uvi5gl3y9N/pCY9me03Kxc2lli6LhbOLcWOEc6RfnprkAmltaECJWsOhuK791bxRk5g==
   dependencies:
     "@eeacms/volto-widgets-view" "*"
 
@@ -1345,21 +1344,19 @@
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
-"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@2.0.11":
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-2.0.11.tgz#f8f2886f4d45f74c8c81228cf87f5b56962d55c0"
-  integrity sha512-ydrnkN071CJWlAPwnP5VYwmwwIPs9ne7e3vc753iFjbBjK136IfhCutFNBapX76L0xTVYrA/4Q4tQY6DQANPUw==
+"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-3.0.3.tgz#3f81fe443687be92c75fc615c5c162a19b889ac8"
+  integrity sha512-Fgiq9UQHOAh3f2TtvLXq3wc5jgXWgjwfZVaOtp65wr8jsBNHTLwKlx88XJ5B4Eyq7Q6ieLA12VGhRKYkdpdLLQ==
   dependencies:
-    "@eeacms/volto-datablocks" "^2.0.13"
-    plotly.js "^2.5.1"
-    react-chart-editor "^0.45.0"
-    react-component-queries "2.3.0"
-    react-inspector "^5.1.1"
+    "@eeacms/volto-datablocks" "*"
+    "@plone/scripts" "*"
+    plotly.js "^2.9.0"
+    react-chart-editor "0.45.0"
+    react-colorscales "0.7.3"
+    react-inspector "5.1.1"
     react-json-editor-ajrm "2.5.13"
-    react-plotly.js "^2.5.1"
-    react-resize-detector "^6.7.6"
-    react-sizeme "^3.0.2"
-    react-visibility-sensor "^5.1.1"
+    react-plotly.js "2.5.1"
 
 "@eeacms/volto-resize-helper@*", "@eeacms/volto-resize-helper@0.2.8", "@eeacms/volto-resize-helper@^0.2.4":
   version "0.2.8"
@@ -1841,6 +1838,18 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kwsites/file-exists@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/file-exists/-/file-exists-1.1.1.tgz#ad1efcac13e1987d8dbaf235ef3be5b0d96faa99"
+  integrity sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==
+  dependencies:
+    debug "^4.1.1"
+
+"@kwsites/promise-deferred@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
+  integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
+
 "@loadable/babel-plugin@5.13.2":
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.13.2.tgz#373cddc64ee5437814f7dca1c1b6a7b2c1665a9f"
@@ -2074,6 +2083,20 @@
   integrity sha512-ha27f8DToxXBPEJdzHCCuqpw7AgKfjhWGdNf3yIlBAhAsaexBXTfWw36zNSsncALXGvJq4EjLy1p3Wz45Aqb4A==
   dependencies:
     "@octokit/openapi-types" "^10.1.0"
+
+"@plone/scripts@*":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-1.4.0.tgz#1c50f3e191d5eb2fbb16f7aa7922115646974f4b"
+  integrity sha512-GOysIP1bAIjvrgQRF1IvE1k8WkJGfRB+hr3Bf9n5FseEkMy6hSE8xdhB9AbI2aWmKGYznYGcOOvy4OmHLbPvUA==
+  dependencies:
+    babel-plugin-react-intl "5.1.17"
+    babel-preset-razzle "3.4.5"
+    commander "8.2.0"
+    git-url-parse "^11.6.0"
+    mrs-developer "*"
+    pofile "1.0.10"
+    razzle "3.4.5"
+    simple-git "2.48.0"
 
 "@plone/scripts@1.0.3":
   version "1.0.3"
@@ -4287,7 +4310,7 @@ boundary-cells@^2.0.0:
   resolved "https://registry.yarnpkg.com/boundary-cells/-/boundary-cells-2.0.2.tgz#ed28c5a2eb36500413e5714f8eec862ad8ffec14"
   integrity sha512-/S48oUFYEgZMNvdqC87iYRbLBAPHYijPRNrNpm/sS8u7ijIViKm/hrV3YD4sx/W68AsG5zLMyBEditVHApHU5w==
 
-box-intersect@^1.0.1, box-intersect@plotly/box-intersect#v1.1.0:
+box-intersect@^1.0.1:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/box-intersect/tar.gz/1c21ef897c37eb69e5c1efeca7087726dd8d6a23"
   dependencies:
@@ -5646,6 +5669,11 @@ country-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/country-regex/-/country-regex-1.1.0.tgz#51c333dcdf12927b7e5eeb9c10ac8112a6120896"
   integrity sha1-UcMz3N8Sknt+XuucEKyBEqYSCJY=
+
+countup.js@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.8.tgz#eca0c31c9db3f7769cba494d9315cd52dbaaf1b9"
+  integrity sha512-pW3xwwD+hB+xmtI16xFcuLS0D5hSQqPQWkZOdgpKQyzxCquDNo2VCFPkRw12vmvdpnicXVTcjmYiakG6biwINg==
 
 coveralls@3.0.2:
   version "3.0.2"
@@ -8908,6 +8936,13 @@ git-url-parse@11.4.0:
   dependencies:
     git-up "^4.0.0"
 
+git-url-parse@^11.6.0:
+  version "11.6.0"
+  resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-11.6.0.tgz#c634b8de7faa66498a2b88932df31702c67df605"
+  integrity sha512-WWUxvJs5HsyHL6L08wOusa/IXYtMuCAhrMmnTjQPpBU0TTHyDhnOATNH3xNQz7YOQUsqIIPTGr4xiVti1Hsk5g==
+  dependencies:
+    git-up "^4.0.0"
+
 gl-axes3d@^1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/gl-axes3d/-/gl-axes3d-1.5.3.tgz#47e3dd6c21356a59349910ec01af58e28ea69fe9"
@@ -9002,7 +9037,7 @@ gl-format-compiler-error@^1.0.2:
     glsl-shader-name "^1.0.0"
     sprintf-js "^1.0.3"
 
-gl-heatmap2d@^1.1.0, gl-heatmap2d@^1.1.1:
+gl-heatmap2d@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/gl-heatmap2d/-/gl-heatmap2d-1.1.1.tgz#dbbb2c288bfe277002fa50985155b0403d87640f"
   integrity sha512-6Vo1fPIB1vQFWBA/MR6JAA16XuQuhwvZRbSjYEq++m4QV33iqjGS2HcVIRfJGX+fomd5eiz6bwkVZcKm69zQPw==
@@ -9152,7 +9187,7 @@ gl-select-static@^2.0.7:
     ndarray "^1.0.18"
     typedarray-pool "^1.1.0"
 
-gl-shader@4.3.1, gl-shader@^4.2.1:
+gl-shader@^4.2.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/gl-shader/-/gl-shader-4.3.1.tgz#56094cf3c06e802ac6c286b3b2166abce901d882"
   integrity sha512-xLoN6XtRLlg97SEqtuzfKc+pVWpVkQ3YjDI1kuCale8tF7+zMhiKlMfmG4IMQPMdKJZQbIc/Ny8ZusEpfh5U+w==
@@ -10358,7 +10393,7 @@ imurmurhash@^0.1.4:
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
 
-incremental-convex-hull@^1.0.1, incremental-convex-hull@plotly/incremental-convex-hull#v1.1.0:
+incremental-convex-hull@^1.0.1:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/incremental-convex-hull/tar.gz/352d9e73861913695fd4e1a4c6ad79898c0c8268"
   dependencies:
@@ -12741,7 +12776,7 @@ mathml-tag-names@^2.1.3:
   resolved "https://registry.yarnpkg.com/mathml-tag-names/-/mathml-tag-names-2.1.3.tgz#4ddadd67308e780cf16a47685878ee27b736a0a3"
   integrity sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==
 
-matrix-camera-controller@^2.1.1, matrix-camera-controller@^2.1.3, matrix-camera-controller@^2.1.4:
+matrix-camera-controller@^2.1.1, matrix-camera-controller@^2.1.3:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/matrix-camera-controller/-/matrix-camera-controller-2.1.4.tgz#d316ae5e99fe801610c1d7842ab54566d4c62411"
   integrity sha512-zsPGPONclrKSImNpqqKDTcqFpWLAIwMXEJtCde4IFPOw1dA9udzFg4HOFytOTosOFanchrx7+Hqq6glLATIxBA==
@@ -13233,6 +13268,14 @@ mri@^1.1.0, mri@^1.1.4:
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.1.6.tgz#49952e1044db21dbf90f6cd92bc9c9a777d415a6"
   integrity sha512-oi1b3MfbyGa7FJMP9GmLTttni5JoICpYBRlq+x5V16fZbLsnL9N3wFqqIm/nIG43FjUFkFh9Epzp/kzUGUnJxQ==
 
+mrs-developer@*:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/mrs-developer/-/mrs-developer-1.6.1.tgz#3a36d579480d42ea069a9d7b58dbe309cd5d5f63"
+  integrity sha512-YKsW+ZTRBw6/C5IHNl2mTbXfLDJjQ1D3LXTw1WE2j6WhsTSIp7zIfFIs1YSehQt1Z+xgN2BxSrxzRdIzG1KrXA==
+  dependencies:
+    chalk "^2.4.2"
+    simple-git "^1.132.0"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -13332,13 +13375,13 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-ndarray-extract-contour@^1.0.0, ndarray-extract-contour@plotly/ndarray-extract-contour#v1.1.0:
+ndarray-extract-contour@^1.0.0:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/ndarray-extract-contour/tar.gz/0d8ed3a2fee873f08868c35894d608794e8e9d83"
   dependencies:
     typedarray-pool "^1.0.0"
 
-ndarray-gradient@^1.0.0, ndarray-gradient@plotly/ndarray-gradient#v1.1.0:
+ndarray-gradient@^1.0.0:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/ndarray-gradient/tar.gz/c43b0856d77084cfac7c9d96c6ddc73aeddc0bd8"
   dependencies:
@@ -13349,11 +13392,11 @@ ndarray-linear-interpolate@^1.0.0:
   resolved "https://registry.yarnpkg.com/ndarray-linear-interpolate/-/ndarray-linear-interpolate-1.0.0.tgz#78bc92b85b9abc15b6e67ee65828f9e2137ae72b"
   integrity sha1-eLySuFuavBW25n7mWCj54hN65ys=
 
-ndarray-ops@^1.1.0, ndarray-ops@^1.2.1, ndarray-ops@^1.2.2, ndarray-ops@plotly/ndarray-ops#v1.3.0:
+ndarray-ops@^1.1.0, ndarray-ops@^1.2.1, ndarray-ops@^1.2.2:
   version "1.3.0"
   resolved "https://codeload.github.com/plotly/ndarray-ops/tar.gz/afac881492696196c9966f77507558737f60c716"
 
-ndarray-pack@^1.2.1, ndarray-pack@plotly/ndarray-pack#v1.3.0:
+ndarray-pack@^1.2.1:
   version "1.3.0"
   resolved "https://codeload.github.com/plotly/ndarray-pack/tar.gz/b0cd1f835c2b623f860a3dbb0c5709c98b30aea0"
   dependencies:
@@ -13368,13 +13411,13 @@ ndarray-scratch@^1.2.0:
     ndarray-ops "^1.2.1"
     typedarray-pool "^1.0.2"
 
-ndarray-sort@^1.0.0, ndarray-sort@plotly/ndarray-sort#v1.1.0:
+ndarray-sort@^1.0.0:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/ndarray-sort/tar.gz/8b3c03c0c58906640a0551505601544c9775a87a"
   dependencies:
     typedarray-pool "^1.0.0"
 
-ndarray@^1.0.11, ndarray@^1.0.13, ndarray@^1.0.14, ndarray@^1.0.15, ndarray@^1.0.18, ndarray@^1.0.19, ndarray@plotly/ndarray#v1.1.0:
+ndarray@^1.0.11, ndarray@^1.0.13, ndarray@^1.0.14, ndarray@^1.0.15, ndarray@^1.0.18, ndarray@^1.0.19:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/ndarray/tar.gz/70ec67233be65de444307a6916aba2655e28bd84"
   dependencies:
@@ -13693,6 +13736,11 @@ object-foreach@>=0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/object-foreach/-/object-foreach-0.1.2.tgz#d7421c5b40e3b6a3ef57ac624368d21d8f8d2dec"
   integrity sha1-10IcW0DjtqPvV6xiQ2jSHY+NLew=
+
+object-hash@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
+  integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
 
 object-inspect@^1.11.0, object-inspect@^1.9.0:
   version "1.11.0"
@@ -14414,11 +14462,6 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-performant-array-to-tree@^1.7.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/performant-array-to-tree/-/performant-array-to-tree-1.9.1.tgz#24897a56dedaa00c1f9c1a7e7ba92103008d1059"
-  integrity sha512-t+Hiy1HbKTVXg+mdcDUwPwAGgrLMtNUOhs2vV0M9MG2aAfnXQT9czAadksufMnf75h4xYU014HqlQ91JZ4XdlA==
-
 pick-by-alias@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pick-by-alias/-/pick-by-alias-1.2.0.tgz#5f7cb2b1f21a6e1e884a0c87855aa4a37361107b"
@@ -14606,26 +14649,22 @@ plotly.js@1.58.x:
     webgl-context "^2.2.0"
     world-calendars "^1.0.3"
 
-plotly.js@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/plotly.js/-/plotly.js-2.5.1.tgz#9cdb05fcb3860adfc130dc6778f757ff92c04f96"
-  integrity sha512-nAQKUwO3jwh9aBq/TSTdw5le1QZvU8EgFQSgpVzq/xEnyNiNvYdcWMKM+8Ku6sji7N5FLb/mbsktrQON/n59+A==
+plotly.js@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/plotly.js/-/plotly.js-2.9.0.tgz#3ffa428c351c5665e9e0ad20234bebe23f5f7b08"
+  integrity sha512-A3kqjGq2PCeL/z19BNvg5YD712mWCMaRW2WbmYA+qpdbNPUjBNjMK/MWXDi7pV53CUM2ZKAqre4j6Uy7bIoAGA==
   dependencies:
     "@plotly/d3" "3.8.0"
     "@plotly/d3-sankey" "0.7.2"
     "@plotly/d3-sankey-circular" "0.33.1"
-    "@plotly/point-cluster" "^3.1.9"
     "@turf/area" "^6.4.0"
     "@turf/bbox" "^6.4.0"
     "@turf/centroid" "^6.0.2"
-    alpha-shape "^1.0.0"
-    box-intersect plotly/box-intersect#v1.1.0
     canvas-fit "^1.5.0"
     color-alpha "1.0.4"
     color-normalize "1.5.0"
     color-parse "1.3.8"
     color-rgba "2.1.1"
-    convex-hull "^1.0.3"
     country-regex "^1.1.0"
     d3-force "^1.2.1"
     d3-format "^1.4.5"
@@ -14635,67 +14674,34 @@ plotly.js@^2.5.1:
     d3-interpolate "^1.4.0"
     d3-time "^1.1.0"
     d3-time-format "^2.2.3"
-    delaunay-triangulate "^1.1.6"
     fast-isnumeric "^1.1.4"
-    gl-cone3d "^1.5.2"
-    gl-error3d "^1.0.16"
-    gl-heatmap2d "^1.1.1"
-    gl-line3d "1.2.1"
     gl-mat4 "^1.2.0"
-    gl-mesh3d "^2.3.1"
-    gl-plot2d "^1.4.5"
-    gl-plot3d "^2.4.7"
-    gl-pointcloud2d "^1.0.3"
-    gl-scatter3d "^1.2.3"
-    gl-select-box "^1.0.4"
-    gl-shader "4.3.1"
-    gl-spikes2d "^1.0.2"
-    gl-streamtube3d "^1.4.1"
-    gl-surface3d "^1.6.0"
     gl-text "^1.3.1"
     glslify "^7.1.1"
     has-hover "^1.0.1"
     has-passive-events "^1.0.0"
-    incremental-convex-hull plotly/incremental-convex-hull#v1.1.0
     is-mobile "^2.2.2"
     mapbox-gl "1.10.1"
-    matrix-camera-controller "^2.1.4"
     mouse-change "^1.4.0"
     mouse-event-offset "^3.0.2"
     mouse-wheel "^1.2.0"
     native-promise-only "^0.8.1"
-    ndarray plotly/ndarray#v1.1.0
-    ndarray-extract-contour plotly/ndarray-extract-contour#v1.1.0
-    ndarray-gradient plotly/ndarray-gradient#v1.1.0
-    ndarray-linear-interpolate "^1.0.0"
-    ndarray-ops plotly/ndarray-ops#v1.3.0
-    ndarray-pack plotly/ndarray-pack#v1.3.0
-    ndarray-sort plotly/ndarray-sort#v1.1.0
     parse-svg-path "^0.1.2"
     polybooljs "^1.2.0"
-    probe-image-size "^7.2.1"
+    probe-image-size "^7.2.3"
     regl "^2.1.0"
     regl-error2d "^2.0.12"
     regl-line2d "^3.1.2"
     regl-scatter2d "^3.2.8"
     regl-splom "^1.0.14"
-    right-now "^1.0.0"
-    robust-determinant plotly/robust-determinant#v1.2.1
-    robust-in-sphere "1.2.1"
-    robust-linear-solve plotly/robust-linear-solve#v1.1.1
-    robust-orientation "1.2.1"
-    simplicial-complex-contour plotly/simplicial-complex-contour#v1.1.0
     strongly-connected-components "^1.0.1"
     superscript-text "^1.0.0"
-    surface-nets plotly/surface-nets#v1.1.1
     svg-path-sdf "^1.1.3"
     tinycolor2 "^1.4.2"
     to-px "1.0.1"
     topojson-client "^3.1.0"
-    vectorize-text "3.2.2"
     webgl-context "^2.2.0"
     world-calendars "^1.0.3"
-    zero-crossings plotly/zero-crossings#v1.1.0
 
 pn@^1.1.0:
   version "1.1.0"
@@ -15580,10 +15586,10 @@ private@^0.1.8:
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
   integrity sha512-VvivMrbvd2nKkiG38qjULzlc+4Vx4wm/whI9pQD35YrARNnhxeiRktSOhSukRLFNlzg6Br/cJPet5J/u19r/mg==
 
-probe-image-size@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-7.2.1.tgz#df0c924e67e247bc94f8fcb0fad7f0081061fc44"
-  integrity sha512-d+6L3NvQBCNt4peRDoEfA7r9bPm6/qy18FnLKwg4NWBC5JrJm0pMLRg1kF4XNsPe1bUdt3WIMonPJzQWN2HXjQ==
+probe-image-size@^7.2.3:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-7.2.3.tgz#d49c64be540ec8edea538f6f585f65a9b3ab4309"
+  integrity sha512-HubhG4Rb2UH8YtV4ba0Vp5bQ7L78RTONYu/ujmCu5nBI8wGv24s4E9xSKBi0N1MowRpxk76pFCpJtW0KPzOK0w==
   dependencies:
     lodash.merge "^4.6.2"
     needle "^2.5.2"
@@ -16130,7 +16136,7 @@ react-beautiful-dnd@13.0.0:
     redux "^4.0.4"
     use-memo-one "^1.1.1"
 
-react-chart-editor@^0.45.0:
+react-chart-editor@0.45.0:
   version "0.45.0"
   resolved "https://registry.yarnpkg.com/react-chart-editor/-/react-chart-editor-0.45.0.tgz#6f45f5892cdd21c7e5bd84f485e250c9d1847e2c"
   integrity sha512-/SurlIFait/BbWhq7sd8gIPr5MbhjPgrNY+d4V3sH6R/BjUocN/5SqUhQGknOUkxH8Fu4V+qn/8GsjYRFvk5NA==
@@ -16207,6 +16213,13 @@ react-cookie@1.0.5:
     cookie "^0.3.1"
     is-node "^1.0.2"
     object-assign "^4.1.0"
+
+react-countup@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-6.1.1.tgz#2dd5a82dd1059afd4e269a33de5cd1fa5a7910d7"
+  integrity sha512-9mYlnk/yCFg3g2/65pCTex6mr9h0eYdDMIL4T5nfLj/RzoiqY03wlPxZglzbJ6OzXvU37OmYApwQ4WMZNFr8Aw==
+  dependencies:
+    countup.js "^2.0.8"
 
 react-dates@21.5.1:
   version "21.5.1"
@@ -16371,7 +16384,7 @@ react-input-autosize@^3.0.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-inspector@^5.1.1:
+react-inspector@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.1.tgz#58476c78fde05d5055646ed8ec02030af42953c8"
   integrity sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==
@@ -16491,7 +16504,7 @@ react-pdf-js@^5.1.0:
   dependencies:
     "@bundled-es-modules/pdfjs-dist" "2.1.266-rc"
 
-react-plotly.js@2.5.1, react-plotly.js@^2.5.1:
+react-plotly.js@2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/react-plotly.js/-/react-plotly.js-2.5.1.tgz#11182bf599ef11a0dbfcd171c6f5645535a2b486"
   integrity sha512-Oya14whSHvPsYXdI0nHOGs1pZhMzV2edV7HAW1xFHD58Y73m/LbG2Encvyz1tztL0vfjph0JNhiwO8cGBJnlhg==
@@ -16560,7 +16573,7 @@ react-resizable-rotatable-draggable@0.2.0:
   resolved "https://registry.yarnpkg.com/react-resizable-rotatable-draggable/-/react-resizable-rotatable-draggable-0.2.0.tgz#de235785bed2b277286ac6668b094eaa7a024d11"
   integrity sha512-F8TPx3z7/AcmRViySbYV3LpUWXFpHlGAmKmNcYMgPlS+h1eYFazRG3xYS8Z6e48hWY1EcCny/YNrwRNUrap8CQ==
 
-react-resize-detector@6.7.6, react-resize-detector@^6.7.6:
+react-resize-detector@6.7.6:
   version "6.7.6"
   resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-6.7.6.tgz#4416994e5ead7eba76606e3a248a1dfca49b67a3"
   integrity sha512-/6RZlul1yePSoYJxWxmmgjO320moeLC/khrwpEVIL+D2EjLKhqOwzFv+H8laMbImVj7Zu4FlMa0oA7au3/ChjQ==
@@ -16698,16 +16711,6 @@ react-sizeme@3.0.1:
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
 
-react-sizeme@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-3.0.2.tgz#4a2f167905ba8f8b8d932a9e35164e459f9020e4"
-  integrity sha512-xOIAOqqSSmKlKFJLO3inBQBdymzDuXx4iuwkNcJmC96jeiOg5ojByvL+g3MW9LPEsojLbC6pf68zOfobK8IPlw==
-  dependencies:
-    element-resize-detector "^1.2.2"
-    invariant "^2.2.4"
-    shallowequal "^1.1.0"
-    throttle-debounce "^3.0.1"
-
 react-slick@^0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.24.0.tgz#1a4e078a82de4e9458255d9ce26aa6f3b17b168b"
@@ -16783,7 +16786,7 @@ react-transition-group@^4, react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-visibility-sensor@5.1.1, react-visibility-sensor@^5.1.1:
+react-visibility-sensor@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-visibility-sensor/-/react-visibility-sensor-5.1.1.tgz#5238380960d3a0b2be0b7faddff38541e337f5a9"
   integrity sha512-cTUHqIK+zDYpeK19rzW6zF9YfT4486TIgizZW53wEZ+/GPBbK7cNS0EHyJVyHYacwFEvvHLEKfgJndbemWhB/w==
@@ -17621,7 +17624,7 @@ robust-compress@^1.0.0:
   resolved "https://registry.yarnpkg.com/robust-compress/-/robust-compress-1.0.0.tgz#4cf62c4b318d8308516012bb8c11752f39329b1b"
   integrity sha1-TPYsSzGNgwhRYBK7jBF1Lzkymxs=
 
-robust-determinant@^1.1.0, robust-determinant@plotly/robust-determinant#v1.2.1:
+robust-determinant@^1.1.0:
   version "1.2.1"
   resolved "https://codeload.github.com/plotly/robust-determinant/tar.gz/7cb499bb02411de80ae1a90e54893e46af82ca5e"
   dependencies:
@@ -17638,7 +17641,7 @@ robust-dot-product@^1.0.0:
     robust-sum "^1.0.0"
     two-product "^1.0.0"
 
-robust-in-sphere@1.2.1, robust-in-sphere@^1.1.3:
+robust-in-sphere@^1.1.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/robust-in-sphere/-/robust-in-sphere-1.2.1.tgz#ece3c2ae0fdf36b351680566adea7e93c6ba46da"
   integrity sha512-3zJdcMIOP1gdwux93MKTS0RiMYEGwQBoE5R1IW/9ZQmGeZzP7f7i4+xdcK8ujJvF/dEOS1WPuI9IB1WNFbj3Cg==
@@ -17648,13 +17651,13 @@ robust-in-sphere@1.2.1, robust-in-sphere@^1.1.3:
     robust-sum "^1.0.0"
     two-product "^1.0.0"
 
-robust-linear-solve@^1.0.0, robust-linear-solve@plotly/robust-linear-solve#v1.1.1:
+robust-linear-solve@^1.0.0:
   version "1.1.1"
   resolved "https://codeload.github.com/plotly/robust-linear-solve/tar.gz/90ad6de2ce011a1e0b53d9e9f6bf8d117053c492"
   dependencies:
     robust-determinant "^1.1.0"
 
-robust-orientation@1.2.1, robust-orientation@^1.0.1, robust-orientation@^1.0.2, robust-orientation@^1.1.2, robust-orientation@^1.1.3:
+robust-orientation@^1.0.1, robust-orientation@^1.0.2, robust-orientation@^1.1.2, robust-orientation@^1.1.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/robust-orientation/-/robust-orientation-1.2.1.tgz#f6c2b00a5df5f1cb9597be63a45190f273899361"
   integrity sha512-FuTptgKwY6iNuU15nrIJDLjXzCChWB+T4AvksRtwPS/WZ3HuP1CElCm1t+OBfgQKfWbtZIawip+61k7+buRKAg==
@@ -18133,6 +18136,22 @@ signum@^1.0.0:
   resolved "https://registry.yarnpkg.com/signum/-/signum-1.0.0.tgz#74a7d2bf2a20b40eba16a92b152124f1d559fa77"
   integrity sha1-dKfSvyogtA66FqkrFSEk8dVZ+nc=
 
+simple-git@2.48.0:
+  version "2.48.0"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-2.48.0.tgz#87c262dba8f84d7b96bb3a713e9e34701c1f6e3b"
+  integrity sha512-z4qtrRuaAFJS4PUd0g+xy7aN4y+RvEt/QTJpR184lhJguBA1S/LsVlvE/CM95RsYMOFJG3NGGDjqFCzKU19S/A==
+  dependencies:
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    debug "^4.3.2"
+
+simple-git@^1.132.0:
+  version "1.132.0"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-1.132.0.tgz#53ac4c5ec9e74e37c2fd461e23309f22fcdf09b1"
+  integrity sha512-xauHm1YqCTom1sC9eOjfq3/9RKiUA9iPnxBbrY2DdL8l4ADMu0jjM5l5lphQP5YWNqAL2aXC/OeuQ76vHtW5fg==
+  dependencies:
+    debug "^4.0.1"
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
@@ -18148,7 +18167,7 @@ simplicial-complex-boundary@^1.0.0:
     boundary-cells "^2.0.0"
     reduce-simplicial-complex "^1.0.0"
 
-simplicial-complex-contour@^1.0.2, simplicial-complex-contour@plotly/simplicial-complex-contour#v1.1.0:
+simplicial-complex-contour@^1.0.2:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/simplicial-complex-contour/tar.gz/3c09d0c163385b874fedc0a366b29b6e713bfd99"
   dependencies:
@@ -19139,7 +19158,7 @@ supports-color@^8.1.1:
   dependencies:
     has-flag "^4.0.0"
 
-surface-nets@^1.0.0, surface-nets@^1.0.2, surface-nets@plotly/surface-nets#v1.1.1:
+surface-nets@^1.0.0, surface-nets@^1.0.2:
   version "1.1.1"
   resolved "https://codeload.github.com/plotly/surface-nets/tar.gz/d80900ed4c39a1b07f9d8577180960945236d996"
   dependencies:
@@ -20281,7 +20300,7 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vectorize-text@3.2.2, vectorize-text@^3.2.1:
+vectorize-text@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/vectorize-text/-/vectorize-text-3.2.2.tgz#3e978889df4ae333975d38669529c942a63e1f65"
   integrity sha512-34NVOCpMMQVXujU4vb/c6u98h6djI0jGdtC202H4Huvzn48B6ARsR7cmGh1xsAc0pHNQiUKGK/aHF05VtGv+eA==
@@ -20354,10 +20373,10 @@ vm-browserify@^1.0.1:
     react-sizeme "3.0.1"
     redraft "^0.10.2"
 
-volto-slate@*, volto-slate@5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-5.3.3.tgz#4af806ec9e84f141da3e38e9f98852679aed4fdd"
-  integrity sha512-D9HDlCJAt6FCAL1EQY9PdnLSp7aqdJqEoeI4Gl+omNvR+JtefkE6ilkFL6s+pITAyK3He5t704ujGgT7Wf8+HA==
+volto-slate@*, volto-slate@5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/volto-slate/-/volto-slate-5.3.5.tgz#ea61f8840ffb6da862a9dc80d582559eb4458dfb"
+  integrity sha512-L4I0j1hq83ZyJp1j8CsOngdvayD+UtjHmA/KzApuYL3T9LvwIrVB19c4tbmJuvEXgj0zrMRDx1SF3AejF10hNw==
   dependencies:
     "@eeacms/volto-object-widget" "*"
     classnames "2.2.6"
@@ -21070,7 +21089,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zero-crossings@^1.0.0, zero-crossings@plotly/zero-crossings#v1.1.0:
+zero-crossings@^1.0.0:
   version "1.1.0"
   resolved "https://codeload.github.com/plotly/zero-crossings/tar.gz/4746771f490344e21c84d1f631cb661d8c5ff508"
 
