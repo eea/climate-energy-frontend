@@ -1210,7 +1210,15 @@
     slick-carousel "^1.8.1"
     volto-slate "*"
 
-"@eeacms/volto-block-style@*", "@eeacms/volto-block-style@3.5.18":
+"@eeacms/volto-block-style@*":
+  version "3.5.16"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.5.16.tgz#185bb84ffb65fc741fdaaf21134da0c2d7cf8cdc"
+  integrity sha512-BBChM/TJGqs/E2Qn6r/4/bsO5CZDsJsPrS8In/2Kkpgw5KBKSss7e0an64sa7ydxIdQ7oH5kx0Ta4LoyGmTsrA==
+  dependencies:
+    "@eeacms/volto-resize-helper" "*"
+    react-color "~2.18.1"
+
+"@eeacms/volto-block-style@3.5.18":
   version "3.5.18"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-style/-/volto-block-style-3.5.18.tgz#c08508acd0dfae5a6ec9bff3a701b57400bcfe5d"
   integrity sha512-c2qiltquVE/5smqs77UGsgXZcn0aACy2JiwEMEu8JI3t60KKsVB1p9cYaKqgtQuhd8nqe5G9p5n6+pRaadFDXw==

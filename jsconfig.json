@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@eeacms/volto-energy-theme": ["addons/volto-energy-theme/src"],
-      "@eeacms/volto-pdf-block": ["addons/volto-pdf-block/src"],
-      "volto-slate": ["addons/volto-slate/src"]
-    },
+    "paths": {},
     "baseUrl": "src"
   }
 }
