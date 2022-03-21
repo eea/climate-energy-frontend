@@ -114,7 +114,7 @@
     "@eeacms/volto-eea-kitkat": "5.2.7",
     "@eeacms/volto-embed": "3.0.1",
     "@eeacms/volto-energy-theme": "1.0.28",
-    "@eeacms/volto-pdf-block": "1.0.8",
+    "@eeacms/volto-pdf-block": "1.0.9",
     "@eeacms/volto-plotlycharts": "3.0.3",
     "@eeacms/volto-tableau": "1.2.4",
     "@plone/volto": "14.2.0"
