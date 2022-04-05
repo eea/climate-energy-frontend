@@ -112,7 +112,7 @@
   "dependencies": {
     "@eeacms/volto-datablocks": "3.0.9",
     "@eeacms/volto-eea-kitkat": "5.2.8",
-    "@eeacms/volto-embed": "3.0.1",
+    "@eeacms/volto-embed": "4.0.0",
     "@eeacms/volto-energy-theme": "1.0.28",
     "@eeacms/volto-pdf-block": "1.0.10",
     "@eeacms/volto-plotlycharts": "3.0.3",
