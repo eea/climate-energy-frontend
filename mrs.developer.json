@@ -203,6 +203,13 @@
     "branch": "develop",
     "path": "src"
   },
+  "volto-climate-energy-policy": {
+    "url": "git@github.com:eea/volto-climate-energy-policy.git",
+    "https": "https://github.com/eea/volto-climate-energy-policy.git",
+    "package": "@eeacms/volto-climate-energy-policy",
+    "branch": "develop",
+    "path": "src"
+  },
   "volto-datablocks": {
     "url": "git@github.com:eea/volto-datablocks.git",
     "https": "https://github.com/eea/volto-datablocks.git",

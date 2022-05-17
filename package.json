@@ -10,6 +10,7 @@
   "addons": [
     "@eeacms/volto-eea-kitkat",
     "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-climate-energy-policy",
     "@eeacms/volto-embed",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-tableau",
@@ -112,6 +113,7 @@
   "dependencies": {
     "@eeacms/volto-datablocks": "3.0.11",
     "@eeacms/volto-eea-kitkat": "5.4.1",
+    "@eeacms/volto-climate-energy-policy": "*",
     "@eeacms/volto-embed": "4.0.1",
     "@eeacms/volto-energy-theme": "1.0.30",
     "@eeacms/volto-pdf-block": "1.0.10",
