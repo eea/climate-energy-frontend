@@ -1223,6 +1223,13 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-toc/-/volto-block-toc-2.3.0.tgz#51ba525a4c5cf1ab94fc6db267482fd3467b244f"
   integrity sha512-xczE/HagB1B+jwrCwI7oideRoPBKwTwXknx9wcEL++sCJLJFwI5pGh5jkCJyHhBbwY79HlucEk7WXc9SFJLdVg==
 
+"@eeacms/volto-climate-energy-policy@*":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-climate-energy-policy/-/volto-climate-energy-policy-0.1.1.tgz#0971af120fa4f1100e0fd4e00f09a687bd47e193"
+  integrity sha512-qDo23e19wzF2mPF0qnQ6sIAlb0eFblhnQGe8dINTNGx+oXCOMochDWcK2hdwLNvjHeFE+zGw7AkbllASEl4ZGw==
+  dependencies:
+    "@plone/scripts" "*"
+
 "@eeacms/volto-columns-block@4.5.0":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@eeacms/volto-columns-block/-/volto-columns-block-4.5.0.tgz#d0865ddb22ef5df6fb02f1981841b38927604ade"
@@ -1297,10 +1304,10 @@
     react-visibility-sensor "5.1.1"
     volto-slate "*"
 
-"@eeacms/volto-energy-theme@1.0.30":
-  version "1.0.30"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.30.tgz#5a8b56d1ee894b1d41df0f83b1d47a21aa06989e"
-  integrity sha512-XhJad2N5MnZjL61ZUUqPAm61+7LBahJlk4iJ/HHeTkNQUmpcqCCx+oINwwyWcEvToLGu/45QzTlIRTYkra/ccg==
+"@eeacms/volto-energy-theme@1.0.31":
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-energy-theme/-/volto-energy-theme-1.0.31.tgz#27c213e7cb3bbbea53a34e19dd0dc4230a32e859"
+  integrity sha512-NC/oNtjYvCaSneDm0M1D5XLuSX9Ltddsb90P7fFWjLokIOIGOas39MEEoUhXjeOCJZvRdm5wLB/z8p5XeVY4hA==
   dependencies:
     "@eeacms/volto-corsproxy" "*"
     "@eeacms/volto-plotlycharts" "*"
