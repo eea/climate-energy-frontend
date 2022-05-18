@@ -2,7 +2,7 @@
   "name": "climate-energy-frontend",
   "description": "Frontend component for the Climate Energy website.",
   "license": "MIT",
-  "version": "2.18.0",
+  "version": "2.20.0",
   "private": true,
   "workspaces": [
     "src/addons/*"
@@ -10,6 +10,7 @@
   "addons": [
     "@eeacms/volto-eea-kitkat",
     "@eeacms/volto-plotlycharts",
+    "@eeacms/volto-climate-energy-policy",
     "@eeacms/volto-embed",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-tableau",
@@ -110,14 +111,15 @@
     "node": "^10 || ^12 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-datablocks": "3.0.9",
-    "@eeacms/volto-eea-kitkat": "5.2.5",
-    "@eeacms/volto-embed": "3.0.1",
-    "@eeacms/volto-energy-theme": "1.0.28",
-    "@eeacms/volto-pdf-block": "1.0.8",
-    "@eeacms/volto-plotlycharts": "3.0.3",
+    "@eeacms/volto-climate-energy-policy": "0.1.1",
+    "@eeacms/volto-datablocks": "3.0.11",
+    "@eeacms/volto-eea-kitkat": "5.4.1",
+    "@eeacms/volto-embed": "4.0.1",
+    "@eeacms/volto-energy-theme": "1.0.31",
+    "@eeacms/volto-pdf-block": "1.0.10",
+    "@eeacms/volto-plotlycharts": "3.0.4",
     "@eeacms/volto-tableau": "1.2.4",
-    "@plone/volto": "14.2.0"
+    "@plone/volto": "15.5.0"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",

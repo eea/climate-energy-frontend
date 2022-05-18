@@ -73,7 +73,7 @@
     "url": "git@github.com:eea/volto-slate.git",
     "https": "https://github.com/eea/volto-slate.git",
     "package": "volto-slate",
-    "branch": "stable",
+    "branch": "develop",
     "path": "src"
   },
   "volto-slate-metadata-mentions": {
@@ -188,12 +188,7 @@
     "branch": "develop",
     "path": "src"
   },
-  
-  
-  
-  
-  
-  
+
   "volto-plotlycharts": {
     "url": "git@github.com:eea/volto-plotlycharts.git",
     "https": "https://github.com/eea/volto-plotlycharts.git",
@@ -205,6 +200,13 @@
     "url": "git@github.com:eea/volto-embed.git",
     "https": "https://github.com/eea/volto-embed.git",
     "package": "@eeacms/volto-embed",
+    "branch": "develop",
+    "path": "src"
+  },
+  "volto-climate-energy-policy": {
+    "url": "git@github.com:eea/volto-climate-energy-policy.git",
+    "https": "https://github.com/eea/volto-climate-energy-policy.git",
+    "package": "@eeacms/volto-climate-energy-policy",
     "branch": "develop",
     "path": "src"
   },
