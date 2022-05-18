@@ -1223,10 +1223,10 @@
   resolved "https://registry.yarnpkg.com/@eeacms/volto-block-toc/-/volto-block-toc-2.3.0.tgz#51ba525a4c5cf1ab94fc6db267482fd3467b244f"
   integrity sha512-xczE/HagB1B+jwrCwI7oideRoPBKwTwXknx9wcEL++sCJLJFwI5pGh5jkCJyHhBbwY79HlucEk7WXc9SFJLdVg==
 
-"@eeacms/volto-climate-energy-policy@*":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-climate-energy-policy/-/volto-climate-energy-policy-0.1.1.tgz#0971af120fa4f1100e0fd4e00f09a687bd47e193"
-  integrity sha512-qDo23e19wzF2mPF0qnQ6sIAlb0eFblhnQGe8dINTNGx+oXCOMochDWcK2hdwLNvjHeFE+zGw7AkbllASEl4ZGw==
+"@eeacms/volto-climate-energy-policy@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-climate-energy-policy/-/volto-climate-energy-policy-0.1.2.tgz#194f02d317ef68226b6f41b23ce366c8c0fba8ec"
+  integrity sha512-em6tjpQ1zEjIE1BRyPYRZPfFKF6M6qJVAKdSKgXe7OAslJtiGUuvu00HiigDEtKJVd9NzvtULv+tWjWvi4Lleg==
   dependencies:
     "@plone/scripts" "*"
 
