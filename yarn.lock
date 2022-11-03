@@ -1350,10 +1350,10 @@
   dependencies:
     "@mikecousins/react-pdf" "5.5.1"
 
-"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-4.0.0.tgz#70ba2c40090e83ce08f9a0f67ee07448d32eab4b"
-  integrity sha512-fQo8afPL5+F5XRgib+sVblhpkFH8DkuQPQc+ZYgvtHHrc+UgLXueUEFpWb7pc3A9Nmx4F/dzgFdCPsEtZJkJhQ==
+"@eeacms/volto-plotlycharts@*", "@eeacms/volto-plotlycharts@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@eeacms/volto-plotlycharts/-/volto-plotlycharts-5.0.0.tgz#f33599d7517bbd18b64a3077c871737e9fc5eb26"
+  integrity sha512-v875Ra36sSl9ZDuEb8imvcsaaAWOm5BP36onQuDjUB2RvTsLPBIYYb2z5jA/1INo/uaRWIr7/v0SiG4f6G6Pyw==
   dependencies:
     "@eeacms/volto-datablocks" "*"
     "@eeacms/volto-matomo" "*"
