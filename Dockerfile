@@ -1,11 +1,11 @@
 # Based on https://github.com/plone/volto/blob/master/entrypoint.sh
-FROM node:14-stretch-slim
+FROM node:16-slim
 
 COPY . /opt/frontend/
 WORKDIR /opt/frontend/
 
 # Update apt packages
-RUN runDeps="openssl ca-certificates patch gosu git tmux locales-all" \
+RUN runDeps="openssl ca-certificates patch gosu git make tmux locales-all" \
   && apt-get update \
   && apt-get install -y --no-install-recommends $runDeps \
   && apt-get clean \
@@ -14,7 +14,8 @@ RUN runDeps="openssl ca-certificates patch gosu git tmux locales-all" \
   && cp jsconfig.json.prod jsconfig.json \
   && mkdir -p /opt/frontend/src/addons \
   && rm -rf /opt/frontend/src/addons/* \
-  && find /opt/frontend -not -user node -exec chown node {} \+
+  && find /opt/frontend -not -user node -exec chown node {} \+ \
+  && corepack enable
 
 USER node
 ARG MAX_OLD_SPACE_SIZE=8192
