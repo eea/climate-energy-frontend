@@ -48,32 +48,32 @@ pipeline {
         //   }
         // }
         
-        stage("Docker test build") {
-             when {
-               not {
-                environment name: 'CHANGE_ID', value: ''
-               }
-               not {
-                 buildingTag()
-               }
-               environment name: 'CHANGE_TARGET', value: 'master'
-             }
-             environment {
-              IMAGE_NAME = BUILD_TAG.toLowerCase()
-             }
-             steps {
-               node(label: 'docker-host') {
-                 script {
-                   checkout scm
-                   try {
-                     dockerImage = docker.build("${IMAGE_NAME}", "--no-cache .")
-                   } finally {
-                     sh script: "docker rmi ${IMAGE_NAME}", returnStatus: true
-                   }
-                 }
-               }
-             }
-          }
+        // stage("Docker test build") {
+        //      when {
+        //        not {
+        //         environment name: 'CHANGE_ID', value: ''
+        //        }
+        //        not {
+        //          buildingTag()
+        //        }
+        //        environment name: 'CHANGE_TARGET', value: 'master'
+        //      }
+        //      environment {
+        //       IMAGE_NAME = BUILD_TAG.toLowerCase()
+        //      }
+        //      steps {
+        //        node(label: 'docker-host') {
+        //          script {
+        //            checkout scm
+        //            try {
+        //              dockerImage = docker.build("${IMAGE_NAME}", "--no-cache .")
+        //            } finally {
+        //              sh script: "docker rmi ${IMAGE_NAME}", returnStatus: true
+        //            }
+        //          }
+        //        }
+        //      }
+        //   }
           
         
       }
