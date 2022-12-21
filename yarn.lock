@@ -1903,16 +1903,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-energy-theme@npm:1.0.33":
-  version: 1.0.33
-  resolution: "@eeacms/volto-energy-theme@npm:1.0.33"
+"@eeacms/volto-energy-theme@npm:1.0.34":
+  version: 1.0.34
+  resolution: "@eeacms/volto-energy-theme@npm:1.0.34"
   dependencies:
     "@eeacms/volto-corsproxy": "*"
     "@eeacms/volto-plotlycharts": "*"
     "@n8tb1t/use-scroll-position": ^2.0.3
     mgr-pdf-viewer-react: ^1.0.3
     react-scrollspy: ^3.4.3
-  checksum: 1108df2515ff67c2c34d587fee937fd00cd75843f89eeccdb9b260497de0f05ad7fb78b8090ae412bb37de9aa88ecdfa47ab54b7fe61a98d0a28cc0dd4f19ae6
+  checksum: afc7ffafd835d83435076b23cb409fe8e7767272f9773c48643faaeb7dadf01a9a70602836b3fea1aa47d0108e902b9b7b4c5af7b633a2f681ad3ef1aa9fb08f
   languageName: node
   linkType: hard
 
@@ -6629,7 +6629,7 @@ __metadata:
     "@eeacms/volto-datablocks": 4.0.2
     "@eeacms/volto-eea-kitkat": 10.3.0
     "@eeacms/volto-embed": 5.0.0
-    "@eeacms/volto-energy-theme": 1.0.33
+    "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.10
     "@eeacms/volto-plotlycharts": 5.0.8
     "@eeacms/volto-tableau": 2.0.0
