@@ -3,7 +3,7 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/eea/climate-energy-frontend?sort=semver)](https://github.com/eea/climate-energy-frontend/releases)
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto/climate-energy-frontend/master&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto/job/climate-energy-frontend/job/master/display/redirect)
 [![Pipeline develop](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fclimate-energy-frontend%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto/job/climate-energy-frontend/job/develop/lastBuild/display/redirect)
-[![Release pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fclimate-energy-frontend%2F2.24.0&build=last&subject=release%20v2.24.0%20pipeline)](https://ci.eionet.europa.eu/view/Github/job/volto/job/climate-energy-frontend/job/2.24.0/lastBuild/display/redirect/)
+[![Release pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto%2Fclimate-energy-frontend%2F2.25.0&build=last&subject=release%20v2.25.0%20pipeline)](https://ci.eionet.europa.eu/view/Github/job/volto/job/climate-energy-frontend/job/2.25.0/lastBuild/display/redirect/)
 
 
 
