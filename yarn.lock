@@ -1968,12 +1968,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-pdf-block@npm:1.0.10":
-  version: 1.0.10
-  resolution: "@eeacms/volto-pdf-block@npm:1.0.10"
+"@eeacms/volto-pdf-block@npm:1.0.11":
+  version: 1.0.11
+  resolution: "@eeacms/volto-pdf-block@npm:1.0.11"
   dependencies:
     "@mikecousins/react-pdf": 5.5.1
-  checksum: 4cdd3bea9aad807b2bc371937272482c22201edaa0caf8763b828394de304518242b99308b29c83594ae7c9c52dacb2e1b8a26905e19a874e4dd68b5c1c645d8
+  checksum: 1459ba3a52064d2a2ff2797a5b90e6573a2719d069712626279d4f2e2206ae36879cab2e42237354002413effba92412419d8f1e16639c4e2be027674490ae56
   languageName: node
   linkType: hard
 
@@ -6630,7 +6630,7 @@ __metadata:
     "@eeacms/volto-eea-kitkat": 10.4.0
     "@eeacms/volto-embed": 5.0.0
     "@eeacms/volto-energy-theme": 1.0.34
-    "@eeacms/volto-pdf-block": 1.0.10
+    "@eeacms/volto-pdf-block": 1.0.11
     "@eeacms/volto-plotlycharts": 5.0.8
     "@eeacms/volto-tableau": 2.0.0
     "@plone/scripts": ^2.1.2
