@@ -2067,12 +2067,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-tableau@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@eeacms/volto-tableau@npm:2.0.0"
+"@eeacms/volto-tableau@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@eeacms/volto-tableau@npm:3.0.0"
   dependencies:
     "@eeacms/volto-resize-helper": ^0.2.4
-  checksum: ceceb6c0658f0136a4b3998f895c0d0c40c2b91afa97d214a3ea3143f57e6e22cd14aabf8924afdd42c08702efae877c553c06a88068acc881c927fcc6df9327
+  checksum: 08c2434dee3cf52fd60895fc55482b4b6ccf3b17afb152ace7fe2f964d17ebb02e1bee08c8aa5f137e4845b8cba97cb814ac79ce2d70e317857118f07d49ca42
   languageName: node
   linkType: hard
 
@@ -6632,7 +6632,7 @@ __metadata:
     "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.11
     "@eeacms/volto-plotlycharts": 5.0.8
-    "@eeacms/volto-tableau": 2.0.0
+    "@eeacms/volto-tableau": 3.0.0
     "@plone/scripts": ^2.1.2
     "@plone/volto": 16.4.1
     eslint-plugin-prettier: 3.1.3
