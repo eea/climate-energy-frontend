@@ -116,7 +116,7 @@
     "@eeacms/volto-energy-theme": "1.0.34",
     "@eeacms/volto-pdf-block": "1.0.11",
     "@eeacms/volto-plotlycharts": "5.0.8",
-    "@eeacms/volto-tableau": "3.0.4",
+    "@eeacms/volto-tableau": "3.0.5",
     "@plone/volto": "16.4.1"
   },
   "devDependencies": {
