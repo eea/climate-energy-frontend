@@ -1944,7 +1944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-embed@npm:*, @eeacms/volto-embed@npm:5.0.0":
+"@eeacms/volto-embed@npm:*":
   version: 5.0.0
   resolution: "@eeacms/volto-embed@npm:5.0.0"
   dependencies:
@@ -2130,13 +2130,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-resize-helper@npm:^0.2.4":
-  version: 0.2.10
-  resolution: "@eeacms/volto-resize-helper@npm:0.2.10"
-  checksum: 8dd8c5dfb1628bd680dfb25ba1a567553f0a755801267d3f7c51e03c25980a7fa74610365f63228e9115ef28ee02e0a3e9155b853a34540fced746f830529475
-  languageName: node
-  linkType: hard
-
 "@eeacms/volto-sentry-rancher-config@npm:3.1.0":
   version: 3.1.0
   resolution: "@eeacms/volto-sentry-rancher-config@npm:3.1.0"
@@ -2193,13 +2186,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-tableau@npm:3.0.7":
-  version: 3.0.7
-  resolution: "@eeacms/volto-tableau@npm:3.0.7"
+"@eeacms/volto-tableau@npm:3.0.8":
+  version: 3.0.8
+  resolution: "@eeacms/volto-tableau@npm:3.0.8"
   dependencies:
-    "@eeacms/volto-embed": 5.0.0
-    "@eeacms/volto-resize-helper": ^0.2.4
-  checksum: 49200e89c118dbe63c209053ae2c79859840407416e172293d428fc6cb56e3178fb325981ca63136185242b39e89b4e9eb0fdd9486d68194eff0f6f355d09d3f
+    "@eeacms/volto-embed": "*"
+    "@eeacms/volto-object-widget": "*"
+    "@eeacms/volto-resize-helper": "*"
+  checksum: c21dc82c5b73b151010bf4c3b32031f9be94caf8d0ff79bee7edc9309678af5c873f54c26f4ff445685374a69ddf95cb66a75169f6fcda265a07a21a21290404
   languageName: node
   linkType: hard
 
@@ -6780,7 +6774,7 @@ __metadata:
     "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.11
     "@eeacms/volto-plotlycharts": 6.0.3
-    "@eeacms/volto-tableau": 3.0.7
+    "@eeacms/volto-tableau": 3.0.8
     "@plone/scripts": ^2.1.2
     "@plone/volto": 16.4.1
     eslint-plugin-prettier: 3.1.3
