@@ -129,6 +129,9 @@
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
   },
+  "resolutions": {
+    "@eeacms/volto-matomo": "github:eea/volto-matomo#track-query"
+  },
   "browserslist": [
     ">1%",
     "last 4 versions",

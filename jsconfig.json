@@ -4,7 +4,8 @@
       "@eeacms/volto-climate-energy-policy": [
         "develop/volto-climate-energy-policy/src"
       ],
-      "@eeacms/volto-energy-theme": ["develop/volto-energy-theme/src"]
+      "@eeacms/volto-energy-theme": ["develop/volto-energy-theme/src"],
+      "@eeacms/volto-matomo": ["develop/volto-matomo/src"]
     },
     "baseUrl": "src"
   }
