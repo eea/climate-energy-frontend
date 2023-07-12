@@ -1992,7 +1992,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-matomo@*, @eeacms/volto-matomo@workspace:src/develop/volto-matomo":
+"@eeacms/volto-matomo@github:eea/volto-matomo#track-query":
+  version: 4.1.1
+  resolution: "@eeacms/volto-matomo@https://github.com/eea/volto-matomo.git#commit=b7711b383c0b1dbb9a24ef8c23f5680eaa896540"
+  dependencies:
+    "@datapunt/matomo-tracker-react": 0.3.1
+  checksum: 4700258ef3802f0d808bf1652bf2544e762639203c3902f3b2e83cee80a57826b76cffbb00f3825fe679b000967f449f3a898de87d3e8f527f48ba786b7883fc
+  languageName: node
+  linkType: hard
+
+"@eeacms/volto-matomo@workspace:src/develop/volto-matomo":
   version: 0.0.0-use.local
   resolution: "@eeacms/volto-matomo@workspace:src/develop/volto-matomo"
   dependencies:
@@ -2003,15 +2012,6 @@ __metadata:
     md5: ^2.3.0
   languageName: unknown
   linkType: soft
-
-"@eeacms/volto-matomo@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@eeacms/volto-matomo@npm:3.0.1"
-  dependencies:
-    "@datapunt/matomo-tracker-react": 0.3.1
-  checksum: bdb771de6423a300d719d1c8994ec9dd651b2f93da5f01720cac4c9fe46f9eca97540e19ab9323a7fac2fecdee9605b8b35cd8225e5c4f47f92fdcd5c3368c41
-  languageName: node
-  linkType: hard
 
 "@eeacms/volto-metadata-block@npm:5.0.1":
   version: 5.0.1
