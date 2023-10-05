@@ -1836,13 +1836,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-climate-energy-policy@npm:0.1.3":
-  version: 0.1.3
-  resolution: "@eeacms/volto-climate-energy-policy@npm:0.1.3"
+"@eeacms/volto-climate-energy-policy@npm:0.1.4":
+  version: 0.1.4
+  resolution: "@eeacms/volto-climate-energy-policy@npm:0.1.4"
   dependencies:
     "@plone/scripts": "*"
     razzle-plugin-scss: 4.2.18
-  checksum: 0d07b2bb3b8fafccdcdd285fb719943b89b07c9c034ce7932ef3db37bb1c65d70880829f3cd9decbe3b42617e9ea213925f0f1164ed0c72a721e2571f4f2ba87
+  checksum: 2181fb871cf8fa2febb80b94d0a9a9311e16c3b98610d2eba35874b65c28241816ab39d6cf071886b2c9ee4de4e2b9ca91f07e411d9b0ea1f7f9a420116ff82b
   languageName: node
   linkType: hard
 
@@ -6813,7 +6813,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "climate-energy-frontend@workspace:."
   dependencies:
-    "@eeacms/volto-climate-energy-policy": 0.1.3
+    "@eeacms/volto-climate-energy-policy": 0.1.4
     "@eeacms/volto-datablocks": 6.1.1
     "@eeacms/volto-eea-kitkat": 18.1.3
     "@eeacms/volto-embed": 6.0.0
