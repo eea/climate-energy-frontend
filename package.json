@@ -10,10 +10,10 @@
   "addons": [
     "@eeacms/volto-eea-kitkat",
     "@eeacms/volto-plotlycharts",
-    "@eeacms/volto-climate-energy-policy",
     "@eeacms/volto-embed",
     "@eeacms/volto-datablocks",
     "@eeacms/volto-tableau",
+    "@eeacms/volto-climate-energy-policy",
     "@eeacms/volto-pdf-block",
     "@eeacms/volto-energy-theme"
   ],
@@ -109,7 +109,7 @@
     "node": "^16 || ^14"
   },
   "dependencies": {
-    "@eeacms/volto-climate-energy-policy": "0.1.3",
+    "@eeacms/volto-climate-energy-policy": "0.1.4",
     "@eeacms/volto-datablocks": "4.0.2",
     "@eeacms/volto-eea-kitkat": "10.3.0",
     "@eeacms/volto-embed": "5.0.0",
