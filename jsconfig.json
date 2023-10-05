@@ -1,11 +1,6 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@eeacms/volto-climate-energy-policy": [
-        "develop/volto-climate-energy-policy/src"
-      ],
-      "@eeacms/volto-energy-theme": ["develop/volto-energy-theme/src"]
-    },
-    "baseUrl": "src"
-  }
+    "compilerOptions": {
+        "paths": {},
+        "baseUrl": "src"
+    }
 }
