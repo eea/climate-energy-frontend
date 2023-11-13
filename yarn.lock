@@ -2118,9 +2118,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-plotlycharts@npm:7.1.1":
-  version: 7.1.1
-  resolution: "@eeacms/volto-plotlycharts@npm:7.1.1"
+"@eeacms/volto-plotlycharts@npm:7.1.2":
+  version: 7.1.2
+  resolution: "@eeacms/volto-plotlycharts@npm:7.1.2"
   dependencies:
     "@eeacms/volto-embed": "*"
     "@eeacms/volto-matomo": "*"
@@ -2131,7 +2131,7 @@ __metadata:
     react-inspector: 6.0.2
     react-json-editor-ajrm: 2.5.14
     react-plotly.js: 2.6.0
-  checksum: d80ed7c5d689ed8b7991fe0b84f2acb99fc6c5fa25f32ba58b2473bdf3f08e049f44289edc175b3ca9460b9825d2cac0d8ab9678264d8dc0293d17a8392551de
+  checksum: 611ab8fb95e6729e100eae480989cdcef6c929af50dafdb0e97f7e68cd747ab35ef3537bc6c3ab7dae3528be969c253deb1d11ea305746de7038a43b034924dd
   languageName: node
   linkType: hard
 
@@ -6832,7 +6832,7 @@ __metadata:
     "@eeacms/volto-embed": 7.0.2
     "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.11
-    "@eeacms/volto-plotlycharts": 7.1.1
+    "@eeacms/volto-plotlycharts": 7.1.2
     "@eeacms/volto-tableau": 6.0.3
     "@plone/scripts": ^2.1.2
     "@plone/volto": 16.4.1
