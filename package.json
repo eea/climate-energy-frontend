@@ -112,7 +112,7 @@
     "@eeacms/volto-climate-energy-policy": "0.1.4",
     "@eeacms/volto-datablocks": "6.3.2",
     "@eeacms/volto-eea-kitkat": "21.1.0",
-    "@eeacms/volto-embed": "9.0.7",
+    "@eeacms/volto-embed": "9.1.0",
     "@eeacms/volto-energy-theme": "1.0.34",
     "@eeacms/volto-pdf-block": "1.0.11",
     "@eeacms/volto-plotlycharts": "8.2.0",
