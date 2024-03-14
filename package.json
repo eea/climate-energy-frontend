@@ -110,7 +110,7 @@
   },
   "dependencies": {
     "@eeacms/volto-climate-energy-policy": "0.1.4",
-    "@eeacms/volto-datablocks": "6.4.0",
+    "@eeacms/volto-datablocks": "6.4.1",
     "@eeacms/volto-eea-kitkat": "22.1.0",
     "@eeacms/volto-embed": "9.1.1",
     "@eeacms/volto-energy-theme": "1.0.34",
