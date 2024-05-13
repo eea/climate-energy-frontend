@@ -1975,9 +1975,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-datablocks@npm:7.0.1":
-  version: 7.0.1
-  resolution: "@eeacms/volto-datablocks@npm:7.0.1"
+"@eeacms/volto-datablocks@npm:7.0.2":
+  version: 7.0.2
+  resolution: "@eeacms/volto-datablocks@npm:7.0.2"
   dependencies:
     "@eeacms/countup": "*"
     "@eeacms/volto-embed": "*"
@@ -1989,7 +1989,7 @@ __metadata:
     object-hash: 2.2.0
     react-visibility-sensor: 5.1.1
     sanitize-html: 2.7.3
-  checksum: 7509a5d21bf3bf3fe62f733cff10a132f52e0bb5aed2c2979e82036e57e6a37469856f56e842ecde0b8a9e5d311a2c97f61fb02a29d6780178dae0c39d3dc757
+  checksum: e9cb6a677e83f9cf91e937676067860f48f6556587f3c96b8525a323e9497e9473c65abb0a0e71cc652ecbbcc1abfb6a2bb57db1880fad3af71cd9f7d3276454
   languageName: node
   linkType: hard
 
@@ -7148,7 +7148,7 @@ __metadata:
   resolution: "climate-energy-frontend@workspace:."
   dependencies:
     "@eeacms/volto-climate-energy-policy": 0.1.4
-    "@eeacms/volto-datablocks": 7.0.1
+    "@eeacms/volto-datablocks": 7.0.2
     "@eeacms/volto-eea-kitkat": 24.0.1
     "@eeacms/volto-embed": 10.0.0
     "@eeacms/volto-energy-theme": 1.0.34
