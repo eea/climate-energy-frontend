@@ -115,7 +115,7 @@
     "@eeacms/volto-embed": "10.0.0",
     "@eeacms/volto-energy-theme": "1.0.34",
     "@eeacms/volto-pdf-block": "1.0.11",
-    "@eeacms/volto-plotlycharts": "10.0.1",
+    "@eeacms/volto-plotlycharts": "10.0.2",
     "@eeacms/volto-tableau": "8.0.1",
     "@plone/volto": "16.4.1"
   },
