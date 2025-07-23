@@ -1816,9 +1816,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/react-chart-editor@npm:0.47.2":
-  version: 0.47.2
-  resolution: "@eeacms/react-chart-editor@npm:0.47.2"
+"@eeacms/react-chart-editor@npm:0.47.4":
+  version: 0.47.4
+  resolution: "@eeacms/react-chart-editor@npm:0.47.4"
   dependencies:
     "@eeacms/react-colorscales": 2.1.1
     "@plotly/draft-js-export-html": ^1.2.0
@@ -1849,7 +1849,7 @@ __metadata:
     plotly.js: ">=1.58.5 <3.0.0"
     react: ">=16"
     react-dom: ">=16"
-  checksum: 7c6bfea48f98e8c033ca53829cea69dc106356076aa8affecf2c116e23a536fdc8e033753e3c625904dfa8851bcd7fa45033cc39c2e9637dcb8213b5739fe5ca
+  checksum: 11ee20e08485cad43d9d5202181182bb70d5efd7d66789704cd05a83e735073a788fb4a92dfe7fda54d3db2c74498f43ca9d992dbed1288e207e1b773b3a0846
   languageName: node
   linkType: hard
 
@@ -2300,20 +2300,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-plotlycharts@npm:12.0.8":
-  version: 12.0.8
-  resolution: "@eeacms/volto-plotlycharts@npm:12.0.8"
+"@eeacms/volto-plotlycharts@npm:13.0.0":
+  version: 13.0.0
+  resolution: "@eeacms/volto-plotlycharts@npm:13.0.0"
   dependencies:
-    "@eeacms/react-chart-editor": 0.47.2
+    "@eeacms/react-chart-editor": 0.47.4
     "@eeacms/volto-datablocks": "*"
     "@eeacms/volto-embed": "*"
     "@eeacms/volto-matomo": "*"
     "@plone/scripts": "*"
     handsontable: ^15.2.0
     jsoneditor: 10.2.0
+    jszip: 3.10.1
     plotly.js: ^2.35.3
     react-plotly.js: 2.6.0
-  checksum: f2391144323e8651317e7413a605bc5f55016adbd800b3a03b0b409e6e212b397b79843f5f98c6536f1f40b4938fb3f14ad0e142058c39924dc2992e04f655d0
+  checksum: df84b2933da8e5b5c72c28751d2ee75e6b7cbb5d37866bc55f1a1ece438c0ed89012bd9bc916cc011febd4e575fdb7884b3181cd29791c82cecdad8b5242af7d
   languageName: node
   linkType: hard
 
@@ -7525,7 +7526,7 @@ __metadata:
     "@eeacms/volto-embed": 10.1.3
     "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.12
-    "@eeacms/volto-plotlycharts": 12.0.8
+    "@eeacms/volto-plotlycharts": 13.0.0
     "@eeacms/volto-tableau": 8.1.4
     "@plone/scripts": ^2.1.2
     "@plone/volto": 16.4.1
@@ -16405,6 +16406,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jszip@npm:3.10.1":
+  version: 3.10.1
+  resolution: "jszip@npm:3.10.1"
+  dependencies:
+    lie: ~3.3.0
+    pako: ~1.0.2
+    readable-stream: ~2.3.6
+    setimmediate: ^1.0.5
+  checksum: abc77bfbe33e691d4d1ac9c74c8851b5761fba6a6986630864f98d876f3fcc2d36817dfc183779f32c00157b5d53a016796677298272a714ae096dfe6b1c8b60
+  languageName: node
+  linkType: hard
+
 "just-curry-it@npm:^3.1.0":
   version: 3.2.1
   resolution: "just-curry-it@npm:3.2.1"
@@ -16657,6 +16670,15 @@ __metadata:
   dependencies:
     immediate: ~3.0.5
   checksum: 6da9f2121d2dbd15f1eca44c0c7e211e66a99c7b326ec8312645f3648935bc3a658cf0e9fa7b5f10144d9e2641500b4f55bd32754607c3de945b5f443e50ddd1
+  languageName: node
+  linkType: hard
+
+"lie@npm:~3.3.0":
+  version: 3.3.0
+  resolution: "lie@npm:3.3.0"
+  dependencies:
+    immediate: ~3.0.5
+  checksum: 33102302cf19766f97919a6a98d481e01393288b17a6aa1f030a3542031df42736edde8dab29ffdbf90bebeffc48c761eb1d064dc77592ca3ba3556f9fe6d2a8
   languageName: node
   linkType: hard
 
@@ -19548,7 +19570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:~1.0.5":
+"pako@npm:~1.0.2, pako@npm:~1.0.5":
   version: 1.0.11
   resolution: "pako@npm:1.0.11"
   checksum: 1be2bfa1f807608c7538afa15d6f25baa523c30ec870a3228a89579e474a4d992f4293859524e46d5d87fd30fa17c5edf34dbef0671251d9749820b488660b16
