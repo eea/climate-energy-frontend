@@ -2118,13 +2118,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eeacms/volto-embed@npm:11.0.1":
-  version: 11.0.1
-  resolution: "@eeacms/volto-embed@npm:11.0.1"
+"@eeacms/volto-embed@npm:11.0.2":
+  version: 11.0.2
+  resolution: "@eeacms/volto-embed@npm:11.0.2"
   dependencies:
     "@eeacms/volto-corsproxy": "*"
     "@eeacms/volto-datablocks": "*"
-  checksum: b08e84f12566d2a044c695ba0d7934f78ac38bc23f22776b6251e8edc57fc52f1e651d0ffd82c7b71c52e9fbd3d500aab0b65576b52bf622ea77587e2557d6da
+  checksum: f508069e784b409e2878b0702d2865b686d6fadf834f0bd9eb2b6c74bbeb469dd7bcaa0f8d5ae385c904a15ef6895dfed04f0524d78363c934706e00d0748e8d
   languageName: node
   linkType: hard
 
@@ -7414,7 +7414,7 @@ __metadata:
     "@eeacms/volto-climate-energy-policy": 0.1.4
     "@eeacms/volto-datablocks": 8.0.2
     "@eeacms/volto-eea-kitkat": 33.0.4
-    "@eeacms/volto-embed": 11.0.1
+    "@eeacms/volto-embed": 11.0.2
     "@eeacms/volto-energy-theme": 1.0.34
     "@eeacms/volto-pdf-block": 1.0.12
     "@eeacms/volto-plotlycharts": 14.0.3
